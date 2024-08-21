@@ -1,0 +1,2983 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9171442101162153943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Cross
+    SpawnerTag: TunCurve
+    StampPrefabID: 3
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: -9171442101162153943}
+    - {fileID: -3968579817299310612}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 3
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 1
+    m: 0
+    r: 1
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-9111948889445237498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root](Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: LeftBackRight
+    SpawnerTag: TunCurve
+    StampPrefabID: 2
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: -9111948889445237498}
+    - {fileID: 2233147832938740179}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 3
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 1
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: -90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-8589384361899641130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e4d5aac49ca0345b5c3ac36491d897, type: 3}
+  m_Name: SR_WorldOffset-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Ceiling Light
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -3064091690341130188}
+    Rules:
+    - {fileID: -8589384361899641130}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OverrideOffset: 1
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 11.27, z: 4}
+  OffsetMode: 0
+  RandomWorldOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-8305396221338198850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[FieldMod_Root](Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepU
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 8452354140837742364}
+    - {fileID: -5568373411527703323}
+    - {fileID: -8305396221338198850}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 10}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-8273917353163432712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: EndCaps
+    SpawnerTag: 
+    StampPrefabID: 4
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -4455855280258450594}
+    - {fileID: 8377659986244915152}
+    - {fileID: 8757458757685101549}
+    - {fileID: -8273917353163432712}
+    - {fileID: 8857484164462606198}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 1
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-7771487041473666970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Sub spawner
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -7771487041473666970}
+    - {fileID: -3312756951761761576}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 0
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 0
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: TunC
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 10}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-7601248231817282002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Wall Light Left Side
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -3064091690341130188}
+    Rules:
+    - {fileID: -7601248231817282002}
+    - {fileID: -739253121162680684}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 1.6, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: -9.85}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 90, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 2, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-6554210307755032051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[FieldMod_Root](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Wall Light Right Side
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -3064091690341130188}
+    Rules:
+    - {fileID: -6554210307755032051}
+    - {fileID: 212017970859964957}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 1.6, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: -9.85}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 180, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 2, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-6457614216360114209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: GiantTunnel
+    SpawnerTag: Tun
+    StampPrefabID: 0
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 90
+  - 180
+  - 270
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-6325853620957215480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root](Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepD
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -6325853620957215480}
+    - {fileID: -4807966576150291340}
+    - {fileID: 5171836936773773084}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 0
+    q2: 0
+    q3: 0
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-6215551319037947504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f132315e3189e59479a1674dc7e52576, type: 3}
+  m_Name: Root
+  m_EditorClassIdentifier: 
+  FieldModificators:
+  - {fileID: -5128526450473448806}
+  - {fileID: 3651011572877559722}
+  - {fileID: -3064091690341130188}
+  ParentPreset: {fileID: 11400000}
+  DisableWholePackage: 0
+  ModPackType: 0
+--- !u!114 &-5977947471075935711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e1ad890abd17544af7cb11a6e3643e, type: 3}
+  m_Name: SR_SubSpawner-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: GiantTunnelVBFR
+    SpawnerTag: Tun,TunC
+    StampPrefabID: 2
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 0}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  InheritCoords: 0
+  spawner:
+    Enabled: 1
+    Name: Sub spawner
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -7771487041473666970}
+    - {fileID: -3312756951761761576}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 0
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 0
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+--- !u!114 &-5668849474836328605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: GiantTunnelV1Cap
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -2811611953660325928}
+    - {fileID: 8757458757685101549}
+    - {fileID: -8273917353163432712}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 0
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-5568373411527703323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root](Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepU
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 8452354140837742364}
+    - {fileID: -5568373411527703323}
+    - {fileID: -8305396221338198850}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 1
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 1
+  quartRotor:
+    q1: 0
+    q2: 1
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-5128526450473448806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Tunnels
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Tun
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 919132149155446097, guid: d6e26e2a0ac0a6841beefeda75582390, type: 3}
+    subID: 0
+    _refMesh: {fileID: -1385678356120820348, guid: d6e26e2a0ac0a6841beefeda75582390,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 919132149155446097, guid: a2bbd01d6a6ae3f4790fde43b6121193, type: 3}
+    subID: 0
+    _refMesh: {fileID: -8466767615083432677, guid: a2bbd01d6a6ae3f4790fde43b6121193,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 919132149155446097, guid: 09e7673c9f259304b8cb102185a6b3fe, type: 3}
+    subID: 0
+    _refMesh: {fileID: -8135090525110380284, guid: 09e7673c9f259304b8cb102185a6b3fe,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 919132149155446097, guid: bbf75817c7ab069498be89811f26c63a, type: 3}
+    subID: 0
+    _refMesh: {fileID: 714694016714038621, guid: bbf75817c7ab069498be89811f26c63a,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Forward
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: 474312024029060}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: Curve
+    SpawnerTag: TunCurve
+    StampPrefabID: 1
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: 1177996766553438071}
+    - {fileID: 3815282408400144520}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: LeftBackRight
+    SpawnerTag: TunCurve
+    StampPrefabID: 2
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: -9111948889445237498}
+    - {fileID: 2233147832938740179}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: Cross
+    SpawnerTag: TunCurve
+    StampPrefabID: 3
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: -9171442101162153943}
+    - {fileID: -3968579817299310612}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 1
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -6215551319037947504}
+--- !u!114 &-4891670148511034910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepL
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -1087802894681616930}
+    - {fileID: 8932443834718700986}
+    - {fileID: -4891670148511034910}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 10}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-4807966576150291340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root](Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepD
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -6325853620957215480}
+    - {fileID: -4807966576150291340}
+    - {fileID: 5171836936773773084}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 1
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 1
+  quartRotor:
+    q1: 0
+    q2: 0
+    q3: 0
+    q4: 1
+  OverrideRotation: 0
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-4455855280258450594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e735e11b729ebf4aa0216397033ddfe, type: 3}
+  m_Name: SR_Comment-[Separators And Caps]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 1
+  OwnerSpawner:
+    Enabled: 1
+    Name: EndCaps
+    SpawnerTag: 
+    StampPrefabID: 4
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -4455855280258450594}
+    - {fileID: 8377659986244915152}
+    - {fileID: 8757458757685101549}
+    - {fileID: -8273917353163432712}
+    - {fileID: 8857484164462606198}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Info: 'Using multiple neightbours check + direct to achieve desired effect
+
+    Disable
+    all and go one by one for analyzing what is happening there'
+  CommentInHeader: 0
+  Padding: {x: 8, y: 8}
+--- !u!114 &-3968579817299310612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7b7d2eb85d19a4da49a85b81a1cb59, type: 3}
+  m_Name: SR_RemoveSpawn-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Cross
+    SpawnerTag: TunCurve
+    StampPrefabID: 3
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: -9171442101162153943}
+    - {fileID: -3968579817299310612}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Remove:
+    AffectedTags: Tun
+    CheckMode: 0
+    RemoveCount: 1
+    CheckOffset: 0
+    OffsetCellPosition: {x: 0, y: 0, z: 0}
+    RemoveWhen: 0
+    UseSelfRotation: 1
+    DegreesTolerance: 45
+--- !u!114 &-3312756951761761576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bc5f4badaab3438244b84b7cee058, type: 3}
+  m_Name: SR_Rotate-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Sub spawner
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -7771487041473666970}
+    - {fileID: -3312756951761761576}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 0
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 0
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetRotationFromTagged: TunC
+  CheckMode: 0
+  RotationEulerOffset: {x: 0, y: 90, z: 0}
+  RandomRotation: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  LocalRotation: 0
+  OverrideRotation: 1
+--- !u!114 &-3064091690341130188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Tunnel Lights
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: 
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 23088133044520102, guid: 9664923a624582940bdfa6c99eb63b14, type: 3}
+    subID: 0
+    _refMesh: {fileID: 4300000, guid: 8c51262149732f44aa15b473236e1c94, type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 3884997054161931712, guid: 29057865905f43848a16b637ea082721,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 4300000, guid: a7f5d07d51e667944bd87a0f4ea5cdb4, type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Ceiling Light
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -3064091690341130188}
+    Rules:
+    - {fileID: -8589384361899641130}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: Wall Light Left Side
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -3064091690341130188}
+    Rules:
+    - {fileID: -7601248231817282002}
+    - {fileID: -739253121162680684}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: Wall Light Right Side
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -3064091690341130188}
+    Rules:
+    - {fileID: -6554210307755032051}
+    - {fileID: 212017970859964957}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -6215551319037947504}
+--- !u!114 &-2811611953660325928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: GiantTunnelV1Cap
+    SpawnerTag: 
+    StampPrefabID: 4
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 8757458757685101549}
+    - {fileID: -8273917353163432712}
+    - {fileID: 8857484164462606198}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Tun
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: -10}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-2613032076587158341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: SepCurves
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -1866367302939646278}
+    - {fileID: -2613032076587158341}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: TunC
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: -10}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 90, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-2279273217819835030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Decorator Every 2 Cells
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 5365018466221524035}
+    - {fileID: -826935931728003684}
+    - {fileID: -2279273217819835030}
+    - {fileID: 1142999829589840330}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Sep
+  Distance: 1
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &-1866367302939646278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: SepCurves
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -1866367302939646278}
+    - {fileID: -2613032076587158341}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: TunC
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-1087802894681616930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepL
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -1087802894681616930}
+    - {fileID: 8932443834718700986}
+    - {fileID: -4891670148511034910}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-826935931728003684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c46bad85e11ef44b81af1e5e1391dfc, type: 3}
+  m_Name: SR_CellPosition-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Decorator Every 2 Cells
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 5365018466221524035}
+    - {fileID: -826935931728003684}
+    - {fileID: -2279273217819835030}
+    - {fileID: 1142999829589840330}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Mode: 7
+  Axis: 0
+  Exact: 2
+  Offset: 0
+  Range: {x: -3, y: 3}
+  ValueMulVariable:
+    name: 
+--- !u!114 &-739253121162680684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Tunnel Lights]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Wall Light Left Side
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -3064091690341130188}
+    Rules:
+    - {fileID: -7601248231817282002}
+    - {fileID: -739253121162680684}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: TunCurve
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-458379695513071617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepR
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -458379695513071617}
+    - {fileID: 5483822491854953726}
+    - {fileID: 5520623755413911111}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 0
+    q2: 0
+    q3: 1
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6c361108247f045b5087f48c0c7951, type: 3}
+  m_Name: FS_GiantTunnel5XGridExample
+  m_EditorClassIdentifier: 
+  CellSize: 4
+  NonUniformSize: 0
+  NonUniformCellSize: {x: 2, y: 2, z: 2}
+  InfoText: 'Minimum Size 5x5!
+
+    Use paint mode to experiment.
+
+    Example on
+    5 times scaled model with smaller cells within
+
+    for placing props in high
+    precision'
+  Variables:
+  - Name: Spawn Propability Multiplier
+    v3Val: {x: 1, y: 0, z: 0}
+    str: 
+    mat: {fileID: 0}
+    gameObj: {fileID: 0}
+    helper: {x: 0, y: 5, z: 0}
+    ValueType: 1
+  - Name: Spawn Count Multiplier
+    v3Val: {x: 1, y: 0, z: 0}
+    str: 
+    mat: {fileID: 0}
+    gameObj: {fileID: 0}
+    helper: {x: 0, y: 5, z: 0}
+    ValueType: 1
+  DoorsModificator: {fileID: 11400000, guid: 7500e28d48a8ac44da90dfc8719e91ef, type: 2}
+  EraseWallModificator: {fileID: 11400000, guid: c5bd286613ebcb24c932c8d5e7f79f9b,
+    type: 2}
+  CellsInstructions:
+  - Title: Door Hole
+    InstructionType: 1
+    TargetModification: {fileID: 11400000, guid: 7500e28d48a8ac44da90dfc8719e91ef,
+      type: 2}
+    Tags: Props
+    InstructionArgument: 
+  - Title: Clear Wall
+    InstructionType: 3
+    TargetModification: {fileID: 11400000, guid: c5bd286613ebcb24c932c8d5e7f79f9b,
+      type: 2}
+    Tags: 
+    InstructionArgument: 
+  RootPack: {fileID: -6215551319037947504}
+  ModificatorPacks:
+  - {fileID: -6215551319037947504}
+  - {fileID: 11400000, guid: 1301776f7fac7e348baac98bc68a043d, type: 2}
+  Ignores: []
+  DontSpawnOn: 
+  disabledMods:
+  - {fileID: -6555750166738775983, guid: 1301776f7fac7e348baac98bc68a043d, type: 2}
+  - {fileID: 923952724925266947, guid: 1301776f7fac7e348baac98bc68a043d, type: 2}
+  - {fileID: -7159157248221465641, guid: 1301776f7fac7e348baac98bc68a043d, type: 2}
+  - {fileID: 1076852388431377131, guid: 1301776f7fac7e348baac98bc68a043d, type: 2}
+  - {fileID: -2925440260325766704, guid: 1301776f7fac7e348baac98bc68a043d, type: 2}
+  - {fileID: 6990836390581781409, guid: 1301776f7fac7e348baac98bc68a043d, type: 2}
+  AddReflectionProbes: 0
+  MainReflectionSettings: {fileID: 0}
+  AddMultipleProbes: 0
+  SmallerReflSettings: {fileID: 11400000, guid: 290a908b3df7c6a4a84c21c932841cde,
+    type: 2}
+  MiniReflSettings: {fileID: 11400000, guid: b243a7973537dbf4faacf7bbda74dada, type: 2}
+  SmallerReflLowerSpaceThan: 4
+  AddLightProbes: 0
+  ProbesPerCell: 1
+  TriggerColliderGeneration: 1
+  TriggerGenSettings:
+    ScaleupTriggers: 1
+    FillHeight: 1
+    MaxCellChecks: 10
+    JoinBounds: 1
+    GenerateRelations: 1
+    GroupUpToSize: 8
+    MaxGroupDistance: 8
+--- !u!114 &474312024029060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Forward
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: 474312024029060}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 3
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &212017970859964957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Tunnel Lights]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Wall Light Right Side
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -3064091690341130188}
+    Rules:
+    - {fileID: -6554210307755032051}
+    - {fileID: 212017970859964957}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: TunCurve
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &312227019862931315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepL
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -1087802894681616930}
+    - {fileID: 8932443834718700986}
+    - {fileID: -4891670148511034910}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 0
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 1
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 90
+  DirectOffset: {x: 0, y: 0, z: -10}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &1142999829589840330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Tunnels Setup]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Decorator Every 2 Cells
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 5365018466221524035}
+    - {fileID: -826935931728003684}
+    - {fileID: -2279273217819835030}
+    - {fileID: 1142999829589840330}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: TunC
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &1177996766553438071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Curve
+    SpawnerTag: TunCurve
+    StampPrefabID: 1
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: 1177996766553438071}
+    - {fileID: 3815282408400144520}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 3
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &2233147832938740179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7b7d2eb85d19a4da49a85b81a1cb59, type: 3}
+  m_Name: SR_RemoveSpawn-[FieldMod_Root](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: LeftBackRight
+    SpawnerTag: TunCurve
+    StampPrefabID: 2
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: -9111948889445237498}
+    - {fileID: 2233147832938740179}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Remove:
+    AffectedTags: Tun
+    CheckMode: 0
+    RemoveCount: 1
+    CheckOffset: 0
+    OffsetCellPosition: {x: 0, y: 0, z: 0}
+    RemoveWhen: 0
+    UseSelfRotation: 1
+    DegreesTolerance: 45
+--- !u!114 &3651011572877559722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Separators And Caps
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: 
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 919132149155446097, guid: d6e26e2a0ac0a6841beefeda75582390, type: 3}
+    subID: 0
+    _refMesh: {fileID: -1385678356120820348, guid: ab30abdf0384dd941b86ef7d5e26d2a6,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 919132149155446097, guid: 93ef399fdee39054d9390b282aa4ee8c, type: 3}
+    subID: 0
+    _refMesh: {fileID: -2337687503581514061, guid: 93ef399fdee39054d9390b282aa4ee8c,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 919132149155446097, guid: 09e7673c9f259304b8cb102185a6b3fe, type: 3}
+    subID: 0
+    _refMesh: {fileID: -8135090525110380284, guid: 09e7673c9f259304b8cb102185a6b3fe,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 919132149155446097, guid: a2bbd01d6a6ae3f4790fde43b6121193, type: 3}
+    subID: 0
+    _refMesh: {fileID: -8466767615083432677, guid: a2bbd01d6a6ae3f4790fde43b6121193,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 919132149155446097, guid: 0332b54e7f89a054ab7e05ff6b9c40c8, type: 3}
+    subID: 0
+    _refMesh: {fileID: -4671363229948439264, guid: 0332b54e7f89a054ab7e05ff6b9c40c8,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 919132149155446097, guid: bbf75817c7ab069498be89811f26c63a, type: 3}
+    subID: 0
+    _refMesh: {fileID: 714694016714038621, guid: bbf75817c7ab069498be89811f26c63a,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: EndCaps
+    SpawnerTag: 
+    StampPrefabID: 4
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -4455855280258450594}
+    - {fileID: 8377659986244915152}
+    - {fileID: 8757458757685101549}
+    - {fileID: -8273917353163432712}
+    - {fileID: 8857484164462606198}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: SepL
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -1087802894681616930}
+    - {fileID: 8932443834718700986}
+    - {fileID: -4891670148511034910}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: SepR
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -458379695513071617}
+    - {fileID: 5483822491854953726}
+    - {fileID: 5520623755413911111}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: SepU
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 8452354140837742364}
+    - {fileID: -5568373411527703323}
+    - {fileID: -8305396221338198850}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: SepD
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -6325853620957215480}
+    - {fileID: -4807966576150291340}
+    - {fileID: 5171836936773773084}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: Decorator Every 2 Cells
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 5365018466221524035}
+    - {fileID: -826935931728003684}
+    - {fileID: -2279273217819835030}
+    - {fileID: 1142999829589840330}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -6215551319037947504}
+--- !u!114 &3815282408400144520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7b7d2eb85d19a4da49a85b81a1cb59, type: 3}
+  m_Name: SR_RemoveSpawn-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Curve
+    SpawnerTag: TunCurve
+    StampPrefabID: 1
+    Parent: {fileID: -5128526450473448806}
+    Rules:
+    - {fileID: 1177996766553438071}
+    - {fileID: 3815282408400144520}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Remove:
+    AffectedTags: Tun
+    CheckMode: 0
+    RemoveCount: 1
+    CheckOffset: 0
+    OffsetCellPosition: {x: 0, y: 0, z: 0}
+    RemoveWhen: 0
+    UseSelfRotation: 1
+    DegreesTolerance: 45
+--- !u!114 &5171836936773773084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[FieldMod_Root](Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepD
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -6325853620957215480}
+    - {fileID: -4807966576150291340}
+    - {fileID: 5171836936773773084}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 10}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &5365018466221524035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c46bad85e11ef44b81af1e5e1391dfc, type: 3}
+  m_Name: SR_CellPosition-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Decorator Every 2 Cells
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 5365018466221524035}
+    - {fileID: -826935931728003684}
+    - {fileID: -2279273217819835030}
+    - {fileID: 1142999829589840330}
+    Mode: 0
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Mode: 7
+  Axis: 2
+  Exact: 2
+  Offset: 0
+  Range: {x: -3, y: 3}
+  ValueMulVariable:
+    name: 
+--- !u!114 &5483822491854953726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepR
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -458379695513071617}
+    - {fileID: 5483822491854953726}
+    - {fileID: 5520623755413911111}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 1
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 1
+  quartRotor:
+    q1: 0
+    q2: 0
+    q3: 1
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &5520623755413911111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[FieldMod_Root](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepR
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -458379695513071617}
+    - {fileID: 5483822491854953726}
+    - {fileID: 5520623755413911111}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 10}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &5896875825058370753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: GiantTunnelV1Cap
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -2811611953660325928}
+    - {fileID: 8757458757685101549}
+    - {fileID: -8273917353163432712}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: -10}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &6284404114058812540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1d61451050d554e8d53669d77fafc0, type: 3}
+  m_Name: SR_MultiCheckCellNeightbours-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: GiantTunnel
+    SpawnerTag: Tun
+    StampPrefabID: 0
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 25
+  - 0
+  - 0
+  CheckRules:
+  - CheckedCellsMustBe: 2
+    occupiedByTag: 
+    CheckMode: 0
+    OffsetOrigin: {x: 0, y: 0, z: 0}
+    DirectCheck: 0
+    placement:
+      lu: 0
+      u: 0
+      ru: 0
+      l: 0
+      m: 0
+      r: 1
+      ld: 0
+      d: 0
+      rd: 0
+    Negate: 0
+    NeightbourNeeds: 0
+--- !u!114 &8377659986244915152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Separators And Caps]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: EndCaps
+    SpawnerTag: 
+    StampPrefabID: 4
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -4455855280258450594}
+    - {fileID: 8377659986244915152}
+    - {fileID: 8757458757685101549}
+    - {fileID: -8273917353163432712}
+    - {fileID: 8857484164462606198}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: TunCurve
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &8452354140837742364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root](Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepU
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: 8452354140837742364}
+    - {fileID: -5568373411527703323}
+    - {fileID: -8305396221338198850}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 0
+    q2: 1
+    q3: 0
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &8757458757685101549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: EndCaps
+    SpawnerTag: 
+    StampPrefabID: 4
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -4455855280258450594}
+    - {fileID: 8377659986244915152}
+    - {fileID: 8757458757685101549}
+    - {fileID: -8273917353163432712}
+    - {fileID: 8857484164462606198}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 1
+  CustomRotors:
+  - 0
+  - 90
+  - 180
+  - 270
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &8857484164462606198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: EndCaps
+    SpawnerTag: 
+    StampPrefabID: 4
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -4455855280258450594}
+    - {fileID: 8377659986244915152}
+    - {fileID: 8757458757685101549}
+    - {fileID: -8273917353163432712}
+    - {fileID: 8857484164462606198}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: -10}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &8932443834718700986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: SepL
+    SpawnerTag: Sep
+    StampPrefabID: 1
+    Parent: {fileID: 3651011572877559722}
+    Rules:
+    - {fileID: -1087802894681616930}
+    - {fileID: 8932443834718700986}
+    - {fileID: -4891670148511034910}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 5
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  occupiedByTag: Tun
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 1
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 1
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0

@@ -1,0 +1,6564 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9131665988106383267
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556a80cf79682374ea4ca01ada3ea63c, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483617
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1108.1774, y: 2146.4333}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 1
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  A:
+    ParentNodeID: -2147483617
+    PortID: 0
+    ParentNode: {fileID: -9131665988106383267}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1131.1774
+      y: 2182.4333
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: A
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483596
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1280842250398656392}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  B:
+    ParentNodeID: -2147483617
+    PortID: 1
+    ParentNode: {fileID: -9131665988106383267}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1131.1774
+      y: 2202.4333
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: B
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483602
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -1641842426317558088}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  NearestACell:
+    ParentNodeID: -2147483617
+    PortID: 0
+    ParentNode: {fileID: -9131665988106383267}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1278.1774
+      y: 2223.4333
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Nearest A Cell
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483614
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 5726532164006697265}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+  NearestBCell:
+    ParentNodeID: -2147483617
+    PortID: 1
+    ParentNode: {fileID: -9131665988106383267}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1278.1774
+      y: 2243.4333
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Nearest B Cell
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483614
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: 5726532164006697265}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+  FastCheck:
+    ParentNodeID: -2147483617
+    PortID: 2
+    ParentNode: {fileID: -9131665988106383267}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1131.1774
+      y: 2266.4333
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Fast Check
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  TryGetCentered: 1
+  ResetOnRead: 1
+--- !u!114 &-8877228493345285576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e4ece0dd03c24409e0e4c3141b6b8a, type: 3}
+  m_Name: (Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483638
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 423.33655, y: 678.8877}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Count:
+    ParentNodeID: -2147483638
+    PortID: 0
+    ParentNode: {fileID: -8877228493345285576}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 573.33655
+      y: 715.8877
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 2
+    SlotMode: 0
+    DisplayName: Count
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483639
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -5614337226597766089}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Value: 7
+  SubFieldsOf:
+    ParentNodeID: -2147483638
+    PortID: 0
+    ParentNode: {fileID: -8877228493345285576}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 522.6876
+      y: 896.547
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Sub Fields Of
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &-8605521918076281145
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162dd2c907286bd479e417bc1942a08a, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483626
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483626
+    ConnectionToID: -2147483620
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  InputConnections:
+  - ConnectionFromID: -2147483636
+    ConnectionToID: -2147483626
+    ConnectionFrom_AlternativeID: 0
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 1119.3052, y: 1125.5426}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  FalseOrTrue:
+    ParentNodeID: -2147483626
+    PortID: 0
+    ParentNode: {fileID: -8605521918076281145}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1142.3052
+      y: 1161.5426
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: False Or True
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483631
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -6262679521038248400}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  MultiCheckMode: 0
+--- !u!114 &-7821968917506343482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483589
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1118.5159, y: 2531.9106}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: Assign IDs of the fields to determinate they are connected
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 50.74, y: 0}
+--- !u!114 &-7547041302266909977
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483643
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 511.76105, y: 491.5067}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: 'Example of setting custom field
+
+    setup to the sub field'
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 0, y: 0}
+--- !u!114 &-7190386397652848091
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6736143059fe944d9e5d01d6610e20c, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483624
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 878.55493, y: 1435.7151}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 1
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableOf:
+    ParentNodeID: -2147483624
+    PortID: 0
+    ParentNode: {fileID: -7190386397652848091}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 901.55493
+      y: 1471.7151
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Variable Of
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483635
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 6586505211682118967}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  VariableName:
+    ParentNodeID: -2147483624
+    PortID: 1
+    ParentNode: {fileID: -7190386397652848091}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 901.55493
+      y: 1491.7151
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Variable Name
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483604
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -3251146600576898245}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    StringVal: Used
+  Value:
+    ParentNodeID: -2147483624
+    PortID: 0
+    ParentNode: {fileID: -7190386397652848091}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1068.5549
+      y: 1512.7151
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 2
+    SlotMode: 0
+    DisplayName: Value
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483620
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -6773996952721891709}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+  DefaultValue:
+    ParentNodeID: -2147483624
+    PortID: 2
+    ParentNode: {fileID: -7190386397652848091}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 901.55493
+      y: 1531.7151
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Default Value
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+--- !u!114 &-6773996952721891709
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e8f6af23e36a4898579bdbb03089f, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483620
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483620
+    ConnectionToID: -2147483584
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  InputConnections:
+  - ConnectionFromID: -2147483626
+    ConnectionToID: -2147483620
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 1234.9457, y: 1425.0757}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  AValue:
+    ParentNodeID: -2147483620
+    PortID: 0
+    ParentNode: {fileID: -6773996952721891709}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1257.9457
+      y: 1461.0757
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: A
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483624
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -7190386397652848091}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+  BValue:
+    ParentNodeID: -2147483620
+    PortID: 1
+    ParentNode: {fileID: -6773996952721891709}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1257.9457
+      y: 1481.0757
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: B
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483619
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 8630036990261888686}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 1, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+  LogicType: 3
+--- !u!114 &-6291297601930085314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d5743cad42ed24e8ae217e66fedfda, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483644
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 544.4282, y: 687.75073}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Planner:
+    ParentNodeID: -2147483644
+    PortID: 0
+    ParentNode: {fileID: -6291297601930085314}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 570.4282
+      y: 723.75073
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  VariableID: 1
+  Value:
+    ParentNodeID: -2147483644
+    PortID: 0
+    ParentNode: {fileID: -6291297601930085314}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 688.4282
+      y: 723.75073
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483645
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: 191160361491512507}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 11400000, guid: d7e7267f3a61e6145aaff38952fdf100, type: 2}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 7
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  displayNumber: 0
+--- !u!114 &-6262679521038248400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9e686ced14dc74f80ba6aa81f530f7, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483631
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 848.1363, y: 1175.1157}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 1
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  AligningWith:
+    ParentNodeID: -2147483631
+    PortID: 0
+    ParentNode: {fileID: -6262679521038248400}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 871.1363
+      y: 1211.1157
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Aligning With
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483635
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 6586505211682118967}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  IsAligning:
+    ParentNodeID: -2147483631
+    PortID: 0
+    ParentNode: {fileID: -6262679521038248400}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1020.1362
+      y: 1232.1157
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 2
+    SlotMode: 0
+    DisplayName: Is Aligning
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483626
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -8605521918076281145}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  FirstField:
+    ParentNodeID: -2147483631
+    PortID: 1
+    ParentNode: {fileID: -6262679521038248400}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 871.1363
+      y: 1251.1157
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: First Field
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483598
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 5766068226631957121}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &-5747976234936328765
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483625
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 759.61194, y: 1085.478}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: Check only aligning fields
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 91.36, y: 0}
+--- !u!114 &-5614337226597766089
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99028233d68da9544b783e5edbecdad7, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483639
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483639
+    ConnectionToID: -2147483636
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  InputConnections:
+  - ConnectionFromID: -2147483646
+    ConnectionToID: -2147483639
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 616.33655, y: 657.88763}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Iterations:
+    ParentNodeID: -2147483639
+    PortID: 0
+    ParentNode: {fileID: -5614337226597766089}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 639.33655
+      y: 693.88763
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Iterations
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483638
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -8877228493345285576}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  IterationIndex:
+    ParentNodeID: -2147483639
+    PortID: 0
+    ParentNode: {fileID: -5614337226597766089}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 754.33655
+      y: 714.88763
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Iteration Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483628
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 8006517138057336885}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Value: 6
+  Stop:
+    ParentNodeID: -2147483639
+    PortID: 1
+    ParentNode: {fileID: -5614337226597766089}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 639.33655
+      y: 733.88763
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Stop (Break)
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+--- !u!114 &-5252761722310701209
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ccc5d7e07da69448296e22fa729059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _editorForceChanged: 0
+  ZoneWidth:
+    Min: 12
+    Max: 14
+  ZoneDepth:
+    Min: 10
+    Max: 12
+  MaxIterations:
+    Min: 100
+    Max: 110
+  LimitShapesCount:
+    Min: 6
+    Max: 7
+  MinimumFractionSize:
+    Min: 2
+    Max: 2
+  RandomizeSlicing: 0
+  UniqueFractionRequests: []
+--- !u!114 &-3997033063007747384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf829c2fcc3f7c41ae39f1c37271c54, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483592
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 630.5186, y: 2988.249}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableID: 1
+  Value:
+    ParentNodeID: -2147483592
+    PortID: 0
+    ParentNode: {fileID: -3997033063007747384}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 780.5186
+      y: 3024.249
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483591
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 4289621639630996506}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 6, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+--- !u!114 &-3251146600576898245
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dcc8079aa1036b4581f44c6499b403b, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483604
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 685.47577, y: 1460.0602}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Value:
+    ParentNodeID: -2147483604
+    PortID: 0
+    ParentNode: {fileID: -3251146600576898245}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 708.47577
+      y: 1496.0602
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 2
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Value
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483598
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 5766068226631957121}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  Text:
+    ParentNodeID: -2147483604
+    PortID: 0
+    ParentNode: {fileID: -3251146600576898245}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 793.47577
+      y: 1498.0602
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Text
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483624
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: -7190386397652848091}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    StringVal: (0, -1, 4)
+--- !u!114 &-2777043317842107025
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483608
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1683.3414, y: 2197.3887}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: Add doorway commands
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 0, y: 0}
+--- !u!114 &-2676884163015693755
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d3514c4697cf541b2d647b9793695a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483647
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483647
+    ConnectionToID: -2147483646
+    ConnectionFrom_AlternativeID: -1
+    ConnectionTo_AlternativeID: -1
+  InputConnections: []
+  NodePosition: {x: 585.29034, y: 267.02014}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+--- !u!114 &-1641842426317558088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddb1af51455c2341b5e213735431369, type: 3}
+  m_Name: (Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483602
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 759.5678, y: 2609.3057}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Index:
+    ParentNodeID: -2147483602
+    PortID: 0
+    ParentNode: {fileID: -1641842426317558088}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 782.5678
+      y: 2645.3057
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483601
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 7969452045658190785}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  Planner:
+    ParentNodeID: -2147483602
+    PortID: 0
+    ParentNode: {fileID: -1641842426317558088}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 919.5678
+      y: 2666.3057
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 1
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483617
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: -9131665988106383267}
+      isInput: 1
+    - ConnectedNodeID: -2147483603
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1180512282073038572}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 0
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  SubFieldOf:
+    ParentNodeID: -2147483602
+    PortID: 1
+    ParentNode: {fileID: -1641842426317558088}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &-1441943256167747427
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf829c2fcc3f7c41ae39f1c37271c54, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483581
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 620.4593, y: 1796.3607}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableID: 0
+  Value:
+    ParentNodeID: -2147483581
+    PortID: 0
+    ParentNode: {fileID: -1441943256167747427}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 770.4593
+      y: 1832.3607
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483582
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -420475401445742317}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 4, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+--- !u!114 &-1387752307871084717
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2d5ce1d0d1e8344a8c965ae3b8b086, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483610
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections:
+  - ConnectionFromID: -2147483611
+    ConnectionToID: -2147483610
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 1815.6543, y: 1213.8527}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Position:
+    ParentNodeID: -2147483610
+    PortID: 0
+    ParentNode: {fileID: -1387752307871084717}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1838.6543
+      y: 1249.8527
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Position
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483611
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1713390304282520776}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: {x: 0, y: 0, z: 0}
+--- !u!114 &-667953137053943710
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985a9f13d38b53941b59124b4da1c4cb, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483613
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483613
+    ConnectionToID: -2147483595
+    ConnectionFrom_AlternativeID: -1
+    ConnectionTo_AlternativeID: -1
+  InputConnections:
+  - ConnectionFromID: -2147483614
+    ConnectionToID: -2147483613
+    ConnectionFrom_AlternativeID: -1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 1335.0236, y: 2626.3823}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 1
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableOf:
+    ParentNodeID: -2147483613
+    PortID: 0
+    ParentNode: {fileID: -667953137053943710}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1358.0236
+      y: 2662.3823
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Variable Of
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483596
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1280842250398656392}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  VariableName:
+    ParentNodeID: -2147483613
+    PortID: 1
+    ParentNode: {fileID: -667953137053943710}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1358.0236
+      y: 2682.3823
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Variable Name
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483603
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1180512282073038572}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    StringVal: Used
+  Value:
+    ParentNodeID: -2147483613
+    PortID: 2
+    ParentNode: {fileID: -667953137053943710}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1358.0236
+      y: 2702.3823
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Value
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483612
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 6631727353677526281}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  Operation: 1
+  DefaultValue:
+    ParentNodeID: -2147483613
+    PortID: 3
+    ParentNode: {fileID: -667953137053943710}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1358.0236
+      y: 2742.3823
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Default Value
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+--- !u!114 &-420475401445742317
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddb1af51455c2341b5e213735431369, type: 3}
+  m_Name: (Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483582
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 806.8564, y: 1769.9635}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Index:
+    ParentNodeID: -2147483582
+    PortID: 0
+    ParentNode: {fileID: -420475401445742317}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 829.8564
+      y: 1805.9635
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483581
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -1441943256167747427}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  Planner:
+    ParentNodeID: -2147483582
+    PortID: 0
+    ParentNode: {fileID: -420475401445742317}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 966.8564
+      y: 1826.9635
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483585
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 3919504399133195294}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 0
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  SubFieldOf:
+    ParentNodeID: -2147483582
+    PortID: 1
+    ParentNode: {fileID: -420475401445742317}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4674bb147e48a4f418520e682889d263, type: 3}
+  m_Name: BP_Field Of Rects Example
+  m_EditorClassIdentifier: 
+  CustomInfo: 
+  BuildVariables: []
+  BuildLayers:
+  - Name: Build Layer
+    FieldPlanners:
+    - {fileID: 8753599656285457363}
+  AsyncGenerating: 0
+--- !u!114 &191160361491512507
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43afdd56247e3b849b9d327eddf3fdf4, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483645
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections:
+  - ConnectionFromID: -2147483647
+    ConnectionToID: -2147483645
+    ConnectionFrom_AlternativeID: -1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 764.4166, y: 605.6563}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Subfield:
+    ParentNodeID: -2147483645
+    PortID: 0
+    ParentNode: {fileID: 191160361491512507}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 787.4166
+      y: 641.6563
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Subfield
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483646
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 8321653533301158663}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  SetFieldSetup:
+    ParentNodeID: -2147483645
+    PortID: 1
+    ParentNode: {fileID: 191160361491512507}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 787.4166
+      y: 661.6563
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Set Field Setup
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483644
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -6291297601930085314}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+--- !u!114 &587258435094529160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e8f6af23e36a4898579bdbb03089f, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483584
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483584
+    ConnectionToID: -2147483614
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  InputConnections:
+  - ConnectionFromID: -2147483620
+    ConnectionToID: -2147483584
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 1326.369, y: 1803.5206}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  AValue:
+    ParentNodeID: -2147483584
+    PortID: 0
+    ParentNode: {fileID: 587258435094529160}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1349.369
+      y: 1839.5206
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: A
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483585
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 3919504399133195294}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 1, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+  BValue:
+    ParentNodeID: -2147483584
+    PortID: 1
+    ParentNode: {fileID: 587258435094529160}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1349.369
+      y: 1859.5206
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: B
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483583
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 6894169285629699274}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 2, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+  LogicType: 3
+--- !u!114 &911746742475177177
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483618
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 837.0438, y: 1337.2977}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: Dont connect already connected rooms
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 36.84, y: 0}
+--- !u!114 &914246235659367413
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e4ece0dd03c24409e0e4c3141b6b8a, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483645
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 354.04782, y: 335.8625}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Count:
+    ParentNodeID: -2147483645
+    PortID: 0
+    ParentNode: {fileID: 914246235659367413}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 504.04782
+      y: 372.8625
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 2
+    SlotMode: 0
+    DisplayName: Count
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483646
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 3877752737900288355}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Value: 7
+  SubFieldsOf:
+    ParentNodeID: -2147483645
+    PortID: 0
+    ParentNode: {fileID: 914246235659367413}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 489.87512
+      y: 582.4167
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Sub Fields Of
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &1000024483288351849
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf829c2fcc3f7c41ae39f1c37271c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483597
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 346.72336, y: 1253.8276}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableID: 0
+  Value:
+    ParentNodeID: -2147483597
+    PortID: 0
+    ParentNode: {fileID: 1000024483288351849}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 496.72336
+      y: 1289.8276
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483598
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 5766068226631957121}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 5, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+--- !u!114 &1180512282073038572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dcc8079aa1036b4581f44c6499b403b, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483603
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1114.957, y: 2705.8584}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Value:
+    ParentNodeID: -2147483603
+    PortID: 0
+    ParentNode: {fileID: 1180512282073038572}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1137.957
+      y: 2741.8584
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 2
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Value
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483602
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -1641842426317558088}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  Text:
+    ParentNodeID: -2147483603
+    PortID: 0
+    ParentNode: {fileID: 1180512282073038572}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1222.957
+      y: 2743.8584
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Text
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483613
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: -667953137053943710}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    StringVal: (0, -1, 4)
+--- !u!114 &1279421694141820127
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e8f6af23e36a4898579bdbb03089f, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483636
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483636
+    ConnectionToID: -2147483626
+    ConnectionFrom_AlternativeID: 0
+    ConnectionTo_AlternativeID: -1
+  InputConnections:
+  - ConnectionFromID: -2147483639
+    ConnectionToID: -2147483636
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 1104.0345, y: 675.5754}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  AValue:
+    ParentNodeID: -2147483636
+    PortID: 0
+    ParentNode: {fileID: 1279421694141820127}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1127.0345
+      y: 711.5754
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: A
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483599
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 7190216470776077465}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 6, y: -1, z: 7}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+  BValue:
+    ParentNodeID: -2147483636
+    PortID: 1
+    ParentNode: {fileID: 1279421694141820127}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1127.0345
+      y: 731.5754
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: B
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483628
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 8006517138057336885}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 6, y: -1, z: 7}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+  LogicType: 0
+--- !u!114 &1280842250398656392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddb1af51455c2341b5e213735431369, type: 3}
+  m_Name: (Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483596
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 738.4175, y: 2500.6504}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Index:
+    ParentNodeID: -2147483596
+    PortID: 0
+    ParentNode: {fileID: 1280842250398656392}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 761.4175
+      y: 2536.6504
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483600
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 5181540409845341578}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  Planner:
+    ParentNodeID: -2147483596
+    PortID: 0
+    ParentNode: {fileID: 1280842250398656392}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 898.4175
+      y: 2557.6504
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483617
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -9131665988106383267}
+      isInput: 1
+    - ConnectedNodeID: -2147483613
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -667953137053943710}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 0
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  SubFieldOf:
+    ParentNodeID: -2147483596
+    PortID: 1
+    ParentNode: {fileID: 1280842250398656392}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &1599521405408692617
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddb1af51455c2341b5e213735431369, type: 3}
+  m_Name: (Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483594
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1097.5953, y: 3064.8552}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Index:
+    ParentNodeID: -2147483594
+    PortID: 0
+    ParentNode: {fileID: 1599521405408692617}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1120.5953
+      y: 3100.8552
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  Planner:
+    ParentNodeID: -2147483594
+    PortID: 0
+    ParentNode: {fileID: 1599521405408692617}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1257.5953
+      y: 3121.8552
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483595
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 3381133096159217756}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 0
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  SubFieldOf:
+    ParentNodeID: -2147483594
+    PortID: 1
+    ParentNode: {fileID: 1599521405408692617}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &1713390304282520776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efa0298a4b109d47afef12eda82c680, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483611
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483611
+    ConnectionToID: -2147483610
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  InputConnections: []
+  NodePosition: {x: 1633.5117, y: 1169.8052}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 1
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  IterationCell:
+    ParentNodeID: -2147483611
+    PortID: 0
+    ParentNode: {fileID: 1713390304282520776}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1771.5117
+      y: 1206.8052
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Iteration Cell
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483610
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -1387752307871084717}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+  CellsOf:
+    ParentNodeID: -2147483611
+    PortID: 0
+    ParentNode: {fileID: 1713390304282520776}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1656.5117
+      y: 1225.8052
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 4
+    SlotMode: 0
+    DisplayName: Cells Of
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  BreakLoop:
+    ParentNodeID: -2147483611
+    PortID: 1
+    ParentNode: {fileID: 1713390304282520776}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1656.5117
+      y: 1245.8052
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 2
+    SlotMode: 0
+    DisplayName: Break Loop
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  RandomizeCellsOrder: 0
+--- !u!114 &1801954048768927342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483634
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1194.2809, y: 778.27606}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Skip Self
+  CommentText: 
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 0, y: 0}
+--- !u!114 &1898625966202463973
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483588
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1568.1185, y: 2659.8623}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: A knows that A is connected with B
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 0, y: 0}
+--- !u!114 &2918711260899763484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483586
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1059.6893, y: 1747.4143}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: Limit doorway count
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 49.26, y: 0}
+--- !u!114 &3012614133116179424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d3514c4697cf541b2d647b9793695a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483647
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483647
+    ConnectionToID: -2147483645
+    ConnectionFrom_AlternativeID: -1
+    ConnectionTo_AlternativeID: -1
+  InputConnections: []
+  NodePosition: {x: 690, y: 430}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+--- !u!114 &3381133096159217756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985a9f13d38b53941b59124b4da1c4cb, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483595
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections:
+  - ConnectionFromID: -2147483613
+    ConnectionToID: -2147483595
+    ConnectionFrom_AlternativeID: -1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 1343.646, y: 2983.128}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 1
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableOf:
+    ParentNodeID: -2147483595
+    PortID: 0
+    ParentNode: {fileID: 3381133096159217756}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1366.646
+      y: 3019.128
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Variable Of
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483594
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1599521405408692617}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  VariableName:
+    ParentNodeID: -2147483595
+    PortID: 1
+    ParentNode: {fileID: 3381133096159217756}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1366.646
+      y: 3039.128
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Variable Name
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483590
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 3421584873753101614}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    StringVal: 
+  Value:
+    ParentNodeID: -2147483595
+    PortID: 2
+    ParentNode: {fileID: 3381133096159217756}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1366.646
+      y: 3059.128
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Value
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483612
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 6631727353677526281}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  Operation: 1
+  DefaultValue:
+    ParentNodeID: -2147483595
+    PortID: 3
+    ParentNode: {fileID: 3381133096159217756}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1366.646
+      y: 3099.128
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Default Value
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+--- !u!114 &3421584873753101614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dcc8079aa1036b4581f44c6499b403b, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483590
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1068.0883, y: 2978.9639}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Value:
+    ParentNodeID: -2147483590
+    PortID: 0
+    ParentNode: {fileID: 3421584873753101614}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1091.0883
+      y: 3014.9639
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 2
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Value
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483591
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 4289621639630996506}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  Text:
+    ParentNodeID: -2147483590
+    PortID: 0
+    ParentNode: {fileID: 3421584873753101614}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1176.0883
+      y: 3016.9639
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Text
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483595
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: 3381133096159217756}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    StringVal: (0, -1, 6)
+--- !u!114 &3673513655054148569
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483609
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1816.0651, y: 1146.6869}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: Left for debugging
+  FrameColor: {r: 0.05228728, g: 0.4433962, b: 0.17263202, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 0, y: 0}
+--- !u!114 &3877752737900288355
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99028233d68da9544b783e5edbecdad7, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483646
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483646
+    ConnectionToID: -2147483639
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  InputConnections:
+  - ConnectionFromID: -2147483647
+    ConnectionToID: -2147483646
+    ConnectionFrom_AlternativeID: -1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 588.1356, y: 402.77014}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Iterations:
+    ParentNodeID: -2147483646
+    PortID: 0
+    ParentNode: {fileID: 3877752737900288355}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 611.1356
+      y: 438.77014
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Iterations
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483645
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 914246235659367413}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: 1
+  IterationIndex:
+    ParentNodeID: -2147483646
+    PortID: 0
+    ParentNode: {fileID: 3877752737900288355}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 726.1356
+      y: 459.77014
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Iteration Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483599
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 7190216470776077465}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Value: 6
+  Stop:
+    ParentNodeID: -2147483646
+    PortID: 1
+    ParentNode: {fileID: 3877752737900288355}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 611.1356
+      y: 478.77014
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Stop (Break)
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+--- !u!114 &3919504399133195294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449b6e7dc5e1f7e408970d7041e5758a, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483585
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1066.8927, y: 1821.7354}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 1
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Count:
+    ParentNodeID: -2147483585
+    PortID: 0
+    ParentNode: {fileID: 3919504399133195294}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1240.8927
+      y: 1858.7354
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 2
+    SlotMode: 0
+    DisplayName: Count
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483584
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 587258435094529160}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Value: 1
+  CommandsOf:
+    ParentNodeID: -2147483585
+    PortID: 0
+    ParentNode: {fileID: 3919504399133195294}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1089.8927
+      y: 1877.7354
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Commands Of
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483582
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -420475401445742317}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &4035456298637216679
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf829c2fcc3f7c41ae39f1c37271c54, type: 3}
+  m_Name: (Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483593
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 816.9414, y: 3119.644}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableID: 0
+  Value:
+    ParentNodeID: -2147483593
+    PortID: 0
+    ParentNode: {fileID: 4035456298637216679}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 966.9414
+      y: 3155.644
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483594
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1599521405408692617}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 1, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+--- !u!114 &4289621639630996506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddb1af51455c2341b5e213735431369, type: 3}
+  m_Name: (Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483591
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 840.4666, y: 2959.733}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Index:
+    ParentNodeID: -2147483591
+    PortID: 0
+    ParentNode: {fileID: 4289621639630996506}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 863.4666
+      y: 2995.733
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483592
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -3997033063007747384}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  Planner:
+    ParentNodeID: -2147483591
+    PortID: 0
+    ParentNode: {fileID: 4289621639630996506}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1000.4666
+      y: 3016.733
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483590
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 3421584873753101614}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 0
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  SubFieldOf:
+    ParentNodeID: -2147483591
+    PortID: 1
+    ParentNode: {fileID: 4289621639630996506}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &5181540409845341578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf829c2fcc3f7c41ae39f1c37271c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483600
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 528.46954, y: 2529.1665}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableID: 1
+  Value:
+    ParentNodeID: -2147483600
+    PortID: 0
+    ParentNode: {fileID: 5181540409845341578}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 678.46954
+      y: 2565.1665
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483596
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1280842250398656392}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 6, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+--- !u!114 &5726532164006697265
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864cff2a7086f29419dc89e74e3a71a7, type: 3}
+  m_Name: PF_AddCounterInstructions(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483614
+  NameID: 
+  wasCreated: 1
+  OutputConnections:
+  - ConnectionFromID: -2147483614
+    ConnectionToID: -2147483613
+    ConnectionFrom_AlternativeID: -1
+    ConnectionTo_AlternativeID: -1
+  InputConnections:
+  - ConnectionFromID: -2147483584
+    ConnectionToID: -2147483614
+    ConnectionFrom_AlternativeID: 1
+    ConnectionTo_AlternativeID: -1
+  NodePosition: {x: 1420.6523, y: 2192.927}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Port0:
+    Parent: {fileID: -187986687561197988, guid: e9ed5d32b87bf234bb8d929946673b05,
+      type: 2}
+    DisplayName: Cell A
+    RootPortID: -2147483647
+    RootPortHelpID: -1
+    ViewType: 5
+    PinType: 0
+    p_Int:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -2147483614
+      PortID: -1
+      ParentNode: {fileID: 5726532164006697265}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 1443.6523
+        y: 2228.927
+        width: 27
+        height: 27
+      PortType: 0
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Cell A
+      OverwriteName: 
+      _HelperFunctionsID: -2147483647
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections:
+      - ConnectedNodeID: -2147483617
+        ConnectedNodePortID: 0
+        NodeReference: {fileID: -9131665988106383267}
+        isInput: 0
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  Port1:
+    Parent: {fileID: -1437672458485055700, guid: e9ed5d32b87bf234bb8d929946673b05,
+      type: 2}
+    DisplayName: Cell B
+    RootPortID: -2147483646
+    RootPortHelpID: -1
+    ViewType: 5
+    PinType: 0
+    p_Int:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -2147483614
+      PortID: -1
+      ParentNode: {fileID: 5726532164006697265}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 1443.6523
+        y: 2248.927
+        width: 27
+        height: 27
+      PortType: 0
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Cell B
+      OverwriteName: 
+      _HelperFunctionsID: -2147483646
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections:
+      - ConnectedNodeID: -2147483617
+        ConnectedNodePortID: 1
+        NodeReference: {fileID: -9131665988106383267}
+        isInput: 0
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  Port2:
+    Parent: {fileID: -2003270990364727927, guid: e9ed5d32b87bf234bb8d929946673b05,
+      type: 2}
+    DisplayName: Instruction A ID
+    RootPortID: -2147483645
+    RootPortHelpID: -1
+    ViewType: 0
+    PinType: 0
+    p_Int:
+      ParentNodeID: -2147483614
+      PortID: -1
+      ParentNode: {fileID: 5726532164006697265}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 1443.6523
+        y: 2268.927
+        width: 27
+        height: 27
+      PortType: 0
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Instruction A ID
+      OverwriteName: 
+      _HelperFunctionsID: -2147483645
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  Port3:
+    Parent: {fileID: 3114657213928473170, guid: e9ed5d32b87bf234bb8d929946673b05,
+      type: 2}
+    DisplayName: Instruction B ID
+    RootPortID: -2147483644
+    RootPortHelpID: -1
+    ViewType: 0
+    PinType: 0
+    p_Int:
+      ParentNodeID: -2147483614
+      PortID: -1
+      ParentNode: {fileID: 5726532164006697265}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 1443.6523
+        y: 2288.927
+        width: 27
+        height: 27
+      PortType: 0
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Instruction B ID
+      OverwriteName: 
+      _HelperFunctionsID: -2147483644
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  Port4:
+    Parent: {fileID: -187986687561197988, guid: e9ed5d32b87bf234bb8d929946673b05,
+      type: 2}
+    DisplayName: Cell A
+    RootPortID: -2147483647
+    RootPortHelpID: -1
+    ViewType: 5
+    PinType: 0
+    p_Int:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 5726532164006697265}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 0
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Cell A
+      OverwriteName: 
+      _HelperFunctionsID: -2147483647
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  Port5:
+    Parent: {fileID: -1437672458485055700, guid: e9ed5d32b87bf234bb8d929946673b05,
+      type: 2}
+    DisplayName: Cell B
+    RootPortID: -2147483646
+    RootPortHelpID: -1
+    ViewType: 5
+    PinType: 0
+    p_Int:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 5726532164006697265}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 0
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Cell B
+      OverwriteName: 
+      _HelperFunctionsID: -2147483646
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  Port6:
+    Parent: {fileID: -2003270990364727927, guid: e9ed5d32b87bf234bb8d929946673b05,
+      type: 2}
+    DisplayName: Instruction A ID
+    RootPortID: -2147483645
+    RootPortHelpID: -1
+    ViewType: 0
+    PinType: 0
+    p_Int:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 5726532164006697265}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 0
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Instruction A ID
+      OverwriteName: 
+      _HelperFunctionsID: -2147483645
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  Port7:
+    Parent: {fileID: 3114657213928473170, guid: e9ed5d32b87bf234bb8d929946673b05,
+      type: 2}
+    DisplayName: Instruction B ID
+    RootPortID: -2147483644
+    RootPortHelpID: -1
+    ViewType: 0
+    PinType: 0
+    p_Int:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 5726532164006697265}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 0
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Instruction B ID
+      OverwriteName: 
+      _HelperFunctionsID: -2147483644
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  Port8:
+    Parent: {fileID: 0}
+    DisplayName: 
+    RootPortID: 0
+    RootPortHelpID: 0
+    ViewType: 0
+    PinType: 0
+    p_Int:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  Port9:
+    Parent: {fileID: 0}
+    DisplayName: 
+    RootPortID: 0
+    RootPortHelpID: 0
+    ViewType: 0
+    PinType: 0
+    p_Int:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Bool:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Float:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: 0
+    p_Vector3:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      Value: {x: 0, y: 0, z: 0}
+    p_Cell:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+    p_String:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      StringVal: 
+  DisplayPorts: 4
+  DisplayName: Add Counter Cell Instructions
+  DefaultFunctionsDirectory: {fileID: 102900000, guid: d7537c692f54e274e8b9f00a508a2eb5,
+    type: 3}
+  _customPath: Cells/Custom
+  _customTooltip: 
+  ScaleAdjustOffset: {x: 0, y: 0}
+  NodeColor: {r: 0.6251798, g: 0.9019608, b: 0.29803923, a: 1}
+  ProjectFileParent: {fileID: 11400000, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  StartNode: {fileID: 5072442775883540328, guid: e9ed5d32b87bf234bb8d929946673b05,
+    type: 2}
+  Rules:
+  - {fileID: -187986687561197988, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  - {fileID: -1437672458485055700, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  - {fileID: -2003270990364727927, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  - {fileID: 3114657213928473170, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  - {fileID: 4685608620216651025, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  - {fileID: 8982230842163334613, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  - {fileID: 7976036947992935004, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  - {fileID: -164793714824103854, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  - {fileID: 5072442775883540328, guid: e9ed5d32b87bf234bb8d929946673b05, type: 2}
+  Variables: []
+  Tex_Net: {fileID: 2800000, guid: c291ae28494aa9c468c136bec5345d74, type: 3}
+--- !u!114 &5766068226631957121
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddb1af51455c2341b5e213735431369, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483598
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 533.1204, y: 1227.4305}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Index:
+    ParentNodeID: -2147483598
+    PortID: 0
+    ParentNode: {fileID: 5766068226631957121}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 556.1204
+      y: 1263.4305
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483597
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1000024483288351849}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  Planner:
+    ParentNodeID: -2147483598
+    PortID: 0
+    ParentNode: {fileID: 5766068226631957121}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 693.1204
+      y: 1284.4305
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483631
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: -6262679521038248400}
+      isInput: 1
+    - ConnectedNodeID: -2147483604
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -3251146600576898245}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 0
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  SubFieldOf:
+    ParentNodeID: -2147483598
+    PortID: 1
+    ParentNode: {fileID: 5766068226631957121}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &5936719049818191205
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf829c2fcc3f7c41ae39f1c37271c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483627
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 332.74548, y: 1156.283}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableID: 1
+  Value:
+    ParentNodeID: -2147483627
+    PortID: 0
+    ParentNode: {fileID: 5936719049818191205}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 482.74548
+      y: 1192.283
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483635
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 6586505211682118967}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 6, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+--- !u!114 &6580041508635867546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483607
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 340.04022, y: 426.19714}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: Go throught every sub-field
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 0, y: 0}
+--- !u!114 &6586505211682118967
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddb1af51455c2341b5e213735431369, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483635
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 524.78204, y: 1125.4445}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Index:
+    ParentNodeID: -2147483635
+    PortID: 0
+    ParentNode: {fileID: 6586505211682118967}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 547.78204
+      y: 1161.4445
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483627
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 5936719049818191205}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  Planner:
+    ParentNodeID: -2147483635
+    PortID: 0
+    ParentNode: {fileID: 6586505211682118967}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 684.78204
+      y: 1182.4445
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 1
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483631
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -6262679521038248400}
+      isInput: 1
+    - ConnectedNodeID: -2147483624
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -7190386397652848091}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 0
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  SubFieldOf:
+    ParentNodeID: -2147483635
+    PortID: 1
+    ParentNode: {fileID: 6586505211682118967}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &6631727353677526281
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea84e7bc7d3502d41bb38a8e9be1a1a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483612
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1089.957, y: 2847.557}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  InputType: 0
+  IntInput:
+    ParentNodeID: -2147483612
+    PortID: 0
+    ParentNode: {fileID: 6631727353677526281}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1169.957
+      y: 2884.557
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 1
+    SlotMode: 0
+    DisplayName: Int Input
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 3
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483613
+      ConnectedNodePortID: 2
+      NodeReference: {fileID: -667953137053943710}
+      isInput: 1
+    - ConnectedNodeID: -2147483595
+      ConnectedNodePortID: 2
+      NodeReference: {fileID: 3381133096159217756}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Value: 1
+  BoolInput:
+    ParentNodeID: -2147483612
+    PortID: 1
+    ParentNode: {fileID: 6631727353677526281}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  FloatInput:
+    ParentNodeID: -2147483612
+    PortID: 2
+    ParentNode: {fileID: 6631727353677526281}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1207.4913
+      y: 1955.2463
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 1
+    SlotMode: 0
+    DisplayName: Float Input
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  Vector3Input:
+    ParentNodeID: -2147483612
+    PortID: 3
+    ParentNode: {fileID: 6631727353677526281}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: {x: 0, y: 0, z: 0}
+  StringPort:
+    ParentNodeID: -2147483612
+    PortID: 4
+    ParentNode: {fileID: 6631727353677526281}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    StringVal: 
+  ObjectPort:
+    ParentNodeID: -2147483612
+    PortID: 5
+    ParentNode: {fileID: 6631727353677526281}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+--- !u!114 &6894169285629699274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d5743cad42ed24e8ae217e66fedfda, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483583
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1080.5408, y: 1960.7538}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Planner:
+    ParentNodeID: -2147483583
+    PortID: 0
+    ParentNode: {fileID: 6894169285629699274}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1106.5408
+      y: 1996.7538
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  VariableID: 0
+  Value:
+    ParentNodeID: -2147483583
+    PortID: 0
+    ParentNode: {fileID: 6894169285629699274}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1224.5408
+      y: 1996.7538
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483584
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: 587258435094529160}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 2, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+  displayNumber: 0
+--- !u!114 &7190216470776077465
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29738b31bda4e2f43907baa31cb2ebe5, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483599
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 840.0313, y: 551.0054}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Input:
+    ParentNodeID: -2147483599
+    PortID: 0
+    ParentNode: {fileID: 7190216470776077465}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 866.0313
+      y: 587.0054
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483646
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 3877752737900288355}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  VName: FindForIndex
+  Value:
+    ParentNodeID: -2147483599
+    PortID: 0
+    ParentNode: {fileID: 7190216470776077465}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 980.0313
+      y: 586.0054
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483636
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 1279421694141820127}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 6, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+--- !u!114 &7969452045658190785
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf829c2fcc3f7c41ae39f1c37271c54, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483601
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 547.3923, y: 2629.311}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  VariableID: 0
+  Value:
+    ParentNodeID: -2147483601
+    PortID: 0
+    ParentNode: {fileID: 7969452045658190785}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 697.3923
+      y: 2665.311
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483602
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -1641842426317558088}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 4, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+--- !u!114 &8006517138057336885
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29738b31bda4e2f43907baa31cb2ebe5, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483628
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 841.15094, y: 638.433}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Input:
+    ParentNodeID: -2147483628
+    PortID: 0
+    ParentNode: {fileID: 8006517138057336885}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 867.15094
+      y: 674.433
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483639
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: -5614337226597766089}
+      isInput: 0
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  VName: CheckingIndex
+  Value:
+    ParentNodeID: -2147483628
+    PortID: 0
+    ParentNode: {fileID: 8006517138057336885}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 981.15094
+      y: 673.433
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 3
+    SlotMode: 0
+    DisplayName: 
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483636
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: 1279421694141820127}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 6, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 1
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 1
+--- !u!114 &8321653533301158663
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddb1af51455c2341b5e213735431369, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483646
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 488.87448, y: 581.0025}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Index:
+    ParentNodeID: -2147483646
+    PortID: 0
+    ParentNode: {fileID: 8321653533301158663}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 511.8745
+      y: 617.0025
+      width: 27
+      height: 27
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Index
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 1
+  Planner:
+    ParentNodeID: -2147483646
+    PortID: 0
+    ParentNode: {fileID: 8321653533301158663}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 648.8745
+      y: 638.0025
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Planner
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483645
+      ConnectedNodePortID: 0
+      NodeReference: {fileID: 191160361491512507}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: 0
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 0
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+  SubFieldOf:
+    ParentNodeID: -2147483646
+    PortID: 1
+    ParentNode: {fileID: 8321653533301158663}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    MinusOneReturnsSelf: 1
+    DefaultValueIsNumberedID: 1
+    OnlyReferenceContainer: 0
+    Editor_DisplayVariableName: 1
+--- !u!114 &8377946654004123513
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483633
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 562.8333, y: 788.1765}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: Repeat stuff below for each sub-field
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 0, y: 0}
+--- !u!114 &8630036990261888686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea84e7bc7d3502d41bb38a8e9be1a1a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483619
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1115.6178, y: 1536.3857}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  InputType: 0
+  IntInput:
+    ParentNodeID: -2147483619
+    PortID: 0
+    ParentNode: {fileID: 8630036990261888686}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1195.6178
+      y: 1573.3857
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 1
+    SlotMode: 0
+    DisplayName: Int Input
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 3
+    IsSendingSignals: 0
+    portConnections:
+    - ConnectedNodeID: -2147483620
+      ConnectedNodePortID: 1
+      NodeReference: {fileID: -6773996952721891709}
+      isInput: 1
+    initValueSet: 1
+    initialized: 0
+    Value: 1
+  BoolInput:
+    ParentNodeID: -2147483619
+    PortID: 1
+    ParentNode: {fileID: 8630036990261888686}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  FloatInput:
+    ParentNodeID: -2147483619
+    PortID: 2
+    ParentNode: {fileID: 8630036990261888686}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 1008.5633
+      y: 1535.8187
+      width: 27
+      height: 27
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 1
+    SlotMode: 0
+    DisplayName: Float Input
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  Vector3Input:
+    ParentNodeID: -2147483619
+    PortID: 3
+    ParentNode: {fileID: 8630036990261888686}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: {x: 0, y: 0, z: 0}
+  StringPort:
+    ParentNodeID: -2147483619
+    PortID: 4
+    ParentNode: {fileID: 8630036990261888686}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    StringVal: 
+  ObjectPort:
+    ParentNodeID: -2147483619
+    PortID: 5
+    ParentNode: {fileID: 8630036990261888686}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+--- !u!114 &8689339533554245929
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36d8f3b93cd6954fb293af47bb7d76c, type: 3}
+  m_Name: (Clone)
+  m_EditorClassIdentifier: 
+  TriggerConnectionDrawMode: 0
+  IndividualID: -2147483587
+  NameID: 
+  wasCreated: 1
+  OutputConnections: []
+  InputConnections: []
+  NodePosition: {x: 1562.6543, y: 3018.731}
+  NodeDrawOffset: {x: 0, y: 0}
+  ResizedScale: {x: 200, y: 140}
+  _EditorInContainedRange: []
+  IsContainedBy: {fileID: 0}
+  _EditorFoldout: 0
+  Enabled: 1
+  ParentPlanner: {fileID: 0}
+  ParentNodesContainer: {fileID: 0}
+  _editor_drawRule: 1
+  Header: Comment
+  CommentText: B knows that A is connected with B
+  FrameColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  TextColor: {r: 1, g: 1, b: 1, a: 0.95}
+  AddSizeTweak: {x: 0, y: 0}
+--- !u!114 &8753599656285457363
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf1ba038a8c7349bf700113ce0725f, type: 3}
+  m_Name: Volume
+  m_EditorClassIdentifier: 
+  _EditorDrawShape: 1
+  _EditorDrawParameters: 1
+  _EditorDrawLogics: 1
+  _EditorDrawPostLogics: 0
+  _EditorSelectedShape: 0
+  _EditorSelectedVar: 1
+  _EditorDisplayGizmosOnPlan: 1
+  ParentBuildPlanner: {fileID: 11400000}
+  ShapeGenerator: {fileID: -5252761722310701209}
+  DisableWholePlanner: 0
+  tag: 
+  proceduresBegin: {fileID: -2676884163015693755}
+  postProceduresBegin: {fileID: 3012614133116179424}
+  FProcedures:
+  - {fileID: -2676884163015693755}
+  - {fileID: 3877752737900288355}
+  - {fileID: 914246235659367413}
+  - {fileID: -5614337226597766089}
+  - {fileID: -8877228493345285576}
+  - {fileID: 1279421694141820127}
+  - {fileID: 6586505211682118967}
+  - {fileID: 1801954048768927342}
+  - {fileID: 8377946654004123513}
+  - {fileID: -6262679521038248400}
+  - {fileID: 8006517138057336885}
+  - {fileID: 5936719049818191205}
+  - {fileID: -8605521918076281145}
+  - {fileID: -5747976234936328765}
+  - {fileID: -7190386397652848091}
+  - {fileID: -6773996952721891709}
+  - {fileID: 8630036990261888686}
+  - {fileID: 911746742475177177}
+  - {fileID: -9131665988106383267}
+  - {fileID: 5726532164006697265}
+  - {fileID: -667953137053943710}
+  - {fileID: 6631727353677526281}
+  - {fileID: 1713390304282520776}
+  - {fileID: -1387752307871084717}
+  - {fileID: 3673513655054148569}
+  - {fileID: -2777043317842107025}
+  - {fileID: 6580041508635867546}
+  - {fileID: 1180512282073038572}
+  - {fileID: -1641842426317558088}
+  - {fileID: 7969452045658190785}
+  - {fileID: 5181540409845341578}
+  - {fileID: 7190216470776077465}
+  - {fileID: 5766068226631957121}
+  - {fileID: 1000024483288351849}
+  - {fileID: 1280842250398656392}
+  - {fileID: -3251146600576898245}
+  - {fileID: 3381133096159217756}
+  - {fileID: 1599521405408692617}
+  - {fileID: 4035456298637216679}
+  - {fileID: -3997033063007747384}
+  - {fileID: 4289621639630996506}
+  - {fileID: 3421584873753101614}
+  - {fileID: -7821968917506343482}
+  - {fileID: 1898625966202463973}
+  - {fileID: 8689339533554245929}
+  - {fileID: 2918711260899763484}
+  - {fileID: 3919504399133195294}
+  - {fileID: 587258435094529160}
+  - {fileID: -420475401445742317}
+  - {fileID: -1441943256167747427}
+  - {fileID: 6894169285629699274}
+  FPostProcedures:
+  - {fileID: 3012614133116179424}
+  - {fileID: 8321653533301158663}
+  - {fileID: 191160361491512507}
+  - {fileID: -6291297601930085314}
+  - {fileID: -7547041302266909977}
+  FSubGraphs: []
+  FVariables:
+  - Name: Limit Doors Count
+    v3Val: {x: 3, y: 0, z: 0}
+    str: 
+    mat: {fileID: 0}
+    gameObj: {fileID: 0}
+    unityObj: {fileID: 0}
+    helper: {x: 1, y: 4, z: 0}
+    additionalHelperRef: {fileID: 0}
+    ValueType: 1
+    helpForFieldCommand: 0
+    displayOnScene: 0
+    allowTransformFollow: 0
+    FloatSwitch: 1
+  - Name: Example Custom Setup
+    v3Val: {x: 1, y: 0, z: 0}
+    str: 
+    mat: {fileID: 0}
+    gameObj: {fileID: 0}
+    unityObj: {fileID: 0}
+    helper: {x: 0, y: 0, z: 0}
+    additionalHelperRef: {fileID: 0}
+    ValueType: 7
+    helpForFieldCommand: 0
+    displayOnScene: 0
+    allowTransformFollow: 0
+    FloatSwitch: 0
+  ExposeShape: 1
+  FieldType: 0
+  DefaultFieldSetup: {fileID: 0}
+  Instances: 1
+  ExposeInstanceCount: 0
+  DisableCollision: 0
+  AlwaysPushOut: 1
+  AllowRotateBy90: 1
+  PreviewCellSize: {x: 2, y: 2, z: 2}
+  RoundToScale: 0
+  MaxRetries: 64
+  IndexOnPrint: 0
+  IndexOfDuplicate: -1
+  IndexOnPreset: 0
+  GraphView: 1

@@ -1,0 +1,2724 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8998922737714292606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e97889b021182849bc232b2e99733a0, type: 3}
+  m_Name: 'SR_LogicBlockIF-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Test: 0
+  spawner:
+    Enabled: 1
+    Name: 
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -8417504216931457559}
+    Rules:
+    - {fileID: -7057274667417803235}
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 0
+    Repeat: 0
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 0
+    UseParentPackageRules: 0
+    _wasEnablingGlobalRules: 0
+    ScaleAccess: 0
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 0
+  BlockResult: 0
+--- !u!114 &-8417504216931457559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Fence Around
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Wall
+  DrawMeshAndBox: 0
+  Combine: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 3439895716197863354, guid: 2768ebe438872eb419d4cae20eef3be9, type: 3}
+    MainCollider: {fileID: -6402384711920371341, guid: 99dee7ecb74670f4e849b21dbeb6bf01, type: 3}
+    subID: 0
+    _refMesh: {fileID: 2863967534805457344, guid: 8f50acbdb7056ea40af34807460ba408, type: 3}
+    _refCol: {fileID: -6402384711920371341, guid: 99dee7ecb74670f4e849b21dbeb6bf01, type: 3}
+  - Prefab: {fileID: 1898714744133788, guid: fa810db9fcd52084ebd52aa31632f46d, type: 3}
+    MainCollider: {fileID: 64795146647051626, guid: bf379ed01ecf8460ca91dbb20f7fbd9d, type: 3}
+    subID: 0
+    _refMesh: {fileID: 8415070989947970644, guid: 8f50acbdb7056ea40af34807460ba408, type: 3}
+    _refCol: {fileID: 64795146647051626, guid: bf379ed01ecf8460ca91dbb20f7fbd9d, type: 3}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: PR_SideFence
+    SpawnerTag: F
+    StampPrefabID: 0
+    Parent: {fileID: -8417504216931457559}
+    Rules:
+    - {fileID: 2057876523405530320}
+    - {fileID: 2816606886496049303}
+    - {fileID: -1394717733352415955}
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 0
+    Repeat: 1
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 1
+    UseParentPackageRules: 1
+    _wasEnablingGlobalRules: 1
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 1
+  - Enabled: 0
+    Name: PR_SideFenceLong
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -8417504216931457559}
+    Rules:
+    - {fileID: -6931376291662543556}
+    - {fileID: 4703532684880343429}
+    - {fileID: -2241661952690225057}
+    - {fileID: -4720269183754229789}
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 0
+    Repeat: 1
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 1
+    UseParentPackageRules: 1
+    _wasEnablingGlobalRules: 1
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 1
+  - Enabled: 1
+    Name: dungeon-pillar-stone-round-tall
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -8417504216931457559}
+    Rules:
+    - {fileID: -7041582732683065846}
+    - {fileID: 4162035607637029577}
+    - {fileID: -530661070473652119}
+    - {fileID: 5928586153800598110}
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 0
+    Repeat: 1
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 1
+    UseParentPackageRules: 1
+    _wasEnablingGlobalRules: 1
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 1
+  SubSpawners: []
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_drawGlobalRules: 0
+  _editor_drawModPackRules: 0
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: 4010537770972031752}
+--- !u!114 &-7524087098481071771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Floor
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: F
+  DrawMeshAndBox: 0
+  Combine: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 7126589026732099666, guid: 94414984375e2e54586cdbabdb20ec74, type: 3}
+    MainCollider: {fileID: 3701321868698039310, guid: 94414984375e2e54586cdbabdb20ec74, type: 3}
+    subID: 0
+    _refMesh: {fileID: -8814386876606807464, guid: 8f50acbdb7056ea40af34807460ba408, type: 3}
+    _refCol: {fileID: 3701321868698039310, guid: 94414984375e2e54586cdbabdb20ec74, type: 3}
+  - Prefab: {fileID: 7126589026732099666, guid: 94414984375e2e54586cdbabdb20ec74, type: 3}
+    MainCollider: {fileID: 0}
+    subID: 0
+    _refMesh: {fileID: 5085965759457506131, guid: 8f50acbdb7056ea40af34807460ba408, type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 7126589026732099666, guid: 94414984375e2e54586cdbabdb20ec74, type: 3}
+    MainCollider: {fileID: 0}
+    subID: 0
+    _refMesh: {fileID: -3268728532136532347, guid: 8f50acbdb7056ea40af34807460ba408, type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Random
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -7524087098481071771}
+    Rules:
+    - {fileID: -238880922451240241}
+    - {fileID: 1405991300298738416}
+    - {fileID: -4551909891939978702}
+    - {fileID: 7017246861409055509}
+    - {fileID: 5723443139716653901}
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 0
+    Repeat: 1
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 1
+    UseParentPackageRules: 1
+    _wasEnablingGlobalRules: 1
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 1
+  SubSpawners: []
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_drawGlobalRules: 0
+  _editor_drawModPackRules: 0
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: 4010537770972031752}
+--- !u!114 &-7057274667417803235
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5d3c54f649db8b41802e8a6ac592e3a, type: 3}
+  m_Name: 'SR_ReplaceFilterMesh-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  RandomMeshes:
+  - {fileID: 8415070989947970644, guid: 8f50acbdb7056ea40af34807460ba408, type: 3}
+--- !u!114 &-7041582732683065846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 2
+  ApplyMode: 1
+  Space: 1
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 0.5, y: 0.35, z: 0.5}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &-6946815306596899156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1de80e4a2090a3498fa0303cbed764f, type: 3}
+  m_Name: 'SR_AnalyzeCell-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellOffset: {x: 0, y: 0, z: 0}
+  Dir: 0
+  CheckedCellMustBe: 6
+  occupiedBy: {fileID: 0}
+  occupiedByPrefab: {fileID: 0}
+  occupiedByTagged: 
+  CheckMode: 0
+  allowFromCenter: 0
+  occupiedByMore: []
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+    UseAdvancedSetup: 0
+    AdvancedSetup: []
+  checkSetup:
+    UseRotor: 1
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 1, z: 1}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &-6931376291662543556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: 'SR_IfCellContainsTag-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Tag: F
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+  checkSetup:
+    UseRotor: 1
+    Rotor: 0
+    UseCondition: 1
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &-6882809718970784338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1d61451050d554e8d53669d77fafc0, type: 3}
+  m_Name: 'SR_MultiCheckCellNeightbours-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  CheckRules:
+  - CheckedCellsMustBe: 0
+    occupiedByTag: 
+    CheckMode: 0
+    OffsetOrigin: {x: 0, y: 0, z: 0}
+    R: 0
+    DirectCheck: 0
+    placement:
+      lu: 0
+      u: 0
+      ru: 0
+      l: 0
+      m: 0
+      r: 0
+      ld: 0
+      d: 0
+      rd: 0
+      UseAdvancedSetup: 0
+      AdvancedSetup: []
+    Negate: 0
+    NeightbourNeeds: 0
+    FullRotGet: 0
+  CheckPosit90: 0
+  CheckNeg90: 0
+  NotCheckDefaultPitch: 0
+  OverridePitchRotation: 1
+  InitPitchRotation: 0
+--- !u!114 &-6173571632353893813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9078b826195bff47856a06442080ad0, type: 3}
+  m_Name: 'SR_IfRotated-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  RotationFrom: -90
+  RotationTo: 90
+--- !u!114 &-6117342559042904134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3eb05acb0b93347af77c10c419406a, type: 3}
+  m_Name: 'SR_DirectionalRemove-[FieldMod_ExampleWallRemover]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  replaceOnTag: Wall
+  CheckMode: 0
+  LocalRemovePosition: {x: 0, y: 0, z: 1}
+  OffsetMode: 0
+  RemoveDistance: 0.1
+  DistanceSource: 0
+  ExecuteOnOffsettedCell: {x: 0, y: 0, z: 0}
+  DrawDebugGizmos: 0
+--- !u!114 &-5722243987061521276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40483fbb8044424db6e9848a59ac14c, type: 3}
+  m_Name: SR_StairsHelper-[Stairs](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  RemoveTagged: F
+  CheckMode: 0
+  RemoveDetectionTolerance: 0
+  StopOnTagged: 
+  StopOnCheckMode: 0
+  checkSetup:
+    UseRotor: 0
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 1, z: 1}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: 0, z: -1}
+    - {x: 0, y: 0, z: -1}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: 1, z: 1}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+  removeInCells:
+    UseRotor: 0
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: -1, z: 0}
+    EditorDisplayColor: {r: 0.8, g: 0.5, b: 0.4, a: 0.75}
+  breakOnCells:
+    UseRotor: 0
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck: []
+    EditorDisplayColor: {r: 1, g: 0.1, b: 0.1, a: 1}
+  customRemovers: []
+  wasGenerated: 1
+  doFullBreak: 0
+--- !u!114 &-5444918456514051485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: 'SR_IfCellContainsTag-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: 
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+  checkSetup:
+    UseRotor: 1
+    Rotor: 0
+    UseCondition: 1
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &-4720269183754229789
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207e1eaa379db1743a31893a3b87cc58, type: 3}
+  m_Name: 'SR_BoundedOffset-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  WorldOffset: {x: 0, y: 0, z: 0}
+  DirectionalOffset: {x: 0, y: 0, z: 0}
+  DirectFrom: 
+  CheckMode: 0
+--- !u!114 &-4668992336619589161
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e735e11b729ebf4aa0216397033ddfe, type: 3}
+  m_Name: 'SR_Comment-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 1
+  _editor_drawRule: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Info: Using 'Analyze Cell' with Cells Selector to check if there is cell above
+  CommentInHeader: 1
+  Padding: {x: 8, y: 8}
+--- !u!114 &-4551909891939978702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Floor]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 2
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &-4187023684492288633
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: 'SR_IfCellContainsTag-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: q
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+  checkSetup:
+    UseRotor: 1
+    Rotor: 0
+    UseCondition: 1
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &-4071841812570641245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: 'SR_GetCoords-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: F
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: 0}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 1
+  RemoveTagged: 0
+  TransformLikeChild: 0
+  GetRandomIfMulti: 0
+  RunOnRepetition: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-3526541005287144847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e4d5aac49ca0345b5c3ac36491d897, type: 3}
+  m_Name: 'SR_WorldOffset-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  OverrideOffset: 1
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0.5, z: 0}
+  OffsetMode: 1
+  RandomWorldOffset: {x: 0, y: 0, z: 0}
+  RandomRange: {x: 0, y: 1}
+--- !u!114 &-2986058380138381604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 0
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &-2959950264837168641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 0
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &-2241661952690225057
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7b7d2eb85d19a4da49a85b81a1cb59, type: 3}
+  m_Name: 'SR_RemoveSpawn-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Remove:
+    AffectedTags: F
+    CheckMode: 0
+    RemoveCount: 1
+    CheckOffset: 0
+    OffsetCellPosition: {x: 0, y: 0, z: 0}
+    RemoveWhen: 0
+    UseSelfRotation: 1
+    DegreesTolerance: 45
+    checkSetup:
+      UseRotor: 1
+      Rotor: 0
+      UseCondition: 0
+      Condition: 0
+      ExtraString: 
+      ExtraValue: 0
+      ToCheck:
+      - {x: 0, y: 0, z: 0}
+      EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &-2238741227189444806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fc507b1b266014ab43f9ce92622c2a, type: 3}
+  m_Name: 'SR_DoorwayPlacer-[DOOR Modificator]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  replaceOnTag: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 2}
+  OffsetMode: 0
+  YawRotationOffset: 0
+  RemoveDistance: 0.5
+  DistanceSource: 0
+  DebugDirection: 0
+  DrawDebugGizmos: 0
+--- !u!114 &-1994788415715440532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 0
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &-1742792877927527278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40483fbb8044424db6e9848a59ac14c, type: 3}
+  m_Name: 'SR_StairsHelper-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  RemoveTagged: 
+  CheckMode: 0
+  RemoveDetectionTolerance: 0
+  StopOnTagged: 
+  StopOnCheckMode: 0
+  checkSetup:
+    UseRotor: 0
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: -1}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: 1, z: 1}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+  removeInCells:
+    UseRotor: 0
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 1, z: 0}
+    EditorDisplayColor: {r: 0.8, g: 0.5, b: 0.4, a: 0.75}
+  breakOnCells:
+    UseRotor: 0
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck: []
+    EditorDisplayColor: {r: 1, g: 0.1, b: 0.1, a: 1}
+  customRemovers: []
+  wasGenerated: 1
+  doFullBreak: 0
+--- !u!114 &-1559995209233648242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: DOOR Modificator
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Hole
+  DrawMeshAndBox: 1
+  Combine: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 1027639662616582, guid: e4bba4ed19caabe4986a437a7a8a2844, type: 3}
+    MainCollider: {fileID: 64380515566751728, guid: 3290b84ce73ca4e358f8ce5fb364281c, type: 3}
+    subID: 0
+    _refMesh: {fileID: 4300000, guid: 76de0bd0ef6254f0281d3e1d69b3d9f0, type: 3}
+    _refCol: {fileID: 64380515566751728, guid: 3290b84ce73ca4e358f8ce5fb364281c, type: 3}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: dungeon-door-stone
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -1559995209233648242}
+    Rules:
+    - {fileID: 3807602536340148534}
+    - {fileID: -2238741227189444806}
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 0
+    Repeat: 1
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 1
+    UseParentPackageRules: 1
+    _wasEnablingGlobalRules: 1
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 1
+  SubSpawners: []
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_drawGlobalRules: 0
+  _editor_drawModPackRules: 0
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 0}
+  ParentPack: {fileID: 4010537770972031752}
+--- !u!114 &-1394717733352415955
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 2
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 0.5, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &-1198439533311874938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: 'SR_CellNeightbours-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 3
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 1, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+    UseAdvancedSetup: 1
+    AdvancedSetup:
+    - {x: 0, y: 0, z: 1}
+    - {x: 0, y: -1, z: -1}
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+  UseRestrictedDir: 0
+  CustomCellsCheck: 0
+  FullRotGet: 0
+  Check3DAngles: 0
+  RotationSpaceDisplay: 0
+  CheckPosit90: 1
+  CheckNeg90: 1
+  OverridePitchRotation: 1
+  InitPitchRotation: 0
+  NotCheckDefaultPitch: 0
+--- !u!114 &-1045892226387598020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207e1eaa379db1743a31893a3b87cc58, type: 3}
+  m_Name: 'SR_BoundedOffset-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  WorldOffset: {x: 0, y: 0, z: 0}
+  DirectionalOffset: {x: 0, y: 0, z: 0}
+  DirectFrom: 
+  CheckMode: 0
+--- !u!114 &-904529921568696225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fc507b1b266014ab43f9ce92622c2a, type: 3}
+  m_Name: 'SR_DoorwayPlacer-[FieldMod_ExampleWallRemover(Clone)]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  replaceOnTag: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  YawRotationOffset: 0
+  RemoveDistance: 0.1
+  DistanceSource: 0
+  DebugDirection: 0
+  DrawDebugGizmos: 0
+--- !u!114 &-624219306864933124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207e1eaa379db1743a31893a3b87cc58, type: 3}
+  m_Name: 'SR_BoundedOffset-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  WorldOffset: {x: 0, y: 0, z: 0}
+  DirectionalOffset: {x: 0, y: 0, z: 0}
+  DirectFrom: 
+  CheckMode: 0
+--- !u!114 &-530661070473652119
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: 'SR_WallPlacer-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 0
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 1
+  UseYLevel: -1
+  AutoRemoveOverlaps: 1
+  SetGhosts: 0
+  OverlapDetectMode: 0
+  Version2: 0
+  ScaleBounds: 0.99
+  Padding: 0
+  YawOffset: 45
+  DirectOffset: {x: 0, y: 0, z: -3}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+  DontCheckAdditionals: 0
+--- !u!114 &-486475600673122001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207e1eaa379db1743a31893a3b87cc58, type: 3}
+  m_Name: 'SR_BoundedOffset-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  WorldOffset: {x: 0, y: 0, z: 0}
+  DirectionalOffset: {x: 0, y: 0, z: 0}
+  DirectFrom: 
+  CheckMode: 0
+--- !u!114 &-238880922451240241
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea731bcdcafc6441aa5eca1daa55544, type: 3}
+  m_Name: 'SR_SetMaterial-[Floor]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  NewMaterial: {fileID: 2100000, guid: 69f9e52b501881447b0f741f65c79ffa, type: 2}
+  MatVariable:
+    name: FloorMat
+    requiredType: 3
+    Tooltip: 
+  ReplaceOnly: {fileID: 0}
+  ReplaceOnlyFirst: 0
+--- !u!114 &-233864953558185146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fc507b1b266014ab43f9ce92622c2a, type: 3}
+  m_Name: 'SR_DoorwayPlacer-[DOOR Modificator]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  replaceOnTag: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  YawRotationOffset: 0
+  RemoveDistance: 0.1
+  DistanceSource: 0
+  DebugDirection: 0
+  DrawDebugGizmos: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6c361108247f045b5087f48c0c7951, type: 3}
+  m_Name: SANDBOX_FS_HALL WIP
+  m_EditorClassIdentifier: 
+  CellSize: 2
+  NonUniformSize: 1
+  NonUniformCellSize: {x: 4, y: 1, z: 4}
+  InfoText: 
+  Variables:
+  - Name: FloorMat
+    v3Val: {x: 1, y: 0, z: 0}
+    colVal: {r: 0, g: 0, b: 0, a: 0}
+    str: 
+    mat: {fileID: 0}
+    gameObj: {fileID: 0}
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    unityObj: {fileID: 0}
+    helper: {x: 0, y: 0, z: 0}
+    additionalHelperRef: {fileID: 0}
+    ValueType: 3
+    helpForFieldCommand: 0
+    displayOnScene: 0
+    allowTransformFollow: 0
+    FloatSwitch: 0
+  DoorsModificator: {fileID: 11400000, guid: 7500e28d48a8ac44da90dfc8719e91ef, type: 2}
+  EraseWallModificator: {fileID: 11400000, guid: c5bd286613ebcb24c932c8d5e7f79f9b, type: 2}
+  CellsInstructions:
+  - Title: Instruction
+    InstructionType: 1
+    TargetModification: {fileID: -1559995209233648242}
+    Tags: 
+    InstructionArgument: 
+    Foldout: 1
+    extraMod: {fileID: 0}
+    extraPack: {fileID: 0}
+  RootPack: {fileID: 4010537770972031752}
+  UtilityModificators:
+  - {fileID: 4329741961383557463}
+  - {fileID: -1559995209233648242}
+  ModificatorPacks:
+  - {fileID: 4010537770972031752}
+  Ignores: []
+  DontSpawnOn: 
+  SelfInjections: []
+  disabledMods: []
+  CustomPostEvents: []
+  AddReflectionProbes: 0
+  MainReflectionSettings: {fileID: 11400000, guid: dabe448206028124294db7edb02eed3f, type: 2}
+  AddMultipleProbes: 0
+  SmallerReflSettings: {fileID: 11400000, guid: 290a908b3df7c6a4a84c21c932841cde, type: 2}
+  MiniReflSettings: {fileID: 11400000, guid: b243a7973537dbf4faacf7bbda74dada, type: 2}
+  SmallerReflLowerSpaceThan: 4
+  LimitSingleProbeSize: 0
+  TriggerColliderGeneration: 0
+  TriggerGenSettings:
+    TriggersLayer: 0
+    ScaleupTriggers: 1
+    FillHeight: 1
+    MaxCellChecks: 10
+    JoinBounds: 1
+    GenerateRelations: 1
+    GroupUpToSize: 8
+    MaxGroupDistance: 8
+--- !u!114 &16261553566471452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e4d5aac49ca0345b5c3ac36491d897, type: 3}
+  m_Name: 'SR_WorldOffset-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  OverrideOffset: 1
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 1, z: 0}
+  OffsetMode: 1
+  RandomWorldOffset: {x: 0, y: 0, z: 0}
+  RandomRange: {x: 0, y: 1}
+--- !u!114 &24364483339263430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e735e11b729ebf4aa0216397033ddfe, type: 3}
+  m_Name: 'SR_Comment-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 1
+  _editor_drawRule: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Info: 'Using ''Check Cell Neightbours'' with Cells Selector to choose direction
+    with forward and '
+  CommentInHeader: 0
+  Padding: {x: 8, y: 8}
+--- !u!114 &219751793129344800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fc507b1b266014ab43f9ce92622c2a, type: 3}
+  m_Name: 'SR_DoorwayPlacer-[FieldMod_ExampleWallRemover(Clone)]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  replaceOnTag: 
+  CheckMode: 0
+  Offset: {x: 1, y: 0, z: 0}
+  OffsetMode: 0
+  YawRotationOffset: 0
+  RemoveDistance: 0
+  DistanceSource: 0
+  DebugDirection: 0
+  DrawDebugGizmos: 0
+--- !u!114 &239836072947413390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fc507b1b266014ab43f9ce92622c2a, type: 3}
+  m_Name: 'SR_DoorwayPlacer-[FieldMod_ExampleWallRemover(Clone)]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  replaceOnTag: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  YawRotationOffset: 0
+  RemoveDistance: 0.1
+  DistanceSource: 0
+  DebugDirection: 0
+  DrawDebugGizmos: 0
+--- !u!114 &384225781716440811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 0
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &600860086097765223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fc507b1b266014ab43f9ce92622c2a, type: 3}
+  m_Name: 'SR_DoorwayPlacer-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  replaceOnTag: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  YawRotationOffset: 0
+  RemoveDistance: 0.1
+  DistanceSource: 0
+  DebugDirection: 0
+  DrawDebugGizmos: 0
+--- !u!114 &771774676255424031
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7b7d2eb85d19a4da49a85b81a1cb59, type: 3}
+  m_Name: 'SR_RemoveSpawn-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Remove:
+    AffectedTags: 
+    CheckMode: 0
+    RemoveCount: 0
+    CheckOffset: 0
+    OffsetCellPosition: {x: 0, y: 0, z: 0}
+    RemoveWhen: 0
+    UseSelfRotation: 1
+    DegreesTolerance: 45
+    checkSetup:
+      UseRotor: 1
+      Rotor: 0
+      UseCondition: 0
+      Condition: 0
+      ExtraString: 
+      ExtraValue: 0
+      ToCheck:
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 1, z: 0}
+      - {x: 0, y: 2, z: 0}
+      EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &1149536781078842903
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea731bcdcafc6441aa5eca1daa55544, type: 3}
+  m_Name: 'SR_SetMaterial-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  NewMaterial: {fileID: 0}
+  MatVariable:
+    name: FloorMat
+    requiredType: 3
+    Tooltip: 
+  ReplaceOnly: {fileID: 0}
+  ReplaceOnlyFirst: 1
+--- !u!114 &1321027645086096341
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1de80e4a2090a3498fa0303cbed764f, type: 3}
+  m_Name: 'SR_AnalyzeCell-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellOffset: {x: 0, y: 0, z: 0}
+  Dir: 0
+  CheckedCellMustBe: 6
+  occupiedBy: {fileID: 0}
+  occupiedByPrefab: {fileID: 0}
+  occupiedByTagged: 
+  CheckMode: 0
+  allowFromCenter: 0
+  occupiedByMore: []
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+    UseAdvancedSetup: 0
+    AdvancedSetup: []
+  checkSetup:
+    UseRotor: 1
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: 2, z: 0}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &1405991300298738416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630e2a4943f49b40967499fb48c07ee, type: 3}
+  m_Name: 'SR_FloorPlacer-[Floor]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Mode: 0
+  AlignMode: 1
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  RotateBy90Only: 0
+  V2: 0
+  Advanced: 0
+  SpawnOnCheck: 3
+  SpawnOnTag: 
+  CheckMode: 0
+  OutsideCondition: 2
+  OutsideOnTag: 
+  CheckOutMode: 0
+  NegateOutsideCheck: 0
+--- !u!114 &1774079721286814281
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: 'SR_CellNeightbours-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 3
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+    UseAdvancedSetup: 1
+    AdvancedSetup:
+    - {x: 0, y: 1, z: 0}
+    - {x: 0, y: 2, z: 0}
+    - {x: 0, y: 2, z: 1}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: -1}
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+  UseRestrictedDir: 0
+  CustomCellsCheck: 0
+  FullRotGet: 0
+  Check3DAngles: 0
+  RotationSpaceDisplay: 0
+  CheckPosit90: 1
+  CheckNeg90: 1
+  OverridePitchRotation: 1
+  InitPitchRotation: 0
+  NotCheckDefaultPitch: 0
+--- !u!114 &2057876523405530320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: 'SR_WallPlacer-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 0
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 1
+  UseYLevel: -1
+  AutoRemoveOverlaps: 1
+  SetGhosts: 0
+  OverlapDetectMode: 0
+  Version2: 0
+  ScaleBounds: 0.99
+  Padding: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 0, z: -0.5}
+  OffsetMode: 1
+  IgnoreOtherMods: 1
+  DontCheckAdditionals: 0
+--- !u!114 &2816606886496049303
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 1
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 0, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &3301545369468535995
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7b7d2eb85d19a4da49a85b81a1cb59, type: 3}
+  m_Name: 'SR_RemoveSpawn-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Remove:
+    AffectedTags: 
+    CheckMode: 0
+    RemoveCount: 0
+    CheckOffset: 0
+    OffsetCellPosition: {x: 0, y: 0, z: 0}
+    RemoveWhen: 0
+    UseSelfRotation: 1
+    DegreesTolerance: 45
+    checkSetup:
+      UseRotor: 1
+      Rotor: 0
+      UseCondition: 0
+      Condition: 0
+      ExtraString: 
+      ExtraValue: 0
+      ToCheck:
+      - {x: 0, y: 0, z: 0}
+      - {x: 0, y: 1, z: 0}
+      EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &3391657039994221933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bc5f4badaab3438244b84b7cee058, type: 3}
+  m_Name: 'SR_Rotate-[Floor]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetRotationFromTagged: 
+  CheckMode: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  RandomRotation: {x: 0, y: 360, z: 0}
+  MaxDegreesSteps: {x: 1, y: 90, z: 1}
+  LocalRotation: 0
+  OverrideRotation: 1
+--- !u!114 &3748029475139337245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0acc9caea68f8c4b8c90c5e659b5f87, type: 3}
+  m_Name: 'SR_Scale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  ScaleMultiplier: {x: 1, y: 0.5, z: 1}
+  ScaleMulVariable:
+    name: 
+    requiredType: 5
+    Tooltip: 
+  RandomizeScale: {x: 0, y: 0, z: 0}
+--- !u!114 &3807602536340148534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[DOOR Modificator]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 2
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &3917062528243416270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: 'SR_IfCellContainsTag-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: Sik
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+  checkSetup:
+    UseRotor: 1
+    Rotor: 0
+    UseCondition: 1
+    Condition: 1
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck: []
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+--- !u!114 &3998328233848335860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40483fbb8044424db6e9848a59ac14c, type: 3}
+  m_Name: 'SR_StairsHelper-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  RemoveTagged: 
+  CheckMode: 0
+  RemoveDetectionTolerance: 1
+  StopOnTagged: 
+  StopOnCheckMode: 0
+  checkSetup:
+    UseRotor: 1
+    Rotor: 0
+    UseCondition: 1
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+  removeInCells:
+    UseRotor: 0
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+  breakOnCells:
+    UseRotor: 0
+    Rotor: 0
+    UseCondition: 0
+    Condition: 0
+    ExtraString: 
+    ExtraValue: 0
+    ToCheck:
+    - {x: 0, y: 0, z: 0}
+    EditorDisplayColor: {r: 0.4, g: 0.4, b: 1, a: 0.95}
+  customRemovers: []
+  wasGenerated: 0
+  doFullBreak: 0
+--- !u!114 &4010537770972031752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f132315e3189e59479a1674dc7e52576, type: 3}
+  m_Name: Root
+  m_EditorClassIdentifier: 
+  FieldModificators:
+  - {fileID: 11400000, guid: c20df7472e27759428553b3ac2fae3d4, type: 2}
+  - {fileID: 11400000, guid: bf94ee0735854ab4e863e2d99246e572, type: 2}
+  ParentPreset: {fileID: 11400000}
+  DisableWholePackage: 0
+  SeedMode: 0
+  CustomSeed: 0
+  ModPackType: 0
+  TagForAllSpawners: 
+  CombineSpawns: 0
+  Variables: []
+  CallOnAllMod: {fileID: 0}
+  CallOnAllSpawners:
+    Enabled: 0
+    Name: 
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 0}
+    Rules: []
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 0
+    Repeat: 0
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 0
+    UseParentPackageRules: 0
+    _wasEnablingGlobalRules: 0
+    ScaleAccess: 0
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 0
+  _EditorDisplayCallOnAll: 0
+--- !u!114 &4162035607637029577
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 1
+  ApplyMode: 1
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &4329741961383557463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: FieldMod_ExampleWallRemover(Clone)
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Hole
+  DrawMeshAndBox: 0
+  Combine: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList: []
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Wall Remover
+    SpawnerTag: 
+    StampPrefabID: -2
+    Parent: {fileID: 4329741961383557463}
+    Rules:
+    - {fileID: -6117342559042904134}
+    - {fileID: 6902358755388390115}
+    Mode: 0
+    CellCheckMode: 0
+    _Editor_SpawnerAdvancedOptionsFoldout: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    DontInheritRotations: 0
+    SwitchSpawnedToStatic: 0
+    MultipleToSpawn: 0
+    UseGlobalRules: 1
+    UseParentPackageRules: 1
+    _wasEnablingGlobalRules: 1
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+    _EditorDisplaySpawnerHeader: 0
+  SubSpawners: []
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_drawGlobalRules: 0
+  _editor_drawModPackRules: 0
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: 4010537770972031752}
+--- !u!114 &4703532684880343429
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: 'SR_CellNeightbours-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 1
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+    UseAdvancedSetup: 0
+    AdvancedSetup: []
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+  UseRestrictedDir: 0
+  CustomCellsCheck: 0
+  FullRotGet: 0
+  Check3DAngles: 0
+  RotationSpaceDisplay: 0
+  CheckPosit90: 1
+  CheckNeg90: 1
+  OverridePitchRotation: 1
+  InitPitchRotation: 0
+  NotCheckDefaultPitch: 0
+--- !u!114 &5232660962027706083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630e2a4943f49b40967499fb48c07ee, type: 3}
+  m_Name: 'SR_FloorPlacer-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Mode: 1
+  AlignMode: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  RotateBy90Only: 1
+  V2: 0
+  Advanced: 0
+  SpawnOnCheck: 3
+  SpawnOnTag: 
+  CheckMode: 0
+  OutsideCondition: 2
+  OutsideOnTag: 
+  CheckOutMode: 0
+  NegateOutsideCheck: 0
+--- !u!114 &5678779843912567014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 0
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &5723443139716653901
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Floor]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 0
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &5928586153800598110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 0
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &5994133209160726009
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea731bcdcafc6441aa5eca1daa55544, type: 3}
+  m_Name: 'SR_SetMaterial-[Stairs]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  NewMaterial: {fileID: 0}
+  MatVariable:
+    name: FloorMat
+    requiredType: 3
+    Tooltip: 
+  ReplaceOnly: {fileID: 0}
+  ReplaceOnlyFirst: 1
+--- !u!114 &6615972079416451501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: 'SR_CellNeightbours-[Fence Around]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 3
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 1
+    u: 1
+    ru: 0
+    l: 1
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+    UseAdvancedSetup: 0
+    AdvancedSetup: []
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+  UseRestrictedDir: 0
+  CustomCellsCheck: 0
+  FullRotGet: 0
+  Check3DAngles: 0
+  RotationSpaceDisplay: 0
+  CheckPosit90: 1
+  CheckNeg90: 1
+  OverridePitchRotation: 1
+  InitPitchRotation: 0
+  NotCheckDefaultPitch: 0
+--- !u!114 &6902358755388390115
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fc507b1b266014ab43f9ce92622c2a, type: 3}
+  m_Name: 'SR_DoorwayPlacer-[FieldMod_ExampleWallRemover(Clone)]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  replaceOnTag: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 1}
+  OffsetMode: 0
+  YawRotationOffset: 0
+  RemoveDistance: 0.1
+  DistanceSource: 0
+  DebugDirection: 0
+  DrawDebugGizmos: 0
+--- !u!114 &6955901533522174170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fc507b1b266014ab43f9ce92622c2a, type: 3}
+  m_Name: 'SR_DoorwayPlacer-[FieldMod_ExampleWallRemover(Clone)]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  replaceOnTag: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 0.5}
+  OffsetMode: 0
+  YawRotationOffset: 0
+  RemoveDistance: 0.1
+  DistanceSource: 0
+  DebugDirection: 0
+  DrawDebugGizmos: 0
+--- !u!114 &7017246861409055509
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b496837ae5a0c3b4786589d6fb51e8d5, type: 3}
+  m_Name: 'SR_MoveRotateScale-[Floor]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  EffectOn: 1
+  ApplyMode: 0
+  Space: 0
+  GetCoords: 
+  CheckMode: 0
+  PositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 1
+  OffsetPosVariable:
+    name: 
+    requiredType: 5
+    Tooltip: Set Additive Vector3 Field Variable value to this property
+  RotationOffset: {x: 0, y: 90, z: 0}
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomizeOffset: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  InheritScaleOffset: 0
+--- !u!114 &8859776584118704051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: 'SR_WallPlacer-[FieldMod_ExampleWallRemover(Clone)]'
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  _editor_drawRule: 1
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 0
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 0
+  UseYLevel: -1
+  AutoRemoveOverlaps: 1
+  SetGhosts: 0
+  OverlapDetectMode: 0
+  Version2: 0
+  ScaleBounds: 0.99
+  Padding: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+  DontCheckAdditionals: 0

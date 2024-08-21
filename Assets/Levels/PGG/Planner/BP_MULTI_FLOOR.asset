@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4674bb147e48a4f418520e682889d263, type: 3}
+  m_Name: BP_MULTI_FLOOR
+  m_EditorClassIdentifier: 
+  CustomInfo: 
+  BuildVariables: []
+  BuildLayers:
+  - Name: Build Layer
+    FieldPlanners:
+    - {fileID: 8155049547793721810}
+  AsyncGenerating: 0
+--- !u!114 &8155049547793721810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cf1ba038a8c7349bf700113ce0725f, type: 3}
+  m_Name: First Field Planner
+  m_EditorClassIdentifier: 
+  _EditorDrawShape: 1
+  _EditorDrawParameters: 0
+  _EditorDrawLogics: 1
+  _EditorDrawPostLogics: 0
+  _EditorSelectedShape: 0
+  _EditorSelectedVar: 0
+  _EditorDisplayGizmosOnPlan: 1
+  ParentBuildPlanner: {fileID: 11400000}
+  ShapeGenerator: {fileID: 0}
+  DisableWholePlanner: 0
+  tag: 
+  proceduresBegin: {fileID: 0}
+  postProceduresBegin: {fileID: 0}
+  FProcedures: []
+  FPostProcedures: []
+  FSubGraphs: []
+  FVariables: []
+  ExposeShape: 1
+  FieldType: 0
+  DefaultFieldSetup: {fileID: 0}
+  DefaultPrefab: {fileID: 0}
+  Instances: 1
+  ExposeInstanceCount: 0
+  DisableCollision: 0
+  AlwaysPushOut: 1
+  AllowRotateBy90: 1
+  PreviewCellSize: {x: 1, y: 1, z: 1}
+  RoundToScale: 0
+  MaxRetries: 64
+  IndexOnPrint: -1
+  IndexOfDuplicate: -1
+  IndexOnPreset: -1
+  GraphView: 0

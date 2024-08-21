@@ -1,0 +1,6471 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9190092194912688303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Cross Ceil Columns](Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: LD
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 1187328882539257459}
+    - {fileID: -9190092194912688303}
+    - {fileID: -1890838574689425968}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 1
+    l: 1
+    m: 0
+    r: 1
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 1
+  initRotation: -90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-8797566491157074186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Cross Ceil Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: RU
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 1067394930952948837}
+    - {fileID: -7086505496581640662}
+    - {fileID: -8797566491157074186}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 2
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 1
+  ignoreAngled: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 1, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-8524585828826835223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[V3 wallCeilSet]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallVentilationV3
+    SpawnerTag: WallProp,NProp
+    StampPrefabID: 5
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: -8524585828826835223}
+    - {fileID: 8487021752690130111}
+    - {fileID: 2475902415208137031}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Tag: Wall
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-8341801783924162426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[PipeGens]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingPipes
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2326042400140991543}
+    Rules:
+    - {fileID: -8341801783924162426}
+    - {fileID: -2801105287090681789}
+    - {fileID: -2684845109516425063}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: Wall
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-7913814128861270479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f132315e3189e59479a1674dc7e52576, type: 3}
+  m_Name: Root
+  m_EditorClassIdentifier: 
+  FieldModificators:
+  - {fileID: 7393589115315746936}
+  - {fileID: -4250312856139878041}
+  - {fileID: -6658295517487027368}
+  - {fileID: -2053691789191656676}
+  - {fileID: -4225742253804519822}
+  - {fileID: 2326042400140991543}
+  - {fileID: -5417818060819916558}
+  - {fileID: -7067827448515863118}
+  ParentPreset: {fileID: 11400000}
+  DisableWholePackage: 0
+  ModPackType: 0
+--- !u!114 &-7902872990162870826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V2
+    SpawnerTag: PipV2
+    StampPrefabID: 3
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: 7965296979920720942}
+    - {fileID: 2481193973083933137}
+    - {fileID: 6956844152846606547}
+    - {fileID: -7902872990162870826}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: PipV2
+  Distance: 3
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &-7705861350480714499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d951f142764987a7f4ca1cf8f61, type: 3}
+  m_Name: SR_SpawningPropability-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -1325148686279620251}
+    - {fileID: -1146145638208788051}
+    - {fileID: 7815968578470025726}
+    - {fileID: -7705861350480714499}
+    - {fileID: 8430781585421426021}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Propability: 0.482
+  PropabilityMulVariable:
+    name: 
+--- !u!114 &-7538995978190344261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Cardboxes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: PR_CardboxesGroup
+    SpawnerTag: Group
+    StampPrefabID: 0
+    Parent: {fileID: -5417818060819916558}
+    Rules:
+    - {fileID: -7538995978190344261}
+    - {fileID: -5556764235077172390}
+    - {fileID: 2238593093579229377}
+    - {fileID: -333560542204070214}
+    - {fileID: 1115505906438574364}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: Wall
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-7086505496581640662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Cross Ceil Columns](Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: RU
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 1067394930952948837}
+    - {fileID: -7086505496581640662}
+    - {fileID: -8797566491157074186}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 1
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 0
+    q2: 1
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-7067827448515863118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: CorridorsDV1_DoorHole
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Hole
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 2545810256437658350, guid: e9fe1236c0174514bb85779a39cb4f60,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -2630196660702099597, guid: 32eee74c4f1eaf348885cf5a028e3f9c,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: WallV3_Doorhole
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -7067827448515863118}
+    Rules:
+    - {fileID: 7577872088650832555}
+    - {fileID: 8892105520629662955}
+    - {fileID: -3234120912020174693}
+    - {fileID: -3565401630096745039}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -7913814128861270479}
+--- !u!114 &-6739070227885271464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Cross Ceil Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: RightDown
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 642372026493983958}
+    - {fileID: 4247338756655082799}
+    - {fileID: 8330088402781449903}
+    - {fileID: -6739070227885271464}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 2, y: 4.6, z: 2.5}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-6658295517487027368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Supports
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: NProp
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 5641682162201879374, guid: 27163dba98ab22d48ac5a39078b04a48,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 5828718797858413990, guid: 25d57a94bea06ed438b2692dd73cbd53,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 7273840334930871481, guid: 819f1ffc12d61f044af078de6fcbf80c,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -6814688599058356893, guid: f5368c7368609cf40a0e6ebe8a36f9d8,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: IronSupportV3
+    SpawnerTag: ISup
+    StampPrefabID: 0
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 8931102550869351281}
+    - {fileID: 3581058633047329755}
+    - {fileID: 2663565543707570656}
+    - {fileID: 6439877574712824396}
+    - {fileID: 5812580477342351202}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 6249611817145974848}
+    - {fileID: 3641072173562245314}
+    - {fileID: 3594011891309681877}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 0
+    Name: CL
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules: []
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 5952885460665534914}
+    - {fileID: 983111100749748992}
+    - {fileID: -5915263114833903242}
+    - {fileID: -5888329330130945771}
+    - {fileID: 2444263176361962322}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 3
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -7913814128861270479}
+--- !u!114 &-6540566909938595790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[CeilingSupport]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CSupV1Out
+    SpawnerTag: 
+    StampPrefabID: 2
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: 5477340070277453136}
+    - {fileID: 2445865802848170968}
+    - {fileID: -6540566909938595790}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 5, z: -1.125}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: -135, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-6438649374989030714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Cross Ceil Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: LU
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 5991218252115132628}
+    - {fileID: -6388551009395447702}
+    - {fileID: -6438649374989030714}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellsLineLength: 2
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 1
+  ignoreAngled: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: -1}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-6388551009395447702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Cross Ceil Columns](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: LU
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 5991218252115132628}
+    - {fileID: -6388551009395447702}
+    - {fileID: -6438649374989030714}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 1
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 0
+    q2: 0
+    q3: 1
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-6200528409173445562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630e2a4943f49b40967499fb48c07ee, type: 3}
+  m_Name: SR_FloorPlacer-[Walls_1Module+Connectors(Clone)(Clone)]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilV3
+    SpawnerTag: Ceil
+    StampPrefabID: 3
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: -6200528409173445562}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Mode: 0
+  AlignMode: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 4.99, z: 0}
+  OffsetMode: 0
+  RotateBy90Only: 1
+  V2: 0
+--- !u!114 &-6190077914087527130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0acc9caea68f8c4b8c90c5e659b5f87, type: 3}
+  m_Name: SR_Scale-[CeilingSupport(Clone)(Clone)]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CSup
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: 7995875796353916495}
+    - {fileID: -6190077914087527130}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  ScaleMultiplier: {x: 1, y: 0.3, z: 1}
+  ScaleMulVariable:
+    name: 
+  RandomizeScale: {x: 0, y: 0, z: 0}
+--- !u!114 &-5915263114833903242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 5952885460665534914}
+    - {fileID: 983111100749748992}
+    - {fileID: -5915263114833903242}
+    - {fileID: -5888329330130945771}
+    - {fileID: 2444263176361962322}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 2
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  ignoreAngled: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-5888329330130945771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 5952885460665534914}
+    - {fileID: 983111100749748992}
+    - {fileID: -5915263114833903242}
+    - {fileID: -5888329330130945771}
+    - {fileID: 2444263176361962322}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: -2, y: 4.75, z: 0}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-5853498124885007393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d951f142764987a7f4ca1cf8f61, type: 3}
+  m_Name: SR_SpawningPropability-[Modular Pipe Generators]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: FloorPipes
+    SpawnerTag: Prop,BigProp
+    StampPrefabID: 0
+    Parent: {fileID: 2326042400140991543}
+    Rules:
+    - {fileID: 9004650672910110517}
+    - {fileID: -5853498124885007393}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Propability: 0.42
+  PropabilityMulVariable:
+    name: 
+--- !u!114 &-5556764235077172390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Cardboxes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: PR_CardboxesGroup
+    SpawnerTag: Group
+    StampPrefabID: 0
+    Parent: {fileID: -5417818060819916558}
+    Rules:
+    - {fileID: -5556764235077172390}
+    - {fileID: -333560542204070214}
+    - {fileID: 1115505906438574364}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: Prop
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-5417818060819916558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Cardboxes(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: PROP,Prop,BigProp
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 7692892795442770027, guid: 2ea0933c87f363f4fa8afdec3922c72e,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 0}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: PR_CardboxesGroup
+    SpawnerTag: Group
+    StampPrefabID: 0
+    Parent: {fileID: -5417818060819916558}
+    Rules:
+    - {fileID: -5556764235077172390}
+    - {fileID: -333560542204070214}
+    - {fileID: 1115505906438574364}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -7913814128861270479}
+--- !u!114 &-4655995607691472974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e4d5aac49ca0345b5c3ac36491d897, type: 3}
+  m_Name: SR_WorldOffset-[V3 wallCeilSet]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 4
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4748537045144527780}
+    - {fileID: -1468829013145692559}
+    - {fileID: -2223656076713038023}
+    - {fileID: -1962193239266535915}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OverrideOffset: 1
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 4.75, z: 0}
+  OffsetMode: 0
+  RandomWorldOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-4598475365633284732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5698d953b70b3542a61cfe5d4517022, type: 3}
+  m_Name: SR_CellOperation-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V3
+    SpawnerTag: PipV3
+    StampPrefabID: 2
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -2506606135044571202}
+    - {fileID: 5828659251830774829}
+    - {fileID: 7457068738345447654}
+    - {fileID: -4598475365633284732}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Operation: 2
+  TargetCellOffset: {x: 1, y: 0, z: 0}
+  OffsetWithRotation: 1
+  ToClearTag: 
+  CheckMode: 0
+  OnRotations: []
+--- !u!114 &-4286316140864021494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[Walls_1Module+Connectors]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: Connector In
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: -4286316140864021494}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 3
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 1
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 45
+  DirectOffset: {x: 0, y: 0, z: -1.31}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &-4250312856139878041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Cross Ceil Columns
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: XCol
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 3183084487087008219, guid: 36edef577fa44ac4ab6dffa4a781ce6c,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -6814688599058356893, guid: f5368c7368609cf40a0e6ebe8a36f9d8,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: RightDown
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 642372026493983958}
+    - {fileID: 4247338756655082799}
+    - {fileID: 8330088402781449903}
+    - {fileID: -6739070227885271464}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: LU
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 5991218252115132628}
+    - {fileID: -6388551009395447702}
+    - {fileID: -6438649374989030714}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: RU
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 1067394930952948837}
+    - {fileID: -7086505496581640662}
+    - {fileID: -8797566491157074186}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: LD
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 1187328882539257459}
+    - {fileID: -9190092194912688303}
+    - {fileID: -1890838574689425968}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 3
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -7913814128861270479}
+--- !u!114 &-4225742253804519822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Cables Models(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Cables,NProp
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 5116192495741021670, guid: eebe9b1415fa3f04ca902563b7123f1b,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 29866869556779315, guid: 56f6bf61f3c6622458414ce172a19067,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 5257630376383038119, guid: e55694a74b23a5649a1569dd1b288a83,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 4293445438863451491, guid: 5ca08e93480caaa40b283a69e833ee9a,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 2058501722013209021, guid: 1e53ca56c8073d14ba3ee318709fdeb9,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 7579101147080215047, guid: bc8910dba4359314fadf83e0c884792a,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 5257630376383038119, guid: e55694a74b23a5649a1569dd1b288a83,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 8166870102835854440, guid: 9633291cbd4cc08459d0ea39183edb46,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: V1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -1325148686279620251}
+    - {fileID: -1146145638208788051}
+    - {fileID: 7815968578470025726}
+    - {fileID: -7705861350480714499}
+    - {fileID: 8430781585421426021}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: V2
+    SpawnerTag: PipV2
+    StampPrefabID: 3
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: 7965296979920720942}
+    - {fileID: 2481193973083933137}
+    - {fileID: 6956844152846606547}
+    - {fileID: -7902872990162870826}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: V3
+    SpawnerTag: PipV3
+    StampPrefabID: 2
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -2506606135044571202}
+    - {fileID: 5828659251830774829}
+    - {fileID: 7457068738345447654}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -7913814128861270479}
+--- !u!114 &-4203762976773836834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Supports](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 1
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: XCol
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-3565401630096745039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d04c0a05ea9784199cc0d7a9227f53, type: 3}
+  m_Name: SR_RemoveInPosition-[CorridorsDV1_DoorHole]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallV3_Doorhole
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -7067827448515863118}
+    Rules:
+    - {fileID: 7577872088650832555}
+    - {fileID: 8892105520629662955}
+    - {fileID: -3234120912020174693}
+    - {fileID: -3565401630096745039}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  MustHaveTag: Wall
+  CheckMode: 0
+  CellOffsetMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  UseSelfRotation: 1
+  PointPositionOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DistanceMustBe: 0
+  RemoveDistance: 1.5
+--- !u!114 &-3503805758104606995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Walls_1Module+Connectors]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: PR_Column
+    SpawnerTag: WColumn
+    StampPrefabID: 3
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4891753085198781989}
+    - {fileID: 8361601495096943576}
+    - {fileID: -3503805758104606995}
+    - {fileID: -1017871100172954183}
+    Mode: 3
+    CellCheckMode: 4
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Wall
+  Distance: 1.5
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &-3234120912020174693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[CorridorsDV1_DoorHole]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallV3_Doorhole
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -7067827448515863118}
+    Rules:
+    - {fileID: 7577872088650832555}
+    - {fileID: 8892105520629662955}
+    - {fileID: -3234120912020174693}
+    - {fileID: -3565401630096745039}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: -2}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-3211324881044268135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 6249611817145974848}
+    - {fileID: 3641072173562245314}
+    - {fileID: 3594011891309681877}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellsLineLength: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  ignoreAngled: 35
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-3086896447140946946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Pipes](Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: V4-Cables
+    SpawnerTag: 
+    StampPrefabID: 3
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: 1399645631200386199}
+    - {fileID: -3086896447140946946}
+    - {fileID: 3397173050502106118}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-2973875932301844016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[V3 wallCeilSet]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Wall Box
+    SpawnerTag: Wall
+    StampPrefabID: 0
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 1474652748800635671}
+    - {fileID: -2973875932301844016}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: Hole
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-2801105287090681789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[PipeGens]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingPipes
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2326042400140991543}
+    Rules:
+    - {fileID: -8341801783924162426}
+    - {fileID: -2801105287090681789}
+    - {fileID: -2684845109516425063}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: PipeG
+  Distance: 1
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &-2751986706811071011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[CeilingSupport]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: DIn
+    SpawnerTag: 
+    StampPrefabID: 3
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: -2751986706811071011}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 1
+  CornerMode: 0
+  CornerMode45: 1
+  SpawnOnEachSide: 0
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 45
+  DirectOffset: {x: 0, y: 4, z: 0.265}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &-2684845109516425063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[PipeGens]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingPipes
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2326042400140991543}
+    Rules:
+    - {fileID: -8341801783924162426}
+    - {fileID: -2801105287090681789}
+    - {fileID: -2684845109516425063}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Wall
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 3, z: 0.145}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0.5, y: 0.3, z: 0.05}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-2506606135044571202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d951f142764987a7f4ca1cf8f61, type: 3}
+  m_Name: SR_SpawningPropability-[Pipes](Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V3
+    SpawnerTag: PipV3
+    StampPrefabID: 2
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -2506606135044571202}
+    - {fileID: 5828659251830774829}
+    - {fileID: 7457068738345447654}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Propability: 0.407
+  PropabilityMulVariable:
+    name: 
+--- !u!114 &-2223656076713038023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[V3 wallCeilSet]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 4
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4748537045144527780}
+    - {fileID: -1468829013145692559}
+    - {fileID: -2223656076713038023}
+    - {fileID: -1962193239266535915}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 2
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  ignoreAngled: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-2053691789191656676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: CeilingSupport(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Ceil
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 4171865435010313751, guid: d89acbaf404ecb54ea5b55cabe8276ab,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -4706772137759651951, guid: 153fc1521e239a8499d8556717d2d4a4,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 6657436546084954351, guid: 88bb309f0a4471b42ad30f884b666d5e,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 5132151829648785795, guid: a7804709d74d14d4fa568b517669f8f2,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 5473251085520563825, guid: a1ae19968fe0e784e8539545c30bd30b,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 2723246388523889619, guid: cdb706fd8eb317a4b9a27189c51424ca,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 5473251085520563825, guid: ad0ad817e770773409a5355aa9e23191,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 1338110569470193725, guid: 13423da131c5f6043a951032ad6205b8,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 7004601265502908521, guid: a05e791e6e6649842815b3797f4f3a6d,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 2122893043285944938, guid: cd6779c4abfdecf42b5c151bb4982a2c,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 5473251085520563825, guid: 7811504f7fbbae3459a837aa0defe64c,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -8140449051912709278, guid: f2bc330fbd47cb94ea3eb543a0fc1a3b,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 5473251085520563825, guid: b9f26dfd0d056c046b45e9c8c8143988,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -3320803215222404879, guid: c7c005ba8e9397f41875007fbca776a7,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: CSup
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: 7995875796353916495}
+    - {fileID: -6190077914087527130}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: CSupV1Out
+    SpawnerTag: 
+    StampPrefabID: 2
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: 5477340070277453136}
+    - {fileID: 2445865802848170968}
+    - {fileID: -6540566909938595790}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: Support90In
+    SpawnerTag: 
+    StampPrefabID: 6
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: -250099192941963476}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 2
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -7913814128861270479}
+--- !u!114 &-1962193239266535915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[V3 wallCeilSet]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 4
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4748537045144527780}
+    - {fileID: -1468829013145692559}
+    - {fileID: -2223656076713038023}
+    - {fileID: -1962193239266535915}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: -2, y: 4.75, z: 0}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-1890838574689425968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Cross Ceil Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: LD
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 1187328882539257459}
+    - {fileID: -9190092194912688303}
+    - {fileID: -1890838574689425968}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 2
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 1
+  ignoreAngled: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: -1, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-1468829013145692559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[V3 wallCeilSet]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 4
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4748537045144527780}
+    - {fileID: -1468829013145692559}
+    - {fileID: -2223656076713038023}
+    - {fileID: -1962193239266535915}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  ignoreAngled: 25
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-1325148686279620251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -1325148686279620251}
+    - {fileID: -1146145638208788051}
+    - {fileID: 7815968578470025726}
+    - {fileID: -7705861350480714499}
+    - {fileID: 8430781585421426021}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Tag: Wall
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-1146145638208788051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -1325148686279620251}
+    - {fileID: -1146145638208788051}
+    - {fileID: 7815968578470025726}
+    - {fileID: -7705861350480714499}
+    - {fileID: 8430781585421426021}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: Cables,WallProp
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-1017871100172954183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bc5f4badaab3438244b84b7cee058, type: 3}
+  m_Name: SR_Rotate-[Walls_1Module+Connectors]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: PR_Column
+    SpawnerTag: WColumn
+    StampPrefabID: 3
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4891753085198781989}
+    - {fileID: 8361601495096943576}
+    - {fileID: -3503805758104606995}
+    - {fileID: -1017871100172954183}
+    Mode: 3
+    CellCheckMode: 4
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetRotationFromTagged: 
+  CheckMode: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  RandomRotation: {x: 0, y: 360, z: 0}
+  MaxDegreesSteps: {x: 1, y: 90, z: 1}
+  LocalRotation: 0
+  OverrideRotation: 1
+--- !u!114 &-724938553114896642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5015748d498a9d94abd4c0c69a786f28, type: 3}
+  m_Name: SR_DirectOffset-[Cross Ceil Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: RightDown
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 642372026493983958}
+    - {fileID: 4247338756655082799}
+    - {fileID: -6739070227885271464}
+    - {fileID: 8330088402781449903}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Override: 0
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  Offset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  RandomOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-333560542204070214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d951f142764987a7f4ca1cf8f61, type: 3}
+  m_Name: SR_SpawningPropability-[Cardboxes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: PR_CardboxesGroup
+    SpawnerTag: Group
+    StampPrefabID: 0
+    Parent: {fileID: -5417818060819916558}
+    Rules:
+    - {fileID: -5556764235077172390}
+    - {fileID: -333560542204070214}
+    - {fileID: 1115505906438574364}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Propability: 0.155
+  PropabilityMulVariable:
+    name: 
+--- !u!114 &-305154168085929685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[Walls_1Module+Connectors](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: Connector Out
+    SpawnerTag: 
+    StampPrefabID: 2
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: -305154168085929685}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Module: 3
+  CornerMode: 1
+  CornerMode45: 0
+  SpawnOnEachSide: 1
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: -45
+  DirectOffset: {x: -1.41, y: 0, z: 0.01}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &-250099192941963476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[CeilingSupport]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Support90In
+    SpawnerTag: 
+    StampPrefabID: 6
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: -250099192941963476}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 1
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 0
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 0
+  DirectOffset: {x: 0.05, y: 5, z: 0.05}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &-230391537350181518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: IronSupportV3
+    SpawnerTag: ISup
+    StampPrefabID: 0
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 4594372992009486905}
+    - {fileID: -230391537350181518}
+    - {fileID: 8931102550869351281}
+    - {fileID: 3581058633047329755}
+    - {fileID: 2663565543707570656}
+    - {fileID: 6439877574712824396}
+    - {fileID: 5812580477342351202}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: COut
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6c361108247f045b5087f48c0c7951, type: 3}
+  m_Name: FS_DoubleSizeGridTunnel
+  m_EditorClassIdentifier: 
+  CellSize: 2
+  NonUniformSize: 0
+  NonUniformCellSize: {x: 2, y: 2, z: 2}
+  InfoText: 'Min Cells: 4x4'
+  Variables:
+  - Name: Spawn Propability Multiplier
+    v3Val: {x: 1, y: 0, z: 0}
+    str: 
+    mat: {fileID: 0}
+    gameObj: {fileID: 0}
+    helper: {x: 0, y: 5, z: 0}
+    ValueType: 1
+  - Name: Spawn Count Multiplier
+    v3Val: {x: 1, y: 0, z: 0}
+    str: 
+    mat: {fileID: 0}
+    gameObj: {fileID: 0}
+    helper: {x: 0, y: 5, z: 0}
+    ValueType: 1
+  DoorsModificator: {fileID: 11400000, guid: 7500e28d48a8ac44da90dfc8719e91ef, type: 2}
+  EraseWallModificator: {fileID: 11400000, guid: c5bd286613ebcb24c932c8d5e7f79f9b,
+    type: 2}
+  CellsInstructions:
+  - Title: Door Hole
+    InstructionType: 1
+    TargetModification: {fileID: -7067827448515863118}
+    Tags: '!Ceil'
+    InstructionArgument: 
+  - Title: Clear Wall
+    InstructionType: 3
+    TargetModification: {fileID: 11400000, guid: bb8b79d726bb4f2419ec1b1ecb3cdc78,
+      type: 2}
+    Tags: 
+    InstructionArgument: 
+  RootPack: {fileID: -7913814128861270479}
+  ModificatorPacks:
+  - {fileID: -7913814128861270479}
+  - {fileID: 11400000, guid: 78c0ad2e9ed5ecf40bf8aa75c136792a, type: 2}
+  Ignores: []
+  DontSpawnOn: 
+  disabledMods:
+  - {fileID: -5846157230445559033, guid: 78c0ad2e9ed5ecf40bf8aa75c136792a, type: 2}
+  - {fileID: -7067827448515863118}
+  AddReflectionProbes: 0
+  MainReflectionSettings: {fileID: 0}
+  AddMultipleProbes: 0
+  SmallerReflSettings: {fileID: 11400000, guid: 290a908b3df7c6a4a84c21c932841cde,
+    type: 2}
+  MiniReflSettings: {fileID: 11400000, guid: b243a7973537dbf4faacf7bbda74dada, type: 2}
+  SmallerReflLowerSpaceThan: 4
+  AddLightProbes: 0
+  ProbesPerCell: 1
+  TriggerColliderGeneration: 1
+  TriggerGenSettings:
+    ScaleupTriggers: 1
+    FillHeight: 1
+    MaxCellChecks: 10
+    JoinBounds: 1
+    GenerateRelations: 1
+    GroupUpToSize: 8
+    MaxGroupDistance: 8
+--- !u!114 &26533054443312787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[Walls_1Module+Connectors(Clone)(Clone)]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: ColIn
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 26533054443312787}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 3
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 1
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 135
+  DirectOffset: {x: 2.15, y: 0, z: 0}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &44437776445046022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 2091848242393855386}
+    - {fileID: 44437776445046022}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 3
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 1
+  ignoreAngled: 0
+  occupiedByTag: COut
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &642372026493983958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Cross Ceil Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: RightDown
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 642372026493983958}
+    - {fileID: 4247338756655082799}
+    - {fileID: 8330088402781449903}
+    - {fileID: -6739070227885271464}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 1
+    m: 0
+    r: 1
+    ld: 0
+    d: 1
+    rd: 1
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &983111100749748992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 5952885460665534914}
+    - {fileID: 983111100749748992}
+    - {fileID: -5915263114833903242}
+    - {fileID: -5888329330130945771}
+    - {fileID: 2444263176361962322}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  ignoreAngled: 25
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &1067394930952948837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Cross Ceil Columns](Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: RU
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 1067394930952948837}
+    - {fileID: -7086505496581640662}
+    - {fileID: -8797566491157074186}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 1
+    m: 0
+    r: 1
+    ld: 0
+    d: 1
+    rd: 1
+  quartRotor:
+    q1: 0
+    q2: 1
+    q3: 0
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &1115505906438574364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Cardboxes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: PR_CardboxesGroup
+    SpawnerTag: Group
+    StampPrefabID: 0
+    Parent: {fileID: -5417818060819916558}
+    Rules:
+    - {fileID: -5556764235077172390}
+    - {fileID: -333560542204070214}
+    - {fileID: 1115505906438574364}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Group
+  Distance: 3
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &1187328882539257459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Cross Ceil Columns](Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: LD
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 1187328882539257459}
+    - {fileID: -9190092194912688303}
+    - {fileID: -1890838574689425968}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 1
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &1399645631200386199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d951f142764987a7f4ca1cf8f61, type: 3}
+  m_Name: SR_SpawningPropability-[Pipes](Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: V4-Cables
+    SpawnerTag: 
+    StampPrefabID: 3
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: 1399645631200386199}
+    - {fileID: -3086896447140946946}
+    - {fileID: 3397173050502106118}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Propability: 0.732
+  PropabilityMulVariable:
+    name: 
+--- !u!114 &1474652748800635671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[Walls_1Module+Connectors]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Wall Box
+    SpawnerTag: Wall
+    StampPrefabID: 0
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 1474652748800635671}
+    - {fileID: -2973875932301844016}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 0
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 1
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 0, z: -2}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &2091848242393855386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 2091848242393855386}
+    - {fileID: 44437776445046022}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 3
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 1
+  ignoreAngled: 0
+  occupiedByTag: COut
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &2238593093579229377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Cardboxes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: PR_CardboxesGroup
+    SpawnerTag: Group
+    StampPrefabID: 0
+    Parent: {fileID: -5417818060819916558}
+    Rules:
+    - {fileID: -7538995978190344261}
+    - {fileID: -5556764235077172390}
+    - {fileID: 2238593093579229377}
+    - {fileID: -333560542204070214}
+    - {fileID: 1115505906438574364}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Wall
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: 0.5}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &2326042400140991543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Modular Pipe Generators(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: PipeG,NProp
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 9045787812185611542, guid: 49be75746c996534d9922574d7abd1df,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 0}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: FloorPipes
+    SpawnerTag: Prop,BigProp
+    StampPrefabID: 0
+    Parent: {fileID: 2326042400140991543}
+    Rules:
+    - {fileID: 9004650672910110517}
+    - {fileID: -5853498124885007393}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: CeilingPipes
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2326042400140991543}
+    Rules:
+    - {fileID: -8341801783924162426}
+    - {fileID: -2801105287090681789}
+    - {fileID: -2684845109516425063}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 1
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -7913814128861270479}
+--- !u!114 &2444263176361962322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 5952885460665534914}
+    - {fileID: 983111100749748992}
+    - {fileID: -5915263114833903242}
+    - {fileID: -5888329330130945771}
+    - {fileID: 2444263176361962322}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: XCol
+  Distance: 2
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &2445865802848170968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[CeilingSupport]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CSupV1Out
+    SpawnerTag: 
+    StampPrefabID: 2
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: 5477340070277453136}
+    - {fileID: 2445865802848170968}
+    - {fileID: -6540566909938595790}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: -135
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &2475902415208137031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d951f142764987a7f4ca1cf8f61, type: 3}
+  m_Name: SR_SpawningPropability-[V3 wallCeilSet]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallVentilationV3
+    SpawnerTag: WallProp,NProp
+    StampPrefabID: 5
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: -8524585828826835223}
+    - {fileID: 8487021752690130111}
+    - {fileID: 2475902415208137031}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Propability: 0.377
+  PropabilityMulVariable:
+    name: 
+--- !u!114 &2481193973083933137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V2
+    SpawnerTag: PipV2
+    StampPrefabID: 3
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: 7965296979920720942}
+    - {fileID: 2481193973083933137}
+    - {fileID: 6956844152846606547}
+    - {fileID: -7902872990162870826}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &2642267937020007317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Cross Ceil Columns](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: LU
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 5991218252115132628}
+    - {fileID: -6388551009395447702}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 2, y: 4.75, z: 2.5}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 0.75, z: 0.75}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &2663565543707570656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: IronSupportV3
+    SpawnerTag: ISup
+    StampPrefabID: 0
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 8931102550869351281}
+    - {fileID: 3581058633047329755}
+    - {fileID: 2663565543707570656}
+    - {fileID: 6439877574712824396}
+    - {fileID: 5812580477342351202}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 1.75, y: 0, z: 0}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 180, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 1.5}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &2918296743689239887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Supports](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 2918296743689239887}
+    - {fileID: 3789883710342081764}
+    - {fileID: 4039457371992266215}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: COut
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &2954730936182046541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[Walls_1Module+Connectors(Clone)(Clone)](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: ColOut
+    SpawnerTag: COut
+    StampPrefabID: 1
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 2954730936182046541}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Module: 3
+  CornerMode: 1
+  CornerMode45: 0
+  SpawnOnEachSide: 1
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 45
+  DirectOffset: {x: -0.185, y: 0, z: -2.85}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &3397173050502106118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: V4-Cables
+    SpawnerTag: 
+    StampPrefabID: 3
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: 1399645631200386199}
+    - {fileID: -3086896447140946946}
+    - {fileID: 3397173050502106118}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  occupiedByTag: Pipe
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &3581058633047329755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: IronSupportV3
+    SpawnerTag: ISup
+    StampPrefabID: 0
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 8931102550869351281}
+    - {fileID: 3581058633047329755}
+    - {fileID: 2663565543707570656}
+    - {fileID: 6439877574712824396}
+    - {fileID: 5812580477342351202}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 1
+    rd: 1
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &3594011891309681877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 6249611817145974848}
+    - {fileID: 3641072173562245314}
+    - {fileID: 3594011891309681877}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  ignoreAngled: 35
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &3641072173562245314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 6249611817145974848}
+    - {fileID: 3641072173562245314}
+    - {fileID: 3594011891309681877}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 4.5, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: -2}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 0.7, z: 0.7}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &3789883710342081764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Supports](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 2918296743689239887}
+    - {fileID: 3789883710342081764}
+    - {fileID: 4039457371992266215}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: XCol
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &4039457371992266215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Supports](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 2918296743689239887}
+    - {fileID: 3789883710342081764}
+    - {fileID: 4039457371992266215}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 5, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: -2, y: 0, z: -1.5}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 0.5, z: 0.5}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &4247338756655082799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Cross Ceil Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: RightDown
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 642372026493983958}
+    - {fileID: 4247338756655082799}
+    - {fileID: 8330088402781449903}
+    - {fileID: -6739070227885271464}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 1
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &4594372992009486905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: IronSupportV3
+    SpawnerTag: ISup
+    StampPrefabID: 0
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 4594372992009486905}
+    - {fileID: -230391537350181518}
+    - {fileID: 8931102550869351281}
+    - {fileID: 3581058633047329755}
+    - {fileID: 2663565543707570656}
+    - {fileID: 6439877574712824396}
+    - {fileID: 5812580477342351202}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Wall
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 1.75, y: 0, z: 0.85}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 90, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &4748537045144527780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[V3 wallCeilSet]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 4
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4748537045144527780}
+    - {fileID: -1468829013145692559}
+    - {fileID: -2223656076713038023}
+    - {fileID: -1962193239266535915}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: CColumn
+  Distance: 3
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &4891753085198781989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Walls_1Module+Connectors]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: PR_Column
+    SpawnerTag: WColumn
+    StampPrefabID: 3
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4891753085198781989}
+    - {fileID: 8361601495096943576}
+    - {fileID: -3503805758104606995}
+    - {fileID: -1017871100172954183}
+    Mode: 3
+    CellCheckMode: 4
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: CH
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &5477340070277453136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[CeilingSupport]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CSupV1Out
+    SpawnerTag: 
+    StampPrefabID: 2
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: 5477340070277453136}
+    - {fileID: 2445865802848170968}
+    - {fileID: -6540566909938595790}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 1
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &5812580477342351202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: IronSupportV3
+    SpawnerTag: ISup
+    StampPrefabID: 0
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 8931102550869351281}
+    - {fileID: 3581058633047329755}
+    - {fileID: 2663565543707570656}
+    - {fileID: 6439877574712824396}
+    - {fileID: 5812580477342351202}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Hole
+  Distance: 1
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &5819171493982529664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 2091848242393855386}
+    - {fileID: 44437776445046022}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: XCol
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &5828659251830774829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Pipes](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V3
+    SpawnerTag: PipV3
+    StampPrefabID: 2
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -2506606135044571202}
+    - {fileID: 5828659251830774829}
+    - {fileID: 7457068738345447654}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &5952885460665534914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 5952885460665534914}
+    - {fileID: 983111100749748992}
+    - {fileID: -5915263114833903242}
+    - {fileID: -5888329330130945771}
+    - {fileID: 2444263176361962322}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: CColumn
+  Distance: 3
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &5991218252115132628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Cross Ceil Columns](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: LU
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 5991218252115132628}
+    - {fileID: -6388551009395447702}
+    - {fileID: -6438649374989030714}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 1
+    m: 0
+    r: 1
+    ld: 0
+    d: 1
+    rd: 1
+  quartRotor:
+    q1: 0
+    q2: 0
+    q3: 1
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &6249611817145974848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 6249611817145974848}
+    - {fileID: 3641072173562245314}
+    - {fileID: 3594011891309681877}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellsLineLength: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  ignoreAngled: 0
+  occupiedByTag: COut
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 0
+    q4: 0
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &6439877574712824396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: IronSupportV3
+    SpawnerTag: ISup
+    StampPrefabID: 0
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 8931102550869351281}
+    - {fileID: 3581058633047329755}
+    - {fileID: 2663565543707570656}
+    - {fileID: 6439877574712824396}
+    - {fileID: 5812580477342351202}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: ISup
+  Distance: 1
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &6655281377944496074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[CeilingSupport]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: D90Out
+    SpawnerTag: 
+    StampPrefabID: 5
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: 6655281377944496074}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Module: 1
+  CornerMode: 1
+  CornerMode45: 0
+  SpawnOnEachSide: 0
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: -90
+  DirectOffset: {x: -0.95, y: 4, z: 1.05}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &6902316974773646944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630e2a4943f49b40967499fb48c07ee, type: 3}
+  m_Name: SR_FloorPlacer-[Walls_1Module+Connectors(Clone)(Clone)]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: FloorV3
+    SpawnerTag: 
+    StampPrefabID: 2
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 6902316974773646944}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Mode: 0
+  AlignMode: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  RotateBy90Only: 1
+  V2: 0
+--- !u!114 &6956844152846606547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V2
+    SpawnerTag: PipV2
+    StampPrefabID: 3
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: 7965296979920720942}
+    - {fileID: 2481193973083933137}
+    - {fileID: 6956844152846606547}
+    - {fileID: -7902872990162870826}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  occupiedByTag: Cables
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &7393589115315746936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: V3 wallCeilSet
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: 
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 8985883420507119094, guid: f6bba619ab4770345b1ead8e1b778e1b,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 6626107597982557696, guid: 9b3061fb2bee09d43b529f70160f2151,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 3457248622115171303, guid: 9927deff5e1c36440a7f36e4a85fd9d8,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 2808618461958215703, guid: aa4a737b4ac10634c9114d89d19a8b10,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 6106890093684427199, guid: 7bc98d63a0bf5604aac39abf7173ba69,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 2591873120287609750, guid: b063d8d3825ac754180455e3bf106c0d,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 4024329702144179443, guid: 7cef1cf002f0a89478d4247c0707f1dc,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -4224418378954978596, guid: 77e05be81a9e7144d9582737ad9b29a9,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 7273840334930871481, guid: 819f1ffc12d61f044af078de6fcbf80c,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -6814688599058356893, guid: f5368c7368609cf40a0e6ebe8a36f9d8,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 5188895228554256171, guid: bb22e097664cffa419160b41e2451455,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -4887770949554932124, guid: 8ac876d7acc6a3d4b8100fedc84d1c64,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Wall Box
+    SpawnerTag: Wall
+    StampPrefabID: 0
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 1474652748800635671}
+    - {fileID: -2973875932301844016}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: ColIn
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 26533054443312787}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: ColOut
+    SpawnerTag: COut
+    StampPrefabID: 1
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 2954730936182046541}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: FloorV3
+    SpawnerTag: 
+    StampPrefabID: 2
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 6902316974773646944}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: CeilV3
+    SpawnerTag: Ceil
+    StampPrefabID: 3
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: -6200528409173445562}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 0
+    Name: CeilColumn
+    SpawnerTag: CColumn
+    StampPrefabID: 4
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4748537045144527780}
+    - {fileID: -1468829013145692559}
+    - {fileID: -2223656076713038023}
+    - {fileID: -1962193239266535915}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: WallVentilationV3
+    SpawnerTag: WallProp,NProp
+    StampPrefabID: 5
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: -8524585828826835223}
+    - {fileID: 8487021752690130111}
+    - {fileID: 2475902415208137031}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 6
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -7913814128861270479}
+--- !u!114 &7457068738345447654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V3
+    SpawnerTag: PipV3
+    StampPrefabID: 2
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -2506606135044571202}
+    - {fileID: 5828659251830774829}
+    - {fileID: 7457068738345447654}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: PipV3
+  Distance: 2
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &7577872088650832555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[CorridorsDV1_DoorHole]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallV3_Doorhole
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -7067827448515863118}
+    Rules:
+    - {fileID: 7577872088650832555}
+    - {fileID: 8892105520629662955}
+    - {fileID: -3234120912020174693}
+    - {fileID: -3565401630096745039}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: Wall
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &7815968578470025726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -1325148686279620251}
+    - {fileID: -1146145638208788051}
+    - {fileID: 7815968578470025726}
+    - {fileID: -7705861350480714499}
+    - {fileID: 8430781585421426021}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Wall
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0.55, y: 1, z: 0.295}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1.025, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &7965296979920720942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc77d951f142764987a7f4ca1cf8f61, type: 3}
+  m_Name: SR_SpawningPropability-[Pipes](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V2
+    SpawnerTag: PipV2
+    StampPrefabID: 3
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: 7965296979920720942}
+    - {fileID: 2481193973083933137}
+    - {fileID: 6956844152846606547}
+    - {fileID: -7902872990162870826}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Propability: 0.65
+  PropabilityMulVariable:
+    name: 
+--- !u!114 &7995875796353916495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[Ceiling]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CSup
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: -2053691789191656676}
+    Rules:
+    - {fileID: 7995875796353916495}
+    - {fileID: -6190077914087527130}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 0
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 0
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 5, z: -0.45}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &8031055993520131739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Supports](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: COut
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &8286329094936664453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellsLineLength: 2
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  ignoreAngled: 0
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &8330088402781449903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Cross Ceil Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: RightDown
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4250312856139878041}
+    Rules:
+    - {fileID: 642372026493983958}
+    - {fileID: 4247338756655082799}
+    - {fileID: 8330088402781449903}
+    - {fileID: -6739070227885271464}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 2
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 1
+  ignoreAngled: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 1}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &8361601495096943576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Walls_1Module+Connectors]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: PR_Column
+    SpawnerTag: WColumn
+    StampPrefabID: 3
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: 4891753085198781989}
+    - {fileID: 8361601495096943576}
+    - {fileID: -3503805758104606995}
+    - {fileID: -1017871100172954183}
+    Mode: 3
+    CellCheckMode: 4
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: WColumn
+  Distance: 4
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &8430781585421426021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: V1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -4225742253804519822}
+    Rules:
+    - {fileID: -1325148686279620251}
+    - {fileID: -1146145638208788051}
+    - {fileID: 7815968578470025726}
+    - {fileID: -7705861350480714499}
+    - {fileID: 8430781585421426021}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Cables
+  Distance: 4
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &8487021752690130111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[V3 wallCeilSet]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallVentilationV3
+    SpawnerTag: WallProp,NProp
+    StampPrefabID: 5
+    Parent: {fileID: 7393589115315746936}
+    Rules:
+    - {fileID: -8524585828826835223}
+    - {fileID: 8487021752690130111}
+    - {fileID: 2475902415208137031}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Wall
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 3, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: 0.35}
+  StackOffset: 0
+  RotationEulerOffset: {x: -2, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &8892105520629662955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[CorridorsDV1_DoorHole]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallV3_Doorhole
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: -7067827448515863118}
+    Rules:
+    - {fileID: 7577872088650832555}
+    - {fileID: 8892105520629662955}
+    - {fileID: -3234120912020174693}
+    - {fileID: -3565401630096745039}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 1
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 90
+  - 180
+  - 270
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &8931102550869351281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: IronSupportV3
+    SpawnerTag: ISup
+    StampPrefabID: 0
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 8931102550869351281}
+    - {fileID: 3581058633047329755}
+    - {fileID: 2663565543707570656}
+    - {fileID: 6439877574712824396}
+    - {fileID: 5812580477342351202}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 1
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &9004650672910110517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[PipeGens](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: FloorPipes
+    SpawnerTag: Prop,BigProp
+    StampPrefabID: 0
+    Parent: {fileID: 2326042400140991543}
+    Rules:
+    - {fileID: 9004650672910110517}
+    - {fileID: -5853498124885007393}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Wall
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0.6, z: 0.5}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0.85, y: 0.4, z: 0.025}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &9113978230904407038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Supports]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: CeilColumn-Copy
+    SpawnerTag: XCol
+    StampPrefabID: 1
+    Parent: {fileID: -6658295517487027368}
+    Rules:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 2091848242393855386}
+    - {fileID: 44437776445046022}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 1
+    OnScalledGrid: 2
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellsLineLength: 4
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 1
+  ignoreAngled: 0
+  occupiedByTag: COut
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0

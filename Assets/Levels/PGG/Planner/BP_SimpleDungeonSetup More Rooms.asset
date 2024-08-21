@@ -1,0 +1,397 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8884c554589c16645814480a5ab73a19, type: 3}
+  m_Name: BP_SimpleDungeonSetup More Rooms
+  m_EditorClassIdentifier: 
+  Separating: 1
+  Settings:
+  - CustomName: Enemies Room
+    ID: 1
+    FieldSetup: {fileID: 11400000, guid: dcf66c3dfe0aef34e9f9693572dda7fd, type: 2}
+    Duplicates: 2
+    DoorHoleCommandID: 0
+    CenterFitDoor: 1
+    JustOneDoor: 0
+    DoorConnectionsCount:
+      Min: 2
+      Max: 5
+    OptionalShapePreset: {fileID: 0}
+    InternalSetup:
+      GenerationMode: 0
+      RectSetup:
+        StartPos: {x: 0, y: 0}
+        Width:
+          Min: 4
+          Max: 3
+        Height:
+          Min: 3
+          Max: 3
+      Rects: []
+      BranchLength:
+        Min: 3
+        Max: 5
+      TargetBranches:
+        Min: 1
+        Max: 2
+      BranchThickness:
+        Min: 1
+        Max: 1
+    SpreadCheckerData: 
+    InjectMods:
+    - Inject: 0
+      Modificator: {fileID: 3617095414675685908, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 0
+      Overrides:
+      - Name: 
+        v3Val: {x: 4, y: 0, z: 0}
+        str: 
+        mat: {fileID: 0}
+        gameObj: {fileID: 0}
+        helper: {x: 0, y: 0, z: 0}
+        ValueType: 1
+    - Inject: 0
+      Modificator: {fileID: -4385684009717301027, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 0
+      Overrides: []
+    RestrictPosition: 0
+    DistanceToCheckerData: Start Area
+    DistanceMustBe: 1
+    DistanceUnits: 0
+    _editorAdvancedFoldout: 0
+  - CustomName: Key Room
+    ID: 0
+    FieldSetup: {fileID: 11400000, guid: eb40dc6b8bf88c247bbc6e6fe956d3c6, type: 2}
+    Duplicates: 1
+    DoorHoleCommandID: 0
+    CenterFitDoor: 1
+    JustOneDoor: 0
+    DoorConnectionsCount:
+      Min: 3
+      Max: 4
+    OptionalShapePreset: {fileID: 0}
+    InternalSetup:
+      GenerationMode: 0
+      RectSetup:
+        StartPos: {x: 0, y: 0}
+        Width:
+          Min: 4
+          Max: 3
+        Height:
+          Min: 3
+          Max: 6
+      Rects: []
+      BranchLength:
+        Min: 3
+        Max: 5
+      TargetBranches:
+        Min: 1
+        Max: 2
+      BranchThickness:
+        Min: 1
+        Max: 1
+    SpreadCheckerData: 
+    InjectMods:
+    - Inject: 0
+      Modificator: {fileID: 7363434199206051184, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 0
+      Overrides: []
+    - Inject: 0
+      Modificator: {fileID: 4976555580842974410, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 0
+      Overrides: []
+    RestrictPosition: 1
+    DistanceToCheckerData: End Area
+    DistanceMustBe: 0
+    DistanceUnits: 12
+    _editorAdvancedFoldout: 1
+  - CustomName: Enemies Room
+    ID: 0
+    FieldSetup: {fileID: 11400000, guid: dcf66c3dfe0aef34e9f9693572dda7fd, type: 2}
+    Duplicates: 2
+    DoorHoleCommandID: 0
+    CenterFitDoor: 1
+    JustOneDoor: 0
+    DoorConnectionsCount:
+      Min: 2
+      Max: 3
+    OptionalShapePreset: {fileID: 0}
+    InternalSetup:
+      GenerationMode: 0
+      RectSetup:
+        StartPos: {x: 0, y: 0}
+        Width:
+          Min: 4
+          Max: 4
+        Height:
+          Min: 3
+          Max: 6
+      Rects: []
+      BranchLength:
+        Min: 3
+        Max: 5
+      TargetBranches:
+        Min: 1
+        Max: 2
+      BranchThickness:
+        Min: 1
+        Max: 1
+    SpreadCheckerData: 
+    InjectMods:
+    - Inject: 0
+      Modificator: {fileID: 3617095414675685908, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 0
+      Overrides:
+      - Name: Spawn Count Multiplier
+        v3Val: {x: 1, y: 0, z: 0}
+        str: 
+        mat: {fileID: 0}
+        gameObj: {fileID: 0}
+        helper: {x: 0, y: 0, z: 0}
+        ValueType: 1
+    - Inject: 0
+      Modificator: {fileID: 4976555580842974410, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 0
+      Overrides:
+      - Name: Enemies Spacing
+        v3Val: {x: 1, y: 0, z: 0}
+        str: 
+        mat: {fileID: 0}
+        gameObj: {fileID: 0}
+        helper: {x: 0, y: 0, z: 0}
+        ValueType: 1
+      - Name: Spawn Propability Multiplier
+        v3Val: {x: 1, y: 0, z: 0}
+        str: 
+        mat: {fileID: 0}
+        gameObj: {fileID: 0}
+        helper: {x: 0, y: 0, z: 0}
+        ValueType: 1
+    RestrictPosition: 0
+    DistanceToCheckerData: Start Area
+    DistanceMustBe: 1
+    DistanceUnits: 0
+    _editorAdvancedFoldout: 1
+  - CustomName: Boss Room
+    ID: 0
+    FieldSetup: {fileID: 11400000, guid: 775521f8d1036754caa8397c0338b9d0, type: 2}
+    Duplicates: 1
+    DoorHoleCommandID: 0
+    CenterFitDoor: 1
+    JustOneDoor: 1
+    DoorConnectionsCount:
+      Min: 1
+      Max: 1
+    OptionalShapePreset: {fileID: 0}
+    InternalSetup:
+      GenerationMode: 0
+      RectSetup:
+        StartPos: {x: 0, y: 0}
+        Width:
+          Min: 4
+          Max: 5
+        Height:
+          Min: 3
+          Max: 5
+      Rects: []
+      BranchLength:
+        Min: 3
+        Max: 5
+      TargetBranches:
+        Min: 1
+        Max: 2
+      BranchThickness:
+        Min: 1
+        Max: 1
+    SpreadCheckerData: 
+    InjectMods:
+    - Inject: 0
+      Modificator: {fileID: -141139095241494040, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 0
+      Overrides: []
+    RestrictPosition: 1
+    DistanceToCheckerData: Start Area
+    DistanceMustBe: 1
+    DistanceUnits: 6
+    _editorAdvancedFoldout: 1
+  - CustomName: Boss Room
+    ID: 0
+    FieldSetup: {fileID: 11400000, guid: eb40dc6b8bf88c247bbc6e6fe956d3c6, type: 2}
+    Duplicates: 1
+    DoorHoleCommandID: 0
+    CenterFitDoor: 1
+    JustOneDoor: 1
+    DoorConnectionsCount:
+      Min: 1
+      Max: 1
+    OptionalShapePreset: {fileID: 0}
+    InternalSetup:
+      GenerationMode: 0
+      RectSetup:
+        StartPos: {x: 0, y: 0}
+        Width:
+          Min: 4
+          Max: 10
+        Height:
+          Min: 3
+          Max: 8
+      Rects: []
+      BranchLength:
+        Min: 3
+        Max: 5
+      TargetBranches:
+        Min: 1
+        Max: 2
+      BranchThickness:
+        Min: 1
+        Max: 1
+    SpreadCheckerData: 
+    InjectMods:
+    - Inject: 0
+      Modificator: {fileID: -141139095241494040, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 0
+      Overrides: []
+    RestrictPosition: 1
+    DistanceToCheckerData: Start Area
+    DistanceMustBe: 1
+    DistanceUnits: 6
+    _editorAdvancedFoldout: 1
+  RootChunkSetup:
+    CustomName: 
+    ID: 0
+    FieldSetup: {fileID: 11400000, guid: dcf66c3dfe0aef34e9f9693572dda7fd, type: 2}
+    Duplicates: 1
+    DoorHoleCommandID: 0
+    CenterFitDoor: 0
+    JustOneDoor: 0
+    DoorConnectionsCount:
+      Min: 10000
+      Max: 10000
+    OptionalShapePreset: {fileID: 0}
+    InternalSetup:
+      GenerationMode: 2
+      RectSetup:
+        StartPos: {x: 0, y: 0}
+        Width:
+          Min: 4
+          Max: 6
+        Height:
+          Min: 3
+          Max: 4
+      Rects: []
+      BranchLength:
+        Min: 3
+        Max: 4
+      TargetBranches:
+        Min: 2
+        Max: 3
+      BranchThickness:
+        Min: 2
+        Max: 2
+    SpreadCheckerData: 
+    InjectMods:
+    - Inject: 0
+      Modificator: {fileID: 3617095414675685908, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 0
+      Overrides:
+      - Name: Spawn Count Multiplier
+        v3Val: {x: 2.92, y: 0, z: 0}
+        str: 
+        mat: {fileID: 0}
+        gameObj: {fileID: 0}
+        helper: {x: 0, y: 0, z: 0}
+        ValueType: 1
+    - Inject: 0
+      Modificator: {fileID: -4385684009717301027, guid: 63d332db02a5b2443b49bca47d4f801a,
+        type: 2}
+      ModificatorsPack: {fileID: 0}
+      Call: 0
+      OverrideVariables: 1
+      Overrides:
+      - Name: Enemies Spacing
+        v3Val: {x: 0.65, y: 0, z: 0}
+        str: 
+        mat: {fileID: 0}
+        gameObj: {fileID: 0}
+        helper: {x: 0, y: 0, z: 0}
+        ValueType: 1
+    RestrictPosition: 0
+    DistanceToCheckerData: Start Area
+    DistanceMustBe: 1
+    DistanceUnits: 0
+    _editorAdvancedFoldout: 0
+  _EditorAdvancedBuildingFoldout: 0
+  NeightbourWallsCellsRestrictions:
+    UseRestrictSpawnForTags: 0
+    RestrictSpawnForTags: 
+    UsePresetsDefsByName: 
+    CustomDefinition:
+      Title: Instruction
+      InstructionType: 0
+      TargetModification: {fileID: 0}
+      Tags: 
+      InstructionArgument: 
+      extraMod: {fileID: 0}
+      extraPack: {fileID: 0}
+  CounterWallsCellsRestrictions:
+    UseRestrictSpawnForTags: 0
+    RestrictSpawnForTags: 
+    UsePresetsDefsByName: 
+    CustomDefinition:
+      Title: Instruction
+      InstructionType: 0
+      TargetModification: {fileID: 0}
+      Tags: 
+      InstructionArgument: 
+      extraMod: {fileID: 0}
+      extraPack: {fileID: 0}
+  OutsideWallsCellsRestrictions:
+    UseRestrictSpawnForTags: 0
+    RestrictSpawnForTags: 
+    UsePresetsDefsByName: 
+    CustomDefinition:
+      Title: Instruction
+      InstructionType: 0
+      TargetModification: {fileID: 0}
+      Tags: 
+      InstructionArgument: 
+      extraMod: {fileID: 0}
+      extraPack: {fileID: 0}
+  _editorFoldout: 1
+  _editorRootFoldout: 0
+  _editorSelected: 0

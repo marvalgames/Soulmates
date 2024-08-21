@@ -1,0 +1,757 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &808847135661647939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1841347467796634528}
+  - component: {fileID: 6465571130053353387}
+  m_Layer: 0
+  m_Name: Build Planner Executor - Multi Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1841347467796634528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808847135661647939}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5882726055400070300}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6465571130053353387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808847135661647939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf09ae0e4269ee47ad7dc215a34444a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuildPlannerPreset: {fileID: 11400000, guid: 9245593f743584649961534256ed5151, type: 2}
+  _plannerPrepare:
+    PlannerVariablesOverrides: []
+    FieldSetupCompositions:
+    - UseComposition: 1
+      Owner: {fileID: 6465571130053353387}
+      OverrideEnabled: 1
+      Prepared: 0
+      Setup: {fileID: 11400000, guid: 334cc18e038c4e24d9e6176d271aeb0f, type: 2}
+      Injections: []
+      GenType: 1
+      JustModPack: {fileID: 0}
+      JustMod: {fileID: 0}
+      OtherPlanner: {fileID: 0}
+      PrefabFieldHandler:
+        DefaultPrefab: {fileID: 0}
+        UniformCellSize: 1
+        CellSize: {x: 1, y: 1, z: 1}
+      subSetup: {fileID: 0}
+      FieldSetupVariablesOverrides:
+      - Name: FloorMat
+        v3Val: {x: 1, y: 0, z: 0}
+        colVal: {r: 0, g: 0, b: 0, a: 0}
+        str: 
+        mat: {fileID: 0}
+        gameObj: {fileID: 0}
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        unityObj: {fileID: 0}
+        helper: {x: 0, y: 0, z: 0}
+        additionalHelperRef: {fileID: 0}
+        ValueType: 3
+        helpForFieldCommand: 0
+        displayOnScene: 0
+        allowTransformFollow: 0
+        FloatSwitch: 0
+      FieldPackagesOverrides:
+      - ParentPack: {fileID: 4010537770972031752, guid: 334cc18e038c4e24d9e6176d271aeb0f,
+          type: 2}
+        SetEnabled: 1
+        PackVariablesOverrides: []
+        PackModsOverrides:
+        - ParentMod: {fileID: -5690952332803453791, guid: 334cc18e038c4e24d9e6176d271aeb0f,
+            type: 2}
+          SetEnabled: 1
+          OverridePrefabs:
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          OverrideStampSet: {fileID: 0}
+          OverrideMultiSet: {fileID: 0}
+        - ParentMod: {fileID: -3446306779585565179, guid: 334cc18e038c4e24d9e6176d271aeb0f,
+            type: 2}
+          SetEnabled: 1
+          OverridePrefabs:
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          OverrideStampSet: {fileID: 0}
+          OverrideMultiSet: {fileID: 0}
+      UtilityModsOverrides:
+      - ParentMod: {fileID: 4329741961383557463, guid: 334cc18e038c4e24d9e6176d271aeb0f,
+          type: 2}
+        SetEnabled: 1
+        OverridePrefabs: []
+        OverrideStampSet: {fileID: 0}
+        OverrideMultiSet: {fileID: 0}
+      - ParentMod: {fileID: -1559995209233648242, guid: 334cc18e038c4e24d9e6176d271aeb0f,
+          type: 2}
+        SetEnabled: 1
+        OverridePrefabs:
+        - Prefab: {fileID: 0}
+          MainCollider: {fileID: 0}
+          subID: 0
+          _refMesh: {fileID: 0}
+          _refCol: {fileID: 0}
+        OverrideStampSet: {fileID: 0}
+        OverrideMultiSet: {fileID: 0}
+      OverrideCellSize: 0
+      OverridingCellSize: {x: 1, y: 1, z: 1}
+      ParentFieldPlanner: {fileID: 7552163925009018565, guid: 9245593f743584649961534256ed5151,
+        type: 2}
+      PlannerVariablesOverrides: []
+      InitShapes:
+      - {fileID: 0}
+      Instances: 15
+    - UseComposition: 1
+      Owner: {fileID: 6465571130053353387}
+      OverrideEnabled: 1
+      Prepared: 0
+      Setup: {fileID: 11400000, guid: 7da3a591581d4094d9f08151f27371cd, type: 2}
+      Injections: []
+      GenType: 1
+      JustModPack: {fileID: 0}
+      JustMod: {fileID: 0}
+      OtherPlanner: {fileID: 0}
+      PrefabFieldHandler:
+        DefaultPrefab: {fileID: 0}
+        UniformCellSize: 1
+        CellSize: {x: 1, y: 1, z: 1}
+      subSetup: {fileID: 0}
+      FieldSetupVariablesOverrides:
+      - Name: Spawn Propability Multiplier
+        v3Val: {x: 1, y: 0, z: 0}
+        colVal: {r: 0, g: 0, b: 0, a: 0}
+        str: 
+        mat: {fileID: 0}
+        gameObj: {fileID: 0}
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        unityObj: {fileID: 0}
+        helper: {x: 0, y: 5, z: 0}
+        additionalHelperRef: {fileID: 0}
+        ValueType: 1
+        helpForFieldCommand: 0
+        displayOnScene: 0
+        allowTransformFollow: 0
+        FloatSwitch: 0
+      - Name: Spawn Count Multiplier
+        v3Val: {x: 1, y: 0, z: 0}
+        colVal: {r: 0, g: 0, b: 0, a: 0}
+        str: 
+        mat: {fileID: 0}
+        gameObj: {fileID: 0}
+        curve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        unityObj: {fileID: 0}
+        helper: {x: 0, y: 5, z: 0}
+        additionalHelperRef: {fileID: 0}
+        ValueType: 1
+        helpForFieldCommand: 0
+        displayOnScene: 0
+        allowTransformFollow: 0
+        FloatSwitch: 0
+      FieldPackagesOverrides:
+      - ParentPack: {fileID: 4010537770972031752, guid: 7da3a591581d4094d9f08151f27371cd,
+          type: 2}
+        SetEnabled: 1
+        PackVariablesOverrides: []
+        PackModsOverrides:
+        - ParentMod: {fileID: -7524087098481071771, guid: 7da3a591581d4094d9f08151f27371cd,
+            type: 2}
+          SetEnabled: 1
+          OverridePrefabs:
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          OverrideStampSet: {fileID: 0}
+          OverrideMultiSet: {fileID: 0}
+        - ParentMod: {fileID: -8417504216931457559, guid: 7da3a591581d4094d9f08151f27371cd,
+            type: 2}
+          SetEnabled: 1
+          OverridePrefabs:
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          OverrideStampSet: {fileID: 0}
+          OverrideMultiSet: {fileID: 0}
+        - ParentMod: {fileID: 7906467318267168703, guid: 7da3a591581d4094d9f08151f27371cd,
+            type: 2}
+          SetEnabled: 1
+          OverridePrefabs:
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          OverrideStampSet: {fileID: 0}
+          OverrideMultiSet: {fileID: 0}
+        - ParentMod: {fileID: -3817165452843619474, guid: 7da3a591581d4094d9f08151f27371cd,
+            type: 2}
+          SetEnabled: 1
+          OverridePrefabs:
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          OverrideStampSet: {fileID: 0}
+          OverrideMultiSet: {fileID: 0}
+        - ParentMod: {fileID: 8017177735639860324, guid: 7da3a591581d4094d9f08151f27371cd,
+            type: 2}
+          SetEnabled: 1
+          OverridePrefabs:
+          - Prefab: {fileID: 0}
+            MainCollider: {fileID: 0}
+            subID: 0
+            _refMesh: {fileID: 0}
+            _refCol: {fileID: 0}
+          OverrideStampSet: {fileID: 0}
+          OverrideMultiSet: {fileID: 0}
+      UtilityModsOverrides: []
+      OverrideCellSize: 0
+      OverridingCellSize: {x: 1, y: 1, z: 1}
+      ParentFieldPlanner: {fileID: -4160265220093370639, guid: 9245593f743584649961534256ed5151,
+        type: 2}
+      PlannerVariablesOverrides: []
+      InitShapes:
+      - {fileID: 0}
+      Instances: 1
+    UseDuplicatesOverrides: 0000
+    DuplicatesOverrides:
+    - DuplicatesCompositions:
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      - UseComposition: 0
+        Owner: {fileID: 0}
+        OverrideEnabled: 1
+        Prepared: 0
+        Setup: {fileID: 0}
+        Injections: []
+        GenType: 1
+        JustModPack: {fileID: 0}
+        JustMod: {fileID: 0}
+        OtherPlanner: {fileID: 0}
+        PrefabFieldHandler:
+          DefaultPrefab: {fileID: 0}
+          UniformCellSize: 1
+          CellSize: {x: 1, y: 1, z: 1}
+        subSetup: {fileID: 0}
+        FieldSetupVariablesOverrides: []
+        FieldPackagesOverrides: []
+        UtilityModsOverrides: []
+        OverrideCellSize: 0
+        OverridingCellSize: {x: 1, y: 1, z: 1}
+        ParentFieldPlanner: {fileID: 0}
+        PlannerVariablesOverrides: []
+        InitShapes: []
+        Instances: 1
+      DuplicatesShapes:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+    - DuplicatesCompositions: []
+      DuplicatesShapes: []
+  _generated: []
+  Async: 0
+  FlexibleGen: 0
+  Seed: -4223
+  RandomSeed: 1
+  GenerateOnStart: 1
+  RunAfterGenerating:
+    m_PersistentCalls:
+      m_Calls: []
+  _plannerDraftsDirectory: {fileID: 102900000, guid: 0cf7a9679140ae84aa29385d0e1d7373,
+    type: 3}
+  _Editor_SelectedSetup: 1
+  _Editor_PreviewingShape: 0
+  _Editor_drawInitShape: 1
+  _Editor_drawMainVariables: 1
+  _Editor_displaySetup: 1
+  _Editor_topInfoClicked: 0
+  generatedGenerators: []
+  generatedPainters: []
+  generatedFlexiblePainters: []
+--- !u!1001 &933241780845098227
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1841347467796634528}
+    m_Modifications:
+    - target: {fileID: 3971183448747002442, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_Name
+      value: Terrain Flattener
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca6711c8853a88e4bbef16d0de81977a, type: 3}
+--- !u!4 &5882726055400070300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6723925205327898735, guid: ca6711c8853a88e4bbef16d0de81977a,
+    type: 3}
+  m_PrefabInstance: {fileID: 933241780845098227}
+  m_PrefabAsset: {fileID: 0}

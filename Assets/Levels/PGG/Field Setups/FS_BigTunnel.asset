@@ -1,0 +1,3652 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8997882503578659075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Ceiling Column
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -5464410872580539516}
+    - {fileID: 4163979596673716149}
+    - {fileID: -845467580791192838}
+    - {fileID: -8584935463777677601}
+    - {fileID: -2664606855196803596}
+    - {fileID: -8997882503578659075}
+    - {fileID: 1182067048050777510}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellsLineLength: 4
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  ignoreAngled: 60
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-8830124786447288516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Col,CeilColumn
+  Distance: 2
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &-8666943821123702452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 12
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  ignoreAngled: 180
+  occupiedByTag: Cable
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-8662686139289832499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Cable
+  Distance: 3
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &-8584935463777677601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Ceiling Column
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -5464410872580539516}
+    - {fileID: 4163979596673716149}
+    - {fileID: -845467580791192838}
+    - {fileID: -8584935463777677601}
+    - {fileID: -2664606855196803596}
+    - {fileID: -8997882503578659075}
+    - {fileID: 1182067048050777510}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Col
+  Distance: 9
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &-8505377704858192029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Col,CeilColumn
+  Distance: 2
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 1
+--- !u!114 &-8017349237982423209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 8
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  ignoreAngled: 56
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-7887485941885660930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 226bc5f4badaab3438244b84b7cee058, type: 3}
+  m_Name: SR_Rotate-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CablesV1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -7785965269572656090}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 2
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetRotationFromTagged: 
+  CheckMode: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  RandomRotation: {x: 0, y: 0, z: 0}
+  MaxDegreesSteps: {x: 1, y: 1, z: 1}
+  LocalRotation: 0
+  OverrideRotation: 1
+--- !u!114 &-7790430398015059613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellsLineLength: 10
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  ignoreAngled: 180
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-7785965269572656090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Ceil
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 0.05, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: 0}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-7611084502657501262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Tunnel Random Ceiling
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Ceil
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 469318288030683148, guid: 91d52bb20a0c3ce429f5c1159253a975, type: 3}
+    subID: 0
+    _refMesh: {fileID: 8176839879346746156, guid: ae339ccb0e3c2ea438282e6a00fe9046,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 6112167103909673158, guid: e3d9a435b02bdf84db5c30e9c300221b,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 2861998355328068682, guid: 16d42f98b873f7b419e25f8bad8ccee2,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 6112167103909673158, guid: 824e4f82153d8b24e9e377ab09bee1bd,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -3459543454814255606, guid: c95046cd8bf17ed47b2ae2795ad96c4b,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 6112167103909673158, guid: f0e04ba6890727a4a83ec4dee3aca63e,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -2984211275242458028, guid: 9e68c9169b6533b4b87905a86b945ef9,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: CeilingV4Base
+    SpawnerTag: 
+    StampPrefabID: -1
+    Parent: {fileID: -7611084502657501262}
+    Rules:
+    - {fileID: -6815307751212038812}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -622841118348324811}
+--- !u!114 &-6815307751212038812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630e2a4943f49b40967499fb48c07ee, type: 3}
+  m_Name: SR_FloorPlacer-[Tunnel Random Ceiling]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingV4Base
+    SpawnerTag: 
+    StampPrefabID: -1
+    Parent: {fileID: -7611084502657501262}
+    Rules:
+    - {fileID: -6815307751212038812}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Mode: 0
+  AlignMode: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 4.45, z: 0}
+  OffsetMode: 0
+  RotateBy90Only: 0
+  V2: 0
+--- !u!114 &-6718656549506999086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630e2a4943f49b40967499fb48c07ee, type: 3}
+  m_Name: SR_FloorPlacer-[Tunnel Ceiling Columns](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Floor Side
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: -6718656549506999086}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Mode: 2
+  AlignMode: 1
+  YawOffset: -90
+  DirectOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  RotateBy90Only: 1
+  V2: 0
+--- !u!114 &-6182648336077538235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CablesV1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 2
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellsLineLength: 2
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  ignoreAngled: 180
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-5682086128913665000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630e2a4943f49b40967499fb48c07ee, type: 3}
+  m_Name: SR_FloorPlacer-[Tunnel Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Floor Inside
+    SpawnerTag: 
+    StampPrefabID: 3
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: -5682086128913665000}
+    - {fileID: -1421241306400659930}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Mode: 1
+  AlignMode: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  RotateBy90Only: 1
+  V2: 0
+--- !u!114 &-5464410872580539516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Ceiling Column
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -5464410872580539516}
+    - {fileID: 4163979596673716149}
+    - {fileID: -845467580791192838}
+    - {fileID: -8584935463777677601}
+    - {fileID: -2664606855196803596}
+    - {fileID: -8997882503578659075}
+    - {fileID: 1182067048050777510}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Tag: Wall
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-5420246265802609521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: PR_PipeV1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 365533460294220446}
+    Rules:
+    - {fileID: -5420246265802609521}
+    - {fileID: -2679094343778964939}
+    - {fileID: -4784920169135162924}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Pipe
+  Distance: 5
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &-4821082576602821365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 8
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  ignoreAngled: 56
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-4784920169135162924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: PR_PipeV1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 365533460294220446}
+    Rules:
+    - {fileID: -5420246265802609521}
+    - {fileID: -2679094343778964939}
+    - {fileID: -4784920169135162924}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Wall
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 3, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: 0.5}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0.5, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-4096349695173748248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc06111f4b99aed4e8f9721ea657c338, type: 3}
+  m_Name: SR_Separator-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 1
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Header: After Basic Checks
+  Info: 
+  TooltipText: 
+  Padding: 14
+  Height: 16
+  color: {r: 0, g: 0, b: 0, a: 1}
+  Style: 0
+--- !u!114 &-3863834527472693969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e735e11b729ebf4aa0216397033ddfe, type: 3}
+  m_Name: SR_Comment-[Tunnel Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Ceiling Column
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -5464410872580539516}
+    - {fileID: 4163979596673716149}
+    - {fileID: -845467580791192838}
+    - {fileID: -8584935463777677601}
+    - {fileID: -3863834527472693969}
+    - {fileID: -8997882503578659075}
+    - {fileID: 1182067048050777510}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Info: 'There must be more at least one wall in 4 cells range
+
+    But there can''t
+    be just 2 cells difference between this wall and other wall
+
+    Space between
+    tunnel walls will be from 3 to 4 cells
+
+    So enough space for this Column Object'
+  CommentInHeader: 0
+  Padding: {x: 8, y: 8}
+--- !u!114 &-3812772294382492180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Tag: Wall
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-3608926957330246094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Tag: Wall
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-3533411202116707876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e4d5aac49ca0345b5c3ac36491d897, type: 3}
+  m_Name: SR_WorldOffset-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingColumnV4
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -845467580791192838}
+    - {fileID: -8997882503578659075}
+    - {fileID: -8584935463777677601}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OverrideOffset: 1
+  Randomize: 0
+  GetOffsetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 4, z: 0}
+  OffsetMode: 0
+  RandomWorldOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &-3423755152549918900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630e2a4943f49b40967499fb48c07ee, type: 3}
+  m_Name: SR_FloorPlacer-[Tunnel Ceiling Columns](Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Corners Out
+    SpawnerTag: 
+    StampPrefabID: 2
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: -3423755152549918900}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Mode: 2
+  AlignMode: 4
+  YawOffset: -90
+  DirectOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  RotateBy90Only: 1
+  V2: 1
+--- !u!114 &-3100591617488386910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc06111f4b99aed4e8f9721ea657c338, type: 3}
+  m_Name: SR_Separator-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 1
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Header: If other cable in way
+  Info: If other cable in way (check cells in line) then disallow
+  TooltipText: 
+  Padding: 16
+  Height: 16
+  color: {r: 0, g: 0, b: 0, a: 1}
+  Style: 0
+--- !u!114 &-2801254198023267913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03b5214de61e0f44ac4b2db7cd5b16b, type: 3}
+  m_Name: SR_CablesSpawner-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckDistance: 15
+  CollisionOrigin: {x: 0, y: -0.3, z: 0}
+  IgnoreCollisionWith: 
+  IgnCollCheckMode: 0
+  AttachToTagged: Wall
+  CheckMode: 0
+  PutDataInCells: 
+  Direction: 1
+  SpawnDirection: {x: 0, y: 0, z: 1}
+  OptionalBranching:
+    randomBranching: 0
+    directions:
+    - {x: 1, y: 0, z: 0}
+    - {x: -1, y: 0, z: 0}
+    - {x: 0, y: 0, z: 1}
+    - {x: 0, y: 0, z: 1}
+    branchPer:
+      Min: 2
+      Max: 5
+  Debug: 0
+--- !u!114 &-2705802622210138269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[Tunnel Walls And Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: ColumnsIn
+    SpawnerTag: Col
+    StampPrefabID: 1
+    Parent: {fileID: 4593893961624427585}
+    Rules:
+    - {fileID: -2705802622210138269}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 3
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 0
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 0
+  DirectOffset: {x: -0.5, y: 0, z: -0.5}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &-2679094343778964939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Pipes]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: PR_PipeV1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 365533460294220446}
+    Rules:
+    - {fileID: -5420246265802609521}
+    - {fileID: -2679094343778964939}
+    - {fileID: -4784920169135162924}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Tag: Wall
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-2664606855196803596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc06111f4b99aed4e8f9721ea657c338, type: 3}
+  m_Name: SR_Separator-[Tunnel Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 1
+  OwnerSpawner:
+    Enabled: 1
+    Name: Ceiling Column
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -5464410872580539516}
+    - {fileID: 4163979596673716149}
+    - {fileID: -845467580791192838}
+    - {fileID: -8584935463777677601}
+    - {fileID: -2664606855196803596}
+    - {fileID: -8997882503578659075}
+    - {fileID: 1182067048050777510}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Header: Some Explanations
+  Info: 'There must be more at least one wall in 4 cells range
+
+    But there can''t
+    be just 2 cells difference between this wall and other wall
+
+    Space between
+    tunnel walls will be from 3 to 4 cells
+
+    So enough space for this Column Object'
+  TooltipText: 
+  Padding: 14
+  Height: 16
+  color: {r: 0, g: 0, b: 0, a: 1}
+  Style: 0
+--- !u!114 &-2572317628296084823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e735e11b729ebf4aa0216397033ddfe, type: 3}
+  m_Name: SR_Comment-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 1
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Info: Comment about spawner
+  CommentInHeader: 0
+  Padding: {x: 8, y: 8}
+--- !u!114 &-2191533761989272855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Ceil
+  CheckMode: 0
+  WorldOffset: {x: 0, y: -1.5, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0.88, y: 0, z: 0}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0.5, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-1852793366066976371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingColumnV4
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -845467580791192838}
+    - {fileID: -8997882503578659075}
+    - {fileID: -8584935463777677601}
+    - {fileID: -1852793366066976371}
+    - {fileID: -80344235999651167}
+    - {fileID: 8299962870247791260}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 4
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  ignoreAngled: 0
+  occupiedByTag: Floor
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 0
+    ru: 0
+    l: 0
+    m: 0
+    r: 1
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-1733951097095039631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: 180
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &-1471184750561268094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[FieldMod_Root]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Wall
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 4593893961624427585}
+    Rules:
+    - {fileID: -1471184750561268094}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Module: 0
+  CornerMode: 0
+  CornerMode45: 0
+  SpawnOnEachSide: 1
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 0
+  DirectOffset: {x: 0, y: 0, z: -1}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &-1421241306400659930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Tunnel Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 1
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Floor Inside
+    SpawnerTag: 
+    StampPrefabID: 3
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: -5682086128913665000}
+    - {fileID: -1421241306400659930}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: Floor
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-1231428452971453977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3401e8bda3cc91343b11bed2506f2b74, type: 3}
+  m_Name: SR_IfCellContainsTag-[Tunnel Floors]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: Fill Emptys
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: 2461020071304164963}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Tag: Floor
+  CheckMode: 0
+  UseRotationsCheck: 0
+  OnlyWithSameDirection: 0
+  CompareOffsetsAngle: 181
+--- !u!114 &-845467580791192838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Ceiling Column
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -5464410872580539516}
+    - {fileID: 4163979596673716149}
+    - {fileID: -845467580791192838}
+    - {fileID: -8584935463777677601}
+    - {fileID: -2664606855196803596}
+    - {fileID: -8997882503578659075}
+    - {fileID: 1182067048050777510}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: Wall
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 4, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: 4}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &-735650671838906704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 12
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  ignoreAngled: 180
+  occupiedByTag: Cable
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &-622841118348324811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f132315e3189e59479a1674dc7e52576, type: 3}
+  m_Name: Root
+  m_EditorClassIdentifier: 
+  FieldModificators:
+  - {fileID: 4593893961624427585}
+  - {fileID: 4888666427652057755}
+  - {fileID: -7611084502657501262}
+  - {fileID: 2879781930385072216}
+  - {fileID: 2980939320425620757}
+  - {fileID: 365533460294220446}
+  ParentPreset: {fileID: 11400000}
+  DisableWholePackage: 0
+  ModPackType: 0
+--- !u!114 &-80344235999651167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingColumnV4
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -845467580791192838}
+    - {fileID: -8997882503578659075}
+    - {fileID: -8584935463777677601}
+    - {fileID: -1852793366066976371}
+    - {fileID: -80344235999651167}
+    - {fileID: 8299962870247791260}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 3
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  ignoreAngled: 0
+  occupiedByTag: Floor
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6c361108247f045b5087f48c0c7951, type: 3}
+  m_Name: FS_BigTunnel
+  m_EditorClassIdentifier: 
+  CellSize: 2
+  NonUniformSize: 0
+  NonUniformCellSize: {x: 2, y: 2, z: 2}
+  InfoText: 'Example of tunnel with floors tiled aligned with walls
+
+    Minimum
+    3x3 cells grid count'
+  Variables:
+  - Name: Spawn Propability Multiplier
+    v3Val: {x: 1, y: 0, z: 0}
+    str: 
+    mat: {fileID: 0}
+    gameObj: {fileID: 0}
+    helper: {x: 0, y: 5, z: 0}
+    ValueType: 1
+  - Name: Spawn Count Multiplier
+    v3Val: {x: 1, y: 0, z: 0}
+    str: 
+    mat: {fileID: 0}
+    gameObj: {fileID: 0}
+    helper: {x: 0, y: 5, z: 0}
+    ValueType: 1
+  DoorsModificator: {fileID: 11400000, guid: 7500e28d48a8ac44da90dfc8719e91ef, type: 2}
+  EraseWallModificator: {fileID: 11400000, guid: c5bd286613ebcb24c932c8d5e7f79f9b,
+    type: 2}
+  CellsInstructions:
+  - Title: Door Hole
+    InstructionType: 1
+    TargetModification: {fileID: 11400000, guid: 7500e28d48a8ac44da90dfc8719e91ef,
+      type: 2}
+    Tags: Props
+    InstructionArgument: 
+  - Title: Clear Wall
+    InstructionType: 3
+    TargetModification: {fileID: 11400000, guid: c5bd286613ebcb24c932c8d5e7f79f9b,
+      type: 2}
+    Tags: 
+    InstructionArgument: 
+  RootPack: {fileID: -622841118348324811}
+  ModificatorPacks:
+  - {fileID: -622841118348324811}
+  Ignores: []
+  DontSpawnOn: 
+  disabledMods: []
+  AddReflectionProbes: 0
+  MainReflectionSettings: {fileID: 0}
+  AddMultipleProbes: 0
+  SmallerReflSettings: {fileID: 0}
+  MiniReflSettings: {fileID: 0}
+  SmallerReflLowerSpaceThan: 4
+  AddLightProbes: 0
+  ProbesPerCell: 1
+  TriggerColliderGeneration: 0
+  TriggerGenSettings:
+    ScaleupTriggers: 1
+    FillHeight: 1
+    MaxCellChecks: 10
+    JoinBounds: 1
+    GenerateRelations: 1
+    GroupUpToSize: 8
+    MaxGroupDistance: 8
+--- !u!114 &210718825694564071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Cable
+  Distance: 3
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &365533460294220446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Pipes
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Pipe
+  DrawMeshAndBox: 1
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 6096489025989877401, guid: 60903606896fc634198b34065d560d8f,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 0}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: PR_PipeV1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 365533460294220446}
+    Rules:
+    - {fileID: -5420246265802609521}
+    - {fileID: -2679094343778964939}
+    - {fileID: -4784920169135162924}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -622841118348324811}
+--- !u!114 &922910555057760998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a80a4eda1baa814cb0a342f0acfc697, type: 3}
+  m_Name: SR_LimitSpawnCount-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 0
+  Count:
+    Min: 1
+    Max: 1
+  CountMulVariable:
+    name: 
+  InheritFromCellsCount: 0
+  RoomCellsDivBy:
+    Min: 4
+    Max: 6
+--- !u!114 &1182067048050777510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Ceiling Column
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -5464410872580539516}
+    - {fileID: 4163979596673716149}
+    - {fileID: -845467580791192838}
+    - {fileID: -8584935463777677601}
+    - {fileID: -2664606855196803596}
+    - {fileID: -8997882503578659075}
+    - {fileID: 1182067048050777510}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CellsLineLength: 2
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 1
+  ignoreAngled: 60
+  occupiedByTag: Wall
+  CheckMode: 0
+  DirectCheck: 1
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &1767089326485178856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: WCable
+  Distance: 3
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &1885839802080683039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9327e64f60ac33a4fa5e7efebb9176fb, type: 3}
+  m_Name: SR_GetCoords-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CablesV1
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -8662686139289832499}
+    - {fileID: -7785965269572656090}
+    - {fileID: 4386135677469588101}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  GetFromTagged: 
+  CheckMode: 0
+  WorldOffset: {x: 0, y: 4.6, z: 0}
+  OffsetMode: 0
+  DirectionalOffset: {x: 0, y: 0, z: 0}
+  StackOffset: 0
+  RotationEulerOffset: {x: 0, y: 0, z: 0}
+  GetScale: 0
+  ScaleMultiplier: {x: 1, y: 1, z: 1}
+  RandomOffsets: {x: 0, y: 0, z: 0}
+  RandomLocalRotation: {x: 0, y: 0, z: 0}
+  RandomScale: {x: 0, y: 0, z: 0}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  MultiplyGetted: {x: 1, y: 1, z: 1}
+  DontSpawnIfNoTagged: 0
+  RemoveTagged: 0
+  GetRandomIfMulti: 0
+  HelperMode: 0
+  _DrawOffsets: 1
+  _DrawRandomization: 0
+  _DrawAdditionals: 0
+--- !u!114 &2461020071304164963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3630e2a4943f49b40967499fb48c07ee, type: 3}
+  m_Name: SR_FloorPlacer-[Tunnel Ceiling Columns](Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Fill Emptys
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: 2461020071304164963}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  Mode: 0
+  AlignMode: 4
+  YawOffset: -90
+  DirectOffset: {x: 0, y: 0, z: 0}
+  OffsetMode: 0
+  RotateBy90Only: 1
+  V2: 0
+--- !u!114 &2628242462993325292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc06111f4b99aed4e8f9721ea657c338, type: 3}
+  m_Name: SR_Separator-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 1
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Header: After Basic Checks
+  Info: 
+  TooltipText: 
+  Padding: 16
+  Height: 16
+  color: {r: 0, g: 0, b: 0, a: 1}
+  Style: 0
+--- !u!114 &2879781930385072216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Tunnel Ceiling Columns
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: CeilColumn
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 8695001495826724052, guid: 9fca3ad198c4ef54fbca96d80df9fea7,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 978658372443458115, guid: a0a9066c3f0190e4cb748a4bbc8a4b09,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Ceiling Column
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -5464410872580539516}
+    - {fileID: 4163979596673716149}
+    - {fileID: -845467580791192838}
+    - {fileID: -8584935463777677601}
+    - {fileID: -2664606855196803596}
+    - {fileID: -8997882503578659075}
+    - {fileID: 1182067048050777510}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -622841118348324811}
+--- !u!114 &2980939320425620757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Tunnel Ceil Cables
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Cable
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 3748969041389511513, guid: 5f89a4f4868454e4da9f65b9cb7580d2,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 6208516565950435952, guid: b2afb480314601046a4feadcd7948d18,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 0
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 0
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 1
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -622841118348324811}
+--- !u!114 &3611582136255999972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c360632d4510a074baef619f3210b541, type: 3}
+  m_Name: SR_CellNeightbours-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 0
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CheckedCellsMustBe: 2
+  NeightbourNeeds: 0
+  occupiedByTag: 
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 1
+    q3: 1
+    q4: 1
+  OverrideRotation: 1
+  initRotation: -90
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+  GetNeightbourPos: 0
+  GetNeightbourRot: 0
+  GetNeightbourScale: 0
+--- !u!114 &3803220346901316098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e62798003cfc4ba6de159ef003bf2, type: 3}
+  m_Name: SR_WallPlacer-[Tunnel Walls And Columns](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: ColumnsOut
+    SpawnerTag: Col
+    StampPrefabID: 1
+    Parent: {fileID: 4593893961624427585}
+    Rules:
+    - {fileID: 3803220346901316098}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Module: 3
+  CornerMode: 1
+  CornerMode45: 0
+  SpawnOnEachSide: 0
+  AutoRemoveOverlaps: 1
+  Padding: 0
+  YawOffset: 0
+  DirectOffset: {x: -1, y: 0, z: -1}
+  OffsetMode: 0
+  IgnoreOtherMods: 1
+--- !u!114 &4163979596673716149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: Ceiling Column
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -5464410872580539516}
+    - {fileID: 4163979596673716149}
+    - {fileID: -845467580791192838}
+    - {fileID: -8584935463777677601}
+    - {fileID: -2664606855196803596}
+    - {fileID: -8997882503578659075}
+    - {fileID: 1182067048050777510}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: CeilColumn
+  Distance: 5
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &4386135677469588101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03b5214de61e0f44ac4b2db7cd5b16b, type: 3}
+  m_Name: SR_CablesSpawner-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  CheckDistance: 15
+  CollisionOrigin: {x: 0, y: -0.3, z: 0}
+  IgnoreCollisionWith: 
+  IgnCollCheckMode: 0
+  AttachToTagged: Wall
+  CheckMode: 0
+  PutDataInCells: 
+  Direction: 1
+  SpawnDirection: {x: 0, y: 0, z: 1}
+  OptionalBranching:
+    randomBranching: 0
+    directions:
+    - {x: 1, y: 0, z: 0}
+    - {x: -1, y: 0, z: 0}
+    - {x: 0, y: 0, z: 1}
+    - {x: 0, y: 0, z: 1}
+    branchPer:
+      Min: 2
+      Max: 5
+  Debug: 0
+--- !u!114 &4593893961624427585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Tunnel Walls And Columns
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Wall
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 7205086448087738775, guid: 20d8d3a1ff1ea7b429f20e15ad7e3d19,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 647002685893807706, guid: 6bb91447d6b76564aa79937bbe68ae33,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 6914705821918497986, guid: 4f106c3e094abfc4fb3cb7bc3f64091d,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -6275207490374051941, guid: f70bb4b51811f0745b025d8583452c95,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Wall
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 4593893961624427585}
+    Rules:
+    - {fileID: -1471184750561268094}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: ColumnsIn
+    SpawnerTag: Col
+    StampPrefabID: 1
+    Parent: {fileID: 4593893961624427585}
+    Rules:
+    - {fileID: -2705802622210138269}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: ColumnsOut
+    SpawnerTag: Col
+    StampPrefabID: 1
+    Parent: {fileID: 4593893961624427585}
+    Rules:
+    - {fileID: 3803220346901316098}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 0
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -622841118348324811}
+--- !u!114 &4888666427652057755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671fd9c659a53a04eb310656f11c9125, type: 3}
+  m_Name: Tunnel Floors
+  m_EditorClassIdentifier: 
+  TemporaryContainer: {fileID: 0}
+  Enabled: 1
+  ModTag: Floor
+  DrawMeshAndBox: 0
+  RunEmittersIfContains: 0
+  DrawSetupFor: 0
+  OStamp: {fileID: 0}
+  DrawObjectStamps: 1
+  OMultiStamp: {fileID: 0}
+  PrefabsList:
+  - Prefab: {fileID: 7249585297981636662, guid: ac951ecad374fab45933f90855f6ff83,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 4012410667830348366, guid: b04adc8f586d6284ca16d55634358ff7,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 4445082087911688396, guid: 0b35fda166fa802478e6b72d6344321d,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 6489756058277253690, guid: b2abbaf330b180e48a761a0213045365,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 3875867448489591348, guid: 63779ed66f55fa949bb79005f912a28b,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: -1615731243845539828, guid: c643853b618ef5a41890b6f0d6e4b361,
+      type: 3}
+    _refCol: {fileID: 0}
+  - Prefab: {fileID: 7249585297981636662, guid: 7be00035d717347469b107acb7ceeb93,
+      type: 3}
+    subID: 0
+    _refMesh: {fileID: 4012410667830348366, guid: b04adc8f586d6284ca16d55634358ff7,
+      type: 3}
+    _refCol: {fileID: 0}
+  DrawMultiObjectStamps: 1
+  Spawners:
+  - Enabled: 1
+    Name: Floor Inside
+    SpawnerTag: 
+    StampPrefabID: 3
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: -5682086128913665000}
+    - {fileID: -1421241306400659930}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 0
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: Floor Side
+    SpawnerTag: 
+    StampPrefabID: 1
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: -6718656549506999086}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: Corners Out
+    SpawnerTag: 
+    StampPrefabID: 2
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: -3423755152549918900}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  - Enabled: 1
+    Name: Fill Emptys
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 4888666427652057755}
+    Rules:
+    - {fileID: 2461020071304164963}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  VariantOf: {fileID: 0}
+  _editor_drawStamp: 1
+  _editor_drawSpawners: 1
+  _editor_shareSelected: 3
+  ParentPreset: {fileID: 11400000}
+  ParentPack: {fileID: -622841118348324811}
+--- !u!114 &6665741381930249319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094c68a3bf2d9a349851f593cd6a24eb, type: 3}
+  m_Name: SR_CellDistance-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  OffsetCellMode: 0
+  OffsetCell: {x: 0, y: 0, z: 0}
+  DistanceMustBe: 1
+  DistanceToTagged: Col,CeilColumn
+  Distance: 2
+  DistanceMulVariable:
+    name: 
+  CheckMode: 0
+  MeasureIn: 0
+--- !u!114 &7924544281546752235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a80a4eda1baa814cb0a342f0acfc697, type: 3}
+  m_Name: SR_LimitSpawnCount-[Tunnel Ceil Cables](Clone)
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 0
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: WallCables
+    SpawnerTag: WCable
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3812772294382492180}
+    - {fileID: -2191533761989272855}
+    - {fileID: 3611582136255999972}
+    - {fileID: -8830124786447288516}
+    - {fileID: 1767089326485178856}
+    - {fileID: -2801254198023267913}
+    - {fileID: -7790430398015059613}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 0
+  Count:
+    Min: 1
+    Max: 1
+  CountMulVariable:
+    name: 
+  InheritFromCellsCount: 0
+  RoomCellsDivBy:
+    Min: 4
+    Max: 6
+--- !u!114 &8299962870247791260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683dcd097c9d8864084621fabdf01497, type: 3}
+  m_Name: SR_CheckCellsInLine-[Tunnerl Ceiling Columns]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 1
+  Global: 0
+  Enabled: 1
+  Ignore: 0
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingColumnV4
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2879781930385072216}
+    Rules:
+    - {fileID: -845467580791192838}
+    - {fileID: -8997882503578659075}
+    - {fileID: -8584935463777677601}
+    - {fileID: -1852793366066976371}
+    - {fileID: -80344235999651167}
+    - {fileID: 8299962870247791260}
+    Mode: 3
+    CellCheckMode: 0
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 0
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 1
+  AllConditionsMet: 1
+  CellsLineLength: 5
+  CheckedCellsMustBe: 1
+  NeightbourNeeds: 0
+  ignoreAngled: 0
+  occupiedByTag: Floor
+  CheckMode: 0
+  DirectCheck: 0
+  OffsetOrigin: {x: 0, y: 0, z: 0}
+  placement:
+    lu: 0
+    u: 1
+    ru: 0
+    l: 0
+    m: 0
+    r: 0
+    ld: 0
+    d: 0
+    rd: 0
+  quartRotor:
+    q1: 1
+    q2: 0
+    q3: 0
+    q4: 0
+  OverrideRotation: 0
+  initRotation: 0
+  rotorEff: 90
+  spawnOn: 5
+  EachRotor: 0
+  CustomRotors:
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!114 &8563347668854968707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc06111f4b99aed4e8f9721ea657c338, type: 3}
+  m_Name: SR_Separator-[Tunnel Ceil Cables]
+  m_EditorClassIdentifier: 
+  Logic: 0
+  Negate: 0
+  Global: 0
+  Enabled: 1
+  Ignore: 1
+  OwnerSpawner:
+    Enabled: 1
+    Name: CeilingCables
+    SpawnerTag: 
+    StampPrefabID: 0
+    Parent: {fileID: 2980939320425620757}
+    Rules:
+    - {fileID: -3608926957330246094}
+    - {fileID: 922910555057760998}
+    - {fileID: -8662686139289832499}
+    - {fileID: -8505377704858192029}
+    - {fileID: 2628242462993325292}
+    - {fileID: -7785965269572656090}
+    - {fileID: -1733951097095039631}
+    - {fileID: -8017349237982423209}
+    - {fileID: 4386135677469588101}
+    - {fileID: 8563347668854968707}
+    - {fileID: -8666943821123702452}
+    Mode: 3
+    CellCheckMode: 5
+    GridScaling: 0
+    OnScalledGrid: 1
+    Repeat: 1
+    MultipleToSpawn: 0
+    ScaleAccess: 1
+    DisplayPreviewGUI: 1
+    IsSubSpawner: 0
+  CellAllow: 0
+  AllConditionsMet: 1
+  Header: If other cable in way
+  Info: If other cable in way (check cells in line) then disallow
+  TooltipText: 
+  Padding: 14
+  Height: 16
+  color: {r: 0, g: 0, b: 0, a: 1}
+  Style: 0

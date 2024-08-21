@@ -1,0 +1,412 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2241982233631694777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2241982233631694776}
+  - component: {fileID: 2241982233631694778}
+  - component: {fileID: 2241982233631694779}
+  m_Layer: 0
+  m_Name: vfx_LootDrop02_lvl5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2241982233631694776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241982233631694777}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.209032, y: -3.8390346, z: 0.9884968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8657142904594167514}
+  - {fileID: 2241982233857195736}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2241982233631694778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241982233631694777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c00d148abad3aa4eb087c4728349dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootObject: {fileID: 2241982233857195737}
+  lootVFX: {fileID: 4007423973860450055}
+--- !u!65 &2241982233631694779
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241982233631694777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 1.3, z: 0}
+--- !u!1 &2241982233857195737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2241982233857195736}
+  - component: {fileID: 2241982233857195717}
+  - component: {fileID: 2241982233857195738}
+  m_Layer: 0
+  m_Name: LootObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2241982233857195736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241982233857195737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2241982233631694776}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2241982233857195717
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241982233857195737}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2241982233857195738
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241982233857195737}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 359566d41e90b3e4bb631ea802384a0e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8200242641278375374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8657142904594167514}
+  - component: {fileID: 4007423973860450055}
+  - component: {fileID: 6945809971176789422}
+  m_Layer: 0
+  m_Name: vfxgraph_LootDrop01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8657142904594167514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8200242641278375374}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_Children: []
+  m_Father: {fileID: 2241982233631694776}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!2083052967 &4007423973860450055
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8200242641278375374}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: f72b49844b3860c49a84722f2a664a39, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 2
+        m_Name: FlareRate
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: FlareVerticalRate
+        m_Overridden: 1
+      - m_Value: 2
+        m_Name: FlareVerticalPos
+        m_Overridden: 1
+      - m_Value: 125
+        m_Name: ParticlesFloatingRate
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: BaseMeshRotationSpeed
+        m_Overridden: 1
+      - m_Value: 2
+        m_Name: BaseMeshRate_
+        m_Overridden: 1
+      - m_Value: 1.5
+        m_Name: BaseMeshLifetime_
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: BaseMeshSize
+        m_Overridden: 1
+      - m_Value: 0.26
+        m_Name: ParticlesFloatingUpVelocity
+        m_Overridden: 1
+      - m_Value: 2
+        m_Name: VerticalMeshRate
+        m_Overridden: 1
+      - m_Value: 0.4
+        m_Name: VerticalMeshRotationSpeed
+        m_Overridden: 1
+      - m_Value: 0.62
+        m_Name: ParticlesFloatingSize
+        m_Overridden: 1
+      - m_Value: 5
+        m_Name: SphereRate
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: SphereLifetime
+        m_Overridden: 1
+      - m_Value: 1.2
+        m_Name: SphereRotationSpeed
+        m_Overridden: 1
+      - m_Value: 1.65
+        m_Name: SphereSize
+        m_Overridden: 1
+      - m_Value: 8
+        m_Name: GlowSize
+        m_Overridden: 1
+      - m_Value: 15
+        m_Name: FlashGlowSize
+        m_Overridden: 1
+      - m_Value: 8
+        m_Name: FlashSize
+        m_Overridden: 1
+      - m_Value: 1.2
+        m_Name: ParticlesLifetime
+        m_Overridden: 1
+      - m_Value: 50
+        m_Name: ParticlesRate
+        m_Overridden: 1
+      - m_Value: 0.9
+        m_Name: ParticlesSize
+        m_Overridden: 1
+      - m_Value: 15
+        m_Name: GroundMarkSize
+        m_Overridden: 1
+      - m_Value: 9
+        m_Name: BaseGlowSize
+        m_Overridden: 1
+      - m_Value: 0.4
+        m_Name: BaseMeshLifetime
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array: []
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 0.23, y: 4, z: 1}
+        m_Name: FlareVerticalScale
+        m_Overridden: 1
+      - m_Value: {x: 2, y: 0.35, z: 1}
+        m_Name: FlareScale
+        m_Overridden: 1
+      - m_Value: {x: 0.85, y: 0.85, z: 1.1}
+        m_Name: BesMeshScale
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1.4}
+        m_Name: VerticalMeshScale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 1, z: 0}
+        m_Name: VerticalMeshPos
+        m_Overridden: 1
+      - m_Value: {x: 0.8, y: 0.8, z: 0.4}
+        m_Name: BaseMeshScale
+        m_Overridden: 1
+    m_Vector4f:
+      m_Array:
+      - m_Value: {x: 0.11764707, y: 0.24857377, z: 0.7490196, w: 1}
+        m_Name: Color01
+        m_Overridden: 1
+      - m_Value: {x: 0.3438479, y: 0.8626657, z: 2.1185474, w: 1}
+        m_Name: Color02
+        m_Overridden: 1
+      - m_Value: {x: 0.546, y: 0.20010471, z: 0.08575917, w: 1}
+        m_Name: BaseMeshColor
+        m_Overridden: 1
+      - m_Value: {x: 0.7490196, y: 0.27450982, z: 0.11764706, w: 1}
+        m_Name: GroundMarkColor
+        m_Overridden: 1
+      - m_Value: {x: 0.7490196, y: 0.27450982, z: 0.11764706, w: 1}
+        m_Name: FlashColor
+        m_Overridden: 1
+      - m_Value: {x: 2.1185474, y: 0.73459333, z: 0.3438479, w: 1}
+        m_Name: ParticlesColor
+        m_Overridden: 1
+      - m_Value: {x: 0.355, y: 0.1301047, z: 0.055759165, w: 1}
+        m_Name: GlowColor
+        m_Overridden: 1
+      - m_Value: {x: 0.7490196, y: 0.27450982, z: 0.11764706, w: 1}
+        m_Name: FlareColor
+        m_Overridden: 1
+      - m_Value: {x: 2.1185474, y: 0.73459333, z: 0.3438479, w: 1}
+        m_Name: ParticlesFloatingColor
+        m_Overridden: 1
+      - m_Value: {x: 0.496, y: 0.18178011, z: 0.07790577, w: 1}
+        m_Name: VerticalMeshColor
+        m_Overridden: 1
+      - m_Value: {x: 0.617, y: 0.22612566, z: 0.096911, w: 1}
+        m_Name: SphereMeshColor
+        m_Overridden: 1
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array: []
+    m_NamedObject:
+      m_Array:
+      - m_Value: {fileID: 2800000, guid: 77eb88acb6695504887aebd7f4dd80cf, type: 3}
+        m_Name: BaseMeshTexture
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: 13bb7dd120b5c83449c4b7f5977d92b1, type: 3}
+        m_Name: VerticalMeshTexture
+        m_Overridden: 1
+      - m_Value: {fileID: -6318132793638185888, guid: 4a2a8e0b2e95c3e469dc22bf1284b49c,
+          type: 3}
+        m_Name: VerticalMesh02
+        m_Overridden: 0
+      - m_Value: {fileID: -6318132793638185888, guid: 4a2a8e0b2e95c3e469dc22bf1284b49c,
+          type: 3}
+        m_Name: VerticalMesh
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: 13bb7dd120b5c83449c4b7f5977d92b1, type: 3}
+        m_Name: SphereMeshTexture
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: e2cbfd30d4b935244830c12e414cd7c3, type: 3}
+        m_Name: FlashTexture
+        m_Overridden: 1
+    m_Bool:
+      m_Array: []
+--- !u!73398921 &6945809971176789422
+VFXRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8200242641278375374}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0

@@ -1,0 +1,400 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1161688284568772090
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161688284568772091}
+  - component: {fileID: 1161688284568772093}
+  - component: {fileID: 1161688284568772092}
+  m_Layer: 0
+  m_Name: vfxgraph_MeteorRain_v1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161688284568772091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161688284568772090}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1161688286344456624}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!2083052967 &1161688284568772093
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161688284568772090}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: b4063bba6a10f89468760fb64683c1dc, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array:
+      - m_Value: 20
+        m_Name: Rate
+        m_Overridden: 1
+      - m_Value: 6
+        m_Name: MeteorLifetime
+        m_Overridden: 1
+      - m_Value: 3
+        m_Name: MeteorSize
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: TrailLifetime
+        m_Overridden: 1
+      - m_Value: 10
+        m_Name: SmokeCount
+        m_Overridden: 1
+      - m_Value: 17
+        m_Name: SparksCount
+        m_Overridden: 1
+      - m_Value: 0.9
+        m_Name: SparksLifetime
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: SparksSize
+        m_Overridden: 1
+      - m_Value: 0.8
+        m_Name: SmokeLifetime
+        m_Overridden: 1
+      - m_Value: 0.3
+        m_Name: TrailSize
+        m_Overridden: 1
+      - m_Value: 20
+        m_Name: Radius
+        m_Overridden: 1
+      - m_Value: 2.5
+        m_Name: SmokeSize
+        m_Overridden: 1
+      - m_Value: 3
+        m_Name: ImpactSize
+        m_Overridden: 1
+      - m_Value: 6
+        m_Name: Lifetime
+        m_Overridden: 1
+      - m_Value: 0.3
+        m_Name: TrailBackSize
+        m_Overridden: 1
+      - m_Value: 0.15
+        m_Name: TrailFrontSize
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: TrailBackLifetime
+        m_Overridden: 1
+      - m_Value: 0.3
+        m_Name: TrailFrontLifetime
+        m_Overridden: 1
+    m_Vector2f:
+      m_Array: []
+    m_Vector3f:
+      m_Array:
+      - m_Value: {x: 0, y: 15, z: 0}
+        m_Name: InitialPosition
+        m_Overridden: 1
+      - m_Value: {x: 0, y: -35, z: 15}
+        m_Name: Direction
+        m_Overridden: 1
+    m_Vector4f:
+      m_Array: []
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0.24427213
+            outSlope: 0.24427213
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.9972413
+            value: 0.004716981
+            inSlope: 0.06576568
+            outSlope: 0.06576568
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: TrailsCurve
+        m_Overridden: 1
+    m_Gradient:
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0, g: 71.228, b: 766.9961, a: 0.9577465}
+          key1: {r: 0, g: 30.742409, b: 102.755714, a: 0}
+          key2: {r: 0, g: 0.70828617, b: 4.6876163, a: 0}
+          key3: {r: 0.8119249, g: 0.079243466, b: 0.034468494, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 1735
+          ctime1: 10601
+          ctime2: 28334
+          ctime3: 47609
+          ctime4: 59753
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 50886
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 5
+          m_NumAlphaKeys: 2
+        m_Name: SparksGradient
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.06724866, g: 0.2274224, b: 6.4222345, a: 1}
+          key1: {r: 0, g: 1.487475, b: 14.754423, a: 0.9577465}
+          key2: {r: 0.057977173, g: 0.44187537, b: 1.2304052, a: 0.08627451}
+          key3: {r: 0.0039215707, g: 0.08574839, b: 0.16862746, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 578
+          ctime1: 6554
+          ctime2: 12722
+          ctime3: 24287
+          ctime4: 34695
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 45104
+          atime2: 65535
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 5
+          m_NumAlphaKeys: 3
+        m_Name: ImpactGradient
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0.035294108, g: 0.13434544, b: 0.8117647, a: 0}
+          key1: {r: 0.020135995, g: 0.007843133, b: 0.14117648, a: 1}
+          key2: {r: 0, g: 0, b: 0, a: 0.3882353}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 3662
+          ctime1: 13493
+          ctime2: 65535
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 5975
+          atime2: 50886
+          atime3: 65535
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 4
+        m_Name: TrailBackGradient
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 0, g: 116.95568, b: 766.9961, a: 0}
+          key1: {r: 0, g: 1.370852, b: 19.468573, a: 1}
+          key2: {r: 1.6486092, g: 0, b: 4.687616, a: 0.23137255}
+          key3: {r: 0.8117647, g: 0.035294108, b: 0.35975385, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 1735
+          ctime1: 11758
+          ctime2: 22745
+          ctime3: 42983
+          ctime4: 65535
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 5975
+          atime2: 50886
+          atime3: 65535
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 5
+          m_NumAlphaKeys: 4
+        m_Name: TrailFrontGradient
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 1.3904687, g: 6.6644883, b: 31.980791, a: 0}
+          key1: {r: 0.007843133, g: 0.03295783, b: 0.14117648, a: 1}
+          key2: {r: 0, g: 0, b: 0, a: 0.61960787}
+          key3: {r: 0, g: 0, b: 0, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 7903
+          ctime1: 28527
+          ctime2: 65535
+          ctime3: 0
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 12914
+          atime2: 43562
+          atime3: 65535
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 3
+          m_NumAlphaKeys: 4
+        m_Name: SmokeGradient
+        m_Overridden: 1
+    m_NamedObject:
+      m_Array:
+      - m_Value: {fileID: 2800000, guid: ce30310e8e93a8341bad703d0ba11763, type: 3}
+        m_Name: TrailTexture
+        m_Overridden: 1
+      - m_Value: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Name: ImpactTexture
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: ce30310e8e93a8341bad703d0ba11763, type: 3}
+        m_Name: TrailBackTexture
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: ce30310e8e93a8341bad703d0ba11763, type: 3}
+        m_Name: TrailFrontTexture
+        m_Overridden: 1
+    m_Bool:
+      m_Array: []
+--- !u!73398921 &1161688284568772092
+VFXRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161688284568772090}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &1161688286344456639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161688286344456624}
+  m_Layer: 0
+  m_Name: vfx_MeteorRain_v3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161688286344456624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161688286344456639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1161688284568772091}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
