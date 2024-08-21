@@ -1,0 +1,123 @@
+// Hi, this is a documentation heavy shader that doesn't do a lot except show
+// you how everyting works.
+
+
+BEGIN_OPTIONS
+   ShaderName "Hidden/MicroVerse/DemoWater"
+   Tessellation "Edge"
+   //GrabPass { "_Grab" }
+   Alpha "Blend"
+END_OPTIONS
+
+BEGIN_PROPERTIES
+	_ShallowColor("Shallow", Color) = (0.3, 0.8, 1, 0.7)
+	_DepthColor("Deep", Color) = (0.1, 0.4, 1, 0.8)
+	_MaxDepth("Maximum Depth", Float) = 1
+	_FoamColor("Foam Color", Color) = (1,1,1,1)
+END_PROPERTIES
+
+
+BEGIN_CBUFFER
+	half4 _ShallowColor;
+	half4 _DepthColor;
+	float _MaxDepth;
+	half4 _FoamColor;
+END_CBUFFER
+
+
+
+// All code goes here
+BEGIN_CODE
+
+	float3 GerstnerWave(float3 position, float steepness, float wavelength, float speed, float direction, inout float3 tangent, inout float3 binormal)
+	{
+		direction = direction * 2 - 1;
+		float2 d = normalize(float2(cos(3.14 * direction), sin(3.14 * direction)));
+		float k = 2 * 3.14 / wavelength;                                           
+		float f = k * (dot(d, position.xz) - speed * _Time.y);
+		float a = steepness / k;
+
+		tangent += float3(
+		-d.x * d.x * (steepness * sin(f)),
+		d.x * (steepness * cos(f)),
+		-d.x * d.y * (steepness * sin(f))
+		);
+
+		binormal += float3(
+		-d.x * d.y * (steepness * sin(f)),
+		d.y * (steepness * cos(f)),
+		-d.y * d.y * (steepness * sin(f))
+		);
+
+		return float3(
+		d.x * (a * cos(f)),
+		a * sin(f),
+		d.y * (a * cos(f))
+		);
+	}
+
+	float3 GerstnerWaves(float3 position, float steepness, float wavelength, float speed, float4 directions, out float3 offset)
+	{
+		offset = 0;
+		float3 tangent = float3(1, 0, 0);
+		float3 binormal = float3(0, 0, 1);
+
+		offset += GerstnerWave(position, steepness, wavelength, speed, directions.x, tangent, binormal);
+		offset += GerstnerWave(position, steepness, wavelength, speed, directions.y, tangent, binormal);
+		offset += GerstnerWave(position, steepness, wavelength, speed, directions.z, tangent, binormal);
+		offset += GerstnerWave(position, steepness, wavelength, speed, directions.w, tangent, binormal);
+
+		return normalize(cross(binormal, tangent));
+	}
+
+	float3 DoGerstner(float3 worldSpacePosition, out float3 offset)
+	{
+		half3 norm = GerstnerWaves(worldSpacePosition, 0.03,  2, 2, float4(0.11, 0.15, 0.17, 0.21), offset);
+		return norm;
+	}
+
+	void ModifyTessellatedVertex(inout VertexData v, inout ExtraV2F d)
+    {
+		float3 offset;
+		DoGerstner(v.vertex.xyz, offset);
+		v.vertex.y += offset.y;
+    }
+
+    float3 GetTessFactors ()
+    {
+        return float3(50, 0, 24);
+    }
+
+
+	void SurfaceFunction(inout Surface o, ShaderData d)
+	{
+		float3 offset;
+		float3 norm = DoGerstner(d.worldSpacePosition, offset).xzy;
+		float eyeDepth = GetLinearEyeDepth(d.screenUV );
+		float dif = eyeDepth - d.screenPos.w;
+		float dif01 = saturate(dif / _MaxDepth);
+		dif01 *= dif01;
+		float camDist = distance(GetCameraWorldPosition(), d.worldSpacePosition);
+		norm = lerp(norm, float3(0,0,1), saturate((camDist-20)/100));
+		float fresnel = pow((1.0 - saturate(dot(normalize(d.worldSpaceNormal), normalize(d.worldSpaceViewDir)))), 4);
+
+
+		half4 waterColor = lerp(_ShallowColor, _DepthColor, dif01);
+		//waterColor.rgb = lerp(waterColor.rgb, GetSceneColor(d.screenUV + norm.xy * 0.15 * (dif01)), (1-dif01) * 0.5);
+		float foamEdge = (1 - saturate(dif));
+
+		waterColor.rgb += foamEdge * _FoamColor.rgb * 2;
+
+		
+		
+		o.Normal = norm;
+		o.Smoothness = 1.0 - fresnel;
+		o.Albedo = waterColor.rgb;
+		o.Alpha = saturate((waterColor.a - foamEdge));
+		o.Metallic = fresnel;
+	}
+
+
+
+END_CODE
+

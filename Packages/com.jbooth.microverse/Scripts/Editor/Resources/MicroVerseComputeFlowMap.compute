@@ -1,0 +1,148 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSComputeOutflow
+#pragma kernel CSUpdateWater
+#pragma kernel CSVelocityField
+
+
+Texture2D<float> _HeightMap;
+
+RWTexture2D<float4> _OutFlow;
+RWTexture2D<float> _WaterMap;
+RWTexture2D<float> _VelocityMap;
+SamplerState shared_linear_clamp;
+
+
+int _Width;
+int _Height;
+
+#define TIME 0.2
+#define LEFT 0
+#define RIGHT 1
+#define BOTTOM 2
+#define TOP 3
+
+float UnpackHeightmap(float4 height)
+{
+    #if (API_HAS_GUARANTEED_R16_SUPPORT)
+        return height.r;
+    #else
+        return (height.r + height.g * 256.0f) / 257.0f; // (255.0f * height.r + 255.0f * 256.0f * height.g) / 65535.0f
+    #endif
+}
+
+groupshared float waterData[16][16];
+
+[numthreads(16,16,1)]
+void CSComputeOutflow (
+   uint3 groupThreadID : SV_GroupThreadID, 
+   uint3 id : SV_DispatchThreadID) 
+
+{
+    uint x = id.x;
+    uint y = id.y;
+    uint width = _Width;
+    uint height = _Height;
+
+    uint xn1 = (x == 0) ? 0 : x - 1;
+    uint xp1 = (x == width - 1) ? width - 1 : x + 1;
+    uint yn1 = (y == 0) ? 0 : y - 1;
+    uint yp1 = (y == height - 1) ? height - 1 : y + 1;
+
+    uint wm1 = _Width-1;
+    uint hm1 = _Height-1;
+
+    float waterHt = _WaterMap[int2(x, y)].r;
+    
+    waterData[groupThreadID.x][groupThreadID.y] = waterHt;
+
+    GroupMemoryBarrierWithGroupSync();
+
+    float waterHts0 = waterData[groupThreadID.x-1][groupThreadID.y];
+    float waterHts1 = waterData[groupThreadID.x+1][groupThreadID.y];
+    float waterHts2 = waterData[groupThreadID.x][groupThreadID.y-1];
+    float waterHts3 = waterData[groupThreadID.x][groupThreadID.y+1];
+
+
+    float landHt = UnpackHeightmap(_HeightMap.SampleLevel(shared_linear_clamp, float2((float)x/wm1, (float)y/hm1), 0));
+    float landHts0 = UnpackHeightmap(_HeightMap.SampleLevel(shared_linear_clamp, float2((float)xn1/wm1, (float)y/hm1), 0));
+    float landHts1 = UnpackHeightmap(_HeightMap.SampleLevel(shared_linear_clamp, float2((float)xp1/wm1, (float)y/hm1), 0));
+    float landHts2 = UnpackHeightmap(_HeightMap.SampleLevel(shared_linear_clamp, float2((float)x/wm1, (float)yn1/hm1), 0));
+    float landHts3 = UnpackHeightmap(_HeightMap.SampleLevel(shared_linear_clamp, float2((float)x/wm1, (float)yp1/hm1), 0));
+
+
+    float diff0 = (waterHt + landHt) - (waterHts0 + landHts0);
+    float diff1 = (waterHt + landHt) - (waterHts1 + landHts1);
+    float diff2 = (waterHt + landHt) - (waterHts2 + landHts2);
+    float diff3 = (waterHt + landHt) - (waterHts3 + landHts3);
+
+    //out flow is previous flow plus flow for this time step.
+    float4 oldFlow = _OutFlow[int2(x, y)];
+    float flow0 = max(0, oldFlow.x + diff0);
+    float flow1 = max(0, oldFlow.y + diff1);
+    float flow2 = max(0, oldFlow.z + diff2);
+    float flow3 = max(0, oldFlow.w + diff3);
+
+    float sum = flow0 + flow1 + flow2 + flow3;
+
+    if (sum > 0.0f)
+    {
+        //If the sum of the outflow flux exceeds the amount in the cell
+        //flow value will be scaled down by a factor K to avoid negative update.
+
+        float K = waterHt / (sum * TIME);
+        K = saturate(K);
+        _OutFlow[id.xy] = float4(flow0 * K, flow1 * K, flow2 * K, flow3 * K);
+    }
+    else
+    {
+        _OutFlow[id.xy] = 0.0f;
+    }
+
+}
+
+[numthreads(16,16,1)]
+void CSUpdateWater (uint3 id : SV_DispatchThreadID)
+{
+    int x = id.x;
+    int y = id.y;
+    float4 outFlow = _OutFlow.Load(int2(x, y));
+
+    float flowOUT = outFlow.r + outFlow.g + outFlow.b + outFlow.a;
+    float flowIN = 0.0f;
+
+    //Flow in is inflow from neighour cells. Note for the cell on the left you need 
+    //thats cells flow to the right (ie it flows into this cell)
+    
+    flowIN += (x == 0) ? 0.0 : (_OutFlow[int2(x - 1, y)]).y;
+    flowIN += (x == _Width - 1) ? 0.0 : _OutFlow[int2(x + 1, y)].x;
+    flowIN += (y == 0) ? 0.0 : _OutFlow[int2(x, y - 1)].w;
+    flowIN += (y == _Height - 1) ? 0.0 : _OutFlow[int2(x, y + 1)].z;
+
+    float ht = _WaterMap[int2(x, y)].r + (flowIN - flowOUT) * TIME;
+    if (ht < 0.0) ht = 0.0;
+
+    // Result is net volume change over time
+
+    _WaterMap[id.xy] = ht;
+
+}
+[numthreads(16,16,1)]
+void CSVelocityField (uint3 id : SV_DispatchThreadID)
+{
+    int x = id.x;
+    int y = id.y;
+    
+    float dl = (x == 0) ? 0.0f : _OutFlow.Load(int2(x - 1, y))[RIGHT] - _OutFlow.Load(int2(x, y))[LEFT];
+
+    float dr = (x == _Width - 1) ? 0.0f : _OutFlow.Load(int2(x, y))[RIGHT] - _OutFlow.Load(int2(x + 1, y))[LEFT];
+
+    float dt = (y == _Height - 1) ? 0.0f : _OutFlow.Load(int2(x, y + 1))[BOTTOM] - _OutFlow.Load(int2(x, y))[TOP];
+
+    float db = (y == 0) ? 0.0f : _OutFlow.Load(int2(x, y))[BOTTOM] - _OutFlow.Load(int2(x, y - 1))[TOP];
+
+    float vx = (dl + dr) * 0.5f;
+    float vy = (db + dt) * 0.5f;
+
+    float final = sqrt(vx * vx + vy * vy);
+    _VelocityMap[id.xy] = saturate(final * 800);
+}

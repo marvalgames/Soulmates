@@ -1,0 +1,27 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+
+RWTexture2D<float4> _Result;
+Texture2D<float4> _Positions;
+
+uint _Result_Width;
+uint _Result_Height;
+
+#pragma multi_compile_local __ _R8
+
+[numthreads(512,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    float4 pos = _Positions.Load(int3(id.xy,0));
+
+    if (pos.w > 0)
+    {
+        uint2 px = uint2((uint)round(pos.x * _Result_Width), (uint)round(pos.z * _Result_Height));
+        #if _R8
+            _Result[px.xy] = float4(1,1,1,1);
+        #else
+            _Result[px.xy] = float4(_Result[px.xy].xy, 1, 1);
+        #endif
+    }
+}

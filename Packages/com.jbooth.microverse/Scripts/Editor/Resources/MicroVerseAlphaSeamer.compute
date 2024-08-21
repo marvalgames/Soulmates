@@ -1,0 +1,53 @@
+
+#pragma kernel CSLeft
+#pragma kernel CSRight
+#pragma kernel CSUp
+#pragma kernel CSDown
+
+RWTexture2D<float4> _TerrainIndex;
+RWTexture2D<float4> _TerrainWeight;
+Texture2D<float4> _NeighborIndex;
+Texture2D<float4> _NeighborWeight;
+StructuredBuffer<float> _Mapping;
+int _Width;
+int _Height;
+
+float4 Map(float4 i)
+{
+    uint4 index = (uint4)round(i * 32.0);
+    i.x = _Mapping[index.x];
+    i.y = _Mapping[index.y];
+    i.z = _Mapping[index.z];
+    i.w = _Mapping[index.w];
+
+    return i/32.0;
+}
+
+[numthreads(512,1,1)]
+void CSLeft (uint3 id : SV_DispatchThreadID)
+{
+    _TerrainIndex[int2(0,id.x)] = Map(_NeighborIndex[int2(_Width, id.x)]);
+    _TerrainWeight[int2(0,id.x)] = _NeighborWeight[int2(_Width, id.x)];
+}
+
+[numthreads(512,1,1)]
+void CSRight (uint3 id : SV_DispatchThreadID)
+{
+    _TerrainIndex[int2(_Width,id.x)] = Map(_NeighborIndex[int2(0, id.x)]);
+    _TerrainWeight[int2(_Width,id.x)] = _NeighborWeight[int2(0, id.x)];
+}
+
+[numthreads(512,1,1)]
+void CSDown (uint3 id : SV_DispatchThreadID)
+{
+    _TerrainIndex[int2(id.x, 0)] = Map(_NeighborIndex[int2(id.x, _Height)]);
+    _TerrainWeight[int2(id.x, 0)] = _NeighborWeight[int2(id.x, _Height)];
+}
+
+[numthreads(512,1,1)]
+void CSUp (uint3 id : SV_DispatchThreadID)
+{
+    _TerrainIndex[int2(id.x, _Height)] = Map(_NeighborIndex[int2(id.x, 0)]);
+    _TerrainWeight[int2(id.x, _Height)] = _NeighborWeight[int2(id.x, 0)];
+}
+

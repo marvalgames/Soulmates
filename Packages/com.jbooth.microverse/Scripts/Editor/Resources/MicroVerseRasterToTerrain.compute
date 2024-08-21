@@ -1,0 +1,102 @@
+
+
+#pragma kernel CSMain
+#pragma multi_compile_local __ _COUNT_2 _COUNT_3 _COUNT_4 _COUNT_5 _COUNT_6 _COUNT_7 _COUNT_8
+
+Texture2D<float4> _IndexMap;
+Texture2D<float4> _WeightMap;
+RWTexture2D<float4> _Result0;
+
+#if _COUNT_2
+    #define TEXCOUNT 2
+#elif _COUNT_3
+    #define TEXCOUNT 3
+#elif _COUNT_4
+    #define TEXCOUNT 4
+#elif _COUNT_5
+    #define TEXCOUNT 5
+#elif _COUNT_6
+    #define TEXCOUNT 6
+#elif _COUNT_7
+    #define TEXCOUNT 7
+#elif _COUNT_8
+    #define TEXCOUNT 8
+#else
+    #define TEXCOUNT 1
+#endif
+
+#if _COUNT_2 || _COUNT_3 || _COUNT_4 || _COUNT_5 || _COUNT_6 || _COUNT_7 || _COUNT_8
+    RWTexture2D<float4> _Result1;
+#endif
+#if _COUNT_3 || _COUNT_4 || _COUNT_5 || _COUNT_6 || _COUNT_7 || _COUNT_8
+    RWTexture2D<float4> _Result2;
+#endif
+#if _COUNT_4 || _COUNT_5 || _COUNT_6 || _COUNT_7 || _COUNT_8
+    RWTexture2D<float4> _Result3;
+#endif
+#if _COUNT_5 || _COUNT_6 || _COUNT_7 || _COUNT_8
+    RWTexture2D<float4> _Result4;
+#endif
+#if _COUNT_6 || _COUNT_7 || _COUNT_8
+    RWTexture2D<float4> _Result5;
+#endif
+#if _COUNT_7 || _COUNT_8
+    RWTexture2D<float4> _Result6;
+#endif
+#if _COUNT_8
+    RWTexture2D<float4> _Result7;
+#endif
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    int4 indexes = round(_IndexMap[id.xy] * 32);
+    float4 weights = _WeightMap[id.xy];
+
+    // normalize weights
+
+    float total = weights.x + weights.y + weights.z + weights.w;
+    if (total <= 0)
+    {
+        weights = float4(0.25,0,0,0);
+    }
+    else
+    {
+        weights /= total;
+    }
+
+    float o[TEXCOUNT*4];
+    for (int i = 0; i < TEXCOUNT*4; ++i)
+    {
+        o[i] = 0;
+    }
+    
+    o[indexes.x] += weights.x;
+    o[indexes.y] += weights.y;
+    o[indexes.z] += weights.z;
+    o[indexes.w] += weights.w;
+
+    _Result0[id.xy] = float4(o[0],  o[1], o[2], o[3]);
+#if _COUNT_2 || _COUNT_3 || _COUNT_4 || _COUNT_5 || _COUNT_6 || _COUNT_7 || _COUNT_8
+    _Result1[id.xy] = float4(o[4],  o[5], o[6], o[7]);
+#endif
+
+#if _COUNT_3 || _COUNT_4 || _COUNT_5 || _COUNT_6 || _COUNT_7 || _COUNT_8
+    _Result2[id.xy] = float4(o[8],  o[9], o[10], o[11]);
+#endif
+#if _COUNT_4 || _COUNT_5 || _COUNT_6 || _COUNT_7 || _COUNT_8
+    _Result3[id.xy] = float4(o[12], o[13], o[14], o[15]);
+#endif
+#if _COUNT_5 || _COUNT_6 || _COUNT_7 || _COUNT_8
+    _Result4[id.xy] = float4(o[16], o[17], o[18], o[19]);
+#endif
+#if _COUNT_6 || _COUNT_7 || _COUNT_8
+    _Result5[id.xy] = float4(o[20], o[21], o[22], o[23]);
+#endif
+#if _COUNT_7 || _COUNT_8
+    _Result6[id.xy] = float4(o[24], o[25], o[26], o[27]);
+#endif
+#if _COUNT_8
+    _Result7[id.xy] = float4(o[28], o[29], o[30], o[31]);
+#endif
+}
