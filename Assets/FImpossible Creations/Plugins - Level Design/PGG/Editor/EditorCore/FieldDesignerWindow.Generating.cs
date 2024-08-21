@@ -74,8 +74,8 @@ namespace FIMSpace.Generating
                 projectPreset.PrepareSubGraphs(grid);
 
             IGeneration.PreparePresetVariables(projectPreset);
-            projectPreset.RunPreInstructionsOnGraph(grid, null);
-            projectPreset.RunRulesOnGraph(grid, randomizedGridCells, randomizedGridCells2, null);
+            projectPreset.RunPreInstructionsOnGraph(grid, null, Matrix4x4.identity);
+            projectPreset.RunRulesOnGraph(grid, randomizedGridCells, randomizedGridCells2, null, Matrix4x4.identity);
             repaint = true;
         }
 

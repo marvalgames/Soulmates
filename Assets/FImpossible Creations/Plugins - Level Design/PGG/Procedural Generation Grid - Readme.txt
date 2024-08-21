@@ -1,7 +1,7 @@
 __________________________________________________________________________________________
 
 Package "Procedural Generation Grid"
-Version 1.6.6.1.15 (Beta)
+Version 1.6.6.2.3 (Beta)
 
 Made by FImpossible Creations - Filip Moeglich
 https://www.FilipMoeglich.pl
@@ -23,6 +23,8 @@ Package contains example scenes, scripts and assets showing how Procedural Gener
 
 Procedural Generation Grid - Assembly Definitions.unitypackage (Supported since Unity 2017)
 Assembly Definition files to speed up compilation time of your project (Fimpossible Directories will have no influence on compilation time of whole project)
+
+Lists of included visual scripting nodes: https://drive.google.com/drive/folders/1K9uJwOyIjPoQpD4KtPldYPqKy6reGAfe?usp=sharing
 
 __________________________________________________________________________________________
 
@@ -62,6 +64,28 @@ Description:
 - Package is providing additional packages for randomly placing smaller objects in physical space using Unity’s collision system (Object’s Stamper and Pipe Generator)
 
 __________________________________________________________________________________________
+
+Beta Version 1.6.6.2.3:
+- Added 'ApplyPrefabScale' property in 'Check If Collides' node
+- Added 'InvolveTemporaryOffsets' propert in 'Draw Gizmo' node
+
+Beta Version 1.6.6.2.2:
+- Added 'Is Field Fully Contained By' planner node
+- Added 'Get Random Cell With No Instruction' planner node
+- Fixed Rect Generate Planner Field check for Parent Planner, solving null reference in the Function Nodes
+
+Beta Version 1.6.6.2.1:
+- Now Field Setup Spawners contains .WorldMatrix variable, containing information about generator's transform in world space
+- New Field Setup Node: Check World Collision - Checking bounds collision with objects which are already on the scene
+
+Beta Version 1.6.6.2:
+- Added Build Planner 'Operations' feature to call custom script actions during certain generating stages
+- Added Field Planner 'Operations' feature to call custom script actions during certain generating stages
+
+Beta Version 1.6.6.1.16:
+- Added "Nodes list" file with links to the nodes lists descriptions
+https://drive.google.com/drive/folders/1K9uJwOyIjPoQpD4KtPldYPqKy6reGAfe?usp=sharing
+- Added generic menu's options with links to the lists (right mouse button on the graph / field setup node)
 
 Beta Version 1.6.6.1.15:
 - When combining LOD group objects, using just LOD0 meshes for mesh combine operation

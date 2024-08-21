@@ -588,16 +588,25 @@ namespace FIMSpace.Generating
             #region TODO If using isolated grid injection then preparing separated grid for each definition
             #endregion
 
+            Matrix4x4? worldOrigin = null;
+            if ( FlexSetup != null && FlexSetup.ParentObject)
+            {
+                if ( FlexSetup.ParentObject is MonoBehaviour)
+                {
+                    MonoBehaviour mono = FlexSetup.ParentObject as MonoBehaviour;
+                    worldOrigin = mono.transform.localToWorldMatrix;
+                }
+            }
 
-            ParentPreparation.RunPreInstructions();
+            ParentPreparation.RunPreInstructions(worldOrigin);
             ParentPreparation.RunTemporaryPreInjections(this);
 
-            ParentPreparation.RunMainInstructions();
+            ParentPreparation.RunMainInstructions(worldOrigin);
             RunFieldSetupPacks(RuntimeFieldSetup);
 
             ParentPreparation.RunPostCellsRefill();
             ParentPreparation.RunTemporaryPostInjections(this);
-            ParentPreparation.RunPostIntructions();
+            ParentPreparation.RunPostIntructions(worldOrigin);
 
 
             #region TODO Apply Isolated Grid Spawns

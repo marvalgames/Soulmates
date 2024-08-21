@@ -801,7 +801,13 @@ float4 ForwardPassFragment(Varyings input, FRONT_FACE_TYPE_REAL vertexFace : FRO
 	#if defined(DYNAMICLIGHTMAP_ON) && UNITY_VERSION >= 202120
     inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.dynamicLightmapUV.xy, input.vertexSH, inputData.normalWS);
 	#elif !defined(LIGHTMAP_ON) && (defined(PROBE_VOLUMES_L1) || defined(PROBE_VOLUMES_L2))
+	
+	#if UNITY_VERSION >= 600009 //Not supported, but patched to avoid compile error
+	inputData.bakedGI = SAMPLE_GI(input.vertexSH, GetAbsolutePositionWS(inputData.positionWS), inputData.normalWS, inputData.viewDirectionWS, input.positionCS.xy, 1, 1);
+	#else
 	inputData.bakedGI = SAMPLE_GI(input.vertexSH, GetAbsolutePositionWS(inputData.positionWS), inputData.normalWS, inputData.viewDirectionWS, input.positionCS.xy);
+	#endif
+	
     #else
     inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.vertexSH, inputData.normalWS);
     #endif

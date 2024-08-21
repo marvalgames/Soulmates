@@ -14,6 +14,7 @@ namespace FIMSpace.Generating.Rules.Other
 
         public float Radius = 1f;
         public Color color = new Color(0.1f, 1f, 0.1f, 0.7f);
+        public bool InvolveTemporaryOffsets = false;
 
 #if UNITY_EDITOR
 
@@ -33,7 +34,7 @@ namespace FIMSpace.Generating.Rules.Other
             base.OnDrawDebugGizmos(preset, spawn, cell, grid);
 
             Gizmos.color = color;
-            Gizmos.DrawWireSphere(spawn.GetWorldPositionWithFullOffset(preset, true), Radius);
+            Gizmos.DrawWireSphere(spawn.GetWorldPositionWithFullOffset(preset, InvolveTemporaryOffsets), Radius);
             Gizmos.color = _DbPreCol;
         }
 #endif

@@ -413,11 +413,6 @@ namespace FIMSpace.Generating
 
         }
 
-        public void DuplicateRule(SpawnRuleBase spawnRuleBase)
-        {
-            if (spawnRuleBase == null) return;
-            AddRule(GameObject.Instantiate(spawnRuleBase));
-        }
     }
 }
 

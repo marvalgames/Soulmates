@@ -41,7 +41,7 @@ namespace FIMSpace.Generating.Planning
             {
                 _generatingStage += 1;
 
-                if ( _generatingStage == 3) // To Post Procedures
+                if (_generatingStage == 3) // To Post Procedures
                 {
                     Planner.GenerationIteration = 0;
                 }
@@ -94,6 +94,8 @@ namespace FIMSpace.Generating.Planning
             {
                 Planner.BasePlanners[i].OnCompleateAllGenerating();
             }
+
+            Planner.CallOperations_OnPlanComplete();
         }
 
     }

@@ -305,6 +305,11 @@ namespace FIMSpace.Graph
                     EditorUtility.DisplayDialog(node.GetDisplayName() + " Description", node.GetNodeTooltipDescription, "Ok");
                 });
 
+            if (!string.IsNullOrEmpty(node.GetNodeTooltipDescription))
+                menu.AddItem(new GUIContent("Go to Planner Nodes List Doc (Google Drive)"), false, () =>
+                {
+                    Application.OpenURL("https://docs.google.com/document/d/11CG4T6aC6_ed7GUWO0c5zQCYALxwayXTCCeOy9lXKAk/edit?usp=drive_link");
+                });
 
 
             menu.AddItem(GUIContent.none, false, () => { });

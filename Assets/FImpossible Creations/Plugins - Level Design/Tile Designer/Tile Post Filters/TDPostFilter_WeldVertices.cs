@@ -1,3 +1,4 @@
+using FIMSpace.FGenerating;
 using UnityEngine;
 
 namespace FIMSpace.Generating

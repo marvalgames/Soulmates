@@ -125,6 +125,10 @@ namespace StylizedWater2
         public override void RecordRenderGraph(UnityEngine.Rendering.RenderGraphModule.RenderGraph renderGraph, ContextContainer frameData) { }
         #endif
 
+        #if UNITY_6000_0_OR_NEWER
+        #pragma warning disable CS0672
+        #pragma warning disable CS0618
+        #endif
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
             if (resolution != m_resolution || renderTarget == null)

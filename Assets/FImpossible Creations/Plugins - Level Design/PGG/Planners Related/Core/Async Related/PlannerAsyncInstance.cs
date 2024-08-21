@@ -29,7 +29,9 @@ namespace FIMSpace.Generating.Planning
             {
                 if (planner.PreparationWasStarted == false)
                 {
+                    planner.CallOperations_OnStartPrepareMainInstance();
                     planner.PrePrepareForGenerating(manager._currentComputingI, manager._currentPreparingI);
+                    
                     if (OnDuplicatesGenerated != null) OnDuplicatesGenerated.Invoke(planner);
 
                     if (manager.ComputeUsingAsync)

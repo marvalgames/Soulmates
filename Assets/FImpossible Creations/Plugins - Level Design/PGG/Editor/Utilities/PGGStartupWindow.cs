@@ -78,6 +78,7 @@ namespace FIMSpace.Hidden
             if (GUILayout.Button("Check User Manual.pdf File")) { AssetDatabase.OpenAsset(StartupRefs.ManualFile); }
             if (GUILayout.Button("Check Tutorial Videos")) { PGGMenuItems.OpenWebsiteTutorials(); }
             if (GUILayout.Button("Go to PGG Asset Store Page")) { PGGMenuItems.OpenPGGAssetStorePage(); }
+            if (GUILayout.Button("Go to Node Lists google drive")) { Application.OpenURL("https://drive.google.com/drive/folders/1K9uJwOyIjPoQpD4KtPldYPqKy6reGAfe?usp=sharing"); }
 
             FGUI_Inspector.DrawUILine(0.65f, 0.2f, 2, 7);
 

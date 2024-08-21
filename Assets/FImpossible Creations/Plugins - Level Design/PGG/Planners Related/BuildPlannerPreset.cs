@@ -322,11 +322,32 @@ namespace FIMSpace.Generating.Planning
                 if (BasePlanners[i].DisableWholePlanner) continue;
                 BasePlanners[i].RefreshGraphs();
             }
+
+            CallOperations_PreGenerating();
+        }
+
+        [HideInInspector] public List<BuildPlannerOperationHelper> Operations = new List<BuildPlannerOperationHelper>();
+
+        public void CallOperations_PreGenerating()
+        {
+            foreach (BuildPlannerOperationHelper op in Operations) { if (op == null || op.Operation == null) continue; op.Operation.OnPrepareBuildPlan(this, op); }
+        }
+
+        public void CallOperations_OnPlanComplete()
+        {
+            foreach (BuildPlannerOperationHelper op in Operations) { if (op == null || op.Operation == null) continue; op.Operation.OnBuildPlanComplete(this, op); }
+        }
+
+        public void CallOperations_OnExecutorComplete(BuildPlannerExecutor executor)
+        {
+            foreach (BuildPlannerOperationHelper op in Operations) { if (op == null || op.Operation == null) continue; op.Operation.OnBuildPlannerExecutorComplete(this, executor, op); }
         }
 
         #region Editor Utils
 
 #if UNITY_EDITOR
+
+        public bool _Editor_OperationsFoldout = false;
 
         public void SwitchSubAssetsVisibility(HideFlags? flag = null)
         {

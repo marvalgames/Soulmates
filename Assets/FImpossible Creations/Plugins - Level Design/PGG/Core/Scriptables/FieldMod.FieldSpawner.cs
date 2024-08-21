@@ -823,5 +823,22 @@ namespace FIMSpace.Generating
             return tempSpawns;
         }
 
+
+        public void DuplicateRule(SpawnRuleBase spawnRuleBase)
+        {
+            if (spawnRuleBase == null) return;
+            AddRule(GameObject.Instantiate(spawnRuleBase));
+        }
+
+        /// <summary> Giving information to the spawners about world positioning of the grid </summary>
+        public void RefreshWorldMatrix(Matrix4x4? worldOrigin)
+        {
+            WorldOrigin = worldOrigin;
+        }
+
+        public Matrix4x4? WorldOrigin { get; private set; } = null;
+        public Matrix4x4? WorldMatrix => WorldOrigin;
+
+
     }
 }

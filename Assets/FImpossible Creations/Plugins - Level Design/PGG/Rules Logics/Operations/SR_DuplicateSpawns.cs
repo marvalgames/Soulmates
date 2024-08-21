@@ -20,7 +20,7 @@ namespace FIMSpace.Generating.Rules.Operations
         public Vector3 RandomizeRotation = new Vector3(0.0f, 45f, 0.0f);
         [Space(5)]
         public bool AddOneOffset = false;
-
+        public bool SkipFirst = false;
 
         #region There you can do custom modifications for inspector view
 #if UNITY_EDITOR
@@ -42,6 +42,8 @@ namespace FIMSpace.Generating.Rules.Operations
                 {
                     for (int z = 0; z < Iterations.z; z++)
                     {
+                        if (SkipFirst && x == 0 && y == 0 && z == 0) continue;
+
                         SpawnData clone = thisSpawn.Copy(true);
 
                         Vector3 randOffset = new Vector3();

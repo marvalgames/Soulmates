@@ -297,9 +297,9 @@ namespace FIMSpace.Generating
         //    _newCells.Clear();
         //}
 
-        public void RunPostIntructions()
+        public void RunPostIntructions(Matrix4x4? worldOrigin)
         {
-            runtimeFieldSetup.RunPostInstructionsOnGraph(gen.Grid, CellInstructions);
+            runtimeFieldSetup.RunPostInstructionsOnGraph(gen.Grid, CellInstructions, worldOrigin);
         }
 
         public void RunTemporaryPostInjections(CellsController generationScheme)
@@ -347,14 +347,14 @@ namespace FIMSpace.Generating
             runtimeFieldSetup.RunTemporaryPreInjections(generationScheme);
         }
 
-        public void RunMainInstructions()
+        public void RunMainInstructions(Matrix4x4? worldOrigin)
         {
-            runtimeFieldSetup.RunMainInstructions(gen.Grid, CellInstructions);
+            runtimeFieldSetup.RunMainInstructions(gen.Grid, CellInstructions, worldOrigin);
         }
 
-        public void RunPreInstructions()
+        public void RunPreInstructions(Matrix4x4? worldOrigin)
         {
-            runtimeFieldSetup.RunPreInstructionsOnGraph(gen.Grid, CellInstructions);
+            runtimeFieldSetup.RunPreInstructionsOnGraph(gen.Grid, CellInstructions, worldOrigin);
         }
 
         public void RefreshSelfInfjection()

@@ -7,7 +7,7 @@ namespace FIMSpace.Generating.Planning.PlannerNodes.Field.Special
 
     public class PR_BoundsSeparatePushOut : PlannerRuleBase
     {
-        public override string GetDisplayName(float maxWidth = 120) { return wasCreated ? "Bounds Separete Push" : "Bounds Separete Collision Push"; }
+        public override string GetDisplayName(float maxWidth = 120) { return wasCreated ? "Bounds Separate Push" : "Bounds Separate Collision Push"; }
         public override string GetNodeTooltipDescription { get { return "Trying to push field out of not precise bounds collision"; } }
         public override EPlannerNodeType NodeType { get { return EPlannerNodeType.WholeFieldPlacement; } }
         public override Vector2 NodeSize { get { return new Vector2(242, _EditorFoldout ? 204 : 112); } }

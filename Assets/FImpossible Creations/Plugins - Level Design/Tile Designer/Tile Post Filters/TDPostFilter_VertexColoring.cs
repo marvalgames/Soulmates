@@ -1,11 +1,12 @@
 using FIMSpace;
+using FIMSpace.FGenerating;
 using FIMSpace.Generating;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
 
-namespace PRJ.Generating
+namespace FIMSpace.Generating
 {
     //[CreateAssetMenu(fileName = "TD Color Vertices", menuName = "Tile Designer - Vertices Instance", order = 1)]
     public class TDPostFilter_VertexColoring : TilePostFilterBase

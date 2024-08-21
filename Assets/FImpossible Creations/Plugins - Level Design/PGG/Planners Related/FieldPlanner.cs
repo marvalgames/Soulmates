@@ -37,6 +37,28 @@ namespace FIMSpace.Generating.Planning
             return parentLayer.FieldPlanners;
         }
 
+        [HideInInspector] public List<FieldPlannerOperationHelper> Operations = new List<FieldPlannerOperationHelper>();
+
+        public void CallOperations_OnStartPrepareMainInstance()
+        {
+            foreach (FieldPlannerOperationHelper op in Operations) { if (op == null || op.Operation == null) continue; op.Operation.OnStartPrepareFieldPlannerMainInstance(ParentBuildPlanner, this, op); }
+        }
+
+        public void CallOperations_OnStartPrepare()
+        {
+            foreach (FieldPlannerOperationHelper op in Operations) { if (op == null || op.Operation == null) continue; op.Operation.OnStartPrepareFieldPlanner(ParentBuildPlanner, this, op); }
+        }
+
+        public void CallOperations_OnPlannerComplete()
+        {
+            foreach (FieldPlannerOperationHelper op in Operations) { if (op == null || op.Operation == null) continue; op.Operation.OnFieldPlannerComplete(ParentBuildPlanner, this, op); }
+        }
+
+        public void CallOperations_OnSpawningComplete(BuildPlannerExecutor executor, PGGGeneratorRoot generator)
+        {
+            foreach (FieldPlannerOperationHelper op in Operations) { if (op == null || op.Operation == null) continue; op.Operation.OnPlannerGeneringComplete(op, ParentBuildPlanner, executor, this, generator); }
+        }
+
         public enum EFieldType
         {
             FieldPlanner,
@@ -402,7 +424,7 @@ namespace FIMSpace.Generating.Planning
         /// <summary> Can't be async </summary>
         public void PrepareProcedures()
         {
-
+            CallOperations_OnStartPrepare();
 
             for (int i = 0; i < FProcedures.Count; i++)
             {
@@ -709,6 +731,7 @@ namespace FIMSpace.Generating.Planning
         void CompletePostGenerating()
         {
             PostExecutionDone = true;
+            CallOperations_OnPlannerComplete();
         }
 
         public void OnCompleateAllGenerating()

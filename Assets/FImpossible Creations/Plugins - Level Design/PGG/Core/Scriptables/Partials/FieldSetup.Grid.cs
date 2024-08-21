@@ -11,7 +11,7 @@ namespace FIMSpace.Generating
         /// <summary>
         /// Running all field guides on choosed grid and placing spawn data inside cells
         /// </summary>
-        public void RunPreInstructionsOnGraph(FGenGraph<FieldCell, FGenPoint> grid, List<SpawnInstruction> guides)
+        public void RunPreInstructionsOnGraph(FGenGraph<FieldCell, FGenPoint> grid, List<SpawnInstruction> guides, Matrix4x4? worldOrigin)
         {
             if (guides != null)
             {
@@ -47,7 +47,7 @@ namespace FIMSpace.Generating
                         {
                             bool preE = guides[i].definition.TargetModification.Enabled;
                             guides[i].definition.TargetModification.Enabled = true;
-                            RunModificatorWithInstruction(grid, guides[i].definition.TargetModification, guides[i]);
+                            RunModificatorWithInstruction(grid, guides[i].definition.TargetModification, guides[i], worldOrigin);
                             guides[i].definition.TargetModification.Enabled = preE;
                         }
                     }
@@ -59,7 +59,7 @@ namespace FIMSpace.Generating
         /// <summary>
         /// Running all field guides on choosed grid and placing spawn data inside cells
         /// </summary>
-        public void RunPostInstructionsOnGraph(FGenGraph<FieldCell, FGenPoint> grid, List<SpawnInstruction> guides)
+        public void RunPostInstructionsOnGraph(FGenGraph<FieldCell, FGenPoint> grid, List<SpawnInstruction> guides, Matrix4x4? worldOrigin)
         {
             if (guides != null)
             {
@@ -76,7 +76,7 @@ namespace FIMSpace.Generating
                         {
                             bool preE = guides[i].definition.TargetModification.Enabled;
                             guides[i].definition.TargetModification.Enabled = true;
-                            RunModificatorWithInstruction(grid, guides[i].definition.TargetModification, guides[i]);
+                            RunModificatorWithInstruction(grid, guides[i].definition.TargetModification, guides[i], worldOrigin);
                             guides[i].definition.TargetModification.Enabled = preE;
                         }
                     }
@@ -89,7 +89,7 @@ namespace FIMSpace.Generating
 
                     if (guides[i].definition.TargetModification != null)
                     {
-                        RunCommandPostActionWithInstruction(grid, guides[i].definition.TargetModification, guides[i]);
+                        RunCommandPostActionWithInstruction(grid, guides[i].definition.TargetModification, guides[i], worldOrigin);
                     }
                 }
             }
@@ -149,7 +149,7 @@ namespace FIMSpace.Generating
         }
 
 
-        public void RunMainInstructions(FGenGraph<FieldCell, FGenPoint> grid, List<SpawnInstruction> instructions = null)
+        public void RunMainInstructions(FGenGraph<FieldCell, FGenPoint> grid, List<SpawnInstruction> instructions = null, Matrix4x4? worldOrigin = null)
         {
             if (instructions != null)
             {
@@ -168,10 +168,10 @@ namespace FIMSpace.Generating
         /// <summary>
         /// Running all field modificators on choosed grid and placing spawn data inside cells
         /// </summary>
-        public void RunRulesOnGraph(FGenGraph<FieldCell, FGenPoint> grid, List<FieldCell> randCells, List<FieldCell> randCells2, List<SpawnInstruction> instructions = null)
+        public void RunRulesOnGraph(FGenGraph<FieldCell, FGenPoint> grid, List<FieldCell> randCells, List<FieldCell> randCells2, List<SpawnInstruction> instructions = null, Matrix4x4? worldOrigin = null)
         {
             // Preparing provided instructions for cells
-            RunMainInstructions(grid, instructions);
+            RunMainInstructions(grid, instructions, worldOrigin);
 
             //for (int p = 0; p < ModificatorPacks.Count; p++)
             //{
@@ -198,13 +198,13 @@ namespace FIMSpace.Generating
             {
                 if (ModificatorPacks[p] == null) continue;
                 if (ModificatorPacks[p].DisableWholePackage) continue;
-                RunModificatorPackOn(ModificatorPacks[p], grid, randCells, randCells2);
+                RunModificatorPackOn(ModificatorPacks[p], grid, randCells, randCells2, worldOrigin);
             }
 
 
         }
 
-        public void RunModificatorPackOn(ModificatorsPack pack, FGenGraph<FieldCell, FGenPoint> grid, List<FieldCell> randCells, List<FieldCell> randCells2)
+        public void RunModificatorPackOn(ModificatorsPack pack, FGenGraph<FieldCell, FGenPoint> grid, List<FieldCell> randCells, List<FieldCell> randCells2, Matrix4x4? worldOrigin)
         {
             if (pack.SeedMode != ModificatorsPack.ESeedMode.None)
             {
@@ -226,9 +226,9 @@ namespace FIMSpace.Generating
                 if (IsEnabled(pack.FieldModificators[r]) == false) continue;
 
                 if (pack.FieldModificators[r].VariantOf != null)
-                    pack.FieldModificators[r].VariantOf.ModifyGraph(this, grid, randCells, randCells2, pack.FieldModificators[r]);
+                    pack.FieldModificators[r].VariantOf.ModifyGraph(this, grid, randCells, randCells2, pack.FieldModificators[r], worldOrigin);
                 else
-                    pack.FieldModificators[r].ModifyGraph(this, grid, randCells, randCells2);
+                    pack.FieldModificators[r].ModifyGraph(this, grid, randCells, randCells2, null, worldOrigin);
             }
 
             // After modificators call
@@ -248,7 +248,7 @@ namespace FIMSpace.Generating
 
 
 
-        public void RunModificatorOnGrid(FGenGraph<FieldCell, FGenPoint> grid, List<FieldCell> randCells, List<FieldCell> randCells2, FieldModification modificator, bool dontRunIfDisabledByFieldSetup = true)
+        public void RunModificatorOnGrid(FGenGraph<FieldCell, FGenPoint> grid, List<FieldCell> randCells, List<FieldCell> randCells2, FieldModification modificator, bool dontRunIfDisabledByFieldSetup = true, Matrix4x4? worldOrigin = null)
         {
             if (modificator == null)
             {
@@ -260,13 +260,13 @@ namespace FIMSpace.Generating
             if (dontRunIfDisabledByFieldSetup) if (IsEnabled(modificator) == false) return;
 
             if (modificator.VariantOf != null)
-                modificator.VariantOf.ModifyGraph(this, grid, randCells, randCells2, modificator);
+                modificator.VariantOf.ModifyGraph(this, grid, randCells, randCells2, modificator, worldOrigin);
             else
-                modificator.ModifyGraph(this, grid, randCells, randCells2);
+                modificator.ModifyGraph(this, grid, randCells, randCells2, null, worldOrigin);
         }
 
 
-        public void RunModificatorWithInstruction(FGenGraph<FieldCell, FGenPoint> grid, FieldModification modificator, SpawnInstruction guide)
+        public void RunModificatorWithInstruction(FGenGraph<FieldCell, FGenPoint> grid, FieldModification modificator, SpawnInstruction guide, Matrix4x4? worldOrigin)
         {
             if (modificator == null)
             {
@@ -291,7 +291,7 @@ namespace FIMSpace.Generating
         }
 
 
-        public void RunCommandPostActionWithInstruction(FGenGraph<FieldCell, FGenPoint> grid, FieldModification modificator, SpawnInstruction guide)
+        public void RunCommandPostActionWithInstruction(FGenGraph<FieldCell, FGenPoint> grid, FieldModification modificator, SpawnInstruction guide, Matrix4x4? worldOrigin)
         {
             if (modificator == null) return;
             FieldCell cell = grid.GetCell(guide.gridPosition, false);
@@ -304,6 +304,7 @@ namespace FIMSpace.Generating
 
                 // If spawner is not enabled we skip it
                 if (spawner.Enabled == false) { break; }
+                spawner.RefreshWorldMatrix(worldOrigin);
 
                 // Refreshing all rules before checking cell
                 for (int i = 0; i < spawner.Rules.Count; i++)

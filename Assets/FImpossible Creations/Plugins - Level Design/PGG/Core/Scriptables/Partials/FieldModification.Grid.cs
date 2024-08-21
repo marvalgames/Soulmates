@@ -206,7 +206,7 @@ namespace FIMSpace.Generating
         /// <summary>
         /// Running all mod's rules algorithms on all cells
         /// </summary>
-        public virtual void ModifyGraph(FieldSetup preset, FGenGraph<FieldCell, FGenPoint> grid, List<FieldCell> randomizedCells, List<FieldCell> randomizedCells2, FieldModification childMod = null)
+        public virtual void ModifyGraph(FieldSetup preset, FGenGraph<FieldCell, FGenPoint> grid, List<FieldCell> randomizedCells, List<FieldCell> randomizedCells2, FieldModification childMod = null, Matrix4x4? worldOrigin = null)
         {
             if (grid != null)
             {
@@ -226,7 +226,7 @@ namespace FIMSpace.Generating
                     // If spawner is not enabled we skip it
                     if (spawner.Enabled == false) continue;
                     if (spawner.Repeat <= 0) spawner.Repeat = 1;
-
+                    spawner.RefreshWorldMatrix(worldOrigin);
 
                     for (int rep = 0; rep < spawner.Repeat; rep++)
                     {

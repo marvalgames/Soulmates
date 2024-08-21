@@ -58,6 +58,17 @@ namespace FIMSpace.Generating
                         GenericMenu menu = new GenericMenu();
                         menu.AddItem(new GUIContent("Duplicate Rule"), false, () => { OwnerSpawner.DuplicateRule(this); });
                         menu.AddItem(new GUIContent(""), false, () => { });
+
+                        menu.AddItem(new GUIContent("Open Rule Source Script File"), false, () =>
+                        {
+                            MonoScript script = MonoScript.FromScriptableObject(this);
+                            AssetDatabase.OpenAsset(script);
+                        });
+
+                        menu.AddItem(new GUIContent("Go to Rules List Doc (Google Drive)"), false, () => { Application.OpenURL("https://docs.google.com/document/d/1AnTL3lEGJGf3XHYPaZOUFX-1RGOCv0YGe8vfWeNGFkc/edit?usp=drive_link"); });
+
+                        menu.AddItem(new GUIContent(""), false, () => { });
+
                         if (PGGUtils.CopyProperties_FindTypeInClipboard(this)) menu.AddItem(new GUIContent("Paste Properties (WIP: check fields after paste)"), false, () => { PGGUtils.CopyProperties_PasteTo(this, false); });
                         if (PGGUtils.CopyProperties_FindTypeInClipboard(this)) menu.AddItem(new GUIContent("Paste All Properties (WIP: Force All)"), false, () => { PGGUtils.CopyProperties_PasteTo(this, true); });
                         menu.AddItem(new GUIContent("Copy All Properties"), false, () => { PGGUtils.CopyProperties(this); });

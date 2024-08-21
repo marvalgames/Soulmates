@@ -509,6 +509,33 @@ namespace FIMSpace.Generating
 
                     EditorGUI.BeginChangeCheck();
                     projectPreset.CustomInfo = EditorGUILayout.TextArea(projectPreset.CustomInfo);
+
+                    GUILayout.Space(8);
+
+                    EditorGUILayout.BeginVertical(FGUI_Resources.BGInBoxStyle);
+
+                    EditorGUILayout.BeginHorizontal();
+                    if (GUILayout.Button(new GUIContent("   " + FGUI_Resources.GetFoldSimbol(projectPreset._Editor_OperationsFoldout, 10, "►") + "  " + "Operations:", FGUI_Resources.FindIcon("SPR_PlanPrint"), "Build Plan Operations list, to call scripted calculations during custom generating stages."), FGUI_Resources.FoldStyle, GUILayout.Height(22))) projectPreset._Editor_OperationsFoldout = !projectPreset._Editor_OperationsFoldout;
+                    GUILayout.FlexibleSpace();
+                    if (GUILayout.Button("+", FGUI_Resources.ButtonStyle, GUILayout.Width(22))) { projectPreset.Operations.Add(new BuildPlannerOperationHelper()); projectPreset._Editor_OperationsFoldout = true; }
+                    EditorGUILayout.EndHorizontal();
+
+                    if (projectPreset._Editor_OperationsFoldout)
+                    {
+                        GUILayout.Space(4);
+                        int toRemove = -1;
+
+                        for (int i = 0; i < projectPreset.Operations.Count; i++)
+                        {
+                            if (DisplayBuildPlannerOperations(projectPreset.Operations[i])) toRemove = i;
+                        }
+
+                        if (toRemove >= 0) projectPreset.Operations.RemoveAt(toRemove);
+                    }
+
+                    GUILayout.Space(2);
+                    EditorGUILayout.EndVertical();
+
                     if (EditorGUI.EndChangeCheck()) EditorUtility.SetDirty(projectPreset);
                 }
 
@@ -702,6 +729,37 @@ namespace FIMSpace.Generating
             }
 
             PGGUtils.EndVerticalIfLightSkin();
+        }
+
+
+        bool DisplayBuildPlannerOperations(BuildPlannerOperationHelper operationHelper)
+        {
+            bool remove = false;
+            EditorGUILayout.BeginHorizontal();
+            operationHelper.Enabled = EditorGUILayout.Toggle(operationHelper.Enabled, GUILayout.Width(21));
+
+            if (operationHelper.Operation)
+                if (operationHelper.Operation.Foldable)
+                    if (GUILayout.Button(FGUI_Resources.GetFoldSimbol(operationHelper.Foldout, true), EditorStyles.label, GUILayout.Height(20), GUILayout.Width(21))) { operationHelper.Foldout = !operationHelper.Foldout; }
+
+            operationHelper.Operation = EditorGUILayout.ObjectField(operationHelper.Operation, typeof(BuildPlannerOperationBase), false) as BuildPlannerOperationBase;
+
+            FGUI_Inspector.RedGUIBackground();
+            if (GUILayout.Button(FGUI_Resources.GUIC_Remove, FGUI_Resources.ButtonStyle, GUILayout.Height(20), GUILayout.Width(22))) { remove = true; }
+            FGUI_Inspector.RestoreGUIBackground();
+            EditorGUILayout.EndHorizontal();
+
+            if (operationHelper.Operation)
+            {
+                if (operationHelper.Foldout)
+                {
+                    GUILayout.Space(2);
+                    if (!string.IsNullOrWhiteSpace(operationHelper.Operation.Description)) { EditorGUILayout.HelpBox(operationHelper.Operation.Description, MessageType.None); GUILayout.Space(2); }
+                    operationHelper.Operation.Editor_DisplayGUI(operationHelper, projectPreset);
+                }
+            }
+
+            return remove;
         }
 
 

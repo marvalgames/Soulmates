@@ -339,6 +339,34 @@ namespace FIMSpace.Generating.Planning
                 //}
                 //EditorGUILayout.EndVertical();
                 GUILayout.Space(4);
+
+
+
+                EditorGUILayout.BeginVertical(FGUI_Resources.BGInBoxStyle);
+
+                EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button(new GUIContent("   " + FGUI_Resources.GetFoldSimbol(Get._Editor_OperationsFoldout, 10, "►") + "  " + "Operations:", FGUI_Resources.FindIcon("SPR_PlanPrint"), "Field Planner Operations list, to call scripted calculations during custom generating stages."), FGUI_Resources.FoldStyle, GUILayout.Height(22))) Get._Editor_OperationsFoldout = !Get._Editor_OperationsFoldout;
+                GUILayout.FlexibleSpace();
+                if (GUILayout.Button("+", FGUI_Resources.ButtonStyle, GUILayout.Width(22))) { Get.Operations.Add(new FieldPlannerOperationHelper()); Get._Editor_OperationsFoldout = true; }
+                EditorGUILayout.EndHorizontal();
+
+                if (Get._Editor_OperationsFoldout)
+                {
+                    GUILayout.Space(4);
+                    int toRemove = -1;
+
+                    for (int i = 0; i < Get.Operations.Count; i++)
+                    {
+                        if (DisplayFieldPlannerOperations(Get.Operations[i], Get.ParentBuildPlanner, Get)) toRemove = i;
+                    }
+
+                    if (toRemove >= 0) Get.Operations.RemoveAt(toRemove);
+                }
+
+                GUILayout.Space(2);
+                EditorGUILayout.EndVertical();
+
+
                 so.ApplyModifiedProperties();
 
                 EditorGUILayout.EndVertical();
@@ -765,6 +793,37 @@ namespace FIMSpace.Generating.Planning
 
         #endregion
 
+
+
+        static bool DisplayFieldPlannerOperations(FieldPlannerOperationHelper operationHelper, BuildPlannerPreset build, FieldPlanner planner)
+        {
+            bool remove = false;
+            EditorGUILayout.BeginHorizontal();
+            operationHelper.Enabled = EditorGUILayout.Toggle(operationHelper.Enabled, GUILayout.Width(21));
+
+            if (operationHelper.Operation)
+                if (operationHelper.Operation.Foldable)
+                    if (GUILayout.Button(FGUI_Resources.GetFoldSimbol(operationHelper.Foldout, true), EditorStyles.label, GUILayout.Height(20), GUILayout.Width(21))) { operationHelper.Foldout = !operationHelper.Foldout; }
+
+            operationHelper.Operation = EditorGUILayout.ObjectField(operationHelper.Operation, typeof(FieldPlannerOperationBase), false) as FieldPlannerOperationBase;
+
+            FGUI_Inspector.RedGUIBackground();
+            if (GUILayout.Button(FGUI_Resources.GUIC_Remove, FGUI_Resources.ButtonStyle, GUILayout.Height(20), GUILayout.Width(22))) { remove = true; }
+            FGUI_Inspector.RestoreGUIBackground();
+            EditorGUILayout.EndHorizontal();
+
+            if (operationHelper.Operation)
+            {
+                if (operationHelper.Foldout)
+                {
+                    GUILayout.Space(2);
+                    if (!string.IsNullOrWhiteSpace(operationHelper.Operation.Description)) { EditorGUILayout.HelpBox(operationHelper.Operation.Description, MessageType.None); GUILayout.Space(2); }
+                    operationHelper.Operation.Editor_DisplayGUI(operationHelper, build, planner);
+                }
+            }
+
+            return remove;
+        }
 
         public static bool DrawPGGFoldHeader(ref bool foldout, string title, bool endHor = true, FieldPlanner planner = null, Texture2D icon = null)
         {

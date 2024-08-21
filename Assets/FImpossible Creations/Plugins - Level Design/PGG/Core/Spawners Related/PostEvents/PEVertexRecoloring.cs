@@ -8,9 +8,9 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-namespace PRJ.Generating
+namespace FIMSpace.Generating
 {
-    [CreateAssetMenu(fileName = "PE Color Vertices", menuName = "Vertices Instance", order = 1)]
+    //[CreateAssetMenu(fileName = "PE Color Vertices", menuName = "Vertices Instance", order = 1)]
     public class PEVertexRecoloring : FieldSpawnerPostEvent_Base
     {
         FieldVariable ColVar(FieldSetup.CustomPostEventHelper helper) { return helper.RequestVariable("Color", Color.red); }

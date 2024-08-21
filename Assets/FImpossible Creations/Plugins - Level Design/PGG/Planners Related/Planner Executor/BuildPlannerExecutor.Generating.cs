@@ -86,7 +86,6 @@ namespace FIMSpace.Generating
                 generatingInstance.BuildVariables[i].SetValue(_plannerPrepare.PlannerVariablesOverrides[i].GetValue());
             }
 
-
             AdjustDuplicatesCounts();
 
             for (int p = 0; p < generatingInstance.BasePlanners.Count; p++) AdjustTargetDuplicatesCount(p);
@@ -185,7 +184,7 @@ namespace FIMSpace.Generating
 
         private void Update()
         {
-            if ( !updateGenerating) return;
+            if (!updateGenerating) return;
             UpdateGeneratingProgress();
         }
 
@@ -339,6 +338,7 @@ namespace FIMSpace.Generating
             else
             {
                 RunGeneratePainters();
+                if (generatingInstance) generatingInstance.CallOperations_OnExecutorComplete(this);
             }
         }
 
@@ -629,6 +629,7 @@ namespace FIMSpace.Generating
             painterObj.transform.localScale = Vector3.one;
 
             AddPlannerReference(planner, painter);
+            planner.CallOperations_OnSpawningComplete(this, painter);
         }
 
         FlexibleGenerator GenerateFlexiblePainterWithPlanner(FieldPlanner planner)
@@ -711,6 +712,7 @@ namespace FIMSpace.Generating
             painterObj.transform.localScale = Vector3.one;
 
             AddPlannerReference(planner, painter);
+            planner.CallOperations_OnSpawningComplete(this, painter);
 
             return painter;
         }
@@ -740,6 +742,8 @@ namespace FIMSpace.Generating
             created.transform.localPosition = (planner.LatestResult.Checker.RootPosition);
             created.transform.localRotation = planner.LatestResult.Checker.RootRotation;
             Generated.Add(created);
+
+            planner.CallOperations_OnSpawningComplete(this, null);
         }
 
 
@@ -833,6 +837,7 @@ namespace FIMSpace.Generating
                 if (!FlexibleGen)
                 {
                     if (RunAfterGenerating != null) RunAfterGenerating.Invoke();
+                    if (generatingInstance) generatingInstance.CallOperations_OnExecutorComplete(this);
                 }
                 else
                 {
@@ -864,6 +869,7 @@ namespace FIMSpace.Generating
                     FlexiblePaintersGeneratorsDone = true;
             }
 
+            if (generatingInstance) generatingInstance.CallOperations_OnExecutorComplete(this);
             if (RunAfterGenerating != null) RunAfterGenerating.Invoke();
         }
 

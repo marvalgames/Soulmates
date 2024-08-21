@@ -1,3 +1,17 @@
+1.6.8
+
+Changed:
+- Shader now falls back to URP's "magenta" shader, when failing to compile, which supports DOTS
+- Removed shader workaround for MacOS added in v1.6.6. This is now fixed in 2022.3.36f1+
+
+Fixed:
+- Hotfix for OUTPUT_SH4 and SAMPLE_GI shader macro errors in Unity 6000.0.9f1+
+
+1.6.7
+
+Fixed:
+- Enviro fog shading not having any effect since version 3.1.3 due to a code change
+
 1.6.6
 
 Fixed:

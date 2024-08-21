@@ -1,9 +1,8 @@
 using FIMSpace;
 using FIMSpace.Generating;
 using UnityEngine;
-using static PRJ.Generating.FSPostEvent_VertexRecoloring;
 
-namespace PRJ.Generating
+namespace FIMSpace.Generating
 {
     //[CreateAssetMenu(fileName = "PE Floor Edges Painter", menuName = "Floor Edges Painter Instance", order = 1)]
     public class FSPostEvent_FloorEdgesPainter : FieldSpawnerPostEvent_Base

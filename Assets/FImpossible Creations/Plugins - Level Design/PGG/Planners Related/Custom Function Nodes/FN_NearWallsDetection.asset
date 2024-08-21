@@ -32,6 +32,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -66,9 +67,16 @@ MonoBehaviour:
     Variable:
       Name: None
       v3Val: {x: 7.5, y: 0, z: 0}
+      colVal: {r: 0, g: 0, b: 0, a: 0}
       str: 
       mat: {fileID: 0}
       gameObj: {fileID: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
       unityObj: {fileID: 0}
       helper: {x: 0, y: 0, z: 0}
       additionalHelperRef: {fileID: 0}
@@ -106,9 +114,16 @@ MonoBehaviour:
     Variable:
       Name: None
       v3Val: {x: 3.125, y: 0, z: 0}
+      colVal: {r: 0, g: 0, b: 0, a: 0}
       str: 
       mat: {fileID: 0}
       gameObj: {fileID: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
       unityObj: {fileID: 0}
       helper: {x: 0, y: 0, z: 0}
       additionalHelperRef: {fileID: 0}
@@ -118,6 +133,7 @@ MonoBehaviour:
       allowTransformFollow: 0
       FloatSwitch: 0
   LogicType: 4
+  Negate: 0
 --- !u!114 &-7768466347149014293
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,6 +158,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -224,10 +241,56 @@ MonoBehaviour:
     initValueSet: 1
     initialized: 0
     UniquePlannerID: -1
-    MinusOneReturnsSelf: 1
-    DefaultValueIsNumberedID: 1
-    OnlyReferenceContainer: 0
     Editor_DisplayVariableName: 1
+    Switch_DisconnectedReturnsByID: 1
+    Switch_MinusOneReturnsMainField: 1
+    Switch_ReturnOnlyFieldPlanners: 0
+    Switch_ReturnOnlyCheckers: 0
+    Switch_DontUsePlannerForCheckerReference: 0
+  OtherParameter:
+    ParentNodeID: -2147483639
+    PortID: 2
+    ParentNode: {fileID: -7768466347149014293}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      colVal: {r: 0, g: 0, b: 0, a: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  OutputListOfInstructions: 0
 --- !u!114 &-6546625673850670833
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,6 +319,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -285,6 +349,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -433,6 +498,35 @@ MonoBehaviour:
     portConnections: []
     initValueSet: 1
     initialized: 0
+  FieldInput:
+    ParentNodeID: -2147483632
+    PortID: 6
+    ParentNode: {fileID: -6353288410390907720}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 1
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    UniquePlannerID: -1
+    Editor_DisplayVariableName: 1
+    Switch_DisconnectedReturnsByID: 1
+    Switch_MinusOneReturnsMainField: 1
+    Switch_ReturnOnlyFieldPlanners: 0
+    Switch_ReturnOnlyCheckers: 0
+    Switch_DontUsePlannerForCheckerReference: 0
 --- !u!114 &-5420114788113771958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -457,6 +551,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -575,6 +670,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -641,10 +737,12 @@ MonoBehaviour:
     initValueSet: 1
     initialized: 0
     UniquePlannerID: -1
-    MinusOneReturnsSelf: 1
-    DefaultValueIsNumberedID: 1
-    OnlyReferenceContainer: 0
     Editor_DisplayVariableName: 1
+    Switch_DisconnectedReturnsByID: 1
+    Switch_MinusOneReturnsMainField: 1
+    Switch_ReturnOnlyFieldPlanners: 0
+    Switch_ReturnOnlyCheckers: 0
+    Switch_DontUsePlannerForCheckerReference: 0
   BreakLoop:
     ParentNodeID: -2147483645
     PortID: 1
@@ -693,6 +791,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -776,6 +875,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -926,9 +1026,16 @@ MonoBehaviour:
     Variable:
       Name: None
       v3Val: {x: 0, y: 0, z: 0}
+      colVal: {r: 0, g: 0, b: 0, a: 0}
       str: 
       mat: {fileID: 0}
       gameObj: {fileID: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
       unityObj: {fileID: 0}
       helper: {x: 0, y: 0, z: 0}
       additionalHelperRef: {fileID: 0}
@@ -961,6 +1068,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: 0}
@@ -1086,6 +1194,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -1230,6 +1367,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -1374,6 +1540,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -1518,6 +1713,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -1662,6 +1886,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -1806,6 +2059,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -1950,6 +2232,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -2094,6 +2405,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -2238,6 +2578,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -2382,6 +2751,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -2410,7 +2808,8 @@ MonoBehaviour:
   DefaultFunctionsDirectory: {fileID: 102900000, guid: d7537c692f54e274e8b9f00a508a2eb5,
     type: 3}
   _customPath: Field/Custom
-  _customTooltip: 
+  _customTooltip: Detecting contrary walls of other grids and adding instructions
+    to avoid generating double walls on each side
   ScaleAdjustOffset: {x: 0, y: 0}
   NodeColor: {r: 0.29803923, g: 0.61398596, b: 0.9019608, a: 1}
   ProjectFileParent: {fileID: 11400000}
@@ -2466,6 +2865,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -2523,6 +2923,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: -633248015174902769, guid: 50b27178ad19ba44bb18e21279490bd0,
     type: 2}
@@ -2655,6 +3056,35 @@ MonoBehaviour:
         isInput: 0
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -2804,6 +3234,35 @@ MonoBehaviour:
         isInput: 0
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -2952,6 +3411,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -3097,6 +3585,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -3242,6 +3759,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -3386,6 +3932,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -3530,6 +4105,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -3674,6 +4278,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -3818,6 +4451,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -3962,6 +4624,35 @@ MonoBehaviour:
       portConnections: []
       initValueSet: 0
       initialized: 0
+    p_Field:
+      ParentNodeID: -1
+      PortID: -1
+      ParentNode: {fileID: 0}
+      _E_LatestCorrectPortRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      PortType: 1
+      NameDisplayMode: 0
+      ValueDisplayMode: 0
+      SlotMode: 0
+      DisplayName: Port
+      OverwriteName: 
+      _HelperFunctionsID: -1
+      ConnectionDisplay: 0
+      IsSendingSignals: 0
+      portConnections: []
+      initValueSet: 0
+      initialized: 0
+      UniquePlannerID: -1
+      Editor_DisplayVariableName: 1
+      Switch_DisconnectedReturnsByID: 1
+      Switch_MinusOneReturnsMainField: 1
+      Switch_ReturnOnlyFieldPlanners: 0
+      Switch_ReturnOnlyCheckers: 0
+      Switch_DontUsePlannerForCheckerReference: 0
     p_String:
       ParentNodeID: -1
       PortID: -1
@@ -4030,6 +4721,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -4064,9 +4756,16 @@ MonoBehaviour:
     Variable:
       Name: None
       v3Val: {x: 1.25, y: 0, z: 0}
+      colVal: {r: 0, g: 0, b: 0, a: 0}
       str: 
       mat: {fileID: 0}
       gameObj: {fileID: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
       unityObj: {fileID: 0}
       helper: {x: 0, y: 0, z: 0}
       additionalHelperRef: {fileID: 0}
@@ -4104,9 +4803,16 @@ MonoBehaviour:
     Variable:
       Name: None
       v3Val: {x: 3.125, y: 0, z: 0}
+      colVal: {r: 0, g: 0, b: 0, a: 0}
       str: 
       mat: {fileID: 0}
       gameObj: {fileID: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
       unityObj: {fileID: 0}
       helper: {x: 0, y: 0, z: 0}
       additionalHelperRef: {fileID: 0}
@@ -4139,6 +4845,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -4221,10 +4928,56 @@ MonoBehaviour:
     initValueSet: 1
     initialized: 0
     UniquePlannerID: -1
-    MinusOneReturnsSelf: 1
-    DefaultValueIsNumberedID: 1
-    OnlyReferenceContainer: 0
     Editor_DisplayVariableName: 1
+    Switch_DisconnectedReturnsByID: 1
+    Switch_MinusOneReturnsMainField: 1
+    Switch_ReturnOnlyFieldPlanners: 0
+    Switch_ReturnOnlyCheckers: 0
+    Switch_DontUsePlannerForCheckerReference: 0
+  OtherParameter:
+    ParentNodeID: -2147483638
+    PortID: 2
+    ParentNode: {fileID: 5098994207583927329}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 1
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Variable:
+      Name: None
+      v3Val: {x: 0, y: 0, z: 0}
+      colVal: {r: 0, g: 0, b: 0, a: 0}
+      str: 
+      mat: {fileID: 0}
+      gameObj: {fileID: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      unityObj: {fileID: 0}
+      helper: {x: 0, y: 0, z: 0}
+      additionalHelperRef: {fileID: 0}
+      ValueType: 0
+      helpForFieldCommand: 0
+      displayOnScene: 0
+      allowTransformFollow: 0
+      FloatSwitch: 0
+  OutputListOfInstructions: 0
 --- !u!114 &5407128141527174424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4249,6 +5002,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -4291,7 +5045,7 @@ MonoBehaviour:
     NameDisplayMode: 0
     ValueDisplayMode: 0
     SlotMode: 0
-    DisplayName: Get Duplicates
+    DisplayName: Get Instances
     OverwriteName: 
     _HelperFunctionsID: -1
     ConnectionDisplay: 0
@@ -4327,11 +5081,14 @@ MonoBehaviour:
     initValueSet: 1
     initialized: 0
     UniquePlannerID: -1
-    MinusOneReturnsSelf: 1
-    DefaultValueIsNumberedID: 1
-    OnlyReferenceContainer: 0
     Editor_DisplayVariableName: 1
+    Switch_DisconnectedReturnsByID: 1
+    Switch_MinusOneReturnsMainField: 1
+    Switch_ReturnOnlyFieldPlanners: 0
+    Switch_ReturnOnlyCheckers: 0
+    Switch_DontUsePlannerForCheckerReference: 0
   IgnoreThisField: 0
+  GetSubFields: 0
 --- !u!114 &6261883476559475439
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4360,6 +5117,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -4527,6 +5285,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,
@@ -4612,10 +5371,12 @@ MonoBehaviour:
     initValueSet: 1
     initialized: 0
     UniquePlannerID: -1
-    MinusOneReturnsSelf: 1
-    DefaultValueIsNumberedID: 1
-    OnlyReferenceContainer: 0
     Editor_DisplayVariableName: 1
+    Switch_DisconnectedReturnsByID: 1
+    Switch_MinusOneReturnsMainField: 1
+    Switch_ReturnOnlyFieldPlanners: 0
+    Switch_ReturnOnlyCheckers: 0
+    Switch_DontUsePlannerForCheckerReference: 0
   Contact:
     ParentNodeID: -2147483643
     PortID: 0
@@ -4654,6 +5415,30 @@ MonoBehaviour:
       isInput: 1
     initValueSet: 1
     initialized: 0
+  MaxDistance:
+    ParentNodeID: -2147483643
+    PortID: 3
+    ParentNode: {fileID: 7316594442948131016}
+    _E_LatestCorrectPortRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    PortType: 0
+    NameDisplayMode: 0
+    ValueDisplayMode: 0
+    SlotMode: 0
+    DisplayName: Port
+    OverwriteName: 
+    _HelperFunctionsID: -1
+    ConnectionDisplay: 0
+    IsSendingSignals: 0
+    portConnections: []
+    initValueSet: 1
+    initialized: 0
+    Value: 0
+  StopOnSelfCollision: 0
 --- !u!114 &7658350847842245627
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4686,6 +5471,7 @@ MonoBehaviour:
   _EditorInContainedRange: []
   IsContainedBy: {fileID: 0}
   _EditorFoldout: 0
+  _EditorCollapse: 0
   Enabled: 1
   ParentPlanner: {fileID: 0}
   ParentNodesContainer: {fileID: -6684849343540708689, guid: 50b27178ad19ba44bb18e21279490bd0,

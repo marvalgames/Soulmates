@@ -6,7 +6,7 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-namespace PRJ.Generating
+namespace FIMSpace.Generating
 {
     //[CreateAssetMenu(fileName = "PE Color Vertices", menuName = "Vertices Instance", order = 1)]
     public class FSPostEvent_VertexRecoloring : FieldSpawnerPostEvent_Base

@@ -138,5 +138,44 @@ namespace FIMSpace
             }
         }
 
+
+        public static Transform GetObjectByPath( Transform root, string path )
+        {
+            if( root == null ) return null;
+
+            var pathSteps = path.Split( '/' );
+
+            Transform current = root;
+            for( int i = 0; i < pathSteps.Length; i++ )
+            {
+                Transform target = current.Find( pathSteps[i] );
+                if( target == null ) return null;
+                current = target;
+            }
+
+            return current;
+        }
+
+
+        public static string CalculateTransformPath(Transform child, Transform root)
+        {
+            if( child.parent == null ) return "";
+            
+            string path = "";
+            bool first = true;
+
+            while(child != root)
+            {
+                if( child == null ) return "";
+
+                if( first == true ) path = child.name; else path = child.name + "/" + path;
+                first = false;
+                
+                child = child.parent;
+            }
+
+            return path;
+        }
+
     }
 }

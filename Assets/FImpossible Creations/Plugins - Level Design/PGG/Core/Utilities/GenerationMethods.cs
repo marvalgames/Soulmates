@@ -413,9 +413,9 @@ namespace FIMSpace.Generating
                             var randCells2 = GetRandomizedCells(iGrid);
 
                             if (mod.VariantOf != null)
-                                mod.VariantOf.ModifyGraph(preset, iGrid, randCells, randCells2, mod);
+                                mod.VariantOf.ModifyGraph(preset, iGrid, randCells, randCells2, mod, transformMatrix);
                             else
-                                mod.ModifyGraph(preset, iGrid, randCells, randCells2);
+                                mod.ModifyGraph(preset, iGrid, randCells, randCells2, null, transformMatrix);
                         }
 
                     for (int i = 0; i < preset.CellsInstructions.Count; i++) // Getting spawn datas for all isolated grids and guides 
@@ -443,7 +443,7 @@ namespace FIMSpace.Generating
                 #endregion
 
                 // First -> Running spawning guides -> Doors / Door Holes / Pre spawners
-                if (guides != null) preset.RunPreInstructionsOnGraph(grid, guides);
+                if (guides != null) preset.RunPreInstructionsOnGraph(grid, guides, transformMatrix);
 
                 #region Temporary Pre Injections
 
@@ -455,13 +455,13 @@ namespace FIMSpace.Generating
                             if (preset.temporaryInjections[i].Inject == InjectionSetup.EInjectTarget.Modificator)
                             {
                                 if (preset.temporaryInjections[i].Modificator != null)
-                                    preset.RunModificatorOnGrid(grid, randCells, randCells2, preset.temporaryInjections[i].Modificator, false);
+                                    preset.RunModificatorOnGrid(grid, randCells, randCells2, preset.temporaryInjections[i].Modificator, false, transformMatrix);
                             }
                             else if (preset.temporaryInjections[i].Inject == InjectionSetup.EInjectTarget.Pack)
                             {
                                 if (preset.temporaryInjections[i].ModificatorsPack != null)
                                     if (preset.temporaryInjections[i].ModificatorsPack.DisableWholePackage == false)
-                                        preset.RunModificatorPackOn(preset.temporaryInjections[i].ModificatorsPack, grid, randCells, randCells2);
+                                        preset.RunModificatorPackOn(preset.temporaryInjections[i].ModificatorsPack, grid, randCells, randCells2, transformMatrix);
                             }
                         }
 
@@ -469,7 +469,7 @@ namespace FIMSpace.Generating
 
                 #endregion
 
-                preset.RunRulesOnGraph(grid, randCells, randCells2, guides);
+                preset.RunRulesOnGraph(grid, randCells, randCells2, guides, transformMatrix);
 
                 #region Filling with new cells for grid, Only with post modificator
 
@@ -499,7 +499,7 @@ namespace FIMSpace.Generating
                             {
                                 if (preset.temporaryInjections[i].Modificator != null)
                                 {
-                                    preset.RunModificatorOnGrid(grid, randCells, randCells2, preset.temporaryInjections[i].Modificator, false);
+                                    preset.RunModificatorOnGrid(grid, randCells, randCells2, preset.temporaryInjections[i].Modificator, false, transformMatrix);
                                 }
                             }
                             else if (preset.temporaryInjections[i].Inject == InjectionSetup.EInjectTarget.Pack)
@@ -507,14 +507,14 @@ namespace FIMSpace.Generating
                                 if (preset.temporaryInjections[i].ModificatorsPack != null)
                                     if (preset.temporaryInjections[i].ModificatorsPack.DisableWholePackage == false)
                                     {
-                                        preset.RunModificatorPackOn(preset.temporaryInjections[i].ModificatorsPack, grid, randCells, randCells2);
+                                        preset.RunModificatorPackOn(preset.temporaryInjections[i].ModificatorsPack, grid, randCells, randCells2, transformMatrix);
                                     }
                             }
                         }
 
                 #endregion
 
-                if (guides != null) preset.RunPostInstructionsOnGraph(grid, guides);
+                if (guides != null) preset.RunPostInstructionsOnGraph(grid, guides, transformMatrix);
             }
 
             RestorePresetVariables(preset);
@@ -817,6 +817,7 @@ namespace FIMSpace.Generating
                 foreach( var r in lodHelperToRemoveList )
                 {
                     searchRend.Remove( r as MeshRenderer );
+                    if( r == null ) continue;
                     MeshFilter f = r.GetComponent<MeshFilter>();
                     if( f ) FGenerators.DestroyObject( f );
                     FGenerators.DestroyObject( r );

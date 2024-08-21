@@ -89,6 +89,14 @@ namespace StylizedWater2
             dependencies.Clear();
             
             string templateContents = ShaderConfigurator.TemplateParser.CreateShaderCode(context.assetPath, ref lines, this, false);
+
+            bool asyncCompilation = ShaderUtil.allowAsyncCompilation;
+
+            if (settings.type == WaterShaderSettings.ShaderType.WaterSurface)
+            {
+                //Force async compilation, if this is disabled the editor may crash because compilation take long enough to stall the GPU (DX3D11 Swapchain error)
+                ShaderUtil.allowAsyncCompilation = true;
+            }
             
             Shader shaderAsset = ShaderUtil.CreateShaderAsset(templateContents, true);
             ShaderUtil.RegisterShader(shaderAsset);
@@ -126,6 +134,8 @@ namespace StylizedWater2
             {
                 context.DependsOnSourceAsset(dependency);
             }
+
+            ShaderUtil.allowAsyncCompilation = asyncCompilation;
             
             #if SWS_DEV
             sw.Stop();

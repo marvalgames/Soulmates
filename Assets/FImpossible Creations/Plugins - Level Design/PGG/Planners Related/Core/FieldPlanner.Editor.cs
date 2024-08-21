@@ -116,6 +116,8 @@ namespace FIMSpace.Generating.Planning
 
 #if UNITY_EDITOR
 
+        public bool _Editor_OperationsFoldout = false;
+
         static Color _mildDisableCol = new Color(1f, 1f, .55f, 1f);
         public void _EditorGUI_DrawVisibilitySwitchButton()
         {
