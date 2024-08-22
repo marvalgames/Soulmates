@@ -1,6 +1,6 @@
 //RealToon V5.0.8 (URP)
 //MJQStudioWorks
-//©2024
+//ï¿½2024
 
 Shader "Universal Render Pipeline/RealToon/Version 5/Default/Default"
 {
@@ -272,7 +272,7 @@ Blend[_BleModSour][_BleModDest]
         HLSLPROGRAM
 
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch
-#pragma target 2.0 //targetol
+        #pragma target 4.5 //targetol
 
 		#pragma multi_compile _ _ADDITIONAL_LIGHTS
 		#pragma multi_compile _ _FORWARD_PLUS
@@ -657,7 +657,7 @@ DOTS_LiBleSki(input.indices, input.weights, input.positionOS.xyz, input.normalOS
         HLSLPROGRAM
 
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch
-#pragma target 2.0 //targetfl
+        #pragma target 4.5 //targetfl
 
 		#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
 		#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
@@ -1333,7 +1333,7 @@ float3 Init_FO=RTD_CA*RTD_SON_CHE_1;
 
         HLSLPROGRAM
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch 
-#pragma target 2.0 //targetsc
+		#pragma target 4.5 //targetsc
 
         #pragma multi_compile_instancing
 
@@ -1552,7 +1552,7 @@ DOTS_LiBleSki(input.indices, input.weights, input.positionOS.xyz, input.normalOS
         HLSLPROGRAM
 
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch
-#pragma target 2.0 //targetgb
+#pragma target 4.5 //targetgb
 
 		#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
 		#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
@@ -2256,7 +2256,7 @@ float3 Init_FO=RTD_CA*RTD_SON_CHE_1;
         HLSLPROGRAM
 
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch 
-#pragma target 2.0 //targetdo
+#pragma target 4.5 //targetdo
 
         #pragma vertex DepthOnlyVertex
         #pragma fragment DepthOnlyFragment
@@ -2371,7 +2371,7 @@ DOTS_LiBleSki(input.indices, input.weights, input.position.xyz, input.normalOS.x
         HLSLPROGRAM
 
 		#pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch 
-#pragma target 2.0 //targetdn
+#pragma target 4.5 //targetdn
 
         #pragma vertex DepthNormalsVertex
         #pragma fragment DepthNormalsFragment
@@ -2574,7 +2574,7 @@ DOTS_LiBleSki(input.indices, input.weights, input.positionOS.xyz, input.normal.x
 		HLSLPROGRAM
 
 		#pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch 
-#pragma target 2.0 //targetm
+#pragma target 4.5 //targetm
 
 		#pragma vertex UniversalVertexMeta
 		#pragma fragment UniversalFragmentMeta

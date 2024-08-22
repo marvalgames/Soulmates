@@ -98,7 +98,7 @@
         LOD 300
 
     	HLSLINCLUDE
-    	// #define DR_DOTS_INSTANCING_ON // Uncomment to enable DOTS instancing
+    	#define DR_DOTS_INSTANCING_ON // Uncomment to enable DOTS instancing
     	#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Version.hlsl"
     	ENDHLSL
 
@@ -182,10 +182,10 @@
             // GPU Instancing
             #pragma multi_compile_instancing
             #pragma instancing_options renderinglayer
-            #if defined(DR_DOTS_INSTANCING_ON)
+            //#if defined(DR_DOTS_INSTANCING_ON)
             #pragma target 4.5							// Uncomment to enable DOTs instancing
             #pragma multi_compile _ DOTS_INSTANCING_ON	// Uncomment to enable DOTs instancing
-            #endif
+            //#endif
 
             #define BUMP_SCALE_NOT_SUPPORTED 1
             #define REQUIRES_WORLD_SPACE_TANGENT_INTERPOLATOR 1
@@ -318,10 +318,10 @@
             //--------------------------------------
             // GPU Instancing
             #pragma multi_compile_instancing
-            #if defined(DR_DOTS_INSTANCING_ON)
+            //#if defined(DR_DOTS_INSTANCING_ON)
             #pragma target 4.5							// Uncomment to enable DOTs instancing
             #pragma multi_compile _ DOTS_INSTANCING_ON	// Uncomment to enable DOTs instancing
-            #endif
+            //#endif
 
             // -------------------------------------
             // Universal Pipeline keywords
@@ -384,10 +384,10 @@
             // GPU Instancing
             #pragma multi_compile_instancing
             #pragma instancing_options renderinglayer
-            #if defined(DR_DOTS_INSTANCING_ON)
+            //#if defined(DR_DOTS_INSTANCING_ON)
             #pragma target 4.5							// Uncomment to enable DOTs instancing
             #pragma multi_compile _ DOTS_INSTANCING_ON	// Uncomment to enable DOTs instancing
-            #endif
+            //#endif
 
             #pragma vertex LitPassVertexSimple
             #pragma fragment LitPassFragmentSimple
@@ -465,10 +465,10 @@
             //--------------------------------------
             // GPU Instancing
             #pragma multi_compile_instancing
-            #if defined(FLAT_KIT_DOTS_INSTANCING_ON)
+            //#if defined(FLAT_KIT_DOTS_INSTANCING_ON)
             #pragma target 4.5							// Uncomment to enable DOTs instancing
             #pragma multi_compile _ DOTS_INSTANCING_ON	// Uncomment to enable DOTs instancing
-            #endif
+            //#endif
 
             #include "LibraryUrp/StylizedInput.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthNormalsPass.hlsl"
