@@ -1,6 +1,6 @@
 //RealToon V5.0.8 (URP)
 //MJQStudioWorks
-//ï¿½2024
+//©2024
 
 Shader "Universal Render Pipeline/RealToon/Version 5/Default/Default"
 {
@@ -272,7 +272,7 @@ Blend[_BleModSour][_BleModDest]
         HLSLPROGRAM
 
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch
-        #pragma target 4.5 //targetol
+#pragma target 2.0 //targetol
 
 		#pragma multi_compile _ _ADDITIONAL_LIGHTS
 		#pragma multi_compile _ _FORWARD_PLUS
@@ -657,7 +657,7 @@ DOTS_LiBleSki(input.indices, input.weights, input.positionOS.xyz, input.normalOS
         HLSLPROGRAM
 
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch
-        #pragma target 4.5 //targetfl
+#pragma target 2.0 //targetfl
 
 		#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
 		#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
@@ -1333,7 +1333,7 @@ float3 Init_FO=RTD_CA*RTD_SON_CHE_1;
 
         HLSLPROGRAM
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch 
-		#pragma target 4.5 //targetsc
+#pragma target 2.0 //targetsc
 
         #pragma multi_compile_instancing
 
@@ -1552,7 +1552,7 @@ DOTS_LiBleSki(input.indices, input.weights, input.positionOS.xyz, input.normalOS
         HLSLPROGRAM
 
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch
-#pragma target 4.5 //targetgb
+#pragma target 2.0 //targetgb
 
 		#pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
 		#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
@@ -2256,7 +2256,7 @@ float3 Init_FO=RTD_CA*RTD_SON_CHE_1;
         HLSLPROGRAM
 
         #pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch 
-#pragma target 4.5 //targetdo
+#pragma target 2.0 //targetdo
 
         #pragma vertex DepthOnlyVertex
         #pragma fragment DepthOnlyFragment
@@ -2371,7 +2371,7 @@ DOTS_LiBleSki(input.indices, input.weights, input.position.xyz, input.normalOS.x
         HLSLPROGRAM
 
 		#pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch 
-#pragma target 4.5 //targetdn
+#pragma target 2.0 //targetdn
 
         #pragma vertex DepthNormalsVertex
         #pragma fragment DepthNormalsFragment
@@ -2574,7 +2574,7 @@ DOTS_LiBleSki(input.indices, input.weights, input.positionOS.xyz, input.normal.x
 		HLSLPROGRAM
 
 		#pragma only_renderers d3d9 d3d11 vulkan glcore gles3 gles metal xboxone ps4 xboxseries playstation switch 
-#pragma target 4.5 //targetm
+#pragma target 2.0 //targetm
 
 		#pragma vertex UniversalVertexMeta
 		#pragma fragment UniversalFragmentMeta
@@ -2688,6 +2688,7 @@ DOTS_LiBleSki(input.indices, input.weights, input.positionOS.xyz, input.normal.x
 			#pragma shader_feature_local_fragment N_F_NFD_ON
 			#pragma shader_feature_local_fragment N_F_TP_ON
 			#pragma shader_feature_local_fragment N_F_SCO_ON
+			#pragma shader_feature_local_vertex N_F_DDMD_ON
 
             #pragma multi_compile _ LOD_FADE_CROSSFADE
             #pragma shader_feature_local_vertex _ADD_PRECOMPUTED_VELOCITY
@@ -2712,11 +2713,19 @@ DOTS_LiBleSki(input.indices, input.weights, input.positionOS.xyz, input.normal.x
 			{
 				float4 position             : POSITION;
 				float3 normalOS             : NORMAL;
+				float4 tangentOS			: TANGENT;
 				float2 uv                   : TEXCOORD0;
 				float3 positionOld          : TEXCOORD4;
 			#if _ADD_PRECOMPUTED_VELOCITY
 				float3 alembicMotionVector  : TEXCOORD5;
 			#endif
+
+			#ifndef	N_F_DDMD_ON
+float4 weights : BLENDWEIGHTS;//DOTS_LiBleSki_MV
+uint4 indices : BLENDINDICES;//DOTS_LiBleSki_MV
+//uint vertexID : SV_VertexID;//DOTS_CompDef_MV
+			#endif
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2741,17 +2750,45 @@ DOTS_LiBleSki(input.indices, input.weights, input.positionOS.xyz, input.normal.x
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-				const VertexPositionInputs vertexInput = GetVertexPositionInputs(input.position.xyz);
+
+				#if defined(UNITY_DOTS_INSTANCING_ENABLED)
+
+					#ifdef	N_F_DDMD_ON
+
+						float4 _LBS_CD_Position = input.position;
+						float3 _LBS_CD_Normal = input.normalOS;
+						//float4 _LBS_CD_Tangent = input.tangentOS; //not currently needed
+
+					#else
+
+						float4 _LBS_CD_Position = 0;
+						float3 _LBS_CD_Normal = 0;
+						float4 _LBS_CD_Tangent = 0;
+
+DOTS_LiBleSki(input.indices, input.weights, input.position.xyz, input.normalOS.xyz, input.tangentOS.xyz, (float3)_LBS_CD_Position, _LBS_CD_Normal, (float3)_LBS_CD_Tangent);//DOTS_LiBleSki_MV
+//DOTS_CompDef(input.vertexID, (float3)_LBS_CD_Position, _LBS_CD_Normal, (float3)_LBS_CD_Tangent);//DOTS_CompDef_MV
+						_LBS_CD_Position.w = 1.0;
+
+					#endif
+
+				#else
+					float4 _LBS_CD_Position = input.position;
+					float3 _LBS_CD_Normal = input.normalOS;
+					//float4 _LBS_CD_Tangent = input.tangentOS; //not currently needed
+				#endif
+
+
+				const VertexPositionInputs vertexInput = GetVertexPositionInputs(_LBS_CD_Position.xyz);
 
 				output.uv = TRANSFORM_TEX(input.uv, _MainTex);
 
-				output.positionWS = TransformObjectToWorld(input.position.xyz);
-				output.normalWS = TransformObjectToWorldDir(input.normalOS);
+				output.positionWS = TransformObjectToWorld(_LBS_CD_Position.xyz);
+				output.normalWS = TransformObjectToWorldDir(_LBS_CD_Normal);
 
 				output.positionCS = vertexInput.positionCS;
-				output.positionCSNoJitter = mul(_NonJitteredViewProjMatrix, mul(UNITY_MATRIX_M, input.position));
+				output.positionCSNoJitter = mul(_NonJitteredViewProjMatrix, mul(UNITY_MATRIX_M, _LBS_CD_Position));
 
-				float4 prevPos = (unity_MotionVectorsParams.x == 1) ? float4(input.positionOld, 1) : input.position;
+				float4 prevPos = (unity_MotionVectorsParams.x == 1) ? float4(input.positionOld, 1) : _LBS_CD_Position;
 
 			#if _ADD_PRECOMPUTED_VELOCITY
 				prevPos = prevPos - float4(input.alembicMotionVector, 0);

@@ -404,8 +404,8 @@ UNITY_DOTS_INSTANCING_START(MaterialPropertyMetadata)
 
 	UNITY_DOTS_INSTANCED_PROP(float4, _SSAOColor)
 
-	//UNITY_DOTS_INSTANCED_PROP(float, _SkinMatrixIndex)
-	//UNITY_DOTS_INSTANCED_PROP(float, _ComputeMeshIndex)
+	UNITY_DOTS_INSTANCED_PROP_OVERRIDE_SUPPORTED(float, _SkinMatrixIndex)
+	UNITY_DOTS_INSTANCED_PROP_OVERRIDE_SUPPORTED(float, _ComputeMeshIndex)
 
 UNITY_DOTS_INSTANCING_END(MaterialPropertyMetadata)
 
@@ -836,9 +836,12 @@ void SetupDOTSLitMaterialPropertyCaches()
 //#define _ComputeMeshIndex								unity_DOTS_Sampled_ComputeMeshIndex
 
 //=========
-#define UNITY_ACCESS_HYBRID_INSTANCED_PROP(var, type) UNITY_ACCESS_INSTANCED_PROP(type, var) //
+#define UNITY_ACCESS_HYBRID_INSTANCED_PROP(var, type) UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(type, var)
+#elif defined(UNITY_INSTANCING_ENABLED)
+
+#define UNITY_ACCESS_HYBRID_INSTANCED_PROP(var, type) UNITY_ACCESS_INSTANCED_PROP(type, var)
 #else
-#define UNITY_ACCESS_HYBRID_INSTANCED_PROP(var, type) var //
+#define UNITY_ACCESS_HYBRID_INSTANCED_PROP(var, type) var
 //=========
 
 #endif
