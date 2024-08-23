@@ -4,7 +4,7 @@
 //
 // Auto-generated shader code, don't hand edit!
 //
-//   Unity Version: 6000.0.8f1
+//   Unity Version: 6000.0.15f1
 //   MicroSplat Version: 3.9
 //   Render Pipeline: URP2022
 //   Platform: WindowsEditor
@@ -154,6 +154,7 @@ Shader "Terrain_Area2"
       #define _NOISEHEIGHTFBM 1
       #define _SNOW 1
       #define _SNOWSIMPLE 1
+      #define _MSRENDERLOOP_UNITYURP2022 1
       #define _MSRENDERLOOP_UNITYLD 1
       #define _MSRENDERLOOP_UNITYURP2020 1
       #define _MSRENDERLOOP_UNITYURP2021 1
@@ -6357,6 +6358,7 @@ float3 GetTessFactors ()
       #define _NOISEHEIGHTFBM 1
       #define _SNOW 1
       #define _SNOWSIMPLE 1
+      #define _MSRENDERLOOP_UNITYURP2022 1
       #define _MSRENDERLOOP_UNITYLD 1
       #define _MSRENDERLOOP_UNITYURP2020 1
       #define _MSRENDERLOOP_UNITYURP2021 1
@@ -12499,6 +12501,7 @@ float3 GetTessFactors ()
       #define _NOISEHEIGHTFBM 1
       #define _SNOW 1
       #define _SNOWSIMPLE 1
+      #define _MSRENDERLOOP_UNITYURP2022 1
       #define _MSRENDERLOOP_UNITYLD 1
       #define _MSRENDERLOOP_UNITYURP2020 1
       #define _MSRENDERLOOP_UNITYURP2021 1
@@ -18554,6 +18557,7 @@ float3 GetTessFactors ()
       #define _NOISEHEIGHTFBM 1
       #define _SNOW 1
       #define _SNOWSIMPLE 1
+      #define _MSRENDERLOOP_UNITYURP2022 1
       #define _MSRENDERLOOP_UNITYLD 1
       #define _MSRENDERLOOP_UNITYURP2020 1
       #define _MSRENDERLOOP_UNITYURP2021 1
@@ -24605,6 +24609,7 @@ float3 GetTessFactors ()
       #define _NOISEHEIGHTFBM 1
       #define _SNOW 1
       #define _SNOWSIMPLE 1
+      #define _MSRENDERLOOP_UNITYURP2022 1
       #define _MSRENDERLOOP_UNITYLD 1
       #define _MSRENDERLOOP_UNITYURP2020 1
       #define _MSRENDERLOOP_UNITYURP2021 1
@@ -30660,6 +30665,7 @@ float3 GetTessFactors ()
       #define _NOISEHEIGHTFBM 1
       #define _SNOW 1
       #define _SNOWSIMPLE 1
+      #define _MSRENDERLOOP_UNITYURP2022 1
       #define _MSRENDERLOOP_UNITYLD 1
       #define _MSRENDERLOOP_UNITYURP2020 1
       #define _MSRENDERLOOP_UNITYURP2021 1
@@ -36727,7 +36733,7 @@ float3 GetTessFactors ()
 
         UsePass "Hidden/Nature/Terrain/Utilities/PICKING"
    }
-   Dependency "BaseMapShader" =  "Hidden/Terrain_Area2_Base364006641"
-   Fallback "Hidden/Terrain_Area2_Base364006641"
+   Dependency "BaseMapShader" =  "Hidden/Terrain_Area2_Base-799230638"
+   Fallback "Hidden/Terrain_Area2_Base-799230638"
    CustomEditor "MicroSplatShaderGUI"
 }
