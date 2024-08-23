@@ -97,7 +97,12 @@ namespace JBooth.MicroVerseCore
 
 
             EditorGUILayout.EndVertical();
-
+            // Note:
+            // Can't check for EditorGui change, as that happens a frame earlier than mouse up
+            if (Event.current.type == EventType.MouseDown)
+            {
+                Undo.RegisterCompleteObjectUndo(dp, "Detail Stamp Undo");
+            }
             if (allowProtoEdit)
             {
                 EditorGUILayout.BeginVertical();

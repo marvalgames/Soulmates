@@ -439,6 +439,11 @@ namespace JBooth.MicroVerseCore
         static Shader treeStampShader = null;
         public void Initialize()
         {
+            if(prototypes.Count == 0)
+            {
+                return;
+            }
+
             if (treeStampShader == null)
             {
                 treeStampShader = Shader.Find("Hidden/MicroVerse/VegetationFilter");
@@ -778,7 +783,12 @@ namespace JBooth.MicroVerseCore
                     RenderTexture.ReleaseTemporary(k);
                 }
             }
-            randomizationBuffer.Dispose();
+            
+            if(randomizationBuffer != null)
+            {
+                randomizationBuffer.Dispose();
+            }
+
             sdfs.Clear();
         }
 

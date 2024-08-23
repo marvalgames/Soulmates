@@ -311,15 +311,17 @@ public partial class MicroSplatShaderGUI : ShaderGUI
 
           if (pipeline == MicroSplatUtilities.PipelineType.HDPipeline)
          {
-            System.Array.Resize(ref keywords, keywords.Length + 4);
-            keywords[keywords.Length - 4] = "_MSRENDERLOOP_UNITYHD";
-            keywords[keywords.Length - 3] = "_MSRENDERLOOP_UNITYHDRP2020";
-            keywords[keywords.Length - 2] = "_MSRENDERLOOP_UNITYHDRP2021";
-            keywords[keywords.Length - 1] = "_MSRENDERLOOP_UNITYHDRP2022";
+            System.Array.Resize(ref keywords, keywords.Length + 5);
+            keywords[keywords.Length - 5] = "_MSRENDERLOOP_UNITYHD";
+            keywords[keywords.Length - 4] = "_MSRENDERLOOP_UNITYHDRP2020";
+            keywords[keywords.Length - 3] = "_MSRENDERLOOP_UNITYHDRP2021";
+            keywords[keywords.Length - 2] = "_MSRENDERLOOP_UNITYHDRP2022";
+            keywords[keywords.Length - 1] = "_MSRENDERLOOP_UNITYHDRP2023";
          }
          else if (pipeline == MicroSplatUtilities.PipelineType.UniversalPipeline)
          {
-            System.Array.Resize(ref keywords, keywords.Length + 4);
+            System.Array.Resize(ref keywords, keywords.Length + 5);
+            keywords[keywords.Length - 4] = "_MSRENDERLOOP_UNITYURP2023";
             keywords[keywords.Length - 4] = "_MSRENDERLOOP_UNITYLD";
             keywords[keywords.Length - 3] = "_MSRENDERLOOP_UNITYURP2020";
             keywords[keywords.Length - 2] = "_MSRENDERLOOP_UNITYURP2021";
@@ -511,7 +513,10 @@ public partial class MicroSplatShaderGUI : ShaderGUI
             AddPipelineKeywords(ref features);
                 // TODO: this would be better if we asked the render loop if it is in the feature list, but
                 // would require a change to interface, so wait until we have a version bump.
-#if UNITY_2022_2_OR_NEWER
+#if UNITY_2022_3_OR_NEWER
+            SetPreferedRenderLoopByName(features, "_MSRENDERLOOP_UNITYHDRP2023");
+            SetPreferedRenderLoopByName(features, "_MSRENDERLOOP_UNITYURP2023");
+#elif UNITY_2022_2_OR_NEWER
             SetPreferedRenderLoopByName(features, "_MSRENDERLOOP_UNITYHDRP2022");
             SetPreferedRenderLoopByName(features, "_MSRENDERLOOP_UNITYURP2022");
 #elif UNITY_2021_2_OR_NEWER

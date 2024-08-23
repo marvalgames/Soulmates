@@ -40,6 +40,7 @@ namespace JBooth.MicroSplat
                 keywords.Add("_MSRENDERLOOP_UNITYHDRP2020");
                 keywords.Add("_MSRENDERLOOP_UNITYHDRP2021");
                 keywords.Add("_MSRENDERLOOP_UNITYHDRP2022");
+                keywords.Add("_MSRENDERLOOP_UNITYHDRP2023");
             }
             else if (pipeline == MicroSplatUtilities.PipelineType.UniversalPipeline)
             {
@@ -47,6 +48,7 @@ namespace JBooth.MicroSplat
                 keywords.Add("_MSRENDERLOOP_UNITYURP2020");
                 keywords.Add("_MSRENDERLOOP_UNITYURP2021");
                 keywords.Add("_MSRENDERLOOP_UNITYURP2022");
+                keywords.Add("_MSRENDERLOOP_UNITYURP2023");
             }
 
             // this just looks better, IMO..

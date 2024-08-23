@@ -8,6 +8,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using static UnityEngine.GraphicsBuffer;
 
 namespace JBooth.MicroSplat
 {
@@ -20,22 +21,41 @@ namespace JBooth.MicroSplat
          InitDefine (sMicroSplatDefine);
       }
 
+      static string GetDefines()
+      {
+            var target = EditorUserBuildSettings.selectedBuildTargetGroup;
+#if UNITY_6000_0_OR_NEWER
+            string defines = PlayerSettings.GetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.FromBuildTargetGroup(target));
+#else
+            string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup (target);
+#endif
+            return defines;
+      }
+
+      static void SetDefines(string def)
+      {
+        var target = EditorUserBuildSettings.selectedBuildTargetGroup;
+#if UNITY_6000_0_OR_NEWER
+        PlayerSettings.SetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.FromBuildTargetGroup(target), def);
+#else
+        PlayerSettings.SetScriptingDefineSymbolsForGroup(target, def);
+#endif
+
+      }
+
       public static bool HasDefine (string def)
       {
-         var target = EditorUserBuildSettings.selectedBuildTargetGroup;
-         string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup (target);
-         return defines.Contains (def);
+            return GetDefines().Contains (def);
       }
 
       public static void InitDefine (string def)
       {
-         var target = EditorUserBuildSettings.selectedBuildTargetGroup;
-         string defines = PlayerSettings.GetScriptingDefineSymbolsForGroup (target);
+         string defines = GetDefines();
          if (!defines.Contains (def))
          {
             if (string.IsNullOrEmpty (defines))
             {
-               PlayerSettings.SetScriptingDefineSymbolsForGroup (target, def);
+               SetDefines(def);
             }
             else
             {
@@ -44,7 +64,7 @@ namespace JBooth.MicroSplat
                   defines += ';';
                }
                defines += def;
-               PlayerSettings.SetScriptingDefineSymbolsForGroup (target, defines);
+               SetDefines(defines);
             }
          }
       }

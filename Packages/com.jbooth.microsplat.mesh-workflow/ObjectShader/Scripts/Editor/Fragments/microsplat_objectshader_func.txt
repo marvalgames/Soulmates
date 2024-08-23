@@ -107,6 +107,9 @@
                
                inEmisMetal = half4(emission, metal);
 
+               // prevent stripping in URP depth normal pass
+               inNormal.x *= saturate(inAlbedo.r + 99999);
+
                #if _USESPECULARWORKFLOW
                   inSpecular = specular;
                #endif

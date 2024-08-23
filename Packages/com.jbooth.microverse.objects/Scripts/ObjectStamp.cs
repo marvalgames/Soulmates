@@ -509,6 +509,7 @@ namespace JBooth.MicroVerseCore
                         trans.localRotation = Quaternion.identity;
                         trans.localScale = Vector3.one;
                         UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(trans.gameObject, td.terrain.gameObject.scene);
+                        parentObject = trans;
                     }
                     parentObjects.Add(new ParentObjectEntry() { terrain = td.terrain, transform = trans });
                     rootParentTransform = trans;
@@ -529,6 +530,7 @@ namespace JBooth.MicroVerseCore
                         trans.localRotation = Quaternion.identity;
                         trans.localScale = Vector3.one;
                         UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(trans.gameObject, td.terrain.gameObject.scene);
+                        parentObject = trans;
                     }
                     parentObjects.Add(new ParentObjectEntry() { terrain = td.terrain, transform = trans });
                 }
@@ -753,6 +755,7 @@ namespace JBooth.MicroVerseCore
             if (material != null) DestroyImmediate(material);
             if (heightModMat != null) DestroyImmediate(heightModMat);
             if (splatModMat != null) DestroyImmediate(splatModMat);
+            RevealHiddenObjects();
             base.OnDestroy();
         }
 
@@ -774,6 +777,29 @@ namespace JBooth.MicroVerseCore
                 }
             }
             sdfs.Clear();
+        }
+
+        public void RevealHiddenObjects()
+        {
+            List<Transform> clearedList = new List<Transform>();
+            foreach(ParentObjectEntry entry in parentObjects)
+            {
+                if(entry == null || clearedList.Contains(entry.transform) || entry.transform.childCount == 0)
+                {
+                    continue;
+                }
+
+                for(int i = 0; i < entry.transform.childCount; i++)
+                {
+                    Transform child = entry.transform.GetChild(i);
+                    if (child.gameObject.hideFlags.HasFlag(HideFlags.HideInHierarchy))
+                    {
+                        child.gameObject.hideFlags &= ~HideFlags.HideInHierarchy;
+                    }
+                }
+
+                clearedList.Add(entry.transform);
+            }
         }
 
 

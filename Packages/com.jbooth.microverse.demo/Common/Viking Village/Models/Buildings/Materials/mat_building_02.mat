@@ -8,19 +8,22 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: mat_building_02
-  m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 9a708780807cb43d7b90c5533fc6308a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_ValidKeywords:
+  - _MASKMAP
+  m_InvalidKeywords:
+  - _DETAIL_MULX2
+  - _METALLICSPECGLOSSMAP
+  - _NORMALMAP
+  - _OCCLUSIONMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
-  disabledShaderPasses:
-  - MOTIONVECTORS
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -100,35 +103,25 @@ Material:
     m_Ints: []
     m_Floats:
     - _ALPHATEST: 0
-    - _AddPrecomputedVelocity: 0
-    - _Alpha: 0
     - _AlphaClip: 0
     - _AlphaCut: 0
     - _AlphaTestRef: 0.5
     - _AlphaThreshold: 0.5
-    - _AlphaToMask: 0
     - _Blend: 0
-    - _BlendOp: 0
-    - _BrushLighting: 0
     - _BumpScale: 1
     - _Cull: 2
-    - _CullMode: 2
     - _Cutoff: 0.5
     - _DetailAlbedoStrength: 1
     - _DetailNormalMapScale: 1
     - _DetailNormalStrength: 1
     - _DetailSmoothnessStrength: 1
-    - _DoubleSidedNormalMode: 1
-    - _Drag: 1
     - _DstBlend: 0
-    - _DstBlendAlpha: 0
     - _EmissionScaleUI: 1
     - _EmissionStrength: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.028
     - _GlossyReflections: 1
-    - _InitialBend: 1
     - _Lightmapping: 1
     - _Metallic: 0
     - _Mode: 0
@@ -139,36 +132,27 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SPECGLOSSMAP: 0
-    - _SampleGI: 0
-    - _ShiverDrag: 0.05
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SrcBlendAlpha: 1
-    - _Stiffness: 1
     - _Surface: 0
     - _UVSec: 0
     - _UseDetail: 0
     - _UseEmission: 0
     - _UseMaskMap: 1
-    - _VertexWind: 0
-    - _WindNormalInfluence: 0
     - _WorkflowMode: 0
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DitherFade: {r: 50, g: 50, b: 0, a: 0}
+    - _Color: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColorUI: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionTint: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _SpecularColor: {r: 0.18431373, g: 0.18431373, b: 0.18431373, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &3394423167791621739
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -181,4 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 9
+  version: 5

@@ -138,7 +138,8 @@
                     return heightSample;
                 float height = UnpackHeightmap(heightSample);
 
-                float2 noiseUV = (i.uv * _NoiseUV.z) + _NoiseUV.xy;
+                float2 noiseUV = (i.uv * _NoiseUV.z) + _NoiseUV.xy * _NoiseUV.z;
+
                 float2 stampUV = i.stampUV * _ScaleOffset.xy + _ScaleOffset.zw;
 
                 #if _TWIST

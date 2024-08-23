@@ -447,6 +447,18 @@ namespace JBooth.MicroVerseCore
                     if (ReferenceEquals(PreviewRenderer.noisePreview, noise))
                         PreviewRenderer.noisePreview = null;
                 }
+
+                // check for scale being 0 and setting it to 1;
+                // was a bug once with scale = 0 and offset = 1, but the existing presets would have those now when the user switches to texture
+                // scale shouldn't be 0 anyway
+                if( noiseType == Noise.NoiseType.Texture)
+                {
+                    if( noise.textureST.x == 0 && noise.textureST.y == 0 && noise.textureST.z == 1 && noise.textureST.w == 1 )
+                    {
+                        noise.textureST = new Vector4(1, 1, 0, 0);
+                    }
+                }
+
                 Undo.RecordObject(owner, "Adjust Noise");
                 noise.noiseType = noiseType;
                 EditorUtility.SetDirty(owner);

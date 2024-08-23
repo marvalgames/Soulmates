@@ -161,7 +161,7 @@
          [domain("tri")]
          VertexToPixel Domain (OutputPatchConstant tessFactors, const OutputPatch<TessVertex,3> vi, float3 bary : SV_DomainLocation) 
          {
-            VertexData v = (VertexData)0;
+            precise VertexData v = (VertexData)0;
             UNITY_TRANSFER_INSTANCE_ID(vi[0], v);
 
             v.vertex = vi[0].vertex * bary.x + vi[1].vertex * bary.y + vi[2].vertex * bary.z;

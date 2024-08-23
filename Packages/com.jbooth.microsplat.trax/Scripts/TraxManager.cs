@@ -6,6 +6,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if USING_URP
+using UnityEngine.Rendering.Universal;
+#endif
 
 namespace JBooth.MicroSplat
 {

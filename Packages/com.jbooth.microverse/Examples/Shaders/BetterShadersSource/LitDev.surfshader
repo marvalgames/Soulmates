@@ -85,14 +85,14 @@ BEGIN_CODE
    }
 
 
-   void DitheredAlpha(half alpha, ShaderData d)
+   float DitheredAlpha(half alpha, ShaderData d)
    {
     #if _ALPHA_DITHERFADE
         float4 screenPosNorm = d.screenPos / d.screenPos.w;
         screenPosNorm.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? screenPosNorm.z : screenPosNorm.z * 0.5 + 0.5;
         float2 clipScreen = screenPosNorm.xy * _ScreenParams.xy;
         float dither = Dither8x8Bayer( fmod(clipScreen.x, 8), fmod(clipScreen.y, 8) );
-        clip(alpha - dither);
+        return (alpha - dither);
     #endif
    }
 
@@ -125,9 +125,14 @@ BEGIN_CODE
          clip(c.a - _AlphaThreshold);
       #elif _ALPHA_DITHERFADE
            float fadeDist = distance(_WorldSpaceCameraPos, d.worldSpacePosition);
-           fadeDist -= _DitherFade.x;
-           fadeDist = 1.0 - saturate(fadeDist/max(_DitherFade.y, 0.001));
-           DitheredAlpha(c.a * fadeDist, d);
+           float dither = c.a - _AlphaThreshold;
+           if (fadeDist > _DitherFade.x)
+           {
+              fadeDist -= _DitherFade.x;
+              fadeDist = 1.0 - saturate(fadeDist/max(_DitherFade.y, 0.001));
+              dither = DitheredAlpha(c.a * fadeDist, d);
+           }
+           clip(dither);
       #endif
       #if _BRUSHLIGHTING
           d.worldSpaceNormal = lerp(d.worldSpaceNormal, float3(0,1,0), 0.5);
