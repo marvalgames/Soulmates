@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!28 &-2058825055064032385
 Texture2D:
   m_ObjectHideFlags: 0
@@ -23,10 +23,8 @@ Texture2D:
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
-  serializedVersion: 2
+  serializedVersion: 3
   m_Width: 256
   m_Height: 1
   m_CompleteImageSize: 1024
@@ -69,54 +67,22 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Golem Material
-  m_Shader: {fileID: 4800000, guid: 6459b2db96a08ca41b0f9b39dc7ad59e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - N_F_EAL_ON
-  - N_F_O_ON
-  - N_F_RDC_ON
-  - N_F_RELGI_ON
-  - N_F_SS_ON
-  - N_F_TRANSAFFSHA_ON
-  m_InvalidKeywords:
-  - DR_OUTLINE_ON
-  - DR_SPECULAR_ON
-  - N_F_TRANSAFFSHA
-  - _CUSTOMLIGHTDIRECTIONFOLLOWOBJECTROTATION_OFF
-  - _DETAILMAPBLENDINGMODE_MULTIPLY
-  - _GIFLATSHADE_OFF
-  - _GLOSSTEXTUREFOLLOWOBJECTROTATION_OFF
-  - _LIGHTAFFECTOUTLINECOLOR_OFF
-  - _LIGHTAFFECTRIMLIGHTCOLOR_OFF
-  - _LIGHTAFFECTSHADOW_OFF
-  - _LIGHTFALLOFFAFFECTSHADOWT_OFF
-  - _LIGIGNOYNORDIR_OFF
-  - _MCIALO_OFF
-  - _MIXMAINTEXTOOUTLINE_OFF
-  - _MVCOL_OFF
-  - _OUTLINEWIDTHAFFECTEDBYVIEWDISTANCE_OFF
-  - _PSGLOTEX_OFF
-  - _RECEIVESHADOWS_OFF
+  - _EMISSION
   - _RECEIVE_SHADOWS_OFF
-  - _SELFSHADOWAFFECTEDBYLIGHTSHADOWSTRENGTH_OFF
-  - _SELFSHADOWSHADOWTATVIEWDIRECTION_OFF
-  - _SHOWNORMAL_OFF
-  - _SPECMODE_OFF
-  - _STIL_OFF
-  - _TEXTUREBLENDINGMODE_MULTIPLY
-  - _TEXTUREPATTERNSTYLE_OFF
-  - _USESECONDARYCUTOUT_OFF
-  - _VERTEXCOLORBLUEAFFECTOUTLINEWITDH_OFF
-  - _VERTEXCOLORGREENCONTROLSELFSHADOWTHRESHOLD_OFF
-  - _VERTEXCOLORREDCONTROLSMOOTHOBJECTNORMAL_OFF
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap:
     IgnoreProjection: False
-  disabledShaderPasses: []
+    RenderType: Opaque
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -133,7 +99,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -181,7 +159,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -190,6 +176,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _PTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -202,6 +192,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShadowT:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -219,12 +213,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AddPrecomputedVelocity: 0
     - _AlphaBaseCutout: 1
     - _AlphaClip: 0
+    - _AlphaToMask: 0
     - _BleModDest: 0
     - _BleModSour: 1
     - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _BumpScale: 1
     - _CameraDistanceImpact: 0.5
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
     - _Compa: 4
     - _ComputeMeshIndex: 0
     - _Cull: 2
@@ -234,12 +234,16 @@ Material:
     - _Cutoff: 0.5
     - _Cutout: 0
     - _DepthThreshold: 900
+    - _DetailAlbedoMapScale: 1
     - _DetailMapBlendingMode: 0
     - _DetailMapImpact: 0
+    - _DetailNormalMapScale: 1
     - _DirectionalLightIntensity: 0
     - _DoubleSidedOutline: 1
     - _DstBlend: 0
+    - _DstBlendAlpha: 0
     - _DynamicNoisyOutline: 0
+    - _EnvironmentReflections: 1
     - _EnvironmentalLightingIntensity: 1
     - _FarDistanceMaxWidth: 10
     - _FlatRimEdgeSmoothness: 0.5
@@ -251,12 +255,14 @@ Material:
     - _GIShadeThreshold: 0
     - _GlossColorPower: 10
     - _GlossIntensity: 1
+    - _GlossMapScale: 0
     - _GlossSoftness: 0
     - _GlossTextureFollowLight: 0
     - _GlossTextureFollowObjectRotation: 0
     - _GlossTextureRotate: 0
     - _GlossTextureSoftness: 0
     - _Glossiness: 0.6
+    - _GlossyReflections: 0
     - _Glow_Edge_Width: 1
     - _GradientAngle: 0
     - _GradientCenterX: 0
@@ -279,6 +285,7 @@ Material:
     - _MVCOL: 0
     - _MaiColPo: 10
     - _MaxFadDistance: 2
+    - _Metallic: 0
     - _MinFadDistance: 0
     - _MixMainTexToOutline: 0
     - _N_F_CA: 0
@@ -314,6 +321,7 @@ Material:
     - _N_F_STIS: 0
     - _NoisyOutlineIntensity: 0
     - _NormalMapIntensity: 1
+    - _OcclusionStrength: 1
     - _Opacity: 1
     - _Oper: 0
     - _OutlineDepthOffset: 0.5
@@ -329,6 +337,7 @@ Material:
     - _OverrideLightmapDir: 0
     - _PSGLOTEX: 0
     - _PTexturePower: 1
+    - _Parallax: 0.005
     - _PointSpotlightIntensity: 0
     - _QueueOffset: 0
     - _RELG: 1
@@ -371,8 +380,12 @@ Material:
     - _SimTrans: 0
     - _SkinMatrixIndex: 0
     - _SmoothObjectNormal: 0
+    - _Smoothness: 0.5
+    - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 1
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
     - _Surface: 0
     - _TEXMCOLINT: 1
     - _TRANSMODE: 0
@@ -388,9 +401,11 @@ Material:
     - _VertexColorGreenControlSelfShadowThreshold: 0
     - _VertexColorRedControlSmoothObjectNormal: 0
     - _VertexColorsEnabled: 0
+    - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorGradient: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}
     - _CustomLightDirection: {r: 0, g: 0, b: 10, a: 0}
     - _DetailMapColor: {r: 1, g: 1, b: 1, a: 1}
@@ -413,5 +428,7 @@ Material:
     - _SelfShadowRealTimeShadowColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadowTColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _XYZPosition: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

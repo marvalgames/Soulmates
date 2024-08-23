@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!28 &-2058825055064032385
 Texture2D:
   m_ObjectHideFlags: 0
@@ -23,10 +23,8 @@ Texture2D:
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
-  serializedVersion: 2
+  serializedVersion: 3
   m_Width: 256
   m_Height: 1
   m_CompleteImageSize: 1024
@@ -69,52 +67,21 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Golem Material 1
-  m_Shader: {fileID: 4800000, guid: 6459b2db96a08ca41b0f9b39dc7ad59e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - N_F_CA_ON
-  - N_F_EAL_ON
-  - N_F_NM_ON
-  - N_F_O_ON
-  - N_F_RDC_ON
-  - N_F_RELGI_ON
-  - N_F_RL_ON
-  - N_F_SIMTRANS_ON
-  - N_F_TRANSAFFSHA_ON
-  - N_F_TRANS_ON
-  m_InvalidKeywords:
-  - N_F_TRANSAFFSHA
-  - _CUSTOMLIGHTDIRECTIONFOLLOWOBJECTROTATION_OFF
-  - _GIFLATSHADE_OFF
-  - _GLOSSTEXTUREFOLLOWOBJECTROTATION_OFF
-  - _LIGHTAFFECTOUTLINECOLOR_OFF
-  - _LIGHTAFFECTRIMLIGHTCOLOR_OFF
-  - _LIGHTAFFECTSHADOW_OFF
-  - _LIGHTFALLOFFAFFECTSHADOWT_OFF
-  - _LIGIGNOYNORDIR_OFF
-  - _MCIALO_OFF
-  - _MIXMAINTEXTOOUTLINE_OFF
-  - _MVCOL_OFF
-  - _OUTLINEWIDTHAFFECTEDBYVIEWDISTANCE_OFF
-  - _PSGLOTEX_OFF
-  - _SELFSHADOWAFFECTEDBYLIGHTSHADOWSTRENGTH_OFF
-  - _SELFSHADOWSHADOWTATVIEWDIRECTION_OFF
-  - _SHOWNORMAL_OFF
-  - _SPECMODE_OFF
-  - _STIL_OFF
-  - _TEXTUREPATTERNSTYLE_OFF
-  - _USESECONDARYCUTOUT_OFF
-  - _VERTEXCOLORGREENCONTROLSELFSHADOWTHRESHOLD_OFF
-  - _VERTEXCOLORREDCONTROLSMOOTHOBJECTNORMAL_OFF
+  - _EMISSION
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap:
     IgnoreProjection: False
-    RenderType: Transparent
-  disabledShaderPasses: []
+    RenderType: Opaque
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -124,6 +91,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -167,7 +146,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -176,6 +163,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _PTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -209,6 +200,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AddPrecomputedVelocity: 0
     - _AlphaBaseCutout: 1
     - _AlphaClip: 0
     - _AlphaToMask: 0
@@ -218,6 +210,8 @@ Material:
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
     - _BumpScale: 1
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
     - _Compa: 4
     - _ComputeMeshIndex: 0
     - _Cull: 2
@@ -227,17 +221,21 @@ Material:
     - _Cutoff: 0.5
     - _Cutout: 0
     - _DepthThreshold: 900
+    - _DetailAlbedoMapScale: 1
+    - _DetailNormalMapScale: 1
     - _DirectionalLightIntensity: 0
     - _DoubleSidedOutline: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _DynamicNoisyOutline: 0
+    - _EnvironmentReflections: 1
     - _EnvironmentalLightingIntensity: 1
     - _FarDistanceMaxWidth: 5
     - _GIFlatShade: 0
     - _GIShadeThreshold: 0
     - _GlossColorPower: 10
     - _GlossIntensity: 1
+    - _GlossMapScale: 0
     - _GlossSoftness: 0
     - _GlossTextureFollowLight: 0
     - _GlossTextureFollowObjectRotation: 0
@@ -245,6 +243,7 @@ Material:
     - _GlossTextureSoftness: 0
     - _Glossiness: 0.6
     - _GlossinessSource: 0
+    - _GlossyReflections: 0
     - _Glow_Edge_Width: 1
     - _HighlightColorPower: 2
     - _LigIgnoYNorDir: 0
@@ -259,6 +258,7 @@ Material:
     - _MVCOL: 0
     - _MaiColPo: 3
     - _MaxFadDistance: 2
+    - _Metallic: 0
     - _MinFadDistance: 0
     - _MixMainTexToOutline: 0
     - _N_F_CA: 1
@@ -294,6 +294,7 @@ Material:
     - _N_F_STIS: 0
     - _NoisyOutlineIntensity: 0
     - _NormalMapIntensity: 1
+    - _OcclusionStrength: 1
     - _Opacity: 0.5
     - _Oper: 0
     - _OutlineExtrudeMethod: 1
@@ -303,6 +304,7 @@ Material:
     - _OverallShadowColorPower: 1
     - _PSGLOTEX: 0
     - _PTexturePower: 1
+    - _Parallax: 0.005
     - _PointSpotlightIntensity: 0
     - _QueueOffset: 0
     - _RELG: 1
@@ -347,6 +349,7 @@ Material:
     - _SmoothObjectNormal: 0
     - _Smoothness: 0.5
     - _SmoothnessSource: 0
+    - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -362,6 +365,7 @@ Material:
     - _VertexColorBlueAffectOutlineWitdh: 1
     - _VertexColorGreenControlSelfShadowThreshold: 0
     - _VertexColorRedControlSmoothObjectNormal: 0
+    - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
@@ -384,3 +388,4 @@ Material:
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _XYZPosition: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
