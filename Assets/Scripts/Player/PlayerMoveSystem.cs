@@ -206,16 +206,25 @@ namespace Sandbox.Player
                 }
 
 
-                applyImpulseComponent.ValueRW.forwardSpeed = forwardSpeed;
-                if (combatMode && !inDash)
+                var range = 5f;
+                float3 direction = default;
+                if (SystemAPI.HasComponent<MatchupComponent>(entity)) ;
                 {
                     var matchupComponent = SystemAPI.GetComponent<MatchupComponent>(entity);
-
-                    //var localTransform = SystemAPI.GetComponent<LocalTransform>(entity);
                     var targetEntity = matchupComponent.closestEnemyEntity;
                     var playerPosition = transform.ValueRW.Position;
-                    var targetPosition = SystemAPI.GetComponent<LocalTransform>(targetEntity).Position;
-                    var direction = math.normalize(targetPosition - playerPosition);
+                    if (SystemAPI.HasComponent<LocalTransform>(targetEntity))
+                    {
+                        var targetPosition = SystemAPI.GetComponent<LocalTransform>(targetEntity).Position;
+                        range = math.distance(targetPosition, playerPosition);
+                        direction = math.normalize(targetPosition - playerPosition);
+                        direction.y = 0;
+                    }
+
+                }
+                applyImpulseComponent.ValueRW.forwardSpeed = forwardSpeed;
+                if (combatMode && !inDash && range < 5)
+                {
                     var slerpDampTime = playerMoveComponent.combatRotateSpeed;
                     var targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
                     var playerRotation = SystemAPI.GetComponent<LocalTransform>(entity).Rotation;
