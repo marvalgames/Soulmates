@@ -21,7 +21,7 @@ public struct MissionComponent : IComponentData
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateAfter(typeof(HealthSystem))]
-[UpdateBefore(typeof(DeadSystem))]
+//[UpdateBefore(typeof(DeadSystem))]
 [UpdateBefore(typeof(CleanupSystem))]
 [RequireMatchingQueriesForUpdate]
 public partial class MissionSystem : SystemBase
