@@ -134,8 +134,7 @@ public class RigEntityTracker : MonoBehaviour
         {
             
             var rigEntity = bone.entity;
-            var hasTransform = entityManager.HasComponent<LocalTransform>(rigEntity) &&
-                               entityManager.HasComponent<LocalTransform>(rigEntity);
+            var hasTransform = entityManager.HasComponent<LocalTransform>(rigEntity);
 
 
             if (hasTransform)
