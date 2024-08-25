@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class ManagedComponentsAuthoring : MonoBehaviour
+    public class ManagedComponentsAuthoring : MonoBehaviour //NOT USED???
     {
         public class ManagedComponentsAuthoringBaker : Baker<ManagedComponentsAuthoring>
         {
