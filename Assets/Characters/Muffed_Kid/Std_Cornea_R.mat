@@ -8,59 +8,28 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Std_Cornea_R
-  m_Shader: {fileID: 4800000, guid: 6459b2db96a08ca41b0f9b39dc7ad59e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - N_F_EAL_ON
-  - N_F_O_ON
-  - N_F_RDC_ON
-  - N_F_RELGI_ON
-  - N_F_SS_ON
-  - N_F_TRANSAFFSHA_ON
-  - _NORMALMAP
-  m_InvalidKeywords:
-  - N_F_TRANSAFFSHA
-  - _CUSTOMLIGHTDIRECTIONFOLLOWOBJECTROTATION_OFF
   - _EMISSION
-  - _GIFLATSHADE_OFF
-  - _GLOSSTEXTUREFOLLOWOBJECTROTATION_OFF
-  - _LIGHTAFFECTOUTLINECOLOR_OFF
-  - _LIGHTAFFECTRIMLIGHTCOLOR_OFF
-  - _LIGHTAFFECTSHADOW_OFF
-  - _LIGHTFALLOFFAFFECTSHADOWT_OFF
-  - _LIGIGNOYNORDIR_OFF
-  - _MCIALO_OFF
   - _METALLICSPECGLOSSMAP
-  - _MIXMAINTEXTOOUTLINE_OFF
-  - _MVCOL_OFF
+  - _NORMALMAP
   - _OCCLUSIONMAP
-  - _OUTLINEWIDTHAFFECTEDBYVIEWDISTANCE_OFF
-  - _PSGLOTEX_OFF
   - _RECEIVE_SHADOWS_OFF
-  - _SELFSHADOWAFFECTEDBYLIGHTSHADOWSTRENGTH_OFF
-  - _SELFSHADOWSHADOWTATVIEWDIRECTION_OFF
-  - _SHOWNORMAL_OFF
-  - _SPECMODE_OFF
-  - _STIL_OFF
-  - _SURFACE_TYPE_TRANSPARENT
-  - _TEXTUREPATTERNSTYLE_OFF
-  - _USESECONDARYCUTOUT_OFF
-  - _VERTEXCOLORBLUEAFFECTOUTLINEWITDH_OFF
-  - _VERTEXCOLORGREENCONTROLSELFSHADOWTHRESHOLD_OFF
-  - _VERTEXCOLORREDCONTROLSMOOTHOBJECTNORMAL_OFF
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses:
   - TransparentDepthPrepass
   - TransparentBackface
   - MOTIONVECTORS
   - RayTracingPrepass
   - TransparentDepthPostpass
-  - DepthOnly
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -203,8 +172,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DirectionalLightIntensity: 0
     - _DoubleSidedOutline: 1
-    - _DstBlend: 10
-    - _DstBlendAlpha: 10
+    - _DstBlend: 0
+    - _DstBlendAlpha: 0
     - _DynamicNoisyOutline: 0
     - _EnvironmentReflections: 1
     - _EnvironmentalLightingIntensity: 1
@@ -327,9 +296,9 @@ Material:
     - _Smoothness: 0.897
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _Surface: 1
+    - _Surface: 0
     - _TEXMCOLINT: 1
     - _TRANSMODE: 0
     - _TexturePatternStyle: 0
@@ -343,7 +312,7 @@ Material:
     - _VertexColorGreenControlSelfShadowThreshold: 0
     - _VertexColorRedControlSmoothObjectNormal: 0
     - _WorkflowMode: 1
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.99999994, g: 0.99999994, b: 0.99999994, a: 0.8}
     - _Color: {r: 1, g: 1, b: 1, a: 0.8}
