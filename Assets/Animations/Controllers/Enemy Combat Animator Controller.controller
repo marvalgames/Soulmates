@@ -275,11 +275,12 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Aim Weapon
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8635128256384851248}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -1929725044638045133}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -521,6 +522,19 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-1929725044638045133
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2abc079f5cfbf34429f7a2630831a0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationType: 6
 --- !u!1101 &-1426538767372203561
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -727,7 +741,7 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Weapon Layer
+    m_Name: Enemy Weapon Layer
     m_StateMachine: {fileID: 4767945980762886176}
     m_Mask: {fileID: 31900000, guid: c7473f90da47bf1489b972dc37709bf5, type: 2}
     m_Motions: []
@@ -1595,9 +1609,6 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 4082335495799278877}
     m_Position: {x: -3910, y: -3810, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6284053225905732837}
-    m_Position: {x: -5060, y: -4380, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107207875399562484}
@@ -1607,10 +1618,10 @@ AnimatorStateMachine:
     m_Position: {x: -4900, y: -3840, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107753936289822652}
-    m_Position: {x: -4490, y: -3840, z: 0}
+    m_Position: {x: -4540, y: -3770, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107307722106823392}
-    m_Position: {x: -4190, y: -3800, z: 0}
+    m_Position: {x: -4220, y: -3750, z: 0}
   m_AnyStateTransitions:
   - {fileID: 1101775203106746942}
   - {fileID: 4910711606148734661}
@@ -1871,20 +1882,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1109 &4202755192547323738
-AnimatorTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -2314499278222049789}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 1
 --- !u!1101 &4565332548077111993
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1964,23 +1961,22 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Weapon Layer
+  m_Name: Enemy Weapon Layer
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -5088546895585668518}
-    m_Position: {x: 180, y: -360, z: 0}
+    m_Position: {x: 80, y: -640, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2314499278222049789}
-    m_Position: {x: 130, y: -480, z: 0}
+    m_Position: {x: -120, y: -770, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
-  m_EntryTransitions:
-  - {fileID: 4202755192547323738}
+  m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -310, y: -390, z: 0}
-  m_EntryPosition: {x: -40, y: -560, z: 0}
-  m_ExitPosition: {x: 530, y: -460, z: 0}
+  m_EntryPosition: {x: -360, y: -890, z: 0}
+  m_ExitPosition: {x: 510, y: -430, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -2314499278222049789}
 --- !u!1101 &4797319602350084695
@@ -2100,32 +2096,6 @@ AnimatorTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 1
---- !u!1102 &6284053225905732837
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Aim Weapon
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: c61c8ef9ea5de18408540806a16deb84, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1101 &6541323266460810773
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

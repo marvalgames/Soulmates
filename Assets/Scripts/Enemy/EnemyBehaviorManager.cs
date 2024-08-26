@@ -1,4 +1,5 @@
 ﻿using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 public struct DefensiveStrategyComponent : IComponentData
@@ -51,10 +52,11 @@ public struct EnemyMeleeMovementComponent : IComponentData
 
 public struct EnemyMovementComponent : IComponentData
 {
-    public bool backup;
-    public Vector3 originalPosition;
     public bool enabled; //true if currently active movement state
+    public float3 agentNextPosition;
+    public float3 originalPosition;
     public bool nearEdge;
+
 }
 
 public class EnemyBehaviorManager : MonoBehaviour

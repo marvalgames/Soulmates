@@ -41,8 +41,7 @@ public class LocomotionState : StateMachineBehaviour
         switch (animationType)
         {
             case AnimationType.Lowering:
-                animator.SetInteger(WeaponRaised, (int)WeaponMotion.None);
-                Debug.Log("Motion Exit ");
+                animator.SetInteger(WeaponRaised, (int)WeaponMotion.None); 
                 break;
             case AnimationType.JumpStart:
                 animator.SetInteger(JumpState, 0);

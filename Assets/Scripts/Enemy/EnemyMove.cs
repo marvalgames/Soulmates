@@ -371,13 +371,10 @@ public class EnemyMove : MonoBehaviour
         if (normalizedTime < 1.0f)
         {
             var yOffset = curve.Evaluate(normalizedTime);
-            //Transform transform1;
             agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;
             agent.destination = transform.position;
             normalizedTime += Time.deltaTime / duration;
-            //anim.SetInteger(JumpState, 1);
             ignoreAgentAI = true; 
-            //transform.position = agent.destination;
 
         }
         else
@@ -427,11 +424,17 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-   
 
+    private void Update()
+    {
+        if (manager.HasComponent<EnemyMovementComponent>(entity))
+        {
+            var enemyMovementComponent = manager.GetComponentData<EnemyMovementComponent>(entity);
+            enemyMovementComponent.agentNextPosition = agent.nextPosition;
+            manager.SetComponentData(entity, enemyMovementComponent);
+        }
 
-
-
+    }
 
 
     public void AnimationMovement(float3 target)
@@ -445,19 +448,10 @@ public class EnemyMove : MonoBehaviour
         if (agent && manager.HasComponent<Pause>(entity) == false)
         {
             aiTarget = target;
-
-            //agent.destination = target;
             if (backup == false)
             {
                 agent.updatePosition = true;
             }
-
-            var nearEdge = false;
-            if (manager.HasComponent<EnemyMovementComponent>(entity))
-            {
-                nearEdge = manager.GetComponentData<EnemyMovementComponent>(entity).nearEdge;
-            }
-
 
             state = manager.GetComponentData<EnemyStateComponent>(entity).MoveState;
 
@@ -467,9 +461,6 @@ public class EnemyMove : MonoBehaviour
                 validTarget = manager.GetComponentData<MatchupComponent>(entity).validTarget;
             }
             
-            
-
-
             var notMoving = false;
             var path = new NavMeshPath();
             if (validTarget && agent.CalculatePath(target, path))
@@ -487,7 +478,6 @@ public class EnemyMove : MonoBehaviour
 
             if (state == MoveStates.Idle || state == MoveStates.Stopped ||
                 state == MoveStates.Defensive 
-                //|| nearEdge == true
                 || notMoving)
             {
                 speed = 0;
@@ -503,9 +493,10 @@ public class EnemyMove : MonoBehaviour
             //if (wayPoints[currentWayPointIndex].action != WayPointAction.Jump)
             if(!ignoreAgentAI && !agentLinkMover.isAgentNavigatingLink)
             {
+                agent.updatePosition = false;
+                agent.updateRotation = false;
                 agent.destination = target;
-                transform.position = agent.nextPosition;
-                //Debug.Log("IGNORE " + ignoreAgentAI);
+                //transform.position = agent.nextPosition;
                 anim.SetInteger(JumpState, 0);
             }
 
@@ -517,21 +508,15 @@ public class EnemyMove : MonoBehaviour
             {
                 audioSource.Play();
             }
-
-            agent.updatePosition = false;
-            agent.updatePosition = true;
-            //anim.SetInteger("Zone", 2);
+            
             anim.SetFloat(Velz, velz, blendSpeed, Time.deltaTime);
         }
         else
         {
             agent.speed = 0;
         }
-        //Debug.Log("Agent Speed " + agent.speed);
-
         PlayEffects(velz);
-
-
+        
     }
 
     private void PlayEffects(float velZ)
@@ -601,5 +586,19 @@ public class EnemyMove : MonoBehaviour
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

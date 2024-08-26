@@ -20,7 +20,6 @@ public partial class BossStrategySystem : SystemBase
 
         var ecb = new EntityCommandBuffer(Allocator.TempJob);
         var positionBuffer = GetBufferLookup<BossWaypointBufferElement>(true);
-        var playerTransformGroup = SystemAPI.GetComponentLookup<LocalTransform>(true);
         
         Entities.WithoutBurst().WithAll<EnemyComponent>().WithNone<Pause>().ForEach
         ((
