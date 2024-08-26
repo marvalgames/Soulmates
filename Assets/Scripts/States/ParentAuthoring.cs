@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using Unity.Entities;
-using System.Collections.Generic;
+﻿using Unity.Entities;
+using UnityEngine;
 
 public class DestructibleClass : IComponentData
 {

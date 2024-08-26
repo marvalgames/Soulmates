@@ -1,6 +1,7 @@
-﻿using Sandbox.Player;
+﻿using System;
+using Sandbox.Player;
 
-[System.Serializable]
+[Serializable]
 public class SavePlayers
 {
     public PlayerData playerData;

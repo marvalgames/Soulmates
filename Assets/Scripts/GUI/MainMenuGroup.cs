@@ -1,9 +1,10 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using System.Linq;
-using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class MainMenuGroup : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class MainMenuGroup : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         buttons = gameObject.GetComponentsInChildren<Button>().ToList();
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
             PlayMenuClickSound(clickSound)));//shortcut instead of using inspector to add to each button
         AddMenuButtonHandlers();
         buttons[0].Select();
@@ -47,7 +48,7 @@ public class MainMenuGroup : MonoBehaviour
         SaveManager.instance.SaveWorldSettings();
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
@@ -58,7 +59,7 @@ public class MainMenuGroup : MonoBehaviour
     {
         var obj = gameObject;
         buttons = obj.GetComponentsInChildren<Button>().ToList();//linq using
-        buttons.ForEach((btn) => btn.gameObject.AddComponent<EventTrigger>());
+        buttons.ForEach(btn => btn.gameObject.AddComponent<EventTrigger>());
 
         for (var i = 0; i < buttons.Count; i++)
         {

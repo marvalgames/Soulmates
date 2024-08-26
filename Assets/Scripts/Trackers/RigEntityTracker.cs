@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Collisions;
 using Sandbox.Player;
@@ -14,7 +15,7 @@ public enum CharacterType
     NPC
 }
 
-[System.Serializable]
+[Serializable]
 public class RigContainer
 {
     public TriggerType triggerType;

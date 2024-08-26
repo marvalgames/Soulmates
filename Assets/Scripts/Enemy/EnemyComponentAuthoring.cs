@@ -1,20 +1,20 @@
 ﻿using System;
 using Collisions;
 using Sandbox.Player;
-using UnityEngine;
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class EnemyClass : IComponentData
 {
     public GameObject go;
 }
 
-[System.Serializable]
+[Serializable]
 public struct EnemyComponent : IComponentData
 {
-    [System.NonSerialized] public Entity e;
+    [NonSerialized] public Entity e;
 
     public bool invincible;
 
@@ -47,7 +47,7 @@ public class EnemyComponentAuthoring : MonoBehaviour
 
     [SerializeField] int saveIndex;
 
-    [SerializeField] bool paused = false;
+    [SerializeField] bool paused;
 
     [SerializeField] int areaIndex;
 
@@ -80,13 +80,13 @@ public class EnemyComponentAuthoring : MonoBehaviour
             }
             SetComponentEnabled<EnemiesAttackComponent>(e, authoring.enemiesAttack);
             
-            if (authoring.paused == true)
+            if (authoring.paused)
             {
                 AddComponent(e, new Pause());
             }
 
 
-            AddComponent(e, new StatsComponent()
+            AddComponent(e, new StatsComponent
                 {
                     shotsFired = 0,
                     shotsLanded = 0
@@ -94,7 +94,7 @@ public class EnemyComponentAuthoring : MonoBehaviour
             );
 
 
-            AddComponent(e, new SkillTreeComponent()
+            AddComponent(e, new SkillTreeComponent
                 {
                     e = e,
                     availablePoints = 0,

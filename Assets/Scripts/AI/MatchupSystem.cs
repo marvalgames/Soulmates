@@ -17,7 +17,7 @@ namespace AI
         {
             var meleeGroup = SystemAPI.GetComponentLookup<MeleeComponent>();
             var targetGroup = SystemAPI.GetComponentLookup<TargetZoneComponent>();
-            var job = new MatchupTargetZoneSystemJob()
+            var job = new MatchupTargetZoneSystemJob
             {
                 meleeGroup = meleeGroup,
                 targetGroup = targetGroup,
@@ -109,7 +109,7 @@ namespace AI
                 return;
             }
 
-            var matchupSystemJob = new MatchupSystemJob()
+            var matchupSystemJob = new MatchupSystemJob
             {
                 transformGroup = transformGroup,
                 targetZonesGroup = targetZonesGroup,

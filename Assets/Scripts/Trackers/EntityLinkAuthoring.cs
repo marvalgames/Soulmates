@@ -1,6 +1,5 @@
 using Unity.Entities;
 using UnityEngine;
-using Random = Unity.Mathematics.Random;
 
 namespace Trackers
 {
@@ -8,7 +7,7 @@ namespace Trackers
     public class EntityLinkAuthoring : MonoBehaviour
     {
         [Tooltip("Match with skin mesh character index in Main Scene")]
-        public int index = 0;
+        public int index;
 
     
         class EntityLinkBaker : Baker<EntityLinkAuthoring>

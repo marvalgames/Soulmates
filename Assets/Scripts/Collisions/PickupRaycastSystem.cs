@@ -49,7 +49,7 @@ namespace Collisions
                 {
                     Position = start,
                     MaxDistance = distance,
-                    Filter = new CollisionFilter()
+                    Filter = new CollisionFilter
                     {
                         BelongsTo = (uint)CollisionLayer.Ground,//odd player collides with ground here but since raycast after
                         CollidesWith = (uint)CollisionLayer.Player,
@@ -89,7 +89,7 @@ namespace Collisions
 
 
 
-            }).Schedule(this.Dependency);
+            }).Schedule(Dependency);
             deps.Complete();
 
             PickupMenuGroup.UpdateMenu = updateMenu;
@@ -132,7 +132,7 @@ namespace Collisions
             
                 pickedUpActor = powerItemComponent.pickedUpActor;
                 if (pickedUpActor == Entity.Null) return;
-                if (SystemAPI.HasComponent<EnemyComponent>(pickedUpActor) == true) return;
+                if (SystemAPI.HasComponent<EnemyComponent>(pickedUpActor)) return;
 
 
                 if (SystemAPI.HasComponent<DashPower>(entity) && powerItemComponent.enabled == false)

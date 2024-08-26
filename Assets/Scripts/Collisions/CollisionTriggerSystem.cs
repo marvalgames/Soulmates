@@ -3,7 +3,6 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Physics;
-using UnityEngine;
 
 namespace Collisions
 {
@@ -62,7 +61,7 @@ namespace Collisions
                 Ecb = m_ecbSystem.CreateCommandBuffer(),
                 triggerGroup = GetComponentLookup<TriggerComponent>(true),
                 healthGroup = GetComponentLookup<HealthComponent>(true),
-                ammoGroup = GetComponentLookup<AmmoComponent>(false),
+                ammoGroup = GetComponentLookup<AmmoComponent>(),
                 checkGroup = GetComponentLookup<CheckedComponent>(true),
                 bossGroup = GetComponentLookup<BossComponent>(true)
             };
@@ -101,14 +100,14 @@ namespace Collisions
                 if (chA == chB && typeA != (int)TriggerType.Ammo && typeB != (int)TriggerType.Ammo) return; ////?????
 
                 var alwaysDamageA = false;
-                if (healthGroup.HasComponent(chA) == true)
+                if (healthGroup.HasComponent(chA))
                 {
                     var healthComponentA = healthGroup[chA];
                     alwaysDamageA = healthComponentA.alwaysDamage;
                 }
 
                 var alwaysDamageB = false;
-                if (healthGroup.HasComponent(chB) == true)
+                if (healthGroup.HasComponent(chB))
                 {
                     var healthComponentB = healthGroup[chB];
                     alwaysDamageB = healthComponentB.alwaysDamage; //regardless of type trigger
@@ -251,7 +250,7 @@ namespace Collisions
                     //coll component part other always ammo ?
 
                     var collisionComponent =
-                        new CollisionComponent()
+                        new CollisionComponent
                         {
                             Part_entity = triggerComponentB.Type,
                             Part_other_entity = triggerComponentA.Type,
@@ -267,7 +266,7 @@ namespace Collisions
                 {
 
                     var collisionComponent =
-                        new CollisionComponent()
+                        new CollisionComponent
                         {
                             Part_entity = triggerComponentA.Type,
                             Part_other_entity = triggerComponentB.Type,
@@ -283,7 +282,7 @@ namespace Collisions
                 {
 
                     var collisionComponent =
-                        new CollisionComponent()
+                        new CollisionComponent
                         {
                             Part_entity = triggerComponentA.Type,
                             Part_other_entity = triggerComponentB.Type,
@@ -298,7 +297,7 @@ namespace Collisions
                 {
 
                     var collisionComponent =
-                        new CollisionComponent()
+                        new CollisionComponent
                         {
                             Part_entity = triggerComponentB.Type,
                             Part_other_entity = triggerComponentA.Type,

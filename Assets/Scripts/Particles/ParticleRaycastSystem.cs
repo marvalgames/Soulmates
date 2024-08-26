@@ -5,7 +5,6 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
-using UnityEngine;
 
 
 //[UpdateAfter(typeof(Unity.Physics.Systems.AfterPhysicsSystemGroup))]
@@ -61,7 +60,7 @@ public partial struct ParticleRaycastSystem : ISystem
             {
                 Position = start,
                 MaxDistance = distance,
-                Filter = new CollisionFilter()
+                Filter = new CollisionFilter
                 {
                     BelongsTo = (uint)CollisionLayer.Particle,
                     CollidesWith = (uint)CollisionLayer.Ground,
@@ -75,19 +74,19 @@ public partial struct ParticleRaycastSystem : ISystem
             direction = new float3(0, -1, 0);
             distance = 1.1f;
             end = start + direction * distance;
-            var inputDown = new RaycastInput()
+            var inputDown = new RaycastInput
             {
                 Start = start,
                 End = end,
                 //Filter = CollisionFilter.Default
-                Filter = new CollisionFilter()
+                Filter = new CollisionFilter
                 {
                     BelongsTo = (uint)CollisionLayer.Particle,
                     CollidesWith = (uint)CollisionLayer.Ground,
                     GroupIndex = 0
                 }
             };
-            var hitDown = new Unity.Physics.RaycastHit();
+            var hitDown = new RaycastHit();
             //Debug.DrawRay(inputDown.Start, direction, Color.white, distance);
 
             var hasPointHitDown = collisionWorld.CastRay(inputDown, out hitDown);
@@ -98,11 +97,11 @@ public partial struct ParticleRaycastSystem : ISystem
             distance = .20f;
             end = start + direction * distance;
 
-            var inputUp = new RaycastInput()
+            var inputUp = new RaycastInput
             {
                 Start = start,
                 End = end,
-                Filter = new CollisionFilter()
+                Filter = new CollisionFilter
                 {
                     BelongsTo = (uint)CollisionLayer.Particle,
                     CollidesWith = (uint)CollisionLayer.Ground,
@@ -111,7 +110,7 @@ public partial struct ParticleRaycastSystem : ISystem
 
             };
 
-            var hitUp = new Unity.Physics.RaycastHit();
+            var hitUp = new RaycastHit();
 
             var hasPointHitUp = collisionWorld.CastRay(inputUp, out hitUp);
 
@@ -138,7 +137,7 @@ public partial struct ParticleRaycastSystem : ISystem
                         var localTransform = LocalTransform.FromPosition(LocalTransform.Position);
                         ecb.SetComponent(spawn, localTransform); //spawn visual effect component entity 
 
-                        ecb.AddComponent(spawn, new SpawnedItem()
+                        ecb.AddComponent(spawn, new SpawnedItem
                         {
                             spawned = true,
                             itemParent = entity,
@@ -171,10 +170,7 @@ public partial struct ParticleRaycastSystem : ISystem
 
 
         }
-        var visualEffectTriggerJob = new VisualEffectTriggerJob()
-        {
-
-        };
+        var visualEffectTriggerJob = new VisualEffectTriggerJob();
 
         visualEffectTriggerJob.Schedule();
         ecb.Playback(state.EntityManager);

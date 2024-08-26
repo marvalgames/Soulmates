@@ -1,7 +1,6 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-
 public struct AmmoComponent : IComponentData
 {
     public bool playerOwner;

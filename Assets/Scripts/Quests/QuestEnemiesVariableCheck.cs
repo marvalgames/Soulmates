@@ -18,7 +18,7 @@ namespace Quests
         public string alertMessage = string.Empty;
 
         [Tooltip("Duration to show alert, or 0 to use default duration.")]
-        public float alertDuration = 0;
+        public float alertDuration;
 
         int previousCount;
         private Entity questerEntity;

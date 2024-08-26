@@ -1,14 +1,10 @@
-
-
 using Collisions;
 using Sandbox.Player;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Transforms;
 using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
-
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 //[UpdateAfter(typeof(ExportPhysicsWorld)), UpdateBefore(typeof(EndFramePhysicsSystem))]
@@ -42,7 +38,7 @@ public partial class BossStrategySystem : SystemBase
 
             if (SystemAPI.HasComponent<EvadeComponent>(enemyE))
             {
-                if (SystemAPI.GetComponent<EvadeComponent>(enemyE).InEvade == true)
+                if (SystemAPI.GetComponent<EvadeComponent>(enemyE).InEvade)
                 {
                     return;
                 }

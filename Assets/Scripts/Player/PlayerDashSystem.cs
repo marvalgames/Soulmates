@@ -41,10 +41,8 @@ namespace Sandbox.Player
                         playerDash.DelayTimeTicker -= dt;
                         return;
                     }
-                    else
-                    {
-                        playerDash.DelayTimeTicker = 0;
-                    }
+
+                    playerDash.DelayTimeTicker = 0;
 
                     if (playerDash is { DashTimeTicker: 0, DelayTimeTicker: <= 0 })
                     {

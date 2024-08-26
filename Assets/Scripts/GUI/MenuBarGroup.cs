@@ -2,11 +2,10 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
 public class MenuBarGroup : MonoBehaviour
 {
 
-    private CanvasGroup canvasGroup = null;
+    private CanvasGroup canvasGroup;
     [SerializeField]
     private Button defaultButton;
 

@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Collisions;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.AI;
-using Unity.Transforms;
-
 
 public enum WayPointAction
 {
@@ -28,7 +28,7 @@ public enum WayPointAnimation
 }
 
 
-[System.Serializable]
+[Serializable]
 public class WayPoint
 {
     public Vector3 targetPosition;
@@ -38,7 +38,7 @@ public class WayPoint
     //public WeaponType wayPointWeaponType;//used for strike type
     public float duration = 1;
     public float speed = 1;
-    public bool chase = false;
+    public bool chase;
     public int weaponListIndex;// from weapon manager
     public int ammoListIndex;//from ammo manager
     public int audioListIndex;
@@ -69,7 +69,7 @@ public enum MoveStates
     Chase,
     Defensive,
     Stopped
-};
+}
 
 public enum CombatStates
 {
@@ -78,7 +78,7 @@ public enum CombatStates
     Chase,
     Stance,
     Aim
-};
+}
 
 public enum EnemyRoles
 {
@@ -88,7 +88,7 @@ public enum EnemyRoles
     Security,//removes all but first waypoint
     Evade,
     Random
-};
+}
 
 public enum DefensiveRoles
 {
@@ -97,7 +97,7 @@ public enum DefensiveRoles
     Patrol,
     Evade,
     Random
-};
+}
 
 public enum NavigationStates
 {
@@ -105,7 +105,7 @@ public enum NavigationStates
     Movement,
     Melee,
     Weapon
-};
+}
 
 
 
@@ -145,11 +145,11 @@ public class EnemyMove : MonoBehaviour
     [HideInInspector]
     public Animator anim;
     public List<WayPoint> wayPoints = new List<WayPoint>();
-    [SerializeField] public int currentWayPointIndex = 0;
+    [SerializeField] public int currentWayPointIndex;
     [SerializeField]
     private WayPoint currentWayPoint;
 
-    public bool randomWayPoints = false;
+    public bool randomWayPoints;
     public EnemyRoles enemyRole;
     public float moveSpeed;
     public float rotateSpeed = 1;
@@ -168,7 +168,7 @@ public class EnemyMove : MonoBehaviour
     public bool backup;
     public float backupSpeed = 15f;
     public float backupSeconds = .25f;
-    public float backupTimer = 0;
+    public float backupTimer;
     //public float afterMoveTimer = 0;
 
     [HideInInspector]
@@ -188,7 +188,7 @@ public class EnemyMove : MonoBehaviour
     
     [SerializeField]
     float duration = 3.0f;
-    float normalizedTime = 0.0f;
+    float normalizedTime;
     Vector3 startPos;
     Vector3 endPos;
     public AnimationCurve curve = new AnimationCurve();
@@ -301,7 +301,7 @@ public class EnemyMove : MonoBehaviour
         startPos = agent.transform.position;
         currentWayPointIndex = 0;
         var isCurrentWayPointJump = wayPoints[currentWayPointIndex].action == WayPointAction.Jump;
-        if (isCurrentWayPointJump == true)
+        if (isCurrentWayPointJump)
         {
             anim.SetInteger(JumpState, 1);
             normalizedTime = 0.0f;
@@ -556,7 +556,7 @@ public class EnemyMove : MonoBehaviour
 
         if (entity == Entity.Null || agent == null) return;
 
-        if (manager.HasComponent<Pause>(entity) == true)
+        if (manager.HasComponent<Pause>(entity))
         {
             agent.speed = 0;
             anim.speed = 0;

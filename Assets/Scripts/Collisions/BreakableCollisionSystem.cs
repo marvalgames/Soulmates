@@ -2,7 +2,6 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Physics;
-using UnityEngine;
 
 namespace Collisions
 {
@@ -36,10 +35,10 @@ namespace Collisions
             var collisionJob = new BreakableCollisionJob
             {
                 Ecb = m_ecbSystem.CreateCommandBuffer(),
-                breakableGroup = GetComponentLookup<BreakableComponent>(false),
-                velocityGroup = GetComponentLookup<TriggerComponent>(false),
+                breakableGroup = GetComponentLookup<BreakableComponent>(),
+                velocityGroup = GetComponentLookup<TriggerComponent>(),
                 ammoGroup = GetComponentLookup<AmmoDataComponent>(true),
-                gravityGroup = GetComponentLookup<PhysicsGravityFactor>(false),
+                gravityGroup = GetComponentLookup<PhysicsGravityFactor>(),
             };
 
             Dependency = collisionJob.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), Dependency);
@@ -160,7 +159,7 @@ namespace Collisions
             var gravityGroup = SystemAPI.GetComponentLookup<PhysicsGravityFactor>();
 
 
-            var job = new BreakableJob()
+            var job = new BreakableJob
             {
                 breakableEntities = breakableEntities,
                 brokenGroup = brokenGroup,

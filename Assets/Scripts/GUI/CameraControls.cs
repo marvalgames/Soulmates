@@ -1,11 +1,10 @@
-﻿using UnityEngine;
-using Unity.Cinemachine;
+﻿using Rewired;
 using Sandbox.Player;
-using Rewired;
-using Unity.Mathematics;
+using Unity.Cinemachine;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Transforms;
-
+using UnityEngine;
 
 public struct CameraControlsComponent : IComponentData
 {
@@ -19,7 +18,7 @@ public struct CameraControlsComponent : IComponentData
 public class CameraControls : MonoBehaviour
 {
     public Rewired.Player player;
-    public int playerId = 0; // The Rewired player id of this character
+    public int playerId; // The Rewired player id of this character
     private bool changeX, changeY;
     [Header("Free Look Rotation")] public CinemachineCamera freeLook;
 
@@ -29,7 +28,7 @@ public class CameraControls : MonoBehaviour
     
     public float minValueX = -180;
     public float maxValueX = 180;
-    public float minHeight = 0;
+    public float minHeight;
     [Tooltip("Max height is relative to FOV")]
     public float maxHeight = 45f;
     public float minScale = .25f;

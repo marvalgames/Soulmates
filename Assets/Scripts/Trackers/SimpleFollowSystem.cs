@@ -1,7 +1,6 @@
 using Unity.Entities;
 using Unity.Transforms;
 
-
 [UpdateInGroup(typeof(TransformSystemGroup))]
 [RequireMatchingQueriesForUpdate]
 public partial class SimpleFollowCharacterSystem : SystemBase

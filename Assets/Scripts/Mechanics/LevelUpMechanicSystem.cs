@@ -27,7 +27,7 @@ public partial class LevelUpMechanicSystem : SystemBase
                 var pointsNeeded = skillTreeComponent.PointsNextLevel * skillTreeComponent.CurrentLevel;
 
 
-                var pct = skillTreeComponent.CurrentLevelXp / (float)pointsNeeded;
+                var pct = skillTreeComponent.CurrentLevelXp / pointsNeeded;
                 //controlBar.value = pct;
 
 

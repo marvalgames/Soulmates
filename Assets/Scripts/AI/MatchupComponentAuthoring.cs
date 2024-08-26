@@ -3,8 +3,6 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
-using UnityEngine.Serialization;
-
 
 [Serializable]
 public struct MatchupComponent : IComponentData
@@ -38,12 +36,12 @@ public struct MatchupComponent : IComponentData
 public class MatchupComponentAuthoring : MonoBehaviour
 {
     public bool matchupClosest = true;
-    public bool leader = false;
+    public bool leader;
 
     public float AngleRadians = 180;
     public float ViewDistanceSQ = 100;
 
-    public bool View360 = false;
+    public bool View360;
 
 
     class MatchupBaker : Baker<MatchupComponentAuthoring>

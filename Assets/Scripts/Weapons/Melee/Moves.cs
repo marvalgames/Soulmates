@@ -1,4 +1,5 @@
-﻿using Collisions;
+﻿using System;
+using Collisions;
 using Unity.Entities;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ public enum AnimationType
     Melee
 }
 
-[System.Serializable]
+[Serializable]
 public class Moves
 {
     public bool active = true;

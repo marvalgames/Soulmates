@@ -56,7 +56,7 @@ public partial class ScoreSystem : SystemBase
                     //Debug.Log("combo Bonus " + comboBonus);
 
                     score.lastPointValue = score.defaultPointsScored + (int)timeBonus + (int)streakBonus +
-                                           (int)comboBonus + (int)score.addBonus;
+                                           (int)comboBonus + score.addBonus;
                     score.score = score.score + score.lastPointValue;
                     //score.startShotValue = score.score;
                     if (SystemAPI.HasComponent<HealthComponent>(e))
@@ -95,7 +95,7 @@ public partial class ScoreSystem : SystemBase
                     score.timeSinceLastScore += SystemAPI.Time.DeltaTime;
                 }
             }
-        ).Schedule(this.Dependency);
+        ).Schedule(Dependency);
         dep0.Complete();
 
         var currentScore = 0;
@@ -120,8 +120,8 @@ public partial class ScoreSystem : SystemBase
 
         var updateScoreForMenu = SaveManager.instance.updateScore;
         //run rank score loop only when endgame
-        if (LevelManager.instance.endGame == true && scoreChecked == 0 ||
-            updateScoreForMenu == true) //update score if clicked from menu
+        if (LevelManager.instance.endGame && scoreChecked == 0 ||
+            updateScoreForMenu) //update score if clicked from menu
         {
             SaveManager.instance.updateScore = false;
             //int slot = SaveManager.instance.saveWorld.lastLoadedSlot - 1;

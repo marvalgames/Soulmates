@@ -1,7 +1,6 @@
 using Unity.Entities;
 using UnityEngine;
 
-
 public class ParticleEffectsEntitySpawner : MonoBehaviour
 {
     public GameObject ParticleEffectsPrefab;
@@ -12,7 +11,7 @@ public class ParticleEffectsEntitySpawner : MonoBehaviour
         {
             var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
             AddComponent(e,
-                new ParticleEffectsSpawnerComponent()
+                new ParticleEffectsSpawnerComponent
                 {
                     entity = GetEntity(authoring.ParticleEffectsPrefab, TransformUsageFlags.Dynamic)
                 }

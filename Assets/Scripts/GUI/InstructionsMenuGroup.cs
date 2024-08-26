@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.Entities;
-
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public struct InstructionsMenuComponent : IComponentData
 {
@@ -13,7 +13,7 @@ public struct InstructionsMenuComponent : IComponentData
     public int index;
 }
 
-[System.Serializable]
+[Serializable]
 public class InstructionsView
 {
     public TextMeshProUGUI instruction;
@@ -21,8 +21,8 @@ public class InstructionsView
     public float fontSize = 25;
     public float showTimeLength = 3;
     public float hideTimeLength = 1;
-    public bool playAudio = false;
-    public bool isSetup = false;
+    public bool playAudio;
+    public bool isSetup;
 
 }
 
@@ -38,7 +38,7 @@ public class InstructionsMenuGroup : MonoBehaviour
     public EventSystem eventSystem;
     private CanvasGroup canvasGroup;
     [SerializeField] private Button defaultButton;
-    private float showTimer = 0f;
+    private float showTimer;
     private bool startShowTimer;
 
     //[SerializeField] private bool playAudioSource = false;
@@ -58,7 +58,7 @@ public class InstructionsMenuGroup : MonoBehaviour
 
 
     private int currentInstructionCount = 1;
-    private int totalInstructions = 0;
+    private int totalInstructions;
 
 
 
@@ -66,10 +66,7 @@ public class InstructionsMenuGroup : MonoBehaviour
     {
         manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var entity = World.DefaultGameObjectInjectionWorld.EntityManager.CreateEntity();
-        manager.AddComponentData(entity, new InstructionsMenuComponent()
-        {
-            
-        });
+        manager.AddComponentData(entity, new InstructionsMenuComponent());
         manager.AddComponentObject(entity, this);
         
         totalInstructions = instructionList.Length;
@@ -93,7 +90,7 @@ public class InstructionsMenuGroup : MonoBehaviour
         if (instructionList.Length < index + 1) return;
         if (instructionList[index].isSetup) return;
 
-        if (instructionList[index].playAudio == true)
+        if (instructionList[index].playAudio)
         {
             audioSource.Play();
 

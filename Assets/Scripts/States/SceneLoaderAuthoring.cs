@@ -16,7 +16,7 @@ public struct SceneLoader : IComponentData
 // Authoring component, a SceneAsset can only be used in the Editor
 public class SceneLoaderAuthoring : MonoBehaviour
 {
-    public UnityEditor.SceneAsset Scene;
+    public SceneAsset Scene;
 
     class Baker : Baker<SceneLoaderAuthoring>
     {

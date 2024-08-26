@@ -1,7 +1,6 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-
 public class EnemyMeleeAuthoring : MonoBehaviour
 {
  

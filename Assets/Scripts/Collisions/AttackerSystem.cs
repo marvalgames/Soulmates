@@ -1,7 +1,6 @@
 using Sandbox.Player;
 using Unity.Collections;
 using Unity.Entities;
-using UnityEngine;
 
 namespace Collisions
 {
@@ -26,7 +25,7 @@ namespace Collisions
                     in Entity entity
                 ) =>
                 {
-                    if (dead.isDead == true) return;
+                    if (dead.isDead) return;
 
                     var typeA = collisionComponent.Part_entity;
                     var typeB = collisionComponent.Part_other_entity;
@@ -254,7 +253,7 @@ namespace Collisions
 
 
                             //if (ammo.DamageCausedPreviously || ammoData.ChargeRequired == true && ammo.Charged == false || isEnemyShooter == isEnemyTarget
-                            if (ammo.DamageCausedPreviously || ammoData.ChargeRequired == true && ammo.Charged == false)
+                            if (ammo.DamageCausedPreviously || ammoData.ChargeRequired && ammo.Charged == false)
                             {
                                 damage = 0;
                             }
@@ -320,7 +319,7 @@ namespace Collisions
                                 }
 
                                 //for gmtk bonus for charged (blocked)
-                                if (ammo.Charged && isEnemyShooter == false && isEnemyTarget == true)
+                                if (ammo.Charged && isEnemyShooter == false && isEnemyTarget)
                                 {
                                     scoreComponent.addBonus = scoreComponent.defaultPointsScored * 1;
                                     ammo.Charged = false;

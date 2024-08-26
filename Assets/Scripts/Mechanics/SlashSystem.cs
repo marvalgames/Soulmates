@@ -37,7 +37,7 @@ namespace Mechanics
        
                     if (slashComponent.slashActive == false) return;
 
-                    if (slashComponent.animate == true && animator.GetInteger(SlashState) == 0)
+                    if (slashComponent.animate && animator.GetInteger(SlashState) == 0)
                     {
                         playerCombat.SelectMove(3);
                         slashComponent.animate = false;

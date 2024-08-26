@@ -2,10 +2,6 @@
 using Unity.Entities;
 using UnityEngine;
 
-
-
-
-
 public class TalentItem : MonoBehaviour
 {
     [SerializeField]

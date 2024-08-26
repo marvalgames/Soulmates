@@ -1,24 +1,22 @@
-﻿using Rewired;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Rewired;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
-
 public class OptionsMenuGroup : MonoBehaviour
 {
 
     public Rewired.Player player;
-    public int playerId = 0; // The Rewired player id of this character
+    public int playerId; // The Rewired player id of this character
     public static event Action OptionsExitBackClickedEvent;
     private List<Button> buttons;
     [SerializeField] private EventSystem eventSystem;
     [SerializeField]
-    private CanvasGroup optionsCanvasGroup = null;
+    private CanvasGroup optionsCanvasGroup;
     [SerializeField]
     private Button exitButton;
     [SerializeField]
@@ -31,9 +29,9 @@ public class OptionsMenuGroup : MonoBehaviour
     public AudioClip clickSound;
     public AudioMixer audioMixer;
     [SerializeField]
-    private Slider musicSlider = null;
+    private Slider musicSlider;
     [SerializeField]
-    private Slider soundSlider = null;
+    private Slider soundSlider;
 
 
 
@@ -66,7 +64,7 @@ public class OptionsMenuGroup : MonoBehaviour
         //int currentQualityIndex = sw.graphicsQuality - 1;
         //if (currentQualityIndex < 0) currentQualityIndex = 2;//default high
         buttons = GetComponentsInChildren<Button>().ToList();
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
         PlayButtonClickSound(clickSound)));
 
 

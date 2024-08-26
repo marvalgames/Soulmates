@@ -26,7 +26,7 @@ namespace Collisions
             {
                 Ecb = _mEcbSystem.CreateCommandBuffer(),
                 TriggerGroup = GetComponentLookup<TriggerComponent>(true),
-                ApplyGroup = GetComponentLookup<ApplyImpulseComponent>(false)
+                ApplyGroup = GetComponentLookup<ApplyImpulseComponent>()
             };
 
             Dependency = collisionEnvJob.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), Dependency);

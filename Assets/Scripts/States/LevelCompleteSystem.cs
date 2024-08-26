@@ -1,10 +1,10 @@
+using System;
 using Sandbox.Player;
-using Unity.Entities;
 using Unity.Collections;
+using Unity.Entities;
 using UnityEngine;
 
-
-[System.Serializable]
+[Serializable]
 public struct LevelCompleteComponent : IComponentData
 {
     public bool active;
@@ -111,7 +111,7 @@ public partial class LevelCompleteSystem : SystemBase
                         ref ScoreComponent scoreComponent) =>
                     {
                         Debug.Log("SCORE " + scoreComponent.score);
-                        var score = (1 + (float) LevelManager.instance.currentLevelCompleted / 20f +
+                        var score = (1 + LevelManager.instance.currentLevelCompleted / 20f +
                                      scoreComponent.streak / 100f) * scoreComponent.score;
                         Debug.Log("SCORE " + score);
                         scoreComponent.score = (int) score;

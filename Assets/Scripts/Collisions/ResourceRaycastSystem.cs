@@ -51,7 +51,7 @@ namespace Collisions
                 {
                     Position = start,
                     MaxDistance = distance,
-                    Filter = new CollisionFilter()
+                    Filter = new CollisionFilter
                     {
                         BelongsTo = (uint)CollisionLayer.Ground,//odd player collides with ground here but since raycast after
                         CollidesWith = (uint)CollisionLayer.Player,
@@ -87,7 +87,7 @@ namespace Collisions
 
 
 
-            }).Schedule(this.Dependency);
+            }).Schedule(Dependency);
             deps.Complete();
             PickupMenuGroup.UpdateMenu = updateMenu;
         
@@ -132,7 +132,7 @@ namespace Collisions
 
                 pickedUpActor = resourceItemComponent.pickedUpActor;
                 if (pickedUpActor == Entity.Null) return;
-                if (SystemAPI.HasComponent<EnemyComponent>(pickedUpActor) == true) return;
+                if (SystemAPI.HasComponent<EnemyComponent>(pickedUpActor)) return;
 
 
                 if (SystemAPI.HasComponent<CurrencyComponent>(entity) && resourceItemComponent.enabled == false)
@@ -154,7 +154,7 @@ namespace Collisions
 
                     //Debug.Log("instance entity " + instanceEntity);
 
-                    var currencyPlayer = new CurrencyComponent()
+                    var currencyPlayer = new CurrencyComponent
                     {
                         psAttached = instanceEntity,//attached to player on speed pick up
                         pickedUpActor = pickedUpActor,

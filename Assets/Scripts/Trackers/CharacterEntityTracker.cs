@@ -2,7 +2,6 @@ using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public struct EntityFollow : IComponentData
 {

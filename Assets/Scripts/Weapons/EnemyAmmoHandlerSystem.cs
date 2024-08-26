@@ -1,14 +1,9 @@
-using Sandbox.Player;
-using System.Diagnostics;
 using Collisions;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
-using UnityEngine;
-using Debug = UnityEngine.Debug;
-
 
 namespace Enemy
 {
@@ -22,13 +17,13 @@ namespace Enemy
         {
             if (LevelManager.instance == null) return;
 
-            if (LevelManager.instance.endGame == true) return;
+            if (LevelManager.instance.endGame) return;
 
             var dt = SystemAPI.Time.DeltaTime;
 
             var commandBuffer = new EntityCommandBuffer(Allocator.Persistent);
 
-            var ammoGroup = GetComponentLookup<AmmoComponent>(false);
+            var ammoGroup = GetComponentLookup<AmmoComponent>();
             Entities.WithNone<Pause>().WithAll<EnemyComponent>().ForEach(
                 (
                     Entity entity,

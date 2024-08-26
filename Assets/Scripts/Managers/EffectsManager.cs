@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
-using UnityEngine.VFX;
-
 
 public struct EffectsComponent : IComponentData
 {

@@ -2,10 +2,6 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
-using UnityEngine;
-using UnityEngine.VFX;
-
-
 
 [RequireMatchingQueriesForUpdate]
 public partial struct SpawnOnceVfxSystem :  ISystem // Deprecated
@@ -18,7 +14,7 @@ public partial struct SpawnOnceVfxSystem :  ISystem // Deprecated
         var transformGroup = SystemAPI.GetComponentLookup<LocalTransform>();
 
 
-        var job = new SpawnOnceVfxJob()
+        var job = new SpawnOnceVfxJob
         {
             ecb = ecb,
             transformGroup = transformGroup

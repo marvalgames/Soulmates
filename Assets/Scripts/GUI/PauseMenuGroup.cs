@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
-
 public class PauseMenuGroup : MonoBehaviour
 {
 
@@ -18,11 +16,11 @@ public class PauseMenuGroup : MonoBehaviour
     public static event Action ExitClickedEvent;
     public static event Action ScoresClickedEvent;
 
-    private CanvasGroup canvasGroup = null;
+    private CanvasGroup canvasGroup;
     [SerializeField]
-    private DeadMenuGroup deadGroup = null;
+    private DeadMenuGroup deadGroup;
     [SerializeField]
-    private WinnerMenuGroup winnerGroup = null;
+    private WinnerMenuGroup winnerGroup;
     [SerializeField]
     private EventSystem eventSystem;
     [SerializeField]

@@ -1,13 +1,10 @@
-﻿using Sandbox.Player;
-using Unity.Burst;
+﻿using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
-
-
-    public partial struct ClosestEnemyMatchupSystem : ISystem
+public partial struct ClosestEnemyMatchupSystem : ISystem
     {
         private EntityQuery enemyQuery;
 
@@ -26,7 +23,7 @@ using Unity.Transforms;
             var enemyEntities = enemyQuery.ToEntityArray(Allocator.TempJob);
             var transformGroup = SystemAPI.GetComponentLookup<LocalTransform>();
 
-            var job = new ClosestEnemyMatchUpJob()
+            var job = new ClosestEnemyMatchUpJob
             {
                 EnemyEntities = enemyEntities,
                 TransformGroup = transformGroup

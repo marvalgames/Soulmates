@@ -1,16 +1,15 @@
 using Unity.Entities;
 using UnityEngine;
 
-
 public class VisualEffectAuthoring : MonoBehaviour
 {
-    public bool enemyDamaged = false;
+    public bool enemyDamaged;
     public bool playerDamaged = true;
     public float spawnTime = 3;
     public float damageAmount = 1;
     public float framesToSkip = 12;
     [Header("Effects Index")]
-    public int effectsIndex = 0;
+    public int effectsIndex;
     public int deathBlowEffectsIndex;
     public float destroyCountdown = 2;
 

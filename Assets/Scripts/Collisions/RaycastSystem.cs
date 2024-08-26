@@ -89,7 +89,7 @@ namespace Collisions
                 {
                     Position = start,
                     MaxDistance = distance,
-                    Filter = new CollisionFilter()
+                    Filter = new CollisionFilter
                     {
                         BelongsTo = (uint)CollisionLayer.Player,
                         CollidesWith = (uint)CollisionLayer.Stairs,
@@ -117,7 +117,7 @@ namespace Collisions
                 {
                     Position = start,
                     MaxDistance = distance,
-                    Filter = new CollisionFilter()
+                    Filter = new CollisionFilter
                     {
                         BelongsTo = (uint)CollisionLayer.Player,
                         CollidesWith = (uint)CollisionLayer.Ground,
@@ -137,7 +137,7 @@ namespace Collisions
                 {
                     applyImpulse.groundPosition = hitDown.Position;
                     var e = collisionWorld.Bodies[hitDown.RigidBodyIndex].Entity; //grounded
-                    if (applyImpulse.InJump == true)
+                    if (applyImpulse.InJump)
                     {
                         applyImpulse.InJump = false;
                         applyImpulse.Grounded = true;
@@ -174,7 +174,7 @@ namespace Collisions
                     applyImpulse.Grounded = true;
                     applyImpulse.fallingFramesCounter = 0;
                 }
-            }).Schedule(this.Dependency);
+            }).Schedule(Dependency);
 
             inputDeps0.Complete();
 
@@ -191,11 +191,11 @@ namespace Collisions
                 var distance = 2f;
                 var end = start + direction * distance;
 
-                var inputDownOut = new RaycastInput()
+                var inputDownOut = new RaycastInput
                 {
                     Start = start,
                     End = end,
-                    Filter = new CollisionFilter()
+                    Filter = new CollisionFilter
                     {
                         BelongsTo = (uint)CollisionLayer.Enemy | (uint)CollisionLayer.Player,
                         CollidesWith = (uint)CollisionLayer.Platform,
@@ -252,11 +252,11 @@ namespace Collisions
                 //distance = startRayY * 2f;
                 distance = 1.0f;
                 end = start + direction * distance;
-                var inputDown = new RaycastInput()
+                var inputDown = new RaycastInput
                 {
                     Start = start,
                     End = end,
-                    Filter = new CollisionFilter()
+                    Filter = new CollisionFilter
                     {
                         BelongsTo = (uint)CollisionLayer.Enemy | (uint)CollisionLayer.Player,
                         CollidesWith = (uint)CollisionLayer.Platform,
@@ -298,7 +298,7 @@ namespace Collisions
                     SystemAPI.SetComponent(entity, enemyMove);
                 }
 
-            }).Schedule(this.Dependency);
+            }).Schedule(Dependency);
             inputDeps1.Complete();
 
 

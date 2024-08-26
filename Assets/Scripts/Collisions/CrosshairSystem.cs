@@ -50,14 +50,14 @@ namespace Collisions
             }
             //var playerLocalTransform = SystemAPI.GetComponent<LocalTransform>(actorWeaponAimEntityList[0]);
             //var playerRotation = SystemAPI.GetComponent<Rotation>(actorWeaponAimEntityList[0]);
-            var allHits = new NativeList<Unity.Physics.RaycastHit>(Allocator.Temp);
+            var allHits = new NativeList<RaycastHit>(Allocator.Temp);
             var collisionWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
 
 
 
             Entities.WithoutBurst().ForEach((Entity entity, ref CrosshairComponent crosshair) =>
             {
-                var physicsWorldSystem = World.GetExistingSystem<Unity.Physics.Systems.BuildPhysicsWorld>();
+                var physicsWorldSystem = World.GetExistingSystem<BuildPhysicsWorld>();
                 var actorEntity = actorWeaponAimEntityList[0];
                 var actorWeaponAim = SystemAPI.GetComponent<ActorWeaponAimComponent>(actorEntity);
                 var LocalTransform = SystemAPI.GetComponent<LocalTransform>(entity);
@@ -75,11 +75,11 @@ namespace Collisions
                 var end = actorWeaponAim.rayCastEnd;
             
             
-                var inputForward = new RaycastInput()
+                var inputForward = new RaycastInput
                 {
                     Start = start,
                     End = end,
-                    Filter = new CollisionFilter()
+                    Filter = new CollisionFilter
                     {
                         BelongsTo = (uint)CollisionLayer.Crosshair,
                         CollidesWith = (uint)CollisionLayer.Enemy | (uint)CollisionLayer.Breakable  | (uint)CollisionLayer.Ground

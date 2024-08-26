@@ -2,9 +2,7 @@
 using Unity.Entities;
 using UnityEngine;
 
-
-
-[System.Serializable]
+[Serializable]
 
 public struct ScoreComponent : IComponentData
 {
@@ -51,7 +49,7 @@ public class ScoreComponentAuthoring : MonoBehaviour
         {
             var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
 
-            AddComponent(e, new ScoreComponent()
+            AddComponent(e, new ScoreComponent
                 {
                     defaultPointsScored = authoring.defaultPointsScored,
                     trackStreak = authoring.trackStreak,

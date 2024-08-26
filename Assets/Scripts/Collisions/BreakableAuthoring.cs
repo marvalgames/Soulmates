@@ -41,7 +41,7 @@ namespace Collisions
         public int deathBlowEffectsIndex;
         public float gravityFactorAfterBreaking = 1;
         public int groupIndex = 1;
-        public int effectIndex = 0;
+        public int effectIndex;
         public Transform parent;
 
         class BreakableBaker : Baker<BreakableAuthoring>

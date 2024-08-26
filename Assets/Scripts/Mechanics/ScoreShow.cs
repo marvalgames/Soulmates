@@ -2,7 +2,6 @@
 using Unity.Entities;
 using UnityEngine;
 
-
 public class ScoreShow : MonoBehaviour
 
 {

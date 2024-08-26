@@ -42,7 +42,7 @@ namespace Collisions
                 {
                     Position = start,
                     MaxDistance = distance,
-                    Filter = new CollisionFilter()
+                    Filter = new CollisionFilter
                     {
                         BelongsTo = (uint)CollisionLayer
                             .Ground, //odd player collides with ground here but since raycast after
@@ -75,7 +75,7 @@ namespace Collisions
 
 
 
-            }).Schedule(this.Dependency);
+            }).Schedule(Dependency);
             deps.Complete();
             PickupMenuGroup.UpdateMenu = updateMenu;
 

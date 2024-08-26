@@ -2,7 +2,6 @@ using Unity.Entities;
 using UnityEngine;
 
 
-
 //skinned mesh not compatible currently
 //MonoBehaviour Only
 public struct ShaderComponent : IComponentData
@@ -15,7 +14,7 @@ public class ShaderComponentAuthoring : MonoBehaviour
 {
     public SkinnedMeshRenderer leftEyeMeshRenderer;
     public SkinnedMeshRenderer rightEyeMeshRenderer;
-    float offsetValue = 0;
+    float offsetValue;
     float direction = 1;
     [SerializeField] float eyeSpeed = .25f;
     [SerializeField] float offsetMin = -1;

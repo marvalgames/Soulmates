@@ -14,7 +14,7 @@ public class InputBaker : Baker<InputBakerAuthoring>
    public override void Bake(InputBakerAuthoring authoring)
    {
        var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
-       AddComponent(e, new InputControllerComponent()
+       AddComponent(e, new InputControllerComponent
        {
            maxTapTime = authoring.maxTapTime,
            comboBufferTimeMax = authoring.comboBufferTimeMax

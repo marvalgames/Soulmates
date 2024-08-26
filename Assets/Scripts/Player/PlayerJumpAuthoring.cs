@@ -1,3 +1,4 @@
+using System;
 using Sandbox.Player;
 using Unity.Entities;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace Player
 {
-    [System.Serializable]
+    [Serializable]
     public class PlayerJumpGameObjectClass : IComponentData
     {
         [FormerlySerializedAs("audioSourcePrefab")] public GameObject audioSourceGo;
@@ -15,11 +16,11 @@ namespace Player
     public class PlayerJumpAuthoring : MonoBehaviour
     {
         [HideInInspector] public float startJumpGravityForce = 9.81f;
-        [HideInInspector] public float addedNegativeForce = 0f;
+        [HideInInspector] public float addedNegativeForce;
         [HideInInspector] public float jumpDownGravityMultiplier = 1.0f;
         [HideInInspector] public float jumpY = 6f;
         [HideInInspector] public float airForce = 500f;
-        [SerializeField] private bool disabled = false;
+        [SerializeField] private bool disabled;
         [FormerlySerializedAs("audioSourcePrefab")] [FormerlySerializedAs("AudioSourcePrefab")] public GameObject audioSourceGo;
         [FormerlySerializedAs("AudioClip")] public AudioClip audioClip;
         public GameObject vfxPrefab;

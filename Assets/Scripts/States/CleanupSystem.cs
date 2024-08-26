@@ -1,16 +1,12 @@
 using Collisions;
-using Unity.Physics;
-using Unity.Entities;
-using Sandbox.Player;
 using Unity.Collections;
-using Unity.Mathematics;
-using UnityEngine;
+using Unity.Entities;
 
 
 //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup), OrderLast = true)]
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateAfter(typeof(Collisions.CollisionSystem))]
+[UpdateAfter(typeof(CollisionSystem))]
 
 [RequireMatchingQueriesForUpdate]
 public partial class CleanupSystem : SystemBase
@@ -30,7 +26,7 @@ public partial class CleanupSystem : SystemBase
                 ecb.RemoveComponent<DamageComponent>(e);
 
             }
-        ).Schedule(this.Dependency);
+        ).Schedule(Dependency);
         dep0.Complete();
 
 
@@ -42,7 +38,7 @@ public partial class CleanupSystem : SystemBase
                 //Debug.Log("destroy collision from ch ef sys");
 
             }
-        ).Schedule(this.Dependency);
+        ).Schedule(Dependency);
         dep1.Complete();
         
         var dep2 = Entities.ForEach
@@ -51,7 +47,7 @@ public partial class CleanupSystem : SystemBase
             {
                 scoreComponent.lastPointValue = 0;
             }
-        ).Schedule(this.Dependency);
+        ).Schedule(Dependency);
         dep2.Complete();
 
 

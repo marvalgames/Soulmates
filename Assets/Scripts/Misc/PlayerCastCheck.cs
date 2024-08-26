@@ -6,7 +6,7 @@ namespace Misc
     public class PlayerCastCheck : MonoBehaviour
     {
         [SerializeField]
-        private float hitDistance = 0;
+        private float hitDistance;
 
         [SerializeField] 
         private float radius = 0.5f;
@@ -36,7 +36,7 @@ namespace Misc
         {
             if (startTransform == null)
             {
-                startTransform = this.transform;
+                startTransform = transform;
             }
 
             rb = GetComponent<Rigidbody>();

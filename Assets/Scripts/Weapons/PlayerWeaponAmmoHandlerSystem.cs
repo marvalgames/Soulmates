@@ -20,7 +20,7 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
     protected override void OnUpdate()
     {
         if (LevelManager.instance == null) return;
-        if (LevelManager.instance.endGame == true) return;
+        if (LevelManager.instance.endGame) return;
 
         var dt = SystemAPI.Time.DeltaTime; //gun duration
         var commandBuffer = _mEntityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();

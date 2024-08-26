@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.Entities;
-
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public enum toggleStates
 {
@@ -14,7 +14,7 @@ public enum toggleStates
     post
 }
 
-[System.Serializable]
+[Serializable]
 public struct WinnerMenuComponent : IComponentData
 {
     public bool hide;
@@ -29,7 +29,7 @@ public struct WinnerMenuComponent : IComponentData
 
 }
 
-[System.Serializable]
+[Serializable]
 public struct WinnerComponent : IComponentData
 {
     public bool active;
@@ -98,7 +98,7 @@ public class WinnerMenuGroup : MonoBehaviour
         var world = World.DefaultGameObjectInjectionWorld;
         var manager = world.EntityManager;
         var entity = manager.CreateEntity();
-        manager.AddComponentData(entity, new WinnerMenuComponent()
+        manager.AddComponentData(entity, new WinnerMenuComponent
         {
             hide = true,
             levelTargetReachedCounter = 0,
@@ -110,7 +110,7 @@ public class WinnerMenuGroup : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         buttons = gameObject.GetComponentsInChildren<Button>().ToList();
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
         PlayMenuClickSound(clickSound)));//shortcut instead of using inspector to add to each button
 
     }

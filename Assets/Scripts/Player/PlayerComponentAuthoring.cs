@@ -1,11 +1,12 @@
-﻿using Collisions;
+﻿using System;
+using Collisions;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
 namespace Sandbox.Player
 {
-    [System.Serializable]
+    [Serializable]
     public struct StatsComponent : IComponentData
     {
         public int shotsFired;
@@ -13,18 +14,18 @@ namespace Sandbox.Player
 
     }
 
-    [System.Serializable]
+    [Serializable]
     public struct TotalCurrencyComponent : IComponentData
     {
         public float currency;
 
     }
 
-    [System.Serializable]
+    [Serializable]
     public struct SkillTreeComponent : IComponentData
     {
 
-        [System.NonSerialized]
+        [NonSerialized]
         public Entity e;
         public int CurrentLevel;
         public float CurrentLevelXp;
@@ -45,7 +46,7 @@ namespace Sandbox.Player
 
 
 
-    [System.Serializable]
+    [Serializable]
     public struct PlayerComponent : IComponentData
     {
         public int index;//1 is p1 2 is p2 etc 1 is required for skill tree group
@@ -66,7 +67,7 @@ namespace Sandbox.Player
     {
      
         
-        public int index = 0;
+        public int index;
 
         [SerializeField]
         private bool checkWinCondition = true;
@@ -81,7 +82,7 @@ namespace Sandbox.Player
 
 
         [SerializeField]
-        bool paused = false;
+        bool paused;
 
 
         public class PlayerComponentBaker : Baker<PlayerComponentAuthoring>
@@ -105,7 +106,7 @@ namespace Sandbox.Player
                 );
 
 
-                if (authoring.paused == true)
+                if (authoring.paused)
                 {
                     AddComponent(e, new Pause());
                 }
@@ -141,7 +142,7 @@ namespace Sandbox.Player
                     }
                 );
 
-                AddComponent(e, new SkillTreeComponent()
+                AddComponent(e, new SkillTreeComponent
                     {
                         //e = entity,
                         
@@ -159,7 +160,7 @@ namespace Sandbox.Player
 
                 );
 
-                AddComponent(e, new StatsComponent()
+                AddComponent(e, new StatsComponent
                     {
                         shotsFired = 0,
                         shotsLanded = 0
@@ -175,7 +176,7 @@ namespace Sandbox.Player
 
                     });
 
-                AddComponent(e, new TotalCurrencyComponent()
+                AddComponent(e, new TotalCurrencyComponent
                     {
                         currency = 0
                     }

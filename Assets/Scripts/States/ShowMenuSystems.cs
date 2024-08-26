@@ -1,8 +1,7 @@
 using Sandbox.Player;
 using Unity.Entities;
-//using Unity.Burst;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+//using Unity.Burst;
 
 
 [UpdateAfter(typeof(ScoreSystem))]
@@ -11,9 +10,9 @@ using UnityEngine.SocialPlatforms.Impl;
 public partial class ShowMenuSystem : SystemBase
 {
 
-    int score = 0;
-    int rank = 0;
-    bool showScoresOnMenu = false;
+    int score;
+    int rank;
+    bool showScoresOnMenu;
 
     protected override void OnCreate()
     {
@@ -55,7 +54,7 @@ public partial class ShowMenuSystem : SystemBase
             (
                 (ref WinnerMenuComponent winnerMenuComponent, in WinnerMenuGroup winnerMenuGroup) =>
                 {
-                    if (winnerMenuComponent.hide == true)
+                    if (winnerMenuComponent.hide)
                     {
                         Debug.Log("show winner menu");
                         winnerMenuGroup.showScoreboard = showScoresOnMenu;
@@ -78,7 +77,7 @@ public partial class ShowMenuSystem : SystemBase
             (
                 (ref DeadMenuComponent deadMenuComponent, in DeadMenuGroup deadMenuGroup) =>
                 {
-                    if (deadMenuComponent.hide == true)
+                    if (deadMenuComponent.hide)
                     {
                         Debug.Log("show loser menu");
                         deadMenuGroup.showScoreboard = showScoresOnMenu;

@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-
-
+﻿using System;
+using UnityEngine;
 
 public enum WeaponType
 {
@@ -12,7 +11,7 @@ public enum WeaponType
 
 }
 
-[System.Serializable]
+[Serializable]
 
 public class Weapons
 {

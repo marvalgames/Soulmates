@@ -4,10 +4,8 @@ using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.VFX;
 
-
-[System.Serializable]
+[Serializable]
 public class PlayerMoveGameObjectClass : IComponentData
 {
     [FormerlySerializedAs("audioSource")] public GameObject audioSourceGo; 
@@ -19,11 +17,11 @@ public class PlayerMovementAuthoring : MonoBehaviour
 {
     public float rotateSpeed = 15;
     public float combatRotateSpeed = 15;
-    public bool snapRotation = false;
-    public float dampTime = 0;
-    public bool move2d = false;
+    public bool snapRotation;
+    public float dampTime;
+    public bool move2d;
     public float3 startPosition;
-    public bool inputDisabled = false;
+    public bool inputDisabled;
     public float stepRate = 2;
     public float fallingFramesMax = 18;
     public float inAirNegativeForce = -6;
@@ -33,7 +31,7 @@ public class PlayerMovementAuthoring : MonoBehaviour
     public float checkNearGroundMultiplier = .25f;
 
     [Tooltip("Y Position of character to start Ray Down")]
-    public float checkGroundStartY = 0;
+    public float checkGroundStartY;
 
     public float checkRadius = .1f;
     
@@ -50,7 +48,7 @@ public class PlayerMovementBaker : Baker<PlayerMovementAuthoring>
     {
         var position = authoring.transform.position;
         var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
-        AddComponent(e, new PlayerMoveComponent()
+        AddComponent(e, new PlayerMoveComponent
         {
             combatRotateSpeed = authoring.combatRotateSpeed,
             rotateSpeed = authoring.rotateSpeed,
@@ -87,7 +85,7 @@ public class PlayerMovementBaker : Baker<PlayerMovementAuthoring>
         //if (authoring.vfxPrefab != null) vfxSystemGo = authoring.vfxPrefab;
         //pass  this to playermove mb and set VFX effect there - for some reason if set in Sub-Scene it ignores parameters
         AddComponentObject(GetEntity(authoring, TransformUsageFlags.Dynamic),
-            new PlayerMoveGameObjectClass()
+            new PlayerMoveGameObjectClass
             {
                 clip = authoring.AudioClip,
                 vfxSystemGo = authoring.vfxPrefab,

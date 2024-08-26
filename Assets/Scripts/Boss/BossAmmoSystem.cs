@@ -1,5 +1,6 @@
 using Unity.Entities;
 using UnityEngine;
+
 [RequireMatchingQueriesForUpdate]
 public partial class BossAmmoManagerSystem : SystemBase
 {

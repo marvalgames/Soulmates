@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 
-
 public class EnemyWeaponAim : MonoBehaviour
 {
     [SerializeField]
@@ -18,13 +17,13 @@ public class EnemyWeaponAim : MonoBehaviour
     public MultiAimConstraint headConstraint;
     private NavMeshAgent agent;
     //target cleaner if we did transform target in inspector then read position and pass to below
-    public bool weaponRaised = false;
+    public bool weaponRaised;
     public CameraTypes weaponCamera;
 
     Entity entity;
     EntityManager manager;
     private static readonly int Aim = Animator.StringToHash("Aim");
-    public float blendValue = 0f;
+    public float blendValue;
     public float blendSpeed = 0.5f;
 
 

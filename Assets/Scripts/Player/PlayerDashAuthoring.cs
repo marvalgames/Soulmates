@@ -1,5 +1,6 @@
 ﻿using Unity.Entities;
 using UnityEngine;
+using Collider = Unity.Physics.Collider;
 
 namespace Sandbox.Player
 {
@@ -17,7 +18,7 @@ namespace Sandbox.Player
         public float invincibleStart;
         public float invincibleEnd;
         //public PhysicsCollider Collider;
-        public BlobAssetReference<Unity.Physics.Collider> box;
+        public BlobAssetReference<Collider> box;
         public bool Invincible;
         public bool InDash;
 
@@ -75,7 +76,7 @@ namespace Sandbox.Player
                 
                 
                 AddComponentObject(e, 
-                    new PlayerDashGameObjectClass()
+                    new PlayerDashGameObjectClass
                     {
                         audioSource = authoring.audioSource,
                         audioClip = authoring.clip,

@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-[System.Serializable]
+[Serializable]
 public class SandboxPostProcessRendererFeature : ScriptableRendererFeature
 {
     [SerializeField]

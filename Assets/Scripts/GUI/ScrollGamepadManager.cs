@@ -9,7 +9,7 @@ public class ScrollGamepadManager : MonoBehaviour
     public float changeValue = 0.05f;
 
     Rewired.Player player;
-    public int playerId = 0; // The Rewired player id of this character
+    public int playerId; // The Rewired player id of this character
 
 
 

@@ -1,7 +1,7 @@
-﻿using Unity.Entities;
+﻿using System;
+using Unity.Entities;
 using UnityEngine;
 using UnityEngine.Serialization;
-
 
 public enum ShowText3D
 {
@@ -10,7 +10,7 @@ public enum ShowText3D
     HitScore
 }
 
-[System.Serializable]
+[Serializable]
 public struct HealthComponent : IComponentData
 {
     public bool combineDamage;
@@ -58,7 +58,7 @@ public class HealthBarAuthoring : MonoBehaviour
    
 
 
-    [SerializeField] bool combineDamage = false;
+    [SerializeField] bool combineDamage;
     [SerializeField] private float showDamageMin = 50;
     [SerializeField] private ShowText3D showText3D = ShowText3D.HitDamage;
     [SerializeField]

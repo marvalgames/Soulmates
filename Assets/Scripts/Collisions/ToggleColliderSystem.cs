@@ -11,7 +11,7 @@ namespace Collisions
 {
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateBefore(typeof(global::Collisions.ToggleColliderSystem))]
+    [UpdateBefore(typeof(ToggleColliderSystem))]
 
     public partial class SetDefaultColliderSystem : SystemBase
     {
@@ -25,8 +25,8 @@ namespace Collisions
                             var filter = collider.Value.Value.GetCollisionFilter();
                             //Debug.Log("FILTER " + filter);
                             EntityManager.AddComponentData
-                                (e, new ToggleFilterComponent()
-                                {
+                                (e, new ToggleFilterComponent
+                                    {
                                     defaultFilter = filter
                                 }
 
@@ -39,7 +39,7 @@ namespace Collisions
 
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateAfter(typeof(global::Sandbox.Player.PlayerDashSystem))]
+    [UpdateAfter(typeof(PlayerDashSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial class ToggleColliderSystem : SystemBase
     {
@@ -107,7 +107,7 @@ namespace Collisions
                     else if ((playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleEnd ||
                               playerDashComponent.DashTimeTicker == 0) && hasToggleCollision == false)
                     {
-                        ecb.AddComponent(e, new ToggleCollisionComponent { });
+                        ecb.AddComponent(e, new ToggleCollisionComponent());
                         addColliders = true;//set default colliders back
                     }
 
@@ -146,7 +146,7 @@ namespace Collisions
                         {
                             var collider = SystemAPI.GetComponent<PhysicsCollider>(childEntity);
                             Debug.Log("REMOVE COLLIDERS");
-                            var filter = new CollisionFilter()
+                            var filter = new CollisionFilter
                             {
                                 BelongsTo = (uint)CollisionLayer.Player,
                                 CollidesWith = (uint)CollisionLayer.Ground
@@ -156,7 +156,7 @@ namespace Collisions
                         }
                     }
                 }
-            ).Schedule(this.Dependency);
+            ).Schedule(Dependency);
 
             inputDeps.Complete();
             ecb.Playback(EntityManager);

@@ -1,18 +1,15 @@
+using System;
 using Collisions;
-using Sandbox.Player;
 using Unity.Burst;
 using Unity.Entities;
-using Unity.Entities.Serialization;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
-using UnityEngine.VFX;
-using Random = UnityEngine.Random;
 
 namespace Sandbox.Player
 {
-    [System.Serializable]
+    [Serializable]
     public struct ApplyImpulseComponent : IComponentData
     {
         public float animatorStickSpeed;

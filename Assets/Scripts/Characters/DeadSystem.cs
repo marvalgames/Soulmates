@@ -1,14 +1,13 @@
+using System;
+using Collisions;
 using Sandbox.Player;
-using Unity.Entities;
-//using Unity.Burst;
 using Unity.Collections;
-using Unity.Mathematics;
-using Unity.Physics;
+using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
-using Collisions;
+//using Unity.Burst;
 
-[System.Serializable]
+[Serializable]
 public struct DeadComponent : IComponentData
 {
     public bool isDead;
@@ -52,7 +51,7 @@ public partial class DeadSystem : SystemBase //really game over system currently
                     playersDead[0] += 1;
                 }
             }
-        ).Schedule(this.Dependency);
+        ).Schedule(Dependency);
         dep0.Complete();
         LevelManager.instance.levelSettings[currentLevel].playersDead = playersDead[0];
 
@@ -86,7 +85,7 @@ public partial class DeadSystem : SystemBase //really game over system currently
                     enemiesAlive[0] += 1;
                 }
             }
-        ).Schedule(this.Dependency);
+        ).Schedule(Dependency);
         dep1.Complete();
 
         enemiesAlive.Dispose();

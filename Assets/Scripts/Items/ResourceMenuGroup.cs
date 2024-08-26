@@ -1,19 +1,13 @@
-using Rewired;
-using Sandbox.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Rewired;
 using TMPro;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
-
-
-
-
 
 public struct ResourceMenuComponent : IComponentData
 {
@@ -238,14 +232,11 @@ public class ResourceMenuGroup : MonoBehaviour
 
             if (i < resourceItemComponents.Count && resourceItemComponents[i].count > 0)
             {
-                Resourcelabel[i].text = resourceItemComponents[i].description.ToString() + " " + resourceItemComponents[i].count;
+                Resourcelabel[i].text = resourceItemComponents[i].description + " " + resourceItemComponents[i].count;
                 var index = resourceItemComponents[i].menuIndex;
                 buttons[i + 1].interactable = true;
             }
-            else
-            {
-                //buttons[i + 1].interactable = false;
-            }
+            //buttons[i + 1].interactable = false;
         }
 
 
@@ -278,7 +269,7 @@ public class ResourceMenuGroup : MonoBehaviour
     {
         buttons = GetComponentsInChildren<Button>().ToList();//linq using
 
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
             PlayMenuClickSound(clickSound)));//shortcut instead of using inspector to add to each button
 
         for (var i = 0; i < buttons.Count; i++)

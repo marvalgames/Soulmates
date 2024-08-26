@@ -3,7 +3,6 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 
-
 public partial struct ResourceAppliedSystem : ISystem
 {
 
@@ -16,7 +15,7 @@ public partial struct ResourceAppliedSystem : ISystem
         foreach (var (totalCurrencyComponent, currencyComponent, e)
             in SystemAPI.Query<RefRW<TotalCurrencyComponent>, RefRW<CurrencyComponent>>().WithEntityAccess())
         {
-            if (currencyComponent.ValueRW.enabled == true)
+            if (currencyComponent.ValueRW.enabled)
             {
                 totalCurrencyComponent.ValueRW.currency += currencyComponent.ValueRW.currencyValue;//modifier component values can be added here too
                 currencyComponent.ValueRW.enabled = false;

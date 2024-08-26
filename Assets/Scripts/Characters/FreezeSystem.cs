@@ -1,6 +1,4 @@
-using Sandbox.Player;
 using Unity.Entities;
-
 
 public struct FreezeComponent : IComponentData
 {

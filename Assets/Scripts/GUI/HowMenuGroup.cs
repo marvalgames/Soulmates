@@ -33,7 +33,7 @@ public class HowMenuGroup : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         buttons = gameObject.GetComponentsInChildren<Button>().ToList();
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
             PlayMenuClickSound(clickSound)));//shortcut instead of using inspector to add to each button
 
     }

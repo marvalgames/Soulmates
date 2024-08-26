@@ -1,12 +1,9 @@
-﻿using Sandbox.Player;
+﻿using Collisions;
+using Sandbox.Player;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
-
-
-
-
 
 public class ResourceItem : MonoBehaviour
 {
@@ -59,7 +56,7 @@ public class ResourceItem : MonoBehaviour
             if (authoring.resourceScriptableObject.resourceType == ResourceType.Currency)
             {
                 AddComponent(entity,
-                    new CurrencyComponent()
+                    new CurrencyComponent
                     {
                         currencyValue = authoring.resourceScriptableObject.resourceValue
                     });
@@ -76,7 +73,7 @@ public class ResourceItem : MonoBehaviour
 }
 
 
-[UpdateAfter(typeof(Collisions.PickupInputPowerUpUseImmediateSystem))]
+[UpdateAfter(typeof(PickupInputPowerUpUseImmediateSystem))]
 public partial class SpawnResourceParticleSystem : SystemBase
 {
     protected override void OnUpdate()
@@ -93,7 +90,7 @@ public partial class SpawnResourceParticleSystem : SystemBase
                 //Debug.Log("INSTANCE " + instance);
                 powerItemComponent.particleSystemEntitySpawned = true;
                 var tr = SystemAPI.GetComponent<LocalTransform>(entity);
-                ecb.AddComponent(instance, new SpawnedItem()
+                ecb.AddComponent(instance, new SpawnedItem
                 {
                     spawned = true, itemParent = entity, spawnedLocalTransform = tr
                 });

@@ -7,17 +7,16 @@ using UnityEngine;
 public partial class PlayerInputAmmoSystem : SystemBase
 {
     private static readonly int WeaponRaised = Animator.StringToHash("WeaponRaised");
+    private static readonly int AimWeight = Animator.StringToHash("AimWeight");
 
     protected override void OnUpdate()
     {
-        //var check = new NativeArray<int>(1, Allocator.TempJob);
+        
         Entities.WithoutBurst().ForEach((
             Animator animator, Entity e,
             ref WeaponComponent gunComponent, ref ActorWeaponAimComponent playerWeaponAimComponent,
             in InputControllerComponent inputController, in AttachWeaponComponent attachWeapon) =>
         {
-            //lt mapped to 1 on keyboard when LT is not used for shooting - if not map to left mouse
-            var dpadY = inputController.dpadY;
             var currentWeaponMotion = (WeaponMotion) animator.GetInteger(WeaponRaised);
             playerWeaponAimComponent.weaponRaised = currentWeaponMotion;
             if (inputController.leftTriggerPressed)
@@ -39,13 +38,10 @@ public partial class PlayerInputAmmoSystem : SystemBase
                 playerWeaponAimComponent.combatMode = false;
             }
             
-            // if ( 
-            //(
-            //attachWeapon.attachWeaponType == (int)WeaponType.Gun && rtPressed == true ||
-            // attachWeapon.attachSecondaryWeaponType == (int)WeaponType.Gun && rtPressed == true))
-            if (aimMode &&
-                (attachWeapon.attachWeaponType == (int) WeaponType.Gun && rtPressed == true ||
-                 attachWeapon.attachSecondaryWeaponType == (int) WeaponType.Gun && rtPressed == true))
+       
+            if (aimMode && playerWeaponAimComponent.weaponRaised != WeaponMotion.Raised &&
+                (attachWeapon.attachWeaponType == (int) WeaponType.Gun && rtPressed ||
+                 attachWeapon.attachSecondaryWeaponType == (int) WeaponType.Gun && rtPressed))
             {
                 gunComponent.IsFiring = 1;
                 playerWeaponAimComponent.weaponUpTimer = 0;
@@ -61,20 +57,21 @@ public partial class PlayerInputAmmoSystem : SystemBase
                 SetAnimationLayerWeights(animator, WeaponMotion.Raised);
             }
 
-            if (playerWeaponAimComponent.weaponRaised == WeaponMotion.Lowering)
+            if (playerWeaponAimComponent.weaponRaised == WeaponMotion.Raised)
             {
                 playerWeaponAimComponent.weaponUpTimer += SystemAPI.Time.DeltaTime;
-                if (playerWeaponAimComponent.weaponUpTimer > 2)
+                if (animator.GetFloat(AimWeight) > .99f)
                 {
-                    playerWeaponAimComponent.weaponUpTimer = 0;
-                    playerWeaponAimComponent.weaponRaised = WeaponMotion.None;
-                    SetAnimationLayerWeights(animator, WeaponMotion.None);
+                    //playerWeaponAimComponent.weaponUpTimer = 0;
+                    playerWeaponAimComponent.weaponRaised = WeaponMotion.Lowering;
+                    SetAnimationLayerWeights(animator, WeaponMotion.Lowering);
                 }
             }
+            
         }).Run();
     }
 
-    public void SetAnimationLayerWeights(Animator animator, WeaponMotion weaponMotion)
+    private void SetAnimationLayerWeights(Animator animator, WeaponMotion weaponMotion)
     {
         if (weaponMotion == WeaponMotion.Raised)
         {

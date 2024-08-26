@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using Sandbox.Player;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
-
 
 public partial struct EnemiesAttackEnableableComponentSystem : ISystem
 {
@@ -43,7 +40,7 @@ public partial struct EnemiesAttackEnableableComponentSystem : ISystem
         {
             //Debug.Log("Rev2");
 
-            var job = new EnemiesAttackEnableableJob()
+            var job = new EnemiesAttackEnableableJob
             {
                 enemiesAttackComponentGroup = enemiesAttackComponentGroup,
                 reverseMode = true

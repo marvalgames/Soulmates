@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using System;
+using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -53,7 +54,7 @@ namespace Collisions
         public int VfxSpawned;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class VfxClass : IComponentData
     {
         public AudioSource audioSource;

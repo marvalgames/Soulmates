@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Sandbox.Player;
 using TMPro;
-using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
 
 public struct SkillTreeMenuComponent : IComponentData
 {
@@ -51,10 +49,7 @@ public class SkillTreeMenuGroup : MonoBehaviour
     {
         var manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var entity = World.DefaultGameObjectInjectionWorld.EntityManager.CreateEntity();
-        manager.AddComponentData(entity, new SkillTreeMenuComponent()
-        {
-            
-        });
+        manager.AddComponentData(entity, new SkillTreeMenuComponent());
         manager.AddComponentObject(entity, this);
         
         audioSource = GetComponent<AudioSource>();
@@ -74,7 +69,7 @@ public class SkillTreeMenuGroup : MonoBehaviour
         //move to system update below
         var stateChange = manager.GetComponentData<SkillTreeMenuComponent>(entity).menuStateChanged;
 
-        if (stateChange == true)
+        if (stateChange)
         {
             var skillTreeMenu = manager.GetComponentData<SkillTreeMenuComponent>(entity);
             skillTreeMenu.menuStateChanged = false;
@@ -176,7 +171,7 @@ public class SkillTreeMenuGroup : MonoBehaviour
     {
         buttons = GetComponentsInChildren<Button>().ToList();//linq using
 
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
             PlayMenuClickSound(clickSound)));//shortcut instead of using inspector to add to each button
 
         for (var i = 0; i < buttons.Count; i++)

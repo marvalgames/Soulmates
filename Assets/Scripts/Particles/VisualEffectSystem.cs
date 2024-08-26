@@ -2,11 +2,9 @@ using Sandbox.Player;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.VFX;
-
 
 public struct VisualEffectEntitySpawnerComponent : IComponentData
 {
@@ -79,7 +77,7 @@ public partial struct VisualEffectSystem : ISystem //use for visual effect and p
         // ).Run();
         //ecb.Playback(EntityManager);
        // ecb.Dispose();
-        var job = new VisualEffectJob()
+        var job = new VisualEffectJob
         {
             tick = tick
         };
@@ -104,7 +102,7 @@ public partial struct VisualEffectSystem : ISystem //use for visual effect and p
                     visualEffectComponent.destroy = true;
                 }
             }
-            else if (visualEffectComponent.trigger == true)
+            else if (visualEffectComponent.trigger)
             {
                 visualEffectComponent.instantiated = true;
                 visualEffectComponent.trigger = false;

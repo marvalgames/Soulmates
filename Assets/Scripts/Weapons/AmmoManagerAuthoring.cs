@@ -3,6 +3,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum RoleReversalMode
 {
@@ -88,9 +89,9 @@ public class AmmoManagerAuthoring : MonoBehaviour
         if (randomize)
         {
             var multiplier = .7f;
-            Strength = UnityEngine.Random.Range(Strength * multiplier, Strength * (2 - multiplier));
-            Damage = UnityEngine.Random.Range(Damage * multiplier, Damage * (2 - multiplier));
-            Rate = UnityEngine.Random.Range(Rate * multiplier, Rate * (2 - multiplier));
+            Strength = Random.Range(Strength * multiplier, Strength * (2 - multiplier));
+            Damage = Random.Range(Damage * multiplier, Damage * (2 - multiplier));
+            Rate = Random.Range(Rate * multiplier, Rate * (2 - multiplier));
         }
         else
         {
@@ -118,7 +119,7 @@ public class AmmoManagerAuthoring : MonoBehaviour
             var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
 
             AddComponent(e, 
-                new WeaponComponent()
+                new WeaponComponent
                 {
                     AmmoStartLocalToWorld = localToWorld,
                     //AmmoStartPosition = new LocalTransform() { Value = authoring.AmmoStartLocation.position },//not used because cant track bone 

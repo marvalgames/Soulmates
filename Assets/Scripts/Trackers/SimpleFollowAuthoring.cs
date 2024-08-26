@@ -1,7 +1,6 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-
 struct SimpleFollowComponent : IComponentData
 {
     

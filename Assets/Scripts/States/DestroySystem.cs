@@ -1,8 +1,6 @@
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Transforms;
-using UnityEngine;
 
 public struct DestroyComponent : IComponentData
 {
@@ -19,7 +17,7 @@ public partial struct DestroySystem : ISystem
         var ecb = new EntityCommandBuffer(Allocator.TempJob);
         var useItem1Group = SystemAPI.GetComponentLookup<UseItem1>();
         var useItem2Group = SystemAPI.GetComponentLookup<UseItem2>();
-        var job = new DestroySystemJob()
+        var job = new DestroySystemJob
         {
             ecb = ecb,
             useItemGroup1 = useItem1Group,

@@ -1,6 +1,7 @@
-﻿using Sandbox.Player;
+﻿using System;
+using Sandbox.Player;
 
-[System.Serializable]
+[Serializable]
 public class PlayerLevelData
 {
     public HealthComponent savedLevelHealth;
@@ -9,7 +10,7 @@ public class PlayerLevelData
     public ScoreComponent savedLevelScores;
 }
 
-[System.Serializable]
+[Serializable]
 public class SaveLevelPlayers
 {
     public PlayerLevelData playerLevelData;

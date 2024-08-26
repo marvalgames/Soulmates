@@ -1,20 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
 public class SaveLevelManager : MonoBehaviour
 {
 
-    public bool saveScene = false;
-    public bool loadNextScene = false;
-    public bool levelMenuShown = false;
+    public bool saveScene;
+    public bool loadNextScene;
+    public bool levelMenuShown;
 
     public List<SaveLevelPlayers> saveLevelPlayers = new List<SaveLevelPlayers>();
 
 
-    public static SaveLevelManager instance = null;
+    public static SaveLevelManager instance;
 
 
     private void Awake()

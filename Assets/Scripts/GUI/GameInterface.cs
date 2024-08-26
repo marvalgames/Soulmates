@@ -1,11 +1,9 @@
 using System;
-using Unity.Entities;
-using UnityEngine;
 using Rewired;
 using Sandbox.Player;
-using Unity.Physics;
+using Unity.Entities;
 using Unity.Physics.Systems;
-using Unity.Transforms;
+using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
@@ -26,16 +24,16 @@ public class GameInterface : MonoBehaviour
 {
     public static event Action HideMenuEvent;
     public static event Action SelectClickedEvent;
-    public static GameInterface instance = null;
+    public static GameInterface instance;
 
-    private int sceneIndex = 0;
+    private int sceneIndex;
 
     [Header("READ ONLY")]
-    public bool Paused = false;
-    public bool StateChange = false;
+    public bool Paused;
+    public bool StateChange;
     public Rewired.Player player;
     [HideInInspector]
-    public int playerId = 0; // The Rewired player id of this character
+    public int playerId; // The Rewired player id of this character
     public bool startPaused = true;
 
     [HideInInspector]

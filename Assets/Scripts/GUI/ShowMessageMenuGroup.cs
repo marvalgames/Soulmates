@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using Unity.Entities;
-
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public struct ShowMessageMenuComponent : IComponentData
 {
@@ -24,7 +23,7 @@ public class ShowMessageMenuGroup : MonoBehaviour
     [SerializeField]
     private Button defaultButton;
     public float showTimeLength = 2.1f;
-    private float showTimer = 0f;
+    private float showTimer;
     bool startShowTimer;
     [SerializeField] private TextMeshProUGUI message;
     public string messageString;
@@ -54,10 +53,7 @@ public class ShowMessageMenuGroup : MonoBehaviour
     {
         manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         entity = World.DefaultGameObjectInjectionWorld.EntityManager.CreateEntity();
-        manager.AddComponentData(entity, new ShowMessageMenuComponent()
-        {
-            
-        });
+        manager.AddComponentData(entity, new ShowMessageMenuComponent());
         manager.AddComponentObject(entity, this);
 
         audioSource = GetComponent<AudioSource>();

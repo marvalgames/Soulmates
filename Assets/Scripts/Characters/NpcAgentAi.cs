@@ -1,6 +1,5 @@
 using Sandbox.Player;
 using Unity.Entities;
-using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -70,7 +69,7 @@ public class NpcAgentAi : MonoBehaviour
                 _entityManager = GetComponent<CharacterEntityTracker>().entityManager;
             }
 
-            _entityManager.AddComponentData(_linkedEntity, new NpcComponent()
+            _entityManager.AddComponentData(_linkedEntity, new NpcComponent
             {
                 active = true,
                 switchDistance = switchDistance,

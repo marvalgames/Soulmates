@@ -3,16 +3,13 @@ using Unity.Entities;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
-
 public class HealthBar : MonoBehaviour
 {
 
-    public Image _healthBar = null;
+    public Image _healthBar;
     bool showHealth = true;
     [SerializeField] float showTime = 3;
-    float alphaTime = 0;
+    float alphaTime;
     public TextMeshPro score3dText;
     private TextMeshPro score3dTextInstance;
 
@@ -66,7 +63,7 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        if (showHealth == true && entity != Entity.Null)
+        if (showHealth && entity != Entity.Null)
         {
             showHealth = false;
             HealthChange();

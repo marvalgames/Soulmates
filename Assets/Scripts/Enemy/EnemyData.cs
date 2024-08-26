@@ -1,7 +1,7 @@
-﻿using Sandbox.Player;
+﻿using System;
+using Sandbox.Player;
 
-
-[System.Serializable]
+[Serializable]
 public class EnemyData
 {
     public float[] position = new float[3];

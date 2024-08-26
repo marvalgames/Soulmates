@@ -4,7 +4,6 @@ using Sandbox.Player;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using UnityEngine;
 
 namespace Enemy
 {
@@ -25,7 +24,7 @@ namespace Enemy
         {
             var playerEntities = playerQuery.ToEntityArray(Allocator.TempJob);
             var checkedGroup = SystemAPI.GetComponentLookup<CheckedComponent>();
-            var job = new EnemyDefenseMovesJob()
+            var job = new EnemyDefenseMovesJob
             {
                 playerEntities = playerEntities,
                 checkedGroup = checkedGroup

@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using System;
+using Unity.Entities;
 using UnityEngine;
 
 public struct AmmoDataComponent : IComponentData
@@ -18,7 +19,7 @@ public struct AmmoDataComponent : IComponentData
     public Entity Shooter;
 
 }
-[System.Serializable]
+[Serializable]
 public class AmmoClass : IComponentData
 {
     public Transform ammoStartLocation;
@@ -53,7 +54,7 @@ public class AmmoData : MonoBehaviour
         public override void Bake(AmmoData authoring)
         {
             var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
-            AddComponent(e, new AmmoDataComponent()
+            AddComponent(e, new AmmoDataComponent
                 {
                     Strength = authoring.Strength,
                     Damage = authoring.Damage,

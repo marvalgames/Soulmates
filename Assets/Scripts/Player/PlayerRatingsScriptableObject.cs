@@ -9,7 +9,7 @@ namespace Sandbox.Player
         public int power = 50;
         public float maxHealth = 100;
         public float startJumpGravityForce = 9.81f;
-        public float addedNegativeForce = 0f;
+        public float addedNegativeForce;
         public float jumpDownGravityMultiplier = 1.0f;
         public float jumpY = 6f;
         public float airForce = 500f;

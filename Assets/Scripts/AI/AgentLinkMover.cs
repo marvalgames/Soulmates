@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 
 public enum OffMeshLinkMoveMethod
 {
@@ -22,8 +21,8 @@ public class AgentLinkMover : MonoBehaviour
     public float height = 2.0f;
     public float duration = .5f;//change for greater hang time, varying enemies. further between start and end may lead to duration differences
     private static readonly int JumpState = Animator.StringToHash("JumpState");
-    private float normalizedTime = 0;
-    public bool isAgentNavigatingLink = false;
+    private float normalizedTime;
+    public bool isAgentNavigatingLink;
     OffMeshLinkData data;
     private Vector3 startPos;
     private Vector3 endPos;

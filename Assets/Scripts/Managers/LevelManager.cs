@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using Unity.Entities;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 public enum GameResult
 {
@@ -16,7 +14,7 @@ public class LevelManager : MonoBehaviour
 {
    // public GameObject[] activateCharacters;
     
-    public bool endGame = false;
+    public bool endGame;
     public GameResult gameResult = GameResult.None;
     [HideInInspector]
     public int potentialGameTargets;//in some games max of something ie potential saved robots
@@ -44,16 +42,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private AudioClip menuMusic;
 
-    public static LevelManager instance = null;
+    public static LevelManager instance;
     public int currentLevelCompleted;
 
-    public bool skipLoad = false;
+    public bool skipLoad;
     //public bool justCompleted { get; set; }
     [NonReorderable]
     public List<LevelSettings> levelSettings = new List<LevelSettings>();
     [NonReorderable]
     public List<LevelMedia> levelMediaList = new List<LevelMedia>();
-    public bool newGame = false;
+    public bool newGame;
 
     void Awake()
     {
@@ -164,8 +162,8 @@ public class LevelManager : MonoBehaviour
         //Debug.Log("CURRENT " + currentLevelCompleted);
 
 
-        var levelMusic = LevelManager.instance.levelMediaList[levelIndex].levelMusic;
-        var levelVolume = LevelManager.instance.levelMediaList[levelIndex].levelVolume;
+        var levelMusic = instance.levelMediaList[levelIndex].levelMusic;
+        var levelVolume = instance.levelMediaList[levelIndex].levelVolume;
 
 
         //Debug.Log("Play " + currentLevelCompleted);

@@ -3,6 +3,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [InternalBufferCapacity(8)]
 public struct BossWaypointBufferElement : IBufferElementData
@@ -79,9 +80,9 @@ public class BossAmmoManagerAuthoring : MonoBehaviour
         if (randomize)
         {
             var multiplier = .7f;
-            Strength = UnityEngine.Random.Range(Strength * multiplier, Strength * (2 - multiplier));
-            Damage = UnityEngine.Random.Range(Damage * multiplier, Damage * (2 - multiplier));
-            Rate = UnityEngine.Random.Range(Rate * multiplier, Rate * (2 - multiplier));
+            Strength = Random.Range(Strength * multiplier, Strength * (2 - multiplier));
+            Damage = Random.Range(Damage * multiplier, Damage * (2 - multiplier));
+            Rate = Random.Range(Rate * multiplier, Rate * (2 - multiplier));
         }
         else
         {
@@ -130,10 +131,10 @@ public class BossAmmoManagerAuthoring : MonoBehaviour
 
 
             AddComponent(e,
-                new BossWeaponComponent()
+                new BossWeaponComponent
                 {
                     //AmmoStartLocalToWorld = localToWorld,
-                    AmmoStartTransform = new LocalTransform()
+                    AmmoStartTransform = new LocalTransform
                     {
                         Position = authoring.AmmoPrefabList[0].ammoStartLocation.position,
                         Rotation = authoring.AmmoPrefabList[0].ammoStartLocation.rotation

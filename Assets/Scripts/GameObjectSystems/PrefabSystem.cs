@@ -1,12 +1,9 @@
 using Player;
 using Sandbox.Player;
-using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.VFX;
-
 
 public class VisualEffectGO : IComponentData
 {
@@ -74,12 +71,12 @@ public partial struct InstantiatePrefabSystem : ISystem
             {
                 GameObject vfxGo = GameObject.Instantiate(prefab.vfxSystem);
                 ecb.AddComponent(entity,
-                    new VisualEffectJumpGO() { VisualEffect = vfxGo.GetComponent<VisualEffect>() });
+                    new VisualEffectJumpGO { VisualEffect = vfxGo.GetComponent<VisualEffect>() });
             }
 
             GameObject audioGo = GameObject.Instantiate(prefab.audioSourceGo);
             ecb.AddComponent(entity,
-                new AudioPlayerJumpGO() { AudioSource = audioGo.GetComponent<AudioSource>(), AudioClip = prefab.clip });
+                new AudioPlayerJumpGO { AudioSource = audioGo.GetComponent<AudioSource>(), AudioClip = prefab.clip });
             ecb.RemoveComponent<PlayerJumpGameObjectClass>(entity);
         }
 
@@ -89,7 +86,7 @@ public partial struct InstantiatePrefabSystem : ISystem
 
             GameObject audioGo = GameObject.Instantiate(prefab.audioSourceGo);
             ecb.AddComponent(entity,
-                new BossAmmoManagerGO() { audioSource = audioGo.GetComponent<AudioSource>(), clip = prefab.clip });
+                new BossAmmoManagerGO { audioSource = audioGo.GetComponent<AudioSource>(), clip = prefab.clip });
             ecb.RemoveComponent<BossAmmoManagerClass>(entity);
         }
 
@@ -99,7 +96,8 @@ public partial struct InstantiatePrefabSystem : ISystem
 
             GameObject audioGo = GameObject.Instantiate(prefab.audioSource);
             ecb.AddComponent(entity,
-                new DashAudioVideoGO() { AudioSource = audioGo.GetComponent<AudioSource>(), AudioClip = prefab.audioClip
+                new DashAudioVideoGO
+                { AudioSource = audioGo.GetComponent<AudioSource>(), AudioClip = prefab.audioClip
                     // , VisualEffect = prefab.vfxPrefab.GetComponent<VisualEffect>()
                     
                 });

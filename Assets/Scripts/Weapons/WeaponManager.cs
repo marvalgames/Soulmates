@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-
-[System.Serializable]
+[Serializable]
 public struct AttachWeaponComponent : IComponentData
 {
     public bool isPrimaryAttached; //na
@@ -26,8 +26,8 @@ public class WeaponManager : MonoBehaviour
     //private int weaponIndex = 0;//index of weapons list to start with
     private EntityManager manager;
     public Entity entity;
-    [HideInInspector] public bool primaryAttached = false;
-    [HideInInspector] public bool secondaryAttached = false;
+    [HideInInspector] public bool primaryAttached;
+    [HideInInspector] public bool secondaryAttached;
     GameObject primaryWeaponInstance;
     GameObject secondaryWeaponInstance;
     private bool attachedWeapon;

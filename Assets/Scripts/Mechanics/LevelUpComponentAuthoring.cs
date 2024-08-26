@@ -1,7 +1,6 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-
 public struct LevelUpMechanicComponent : IComponentData
 {
     public bool active;

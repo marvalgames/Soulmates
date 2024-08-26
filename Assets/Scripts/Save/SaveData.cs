@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-
-[System.Serializable]
+[Serializable]
 public class SaveData
 {
     public  List<SaveGames> saveGames = new List<SaveGames>();

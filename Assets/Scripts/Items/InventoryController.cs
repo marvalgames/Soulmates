@@ -1,6 +1,5 @@
-using UnityEngine;
 using Unity.Entities;
-using System;
+using UnityEngine;
 
 public struct InventoryComponent : IComponentData
 {
@@ -32,10 +31,7 @@ public class InventoryController : MonoBehaviour
     {
         var manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var entity = World.DefaultGameObjectInjectionWorld.EntityManager.CreateEntity();
-        manager.AddComponentData(entity, new InventoryComponent
-        {
-
-        });
+        manager.AddComponentData(entity, new InventoryComponent());
         manager.AddComponentObject(entity, this);
         canvasGroup = GetComponent<CanvasGroup>();
 

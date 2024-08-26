@@ -5,7 +5,6 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 
 [UpdateAfter(typeof(ScoreSystem))]
 [RequireMatchingQueriesForUpdate]
@@ -34,7 +33,7 @@ public partial struct AmmoSystem : ISystem
 
 
 
-        var scoreGroup = SystemAPI.GetComponentLookup<ScoreComponent>(false);
+        var scoreGroup = SystemAPI.GetComponentLookup<ScoreComponent>();
         foreach (var (ammo, entity) in SystemAPI.Query<RefRW<AmmoComponent>>().WithEntityAccess())
         {
             ammo.ValueRW.AmmoTimeCounter += dt;
@@ -108,7 +107,7 @@ public partial struct DefenseEvadeSystem : ISystem
         var defensiveStrategyGroup = SystemAPI.GetComponentLookup<DefensiveStrategyComponent>();
         var enemiesAttackGroup = SystemAPI.GetComponentLookup<EnemiesAttackComponent>();
 
-        var job = new DefenseEvadeJob()
+        var job = new DefenseEvadeJob
         {
             defenseStrategyGroup = defensiveStrategyGroup,
             transformGroup = transformGroup,
@@ -144,7 +143,7 @@ public partial struct DefenseEvadeSystem : ISystem
                 var defensiveStrategy = defenseStrategyGroup[enemy];
                 var distance = math.distance(triggerLocalTransform.Position, enemyLocalTransform.Position);
                 if (teammate == false && distance < defensiveStrategy.breakRouteVisionDistance &&
-                    defensiveStrategy.breakRoute == true &&
+                    defensiveStrategy.breakRoute &&
                     ammoE != defensiveStrategy.closeBulletEntity)
                 {
                     //Debug.Log("EVADE SET");

@@ -1,9 +1,6 @@
 ﻿using Sandbox.Player;
 using UnityEngine;
 
-
-
-
 public class LocomotionState : StateMachineBehaviour
 {
     public AnimationType animationType;
@@ -22,7 +19,7 @@ public class LocomotionState : StateMachineBehaviour
         }
         else if (animationType == AnimationType.Lowering)
         {
-            animator.SetInteger(WeaponRaised, (int)WeaponMotion.Lowering);
+            animator.SetInteger(WeaponRaised, (int)WeaponMotion.Raised);
         }
         else if (animationType == AnimationType.DashRoll)
         {

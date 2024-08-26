@@ -1,8 +1,5 @@
 ﻿using Unity.Collections;
 using Unity.Entities;
-using UnityEngine;
-
-
 
 public partial class TalentAppliedSystem : SystemBase
 {
@@ -30,7 +27,7 @@ public partial class TalentAppliedSystem : SystemBase
 
             ) =>
             {
-                if (talentItemComponent.enabled == true)
+                if (talentItemComponent.enabled)
                 {
                     //Debug.Log("Talent Description  " + talentItemComponent.description);
                 }

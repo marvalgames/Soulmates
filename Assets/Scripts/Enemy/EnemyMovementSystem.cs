@@ -33,7 +33,7 @@ namespace Enemy
                 RoleReversalMode.Toggle;
             
 
-            var transformGroup = SystemAPI.GetComponentLookup<LocalTransform>(false);
+            var transformGroup = SystemAPI.GetComponentLookup<LocalTransform>();
             playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
             PlayerEntities = playerQuery.ToEntityArray(Allocator.Temp);
             var playerIsFiring = false;

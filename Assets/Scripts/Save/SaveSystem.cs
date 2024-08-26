@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using Sandbox.Player;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
-using Sandbox.Player;
 
 [RequireMatchingQueriesForUpdate]
 public partial class SaveSystem : SystemBase
@@ -30,7 +30,7 @@ public partial class SaveSystem : SystemBase
         if (SaveManager.instance == null || LevelManager.instance == null) return;
 
         var ecb = new EntityCommandBuffer(Allocator.Temp);
-        var scoreGroup = GetComponentLookup<ScoreComponent>(false);
+        var scoreGroup = GetComponentLookup<ScoreComponent>();
 
 
         if (SaveManager.instance.saveMainGame == false) return;
@@ -148,10 +148,9 @@ public struct IndexComparer : IComparer<Entity>
         var b_index = manager.GetComponentData<CharacterSaveComponent>(b).saveIndex;
         if (a_index > b_index)
             return 1;
-        else if (a_index < b_index)
+        if (a_index < b_index)
             return -1;
-        else
-            return 0;
+        return 0;
 
     }
 }

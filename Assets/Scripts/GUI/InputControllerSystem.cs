@@ -2,7 +2,6 @@ using Rewired;
 using Sandbox.Player;
 using Unity.Entities;
 
-
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [RequireMatchingQueriesForUpdate]
 public partial class InputControllerSystemUpdate : SystemBase

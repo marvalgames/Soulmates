@@ -1,4 +1,5 @@
 using Unity.Entities;
+
 [RequireMatchingQueriesForUpdate]
 public partial class StopVelocitySystem : SystemBase
 {

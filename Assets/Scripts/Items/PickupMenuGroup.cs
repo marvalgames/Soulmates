@@ -1,7 +1,7 @@
-using Rewired;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Rewired;
 using Sandbox.Player;
 using TMPro;
 using Unity.Collections;
@@ -9,7 +9,6 @@ using Unity.Entities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
 
 public struct PickupMenuComponent : IComponentData
 {
@@ -140,7 +139,7 @@ public class PickupMenuGroup : MonoBehaviour
     {
         buttons = GetComponentsInChildren<Button>().ToList(); //linq using
 
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
             PlayMenuClickSound(clickSound))); //shortcut instead of using inspector to add to each button
 
         for (var i = 0; i < buttons.Count; i++)
@@ -325,7 +324,7 @@ public class PickupMenuGroup : MonoBehaviour
             if (i < powerItemComponents.Count && powerItemComponents[i].count > 0)
             {
                 pickuplabel[i].text =
-                    powerItemComponents[i].description.ToString() + " " + powerItemComponents[i].count;
+                    powerItemComponents[i].description + " " + powerItemComponents[i].count;
                 var index = powerItemComponents[i].menuIndex;
                 buttons[i + 1].interactable = true;
             }
@@ -482,7 +481,7 @@ public class PickupMenuGroup : MonoBehaviour
         var item = powerItemComponents[_selectedPower];
 
 
-        if (pickupEntity != Entity.Null && pickedUp == true)
+        if (pickupEntity != Entity.Null && pickedUp)
         {
             if (useIndex == 1 && usedSlot1 == 0)
             {
@@ -523,7 +522,7 @@ public class PickupMenuGroup : MonoBehaviour
         var pickedUp2 = useItemComponents[1].itemPickedUp;
         var use2 = useItemComponents[1].useSlot2;
         
-        if (pickupEntity1 != Entity.Null && pickedUp1 == true && use1)
+        if (pickupEntity1 != Entity.Null && pickedUp1 && use1)
         {
             var power = _manager.GetComponentData<PowerItemComponent>(pickupEntity1);
             power.useSlot1 = true;
@@ -533,7 +532,7 @@ public class PickupMenuGroup : MonoBehaviour
             _manager.AddComponent<UseItem1>(pickupEntity1);
         }
 
-        if (pickupEntity2 != Entity.Null && pickedUp2 == true && use2)
+        if (pickupEntity2 != Entity.Null && pickedUp2 && use2)
         {
             var power = _manager.GetComponentData<PowerItemComponent>(pickupEntity2);
             power.useSlot2 = true;

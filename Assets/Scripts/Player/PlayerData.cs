@@ -1,6 +1,8 @@
-﻿namespace Sandbox.Player
+﻿using System;
+
+namespace Sandbox.Player
 {
-    [System.Serializable]
+    [Serializable]
     public class PlayerData
     {
         public float[] position = new float[3];

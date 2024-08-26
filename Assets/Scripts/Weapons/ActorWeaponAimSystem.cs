@@ -1,10 +1,8 @@
-using Rewired;
 using Sandbox.Player;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
-
 
 [UpdateInGroup(typeof(TransformSystemGroup))]
 [RequireMatchingQueriesForUpdate]
@@ -15,7 +13,6 @@ public partial class EnemyWeaponAimSystemLateUpdate : SystemBase
         Entities.WithoutBurst().WithAny<DeadComponent>()
             .ForEach((in EnemyWeaponAim mb, in ActorWeaponAimComponent actorWeaponAimComponent) =>
             {
-                mb.weaponRaised = actorWeaponAimComponent.weaponRaised == WeaponMotion.Started;
                 mb.weaponRaised = actorWeaponAimComponent.weaponRaised == WeaponMotion.Started;
                 mb.LateUpdateSystem();
             }).Run();

@@ -5,7 +5,6 @@ using Unity.Mathematics;
 using Unity.Physics;
 using UnityEngine;
 
-
 [UpdateInGroup(typeof(SimulationSystemGroup))]
 [UpdateAfter(typeof(DeadSystem))]
 public partial class BasicWinnerSystem : SystemBase
@@ -87,7 +86,7 @@ public partial class BasicLoserSystem : SystemBase
         (
             (Entity e, in DeadComponent dead) =>
             {
-                if (dead.isDead == true)
+                if (dead.isDead)
                 {
                     loser = true;
                     EntityManager.RemoveComponent<PlayerComponent>(e);
@@ -132,7 +131,7 @@ public partial class EndGameSystem : SystemBase
                 {
 
                     var velocity = SystemAPI.GetComponent<PhysicsVelocity>(e);
-                    if (SystemAPI.HasComponent<PhysicsVelocity>(e) && win == true &&
+                    if (SystemAPI.HasComponent<PhysicsVelocity>(e) && win &&
                         SystemAPI.HasComponent<EnemyComponent>(e))
                     {
                         velocity.Linear = new float3(0, 0, 0);
@@ -151,7 +150,7 @@ public partial class EndGameSystem : SystemBase
                     ecb.SetComponent(e, velocity);
 
                 }
-            ).Schedule(this.Dependency);
+            ).Schedule(Dependency);
 
 
             dep.Complete();

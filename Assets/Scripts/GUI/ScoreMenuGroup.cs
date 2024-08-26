@@ -1,12 +1,12 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Rewired;
 using TMPro;
 using Unity.Entities;
-using Rewired;
-using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public struct ScoresMenuComponent : IComponentData
 {
@@ -46,7 +46,7 @@ public class ScoreMenuGroup : MonoBehaviour
     private TextMeshProUGUI score5;
 
     public Rewired.Player player;
-    public int playerId = 0; // The Rewired player id of this character
+    public int playerId; // The Rewired player id of this character
     public static event Action ScoreMenuExitBackClickedEvent;
 
 
@@ -63,7 +63,7 @@ public class ScoreMenuGroup : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         buttons = gameObject.GetComponentsInChildren<Button>().ToList();
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
         PlayMenuClickSound(clickSound)));//shortcut instead of using inspector to add to each button
 
         if (!ReInput.isReady) return;
@@ -154,7 +154,7 @@ public class ScoreMenuGroup : MonoBehaviour
 
         var hi1 =
             manager.GetComponentData<ScoresMenuComponent>(entity).hi1;
-        score1.text = "First:  " + hi1.ToString();
+        score1.text = "First:  " + hi1;
     }
 
     void ShowScore4()
@@ -166,7 +166,7 @@ public class ScoreMenuGroup : MonoBehaviour
 
         var hi4 =
             manager.GetComponentData<ScoresMenuComponent>(entity).hi4;
-        score4.text = "Fourth:  " + hi4.ToString();
+        score4.text = "Fourth:  " + hi4;
     }
 
     void ShowScore5()
@@ -178,7 +178,7 @@ public class ScoreMenuGroup : MonoBehaviour
 
         var hi5 =
             manager.GetComponentData<ScoresMenuComponent>(entity).hi5;
-        score5.text = "Fifth:  " + hi5.ToString();
+        score5.text = "Fifth:  " + hi5;
     }
 
     void ShowScore2()
@@ -190,7 +190,7 @@ public class ScoreMenuGroup : MonoBehaviour
 
         var hi2 =
             manager.GetComponentData<ScoresMenuComponent>(entity).hi2;
-        score2.text = "Second:  " + hi2.ToString();
+        score2.text = "Second:  " + hi2;
     }
 
     void ShowScore3()
@@ -202,7 +202,7 @@ public class ScoreMenuGroup : MonoBehaviour
 
         var hi3 =
             manager.GetComponentData<ScoresMenuComponent>(entity).hi3;
-        score3.text = "Third:  " + hi3.ToString();
+        score3.text = "Third:  " + hi3;
     }
 
 

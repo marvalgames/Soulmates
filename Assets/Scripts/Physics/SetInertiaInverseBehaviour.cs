@@ -7,11 +7,11 @@ using UnityEngine;
 // Instead Convert is called from the PhysicsSamplesConversionSystem instead.
 public class SetInertiaInverseBehaviour : MonoBehaviour
 {
-    public bool LockX = false;
-    public bool LockY = false;
-    public bool LockZ = false;
+    public bool LockX;
+    public bool LockY;
+    public bool LockZ;
 
-    public bool LockVelocity = false;
+    public bool LockVelocity;
 
 
     private Entity e;

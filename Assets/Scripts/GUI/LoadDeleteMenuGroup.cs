@@ -2,13 +2,12 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
 public class LoadDeleteMenuGroup : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
     [SerializeField] private Button loadButton;
     [SerializeField] private Button deleteButton;
-    private int selectedSlot = 0;
+    private int selectedSlot;
     [SerializeField]
     private Button defaultButton;
     [SerializeField] private EventSystem eventSystem;
@@ -39,7 +38,7 @@ public class LoadDeleteMenuGroup : MonoBehaviour
     {
         SaveManager.instance.DeleteGameData(1);
         SaveManager.instance.SaveCurrentLevelCompleted(0);
-        SaveManager.instance.saveWorld.isSlotSaved = new bool[] { false, false, false, false };
+        SaveManager.instance.saveWorld.isSlotSaved = new[] { false, false, false, false };
     }
 
     public void OnButtonDelete()
@@ -52,7 +51,7 @@ public class LoadDeleteMenuGroup : MonoBehaviour
         //SaveManager.instance.saveData.saveGames[0].currentLevel = 0;
         //SaveManager.instance.saveWorld.lastLoadedSlot = 0;
         SaveManager.instance.SaveCurrentLevelCompleted(0);
-        SaveManager.instance.saveWorld.isSlotSaved = new bool[] { false, false, false, false };
+        SaveManager.instance.saveWorld.isSlotSaved = new[] { false, false, false, false };
         //}
 
         OnLoadSlot(selectedSlot);

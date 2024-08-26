@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using PixelCrushers.DialogueSystem;
 using Sandbox.Player;
@@ -9,7 +8,6 @@ using Unity.Scenes;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Hash128 = Unity.Entities.Hash128;
 
 public struct SceneSwitcherComponent : IComponentData
 {
@@ -19,7 +17,7 @@ public struct SceneSwitcherComponent : IComponentData
 
 public class SceneSwitcher : MonoBehaviour
 {
-    public int CurrentSceneIndex = 0;
+    public int CurrentSceneIndex;
     private EntityManager manager;
     private Entity e;
 
@@ -27,9 +25,7 @@ public class SceneSwitcher : MonoBehaviour
     {
         manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         e = manager.CreateEntity();
-        manager.AddComponentData(e, new SceneSwitcherComponent()
-        {
-        });
+        manager.AddComponentData(e, new SceneSwitcherComponent());
         manager.AddComponentObject(e, this);
 
         CurrentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -186,7 +182,7 @@ public class SceneSwitcher : MonoBehaviour
         Debug.Log("load click scene");
         var sceneCount = SceneManager.sceneCountInBuildSettings;
         var level = SaveManager.instance.saveData.saveGames[0].currentLevel;
-        if (LevelManager.instance.newGame == true)
+        if (LevelManager.instance.newGame)
         {
             level = 0;
             LevelManager.instance.newGame = false;
@@ -199,7 +195,6 @@ public class SceneSwitcher : MonoBehaviour
         if (nextSceneIndex >= sceneCount)
         {
             Quit();
-            return;
         }
 
 
@@ -233,7 +228,7 @@ public class SceneSwitcher : MonoBehaviour
         SaveManager.instance.SaveWorldSettings();
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
@@ -300,9 +295,9 @@ public partial class SetupNextLevelSystem : SystemBase
                 savedScores = SystemAPI.GetComponent<ScoreComponent>(playerEntity);
 
 
-            var levelPlayers = new SaveLevelPlayers()
+            var levelPlayers = new SaveLevelPlayers
             {
-                playerLevelData = new PlayerLevelData()
+                playerLevelData = new PlayerLevelData
                 {
                     savedLevelHealth = savedHealth,
                     savedLevelPlayer = savedPlayer,

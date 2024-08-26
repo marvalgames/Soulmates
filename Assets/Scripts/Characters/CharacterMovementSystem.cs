@@ -3,8 +3,6 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
-
 
 [RequireMatchingQueriesForUpdate]
 public partial class CharacterMovementSystem : SystemBase
@@ -62,7 +60,7 @@ public partial class CharacterMovementSystem : SystemBase
 
             }
 
-        ).Schedule(this.Dependency);
+        ).Schedule(Dependency);
         dep.Complete();
 
         ecb.Playback(EntityManager);

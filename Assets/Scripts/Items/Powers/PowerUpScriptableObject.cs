@@ -11,7 +11,7 @@ namespace Sandbox.Player
         public float powerTimeOn = 3;
         public float powerMultiplier = 1.5f;
         public int powerUseIncrease = 3;//for dash
-        public bool powerSlowDown = false;
+        public bool powerSlowDown;
         public PickupType pickupType = PickupType.None;
         public string powerItemDescription;
         public string powerItemLongDescription;

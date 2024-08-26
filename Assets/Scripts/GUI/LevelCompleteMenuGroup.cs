@@ -1,13 +1,13 @@
 ﻿using System;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.Entities;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-[System.Serializable]
+[Serializable]
 public struct LevelCompleteMenuComponent : IComponentData
 {
     public bool hide;
@@ -37,7 +37,7 @@ public class LevelCompleteMenuGroup : MonoBehaviour
     //[SerializeField]
     //private TextMeshProUGUI label;
     private float showTimeLength = 1.0f;
-    private float showTimer = 0f;
+    private float showTimer;
     private bool startShowTimer;
     public bool loadNextScene;
 
@@ -51,7 +51,7 @@ public class LevelCompleteMenuGroup : MonoBehaviour
         var manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         entity = manager.CreateEntity();
         //var entity = World.DefaultGameObjectInjectionWorld.EntityManager.CreateEntity();
-        manager.AddComponentData(entity, new LevelCompleteMenuComponent()
+        manager.AddComponentData(entity, new LevelCompleteMenuComponent
         {
             hide = true,
             levelTargetReachedCounter = 0,
@@ -64,7 +64,7 @@ public class LevelCompleteMenuGroup : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         buttons = gameObject.GetComponentsInChildren<Button>().ToList();
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
             PlayMenuClickSound(clickSound))); //shortcut instead of using inspector to add to each button
     }
 

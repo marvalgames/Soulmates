@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using Unity.Entities;
-
-
+﻿using Unity.Entities;
+using UnityEngine;
 
 public class EnemyRatings : MonoBehaviour
 {
@@ -24,7 +22,7 @@ public class EnemyRatings : MonoBehaviour
             var combatRangeDistance = authoring.Ratings.combatRangeDistance;
             var hitPower = authoring.Ratings.hitPower;
 
-            if (authoring.randomize == true)
+            if (authoring.randomize)
             {
                 var multiplier = .5f;
             

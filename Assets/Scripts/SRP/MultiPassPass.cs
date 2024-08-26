@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class MultiPassPass : ScriptableRenderPass
 {
@@ -16,7 +14,7 @@ public class MultiPassPass : ScriptableRenderPass
             m_Tags.Add(new ShaderTagId(tag));
         }
 
-        this.renderPassEvent = RenderPassEvent.AfterRenderingOpaques-1;
+        renderPassEvent = RenderPassEvent.AfterRenderingOpaques-1;
     }
 
     public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)

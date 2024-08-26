@@ -2,8 +2,6 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
-using UnityEngine.VFX;
-
 
 public struct ParticleEffectsSpawnerComponent : IComponentData
 {
@@ -48,7 +46,7 @@ public partial struct SpawnItemParticleSystem : ISystem
             var instance = e;
             particleEffectComponent.ValueRW.particleSystemEntitySpawned = true;
             var tr = SystemAPI.GetComponent<LocalTransform>(entity);
-            ecb.AddComponent(instance, new SpawnedItem()
+            ecb.AddComponent(instance, new SpawnedItem
             {
                 spawned = true,
                 itemParent = entity,

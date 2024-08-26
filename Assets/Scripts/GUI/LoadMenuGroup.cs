@@ -9,7 +9,7 @@ public class LoadMenuGroup : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
     public UnityEvent OnBackClicked = new UnityEvent();
-    private int selectedSlot = 0;
+    private int selectedSlot;
     [SerializeField]
     Button loadButton;
 
@@ -40,7 +40,7 @@ public class LoadMenuGroup : MonoBehaviour
         if (SaveManager.instance.saveData.saveGames.Count == 0) return;
         var sw = SaveManager.instance.saveWorld;
 
-        if (sw.isSlotSaved[0] == true)
+        if (sw.isSlotSaved[0])
         {
             slotText.text = "CONTINUE";
             LevelManager.instance.newGame = false;

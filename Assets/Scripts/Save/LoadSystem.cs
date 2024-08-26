@@ -62,7 +62,7 @@ public partial class LoadSystem : SystemBase
             var health = pl.playerData.savedHealth;
             ecb.SetComponent(e, player);
             ecb.SetComponent(e, health);
-            if (SystemAPI.HasComponent<ScoreComponent>(e) == true)
+            if (SystemAPI.HasComponent<ScoreComponent>(e))
             {
                 var score = pl.playerData.savedScore;
                 ecb.SetComponent(e, score);

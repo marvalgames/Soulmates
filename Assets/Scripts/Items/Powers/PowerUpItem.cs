@@ -1,10 +1,12 @@
-﻿using Sandbox.Player;
+﻿using System;
+using Collisions;
+using Sandbox.Player;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public struct HealthPower : IComponentData
 {
     public LocalTransform LocalTransform;
@@ -17,7 +19,7 @@ public struct HealthPower : IComponentData
     public bool slowDown;
 }
 
-[System.Serializable]
+[Serializable]
 public struct DashPower : IComponentData
 {
     public Entity psAttached;
@@ -28,7 +30,7 @@ public struct DashPower : IComponentData
     public int useIncrease;
 }
 
-[System.Serializable]
+[Serializable]
 public struct Speed : IComponentData
 {
 
@@ -114,19 +116,17 @@ public class PowerUpItem : MonoBehaviour
             else if (authoring.powerUpScriptableObject.pickupType == PickupType.Health)
             {
                 AddComponent(entity, 
-                    new HealthPower()
-                        { enabled = false, healthMultiplier = authoring.powerUpScriptableObject.powerMultiplier });
+                    new HealthPower { enabled = false, healthMultiplier = authoring.powerUpScriptableObject.powerMultiplier });
             }
             else if (authoring.powerUpScriptableObject.pickupType == PickupType.Dash)
             {
                 AddComponent(entity,
-                    new DashPower()
-                        { enabled = false, useIncrease = authoring.powerUpScriptableObject.powerUseIncrease });
+                    new DashPower { enabled = false, useIncrease = authoring.powerUpScriptableObject.powerUseIncrease });
             }
             else if (authoring.powerUpScriptableObject.pickupType == PickupType.HealthRate)
             {
                 AddComponent(entity,
-                    new HealthPower()
+                    new HealthPower
                     {
                         enabled = false, slowDown = authoring.powerUpScriptableObject.powerSlowDown,
                         healthMultiplier = authoring.powerUpScriptableObject.powerMultiplier
@@ -142,7 +142,7 @@ public class PowerUpItem : MonoBehaviour
 }
 
 
-[UpdateAfter(typeof(Collisions.PickupInputPowerUpUseImmediateSystem))]
+[UpdateAfter(typeof(PickupInputPowerUpUseImmediateSystem))]
 public partial class SpawnPowerUpParticleSystem : SystemBase
 {
     protected override void OnUpdate()
@@ -158,7 +158,7 @@ public partial class SpawnPowerUpParticleSystem : SystemBase
                 //Debug.Log("INSTANCE " + instance);
                 powerItemComponent.particleSystemEntitySpawned = true;
                 var tr = SystemAPI.GetComponent<LocalTransform>(entity);
-                ecb.AddComponent(instance, new SpawnedItem()
+                ecb.AddComponent(instance, new SpawnedItem
                 {
                     spawned = true, itemParent = entity,
                     spawnedLocalTransform = tr

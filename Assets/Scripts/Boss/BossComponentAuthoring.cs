@@ -81,12 +81,12 @@ public class BossComponentAuthoring : MonoBehaviour
             AddComponent(e, new EnemyComponent()); //keep?
             AddComponent(e, new CheckedComponent());
 
-            if (authoring.paused == true)
+            if (authoring.paused)
             {
                 AddComponent(e, new Pause());
             }
 
-            AddComponent(e, new StatsComponent()
+            AddComponent(e, new StatsComponent
                 {
                     shotsFired = 0,
                     shotsLanded = 0
@@ -96,7 +96,7 @@ public class BossComponentAuthoring : MonoBehaviour
 
 
             
-            AddComponent(e, new SkillTreeComponent()
+            AddComponent(e, new SkillTreeComponent
                 {
                     e = e,
                     availablePoints = 0,

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Collisions;
 using Unity.Entities;
 using UnityEngine;

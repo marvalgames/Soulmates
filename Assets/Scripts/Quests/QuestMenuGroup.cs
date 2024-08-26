@@ -7,7 +7,7 @@ namespace Quests
     public class QuestMenuGroup : MonoBehaviour
     {
         //[TextArea] public string startMessage = "Press Escape for Menu";
-        private QuestLogWindow questLogWindow = null;
+        private QuestLogWindow questLogWindow;
    
         void Start()
         {

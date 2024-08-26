@@ -1,6 +1,5 @@
 ﻿using Sandbox.Player;
 using Unity.Entities;
-using UnityEngine;
 
 namespace Player
 {

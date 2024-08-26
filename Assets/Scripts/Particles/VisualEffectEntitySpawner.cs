@@ -1,7 +1,6 @@
 using Unity.Entities;
 using UnityEngine;
 
-
 public class VisualEffectEntitySpawner : MonoBehaviour
 {
     public GameObject VisualEffectPrefab;
@@ -15,7 +14,7 @@ public class VisualEffectEntitySpawner : MonoBehaviour
             if (authoring.VisualEffectPrefab)
             {
                 AddComponent(e,
-                    new VisualEffectEntitySpawnerComponent()
+                    new VisualEffectEntitySpawnerComponent
                     {
                         entity = GetEntity(authoring.VisualEffectPrefab, TransformUsageFlags.Dynamic)
                     }

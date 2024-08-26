@@ -1,8 +1,8 @@
 using Collisions;
 using Unity.Entities;
-using UnityEngine;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Sandbox.Player
 {
@@ -32,7 +32,7 @@ namespace Sandbox.Player
                     var buttonXtap = inputController.buttonX_Tap; //punch types
                     var leftBumperPressed = inputController.leftBumperPressed;
                     var leftBumperUp = inputController.leftBumperReleased;
-                    var allowKick = buttonXpressed == true &&
+                    var allowKick = buttonXpressed &&
                                     (math.abs(animator.GetFloat(Vertical)) < 2 || applyImpulse.Grounded == false);
                     var buttonXunPressed = inputController.buttonTimeX_UnPressed;
                     var comboBufferTimeMax = inputController.comboBufferTimeMax;

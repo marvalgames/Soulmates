@@ -3,19 +3,16 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-
-
-
 public class SaveManager : MonoBehaviour
 {
 
-    public static SaveManager instance = null;
+    public static SaveManager instance;
 
     public SaveData saveData = new SaveData();
     public SaveWorld saveWorld = new SaveWorld();
 
-    public bool updateScore = false;
-    public bool saveMainGame = false;
+    public bool updateScore;
+    public bool saveMainGame;
 
 
 
@@ -69,7 +66,7 @@ public class SaveManager : MonoBehaviour
         {
             var bf = new BinaryFormatter();
             var file = File.Create(path);
-            sw = new SaveWorld {  };
+            sw = new SaveWorld();
             Debug.Log("creating " + path);
             bf.Serialize(file, sw);
             file.Close();

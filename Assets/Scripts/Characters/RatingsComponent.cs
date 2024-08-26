@@ -1,6 +1,5 @@
 ﻿using Unity.Entities;
 
-
 public struct RatingsComponent : IComponentData
 {
     public int tag;

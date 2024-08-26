@@ -1,9 +1,8 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-[System.Serializable]
+[Serializable]
 public class MultiPassRendererFeature : ScriptableRendererFeature
 {
     public List<string> lightModePasses;

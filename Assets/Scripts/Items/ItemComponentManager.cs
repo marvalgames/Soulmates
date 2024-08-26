@@ -1,12 +1,9 @@
-﻿
-using Unity.Entities;
-using Unity.Collections;
-using Unity.Mathematics;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
-
-
 
 public struct UseItem1 : IComponentData
 {
@@ -170,10 +167,9 @@ public struct PowerItemIndexComparer : IComparer<PowerItemComponent>
         var b_index = b.index;
         if (a_index > b_index)
             return 1;
-        else if (a_index < b_index)
+        if (a_index < b_index)
             return -1;
-        else
-            return 0;
+        return 0;
 
     }
 }
@@ -285,7 +281,7 @@ public enum ResourceType
     Dust
 }
 
-[System.Serializable]
+[Serializable]
 public class ItemClass
 {
     public Transform location;

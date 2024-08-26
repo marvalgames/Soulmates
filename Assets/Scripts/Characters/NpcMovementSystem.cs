@@ -1,6 +1,5 @@
 ﻿using Unity.Entities;
 using Unity.Mathematics;
-using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -29,7 +28,7 @@ namespace Sandbox.Player
                 ) =>
                 {
                     var agent = npcAgentAI.agent;
-                    if (SystemAPI.HasComponent<Pause>(e) == true)
+                    if (SystemAPI.HasComponent<Pause>(e))
                     {
                         agent.speed = 0;
                         animator.speed = 0;

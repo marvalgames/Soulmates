@@ -1,8 +1,8 @@
-﻿using Unity.Entities;
+﻿using System;
+using Unity.Entities;
 using UnityEngine;
 
-
-[System.Serializable]
+[Serializable]
 public struct SaveComponent : IComponentData
 {
     public bool value;

@@ -1,7 +1,7 @@
-﻿using Unity.Entities;
+﻿using System;
+using Unity.Entities;
 
-
-[System.Serializable]
+[Serializable]
 public struct CharacterSaveComponent : IComponentData
 {
     public int saveIndex;

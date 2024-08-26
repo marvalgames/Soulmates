@@ -17,7 +17,7 @@ public class TerrainBaker : Baker<TerrainConvertToEntity>
     public override void Bake(TerrainConvertToEntity authoring)
     {
         var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
-        AddComponent(e, new TerrainComponent()
+        AddComponent(e, new TerrainComponent
         {
             convert = authoring.convert
         });

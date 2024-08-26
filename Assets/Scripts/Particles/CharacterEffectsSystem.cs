@@ -1,14 +1,15 @@
+using System;
 using Collisions;
 using Sandbox.Player;
-using Unity.Entities;
-//using Unity.Burst;
-using Unity.Mathematics;
-using UnityEngine;
-using Unity.Physics;
-using UnityEngine.AI;
 using Unity.Collections;
+using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Physics;
 using Unity.Transforms;
+using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.VFX;
+//using Unity.Burst;
 
 public enum SpawnStage
 {
@@ -26,7 +27,7 @@ public enum EffectType
     TwoClose,
 }
 
-[System.Serializable]
+[Serializable]
 public class EffectClass : IComponentData
 {
     public EffectType effectType;
@@ -127,7 +128,7 @@ public partial class CharacterImpulseEffectsSystem : SystemBase
                                 physicsVelocity.Linear * math.float3(anim.speed, anim.speed, anim.speed);
                         }
                     }
-                    else if (impulseComponent.activate == true && impulseComponent.timer <= impulseComponent.maxTime)
+                    else if (impulseComponent.activate && impulseComponent.timer <= impulseComponent.maxTime)
                     {
                         impulseComponent.timer += SystemAPI.Time.DeltaTime;
                         physicsVelocity.Linear =
@@ -142,7 +143,7 @@ public partial class CharacterImpulseEffectsSystem : SystemBase
                             ecb.RemoveComponent<Pause>(e);
                         }
                     }
-                    else if (impulseComponent.activateOnReceived == true &&
+                    else if (impulseComponent.activateOnReceived &&
                              impulseComponent.timerOnReceived <= impulseComponent.maxTimeOnReceived)
                     {
                         impulseComponent.timerOnReceived += SystemAPI.Time.DeltaTime;
@@ -231,7 +232,7 @@ public partial class CharacterImpulseEffectsSystem : SystemBase
                 in LevelCompleteComponent goal, in Entity entity, in EffectsManager effects,
                 in AudioSource audioSource) =>
             {
-                if (goal.active == true || effectsComponent.soundPlaying == true) return;
+                if (goal.active || effectsComponent.soundPlaying) return;
             }
         ).Run();
     }
@@ -239,7 +240,7 @@ public partial class CharacterImpulseEffectsSystem : SystemBase
 
 
 [UpdateAfter(typeof(HealthSystem))]
-[UpdateAfter(typeof(Collisions.AttackerSystem))]
+[UpdateAfter(typeof(AttackerSystem))]
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 public partial class CharacterDamageEffectsSystem : SystemBase
 {
@@ -265,7 +266,7 @@ public partial class CharacterDamageEffectsSystem : SystemBase
 
                 if (losingDamage) return;
 
-                if (hasDamage == true && deadComponent.isDead == false)
+                if (hasDamage && deadComponent.isDead == false)
                 {
                     var damageComponent = SystemAPI.GetComponent<DamageComponent>(e);
                     var effectsIndex = damageComponent.EffectsIndex;
@@ -444,7 +445,7 @@ public partial class ParticleInstanceSystem : SystemBase
 
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateAfter(typeof(Collisions.BreakableCollisionHandlerSystem))]
+[UpdateAfter(typeof(BreakableCollisionHandlerSystem))]
 public partial class BreakableEffectsSystem : SystemBase
 {
 

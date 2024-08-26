@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 
 public class LevelMedia
 {
 
     // Use this for initialization
-    public AudioClip levelMusic = null;
+    public AudioClip levelMusic;
     public float levelVolume = 1.0f;
 
 

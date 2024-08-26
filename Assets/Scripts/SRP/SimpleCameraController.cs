@@ -4,6 +4,7 @@
     using UnityEngine.InputSystem.Controls;
 #endif
 
+using UnityEditor;
 using UnityEngine;
 
 namespace UnityTemplateProjects
@@ -74,7 +75,7 @@ namespace UnityTemplateProjects
         public float rotationLerpTime = 0.01f;
 
         [Tooltip("Whether or not to invert our Y axis for mouse input to rotation.")]
-        public bool invertY = false;
+        public bool invertY;
 
         void OnEnable()
         {
@@ -123,7 +124,7 @@ namespace UnityTemplateProjects
             {
                 Application.Quit();
 				#if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false; 
+				EditorApplication.isPlaying = false; 
 				#endif
             }
             // Hide and lock cursor when right mouse button pressed

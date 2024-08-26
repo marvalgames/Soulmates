@@ -1,13 +1,6 @@
 //using Dialogue.Scripts;
-using PixelCrushers.DialogueSystem;
-using Unity.Burst;
-using Unity.Collections;
+
 using Unity.Entities;
-using Unity.Jobs;
-using Unity.Mathematics;
-using Unity.Transforms;
-using UnityEngine;
-using UnityEngine.Serialization;
 
 public struct MissionComponent : IComponentData
 {

@@ -1,8 +1,6 @@
 ﻿using Collisions;
-using Sandbox.Player;
 using Unity.Entities;
 using UnityEngine;
-
 
 public struct AnimatorWeightsComponent : IComponentData
 {

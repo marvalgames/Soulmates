@@ -31,7 +31,7 @@ public partial class StatsSystem : SystemBase
                     skillTree.CurrentLevel += 1;
                     skillTree.availablePoints += 1;
 
-                    if (SystemAPI.HasComponent<LevelUpMechanicComponent>(e) == true && skillTree.CurrentLevel <= 8)
+                    if (SystemAPI.HasComponent<LevelUpMechanicComponent>(e) && skillTree.CurrentLevel <= 8)
                     {
                         ratingsComponent.gameSpeed = ratingsComponent.gameSpeed * 1.1f;
                         ratingsComponent.gameWeaponPower = ratingsComponent.gameWeaponPower * 1.1f;
@@ -47,7 +47,7 @@ public partial class StatsSystem : SystemBase
         Entities.WithoutBurst().WithStructuralChanges().ForEach(
             (in ShowMessageMenuComponent messageMenuComponent, in ShowMessageMenuGroup messageMenu) =>
             {
-                if (showMessage == true)
+                if (showMessage)
                 {
 
                     messageMenu.messageString = "Level Up ...  Max Health Up ... HP Up ... Durability Up";

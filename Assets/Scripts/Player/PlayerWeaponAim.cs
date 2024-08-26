@@ -3,7 +3,6 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Sandbox.Player
@@ -73,9 +72,7 @@ namespace Sandbox.Player
 
 
         public bool aimMode = true;
-        public bool aimDisabled = false;
-        public Transform target;
-        public Transform aimTransform;
+        public bool aimDisabled;
         [Range(0.0f, 1.0f)] [SerializeField] private float aimWeight = 1.0f;
         [Range(0.0f, 1.0f)] [SerializeField] private float clampWeight = 0.1f;
         [Range(0.0f, 1.0f)] [SerializeField] private float lookWeight = 1f;
@@ -83,25 +80,18 @@ namespace Sandbox.Player
         public float turnSpeed = 1;
         [Header("")] [SerializeField] private float lerpSpeed = 3;
         private float _startAimWeight;
-        [SerializeField] private float currentAimWeight;
         [SerializeField] private float targetAimWeight;
         private float _startClampWeight;
 
         private float _startLookWeight;
-
-        //private float aimLerp = .03f;
-        [HideInInspector] public Rewired.Player Player;
+        public Rewired.Player Player;
         [HideInInspector] public int playerId; // The Rewired player id of this character
         [SerializeField] private Transform crossHair;
         [SerializeField] private Image crosshairImage;
-        //[SerializeField] private bool topDownTargeting = false;
         [Range(0.0f, 100.0f)] public float cameraZ = 50f;
         public CameraTypes weaponCamera;
-        [SerializeField] private bool simController = false;
+        [SerializeField] private bool simController;
         [SerializeField] [Range(0.0f, 100.0f)] private float gamePadSensitivity = 20;
-        //[SerializeField] [Range(0.0f, 100.0f)] private float mouseSensitivity = 20;
-
-        //[SerializeField] private float topDownY = 1;
         [Range(80f, 100.0f)] [SerializeField] private float viewportPct = 90;
         [SerializeField] private Vector3 mousePosition;
 
@@ -113,8 +103,7 @@ namespace Sandbox.Player
         private float _yMin;
         private float _yMax;
         public Transform playerWeaponLocation;
-
-
+        
         private Vector3 _targetPosition = Vector3.zero;
         private Vector3 _worldPosition = Vector3.zero;
         private float3 _closetEnemyWeaponTargetPosition;
@@ -131,14 +120,14 @@ namespace Sandbox.Player
 
             Player = ReInput.players.GetPlayer(playerId);
             animator = GetComponent<Animator>();
-            target = crossHair; //default target
+            //target = crossHair; //default target
 
             _cam = Camera.main;
 
             _startAimWeight = aimWeight;
             _startClampWeight = clampWeight;
             _startLookWeight = lookWeight;
-            currentAimWeight = aimWeight;
+            //currentAimWeight = aimWeight;
             targetAimWeight = _startAimWeight;
 
             SetCursorBounds();
@@ -303,8 +292,8 @@ namespace Sandbox.Player
             if (math.distancesq(currentMousePosition, lastMousePosition) > .00001)
             {
                 actorWeaponAimComponent.isMouseMoving = true;
-                actorWeaponAimComponent.weaponRaised = WeaponMotion.Lowering;
-                animator.SetInteger(WeaponRaised, 3);
+                //actorWeaponAimComponent.weaponRaised = WeaponMotion.Lowering;
+                //animator.SetInteger(WeaponRaised, 3);
                 animator.SetLayerWeight(1, 1);
             }
 

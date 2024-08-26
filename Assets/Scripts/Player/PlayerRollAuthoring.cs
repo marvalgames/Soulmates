@@ -1,9 +1,10 @@
-﻿using Unity.Entities;
+﻿using System;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Sandbox.Player
 {
-    [System.Serializable]
+    [Serializable]
 
     public struct PlayerRollComponent : IComponentData
     {

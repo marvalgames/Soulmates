@@ -1,7 +1,7 @@
-using Unity.Entities;
-using UnityEngine;
 using Sandbox.Player;
 using Unity.Collections;
+using Unity.Entities;
+using UnityEngine;
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 
@@ -62,7 +62,7 @@ public partial class HealthSystem : SystemBase
                 healthComponent.showDamage = false;
                 if (EntityManager.HasComponent(entity, typeof(EnemyComponent)))
                 {
-                    if (SystemAPI.GetComponent<EnemyComponent>(entity).invincible == true)
+                    if (SystemAPI.GetComponent<EnemyComponent>(entity).invincible)
                     {
                         damageComponent.DamageReceived = 0;
                     }
@@ -81,11 +81,11 @@ public partial class HealthSystem : SystemBase
                 var dead = EntityManager.GetComponentData<DeadComponent>(entity);
                 if (damageComponent.DamageReceived > 0)
                 {
-                    if (SystemAPI.HasComponent<EnemyComponent>(entity) == true)
+                    if (SystemAPI.HasComponent<EnemyComponent>(entity))
                     {
                         anyEnemyDamaged = true;
                     }
-                    else if (SystemAPI.HasComponent<PlayerComponent>(entity) == true)
+                    else if (SystemAPI.HasComponent<PlayerComponent>(entity))
                     {
                         anyPlayerDamaged = true;
                     }
@@ -131,7 +131,7 @@ public partial class HealthSystem : SystemBase
 
         Entities.WithoutBurst().ForEach((ref HealthComponent healthComponent) =>
         {
-            if (healthComponent.combineDamage == true)
+            if (healthComponent.combineDamage)
             {
                 healthComponent.totalDamageReceived = allPlayerDamageTotal;
             }
@@ -141,11 +141,11 @@ public partial class HealthSystem : SystemBase
 
         Entities.WithoutBurst().ForEach((HealthBar healthUI, in HealthComponent healthComponent, in DamageComponent damage) =>
         {
-            if (healthComponent.showText3D == ShowText3D.HitScore && healthComponent.showDamage == true)
+            if (healthComponent.showText3D == ShowText3D.HitScore && healthComponent.showDamage)
             {
                 healthUI.ShowText3dValue((int)damage.ScorePointsReceived);
             }
-            else if (healthComponent.showText3D == ShowText3D.HitDamage && healthComponent.showDamage == true)
+            else if (healthComponent.showText3D == ShowText3D.HitDamage && healthComponent.showDamage)
             {
                 healthUI.ShowText3dValue((int)damage.DamageReceived);
             }

@@ -2,6 +2,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
+
 public partial class PowerAppliedSystem : SystemBase
 {
 
@@ -38,7 +39,7 @@ public partial class PowerAppliedSystem : SystemBase
                 ) =>
             {
 
-                if (speed.startTimer == false && speed.enabled == true)
+                if (speed.startTimer == false && speed.enabled)
                 {
                     speed.triggered = true;
                     speed.startTimer = true;
@@ -73,7 +74,7 @@ public partial class PowerAppliedSystem : SystemBase
 
             ) =>
             {
-                if (healthPower.enabled == true)
+                if (healthPower.enabled)
                 {
                     //healthPower.enabled = false;
                     healthComponent.totalDamageReceived = healthComponent.totalDamageReceived * healthPower.healthMultiplier;
@@ -119,7 +120,7 @@ public partial class PowerAppliedSystem : SystemBase
             (
                 HealthBar healthBar, ref HealthPower healthPower) =>
             {
-                if (healthPower.enabled == true)
+                if (healthPower.enabled)
                 {
                     healthPower.enabled = false;
                     healthBar.HealthChange();
@@ -135,7 +136,7 @@ public partial class PowerAppliedSystem : SystemBase
                 AudioSource audioSource, ref PowerItemComponent powerItemComponent, in Entity e) =>
             {
                 if (audioSource.isPlaying == false
-                    && powerItemComponent.enabled == true
+                    && powerItemComponent.enabled
                 )
                 {
                     powerItemComponent.enabled = false;

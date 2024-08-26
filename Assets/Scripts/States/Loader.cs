@@ -6,12 +6,12 @@ namespace States
     public class Loader : MonoBehaviour
     {
         public float loadTime = 2.0f;
-        private int currentSceneIndex = 0;
+        private int currentSceneIndex;
 
 
         void Awake()
         {
-            var allListeners = UnityEngine.Object.FindObjectsOfType<AudioListener>();
+            var allListeners = FindObjectsOfType<AudioListener>();
             if (allListeners.Length > 1)
             {
                 for (var i = 1; i < allListeners.Length; i++)
@@ -20,7 +20,7 @@ namespace States
                 }
             }
 
-            var allCameras = UnityEngine.Object.FindObjectsOfType<Camera>();
+            var allCameras = FindObjectsOfType<Camera>();
             if (allCameras.Length > 1)
             {
                 foreach (var cam in allCameras)

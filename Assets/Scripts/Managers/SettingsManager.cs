@@ -7,7 +7,7 @@ public class SettingsManager : MonoBehaviour
     private static SettingsManager instance;
 
     // Singleton pattern implementation
-    public static SettingsManager Instance => SettingsManager.instance;
+    public static SettingsManager Instance => instance;
 
     //public bool playerAimMode;
 

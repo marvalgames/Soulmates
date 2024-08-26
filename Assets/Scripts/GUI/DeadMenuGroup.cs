@@ -1,12 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
-using Unity.Entities;
+using System.Linq;
 using TMPro;
+using Unity.Entities;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-[System.Serializable]
+[Serializable]
 public struct DeadMenuComponent : IComponentData
 {
     public bool hide;
@@ -40,12 +41,12 @@ public class DeadMenuGroup : MonoBehaviour
     {   var world = World.DefaultGameObjectInjectionWorld;
         var manager = world.EntityManager;
         var entity = manager.CreateEntity();
-        manager.AddComponentData(entity, new DeadMenuComponent() {hide = true});
+        manager.AddComponentData(entity, new DeadMenuComponent {hide = true});
         manager.AddComponentObject(entity, this);
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         buttons = gameObject.GetComponentsInChildren<Button>().ToList();
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
         PlayMenuClickSound(clickSound)));//shortcut instead of using inspector to add to each button
 
     }

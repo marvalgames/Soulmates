@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
 public class CombatStatsList
 {
     public float hpLanded { set; get; }

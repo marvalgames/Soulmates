@@ -1,7 +1,7 @@
-using Rewired;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Rewired;
 using Sandbox.Player;
 using TMPro;
 using Unity.Collections;
@@ -9,11 +9,6 @@ using Unity.Entities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
-
-
-
-
 
 public struct TalentMenuComponent : IComponentData
 {
@@ -181,10 +176,7 @@ public class TalentMenuGroup : MonoBehaviour
                 buttons[i + 1].interactable = true;
                 Debug.Log("t1");
             }
-            else
-            {
-                //buttons[i + 1].interactable = false;
-            }
+            //buttons[i + 1].interactable = false;
         }
 
 
@@ -219,7 +211,7 @@ public class TalentMenuGroup : MonoBehaviour
     {
         buttons = GetComponentsInChildren<Button>().ToList();//linq using
 
-        buttons.ForEach((btn) => btn.onClick.AddListener(() =>
+        buttons.ForEach(btn => btn.onClick.AddListener(() =>
             PlayMenuClickSound(clickSound)));//shortcut instead of using inspector to add to each button
 
         for (var i = 0; i < buttons.Count; i++)

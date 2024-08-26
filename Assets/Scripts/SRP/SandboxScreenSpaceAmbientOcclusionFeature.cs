@@ -3,14 +3,15 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Random = UnityEngine.Random;
 
-[System.Serializable]
+[Serializable]
 public class ScreenSpaceAmbientOcclusionSettings
 {
     // Parameters
     [SerializeField] internal AOMethodOptions AOMethod = AOMethodOptions.BlueNoise;
-    [SerializeField] internal bool Downsample = false;
-    [SerializeField] internal bool AfterOpaque = false;
+    [SerializeField] internal bool Downsample;
+    [SerializeField] internal bool AfterOpaque;
     [SerializeField] internal DepthSource Source = DepthSource.DepthNormals;
     [SerializeField] internal NormalQuality NormalSamples = NormalQuality.Medium;
     [SerializeField] internal float Intensity = 40;
@@ -69,7 +70,7 @@ public class SandboxScreenSpaceAmbientOcclusionFeature : ScriptableRendererFeatu
     private Shader m_Shader;
 
     private Material m_Material;
-    private SandboxScreenSpaceAmbientOcclusion m_customPass = null;
+    private SandboxScreenSpaceAmbientOcclusion m_customPass;
 
 
     public override void Create()
@@ -134,7 +135,7 @@ public class SandboxScreenSpaceAmbientOcclusionFeature : ScriptableRendererFeatu
 }
 
 
-[System.Serializable]
+[Serializable]
 public class SandboxScreenSpaceAmbientOcclusion : ScriptableRenderPass
 {
     // Properties
@@ -145,9 +146,9 @@ public class SandboxScreenSpaceAmbientOcclusion : ScriptableRenderPass
 
     // Private Variables
     //private bool m_SupportsR8RenderTextureFormat = SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.R8);
-    private int m_BlueNoiseTextureIndex = 0;
-    private float m_BlurRandomOffsetX = 0f;
-    private float m_BlurRandomOffsetY = 0f;
+    private int m_BlueNoiseTextureIndex;
+    private float m_BlurRandomOffsetX;
+    private float m_BlurRandomOffsetY;
     private Material m_Material;
     private Texture2D[] m_BlueNoiseTextures;
     private Vector4[] m_CameraTopLeftCorner = new Vector4[2];
@@ -160,7 +161,7 @@ public class SandboxScreenSpaceAmbientOcclusion : ScriptableRenderPass
     private Matrix4x4[] m_CameraViewProjections = new Matrix4x4[2];
 
     //private ProfilingSampler m_ProfilingSampler = ProfilingSampler.Get(URPProfileId.SSAO);
-    private ScriptableRenderer m_Renderer = null;
+    private ScriptableRenderer m_Renderer;
     private RenderTextureDescriptor m_AOPassDescriptor;
     private ScreenSpaceAmbientOcclusionSettings m_CurrentSettings;
 
@@ -304,8 +305,8 @@ public class SandboxScreenSpaceAmbientOcclusion : ScriptableRenderPass
                 CoreUtils.SetKeyword(m_Material, k_AOBlueNoiseKeyword, true);
 
                 m_BlueNoiseTextureIndex = (m_BlueNoiseTextureIndex + 1) % m_BlueNoiseTextures.Length;
-                m_BlurRandomOffsetX = UnityEngine.Random.value;
-                m_BlurRandomOffsetY = UnityEngine.Random.value;
+                m_BlurRandomOffsetX = Random.value;
+                m_BlurRandomOffsetY = Random.value;
 
                 Texture2D noiseTexture = m_BlueNoiseTextures[m_BlueNoiseTextureIndex];
                 m_Material.SetTexture(s_BlueNoiseTextureID, noiseTexture);

@@ -1,8 +1,6 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-
-
 public enum SlashStates
 {
     None,
@@ -43,7 +41,7 @@ public class SlashComponentAuthoring : MonoBehaviour
         {
             var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
 
-            AddComponent(e, new SlashComponent()
+            AddComponent(e, new SlashComponent
                 {
                     slashActive = authoring.slashActive,
                     slashState = (int) SlashStates.None,
@@ -59,7 +57,7 @@ public class SlashComponentAuthoring : MonoBehaviour
                 var _audioSource = authoring.audioSource;
                 _audioSource.clip = authoring.audioClip;
 
-                AddComponentObject(e, new SlashClass()
+                AddComponentObject(e, new SlashClass
                     {
                         audioSource = _audioSource
 

@@ -2,10 +2,10 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
+using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
-
-
+using RaycastHit = Unity.Physics.RaycastHit;
 
 
 //[UpdateAfter(typeof(Unity.Physics.Systems.AfterPhysicsSystemGroup))]
@@ -37,7 +37,7 @@ public partial class CameraRaycastSystem : SystemBase
         Entities.WithoutBurst().ForEach((Entity entity, in CameraControlsComponent cameraControls) =>
         {
             if (cameraControls.active == false) return;
-            var physicsWorldSystem = World.GetExistingSystem<Unity.Physics.Systems.BuildPhysicsWorld>();
+            var physicsWorldSystem = World.GetExistingSystem<BuildPhysicsWorld>();
             //var collisionWorld = physicsWorldSystem.PhysicsWorld.CollisionWorld;
             var collisionWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
             var LocalTransform = SystemAPI.GetComponent<LocalTransform>(entity);
@@ -50,19 +50,19 @@ public partial class CameraRaycastSystem : SystemBase
             var end = start + direction * distance;
 
 
-            var inputForward = new RaycastInput()
+            var inputForward = new RaycastInput
             {
                 Start = start,
                 End = end,
                 //Filter = CollisionFilter.Default
-                Filter = new CollisionFilter()
+                Filter = new CollisionFilter
                 {
                     BelongsTo = (uint)CollisionLayer.Camera,
                     CollidesWith = (uint)CollisionLayer.Enemy,
                     GroupIndex = 0
                 }
             };
-            var hitForward = new Unity.Physics.RaycastHit();
+            var hitForward = new RaycastHit();
             Debug.DrawRay(inputForward.Start, direction, Color.green, distance);
 
             var hasPointHitForward = collisionWorld.CastRay(inputForward, out hitForward);

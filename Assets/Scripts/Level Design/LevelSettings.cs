@@ -1,5 +1,7 @@
-﻿using UnityEngine;
-[System.Serializable]
+﻿using System;
+using UnityEngine;
+
+[Serializable]
 public enum LevelCompleteScenario
 {
     DestroyAll,
@@ -7,13 +9,13 @@ public enum LevelCompleteScenario
     TriggerReached
 }
 
-[System.Serializable]
+[Serializable]
 
 public class LevelSettings
 {
 
     // Use this for initialization
-    [System.NonSerialized]
+    [NonSerialized]
     public AudioClip levelMusic = null;
     public string levelName;
     public LevelCompleteScenario levelCompleteScenario = LevelCompleteScenario.DestroyAll;

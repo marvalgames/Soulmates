@@ -1,4 +1,3 @@
-
 using Collisions;
 using Sandbox.Player;
 using Unity.Collections;
@@ -6,9 +5,6 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
-using UnityEngine;
-
-
 
 [RequireMatchingQueriesForUpdate]
 [UpdateInGroup(typeof(LateSimulationSystemGroup))]
@@ -27,7 +23,7 @@ public partial class BossAmmoHandlerSystem : SystemBase
     {
 
         //if (LevelManager.instance.endGame == true) return;
-        if (LevelManager.instance.endGame == true || LevelManager.instance.gameResult == GameResult.Loser ||
+        if (LevelManager.instance.endGame || LevelManager.instance.gameResult == GameResult.Loser ||
             LevelManager.instance.gameResult == GameResult.Winner) return;
         
 
@@ -42,7 +38,7 @@ public partial class BossAmmoHandlerSystem : SystemBase
         //var commandBuffer = m_EntityCommandBufferSystem.CreateCommandBuffer();
         var commandBuffer = new EntityCommandBuffer(Allocator.TempJob);
 
-        var ammoGroup = SystemAPI.GetComponentLookup<AmmoComponent>(false);
+        var ammoGroup = SystemAPI.GetComponentLookup<AmmoComponent>();
         var dep = Entities.WithNone<Pause>().ForEach(
             (
                  Entity entity,
@@ -127,7 +123,7 @@ public partial class BossAmmoHandlerSystem : SystemBase
 
 
             }
-        ).Schedule(this.Dependency);
+        ).Schedule(Dependency);
         dep.Complete();
         playerEntities.Dispose();
 

@@ -2,10 +2,9 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
 public class GamePadGroup : MonoBehaviour
 {
-    private CanvasGroup canvasGroup = null;
+    private CanvasGroup canvasGroup;
     [SerializeField]
     private Button defaultButton;
     [SerializeField] private EventSystem eventSystem;
@@ -34,7 +33,7 @@ public class GamePadGroup : MonoBehaviour
 
     void Update()
     {
-        if (show == true)
+        if (show)
         {
             eventSystem.sendNavigationEvents = false;
         }
