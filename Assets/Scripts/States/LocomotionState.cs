@@ -12,22 +12,27 @@ public class LocomotionState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
         if (animationType == AnimationType.Aim)
         {
             animator.SetInteger(WeaponRaised, (int)WeaponMotion.Raised);
         }
         else if (animationType == AnimationType.Lowering)
-        {
-            animator.SetInteger(WeaponRaised, (int)WeaponMotion.Raised);
+        { 
+            animator.SetInteger(WeaponRaised, (int)WeaponMotion.Started);//MAY NOT NEED AS IT IS ALSO IN PLAYER INPUT AMMO SYSTEM
         }
         else if (animationType == AnimationType.DashRoll)
         {
             animator.SetInteger(Dash, 0);
         }
+    }
 
-
-
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (animationType == AnimationType.Lowering)
+        {
+            animator.SetInteger(WeaponRaised, (int)WeaponMotion.Raised);
+        }
+        
     }
 
 
@@ -36,7 +41,8 @@ public class LocomotionState : StateMachineBehaviour
         switch (animationType)
         {
             case AnimationType.Lowering:
-                animator.SetInteger(WeaponRaised, (int)WeaponMotion.Lowering);
+                animator.SetInteger(WeaponRaised, (int)WeaponMotion.None);
+                Debug.Log("Motion Exit ");
                 break;
             case AnimationType.JumpStart:
                 animator.SetInteger(JumpState, 0);
@@ -45,8 +51,5 @@ public class LocomotionState : StateMachineBehaviour
                 animator.SetInteger(Dash, 0);
                 break;
         }
-
-
     }
-
 }

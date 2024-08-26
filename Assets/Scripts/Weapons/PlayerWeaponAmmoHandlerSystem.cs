@@ -4,6 +4,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
+using UnityEngine;
 
 [UpdateInGroup(typeof(LateSimulationSystemGroup))]
 [RequireMatchingQueriesForUpdate]
@@ -32,7 +33,8 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                 in ActorWeaponAimComponent actorWeaponAimComponent,
                 in DeadComponent dead,
                 in PhysicsVelocity playerVelocity,
-                in AttachWeaponComponent attachWeapon
+                in AttachWeaponComponent attachWeapon,
+                in AnimatorWeightsComponent animatorWeightsComponent
             ) =>
             {
                 if (!SystemAPI.HasComponent<WeaponComponent>(entity) ||
@@ -66,9 +68,7 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                         if (strength <= 0) strength = 0;
                     }
                 }
-
-
-                if (gun is { IsFiring: 1, Duration: 0 })
+                if (gun is { IsFiring: 1, Duration: 0 } && animatorWeightsComponent.aimWeight >= .98)
                 {
                     gun.Duration += dt;
 
@@ -77,18 +77,12 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                         var e = commandBuffer.Instantiate(entityInQueryIndex, gun.PrimaryAmmo);
                         var weaponPosition = gun.AmmoStartLocalToWorld.Position; //use bone mb transform
                         var weaponRotation = gun.AmmoStartLocalToWorld.Rotation;
-                        var velocity = new PhysicsVelocity();
-
-                        if (actorWeaponAimComponent.weaponCamera == CameraTypes.TopDown)
+                        
+                        var velocity = new PhysicsVelocity
                         {
-                            velocity.Linear = actorWeaponAimComponent.aimDirection * strength;
-                            velocity.Angular = math.float3(0, 0, 0);
-                        }
-                        else
-                        {
-                            velocity.Linear = actorWeaponAimComponent.aimDirection * strength;
-                            velocity.Angular = math.float3(0, 0, 0);
-                        }
+                            Linear = actorWeaponAimComponent.aimDirection * strength,
+                            Angular = math.float3(0, 0, 0)
+                        };
 
                         ammoDataComponent.Shooter = entity;
                         commandBuffer.SetComponent(entityInQueryIndex, e, ammoDataComponent);

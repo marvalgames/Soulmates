@@ -22,23 +22,6 @@ namespace Sandbox.Player
         ThirdPerson
     }
 
-    public enum HitPointType
-    {
-        None,
-        Enemy,
-        Breakable
-    }
-
-    public enum CrossHairLocations
-    {
-        False,
-        Neutral,
-        True,
-        InCloseLeftToRight, // cursor coming in from left to right
-        InCloseRightToLeft,
-        InCloseFrontToBack,
-        InCloseBackToFront
-    }
 
     public struct ActorWeaponAimComponent : IComponentData
     {
@@ -103,15 +86,14 @@ namespace Sandbox.Player
         private float _yMin;
         private float _yMax;
         public Transform playerWeaponLocation;
-        
+
         private Vector3 _targetPosition = Vector3.zero;
         private Vector3 _worldPosition = Vector3.zero;
         private float3 _closetEnemyWeaponTargetPosition;
-    
+
         public float targetRange = 100;
 
         private float _combatLayerWeight = 0;
-        private static readonly int WeaponRaised = Animator.StringToHash("WeaponRaised");
 
         private void Start()
         {
@@ -139,10 +121,10 @@ namespace Sandbox.Player
                 {
                     _manager = GetComponent<CharacterEntityTracker>().entityManager;
                 }
+
                 if (_entity != Entity.Null)
                 {
                     _manager.AddComponentObject(_entity, this);
-
 
 
                     _manager.AddComponentData(_entity,
@@ -167,7 +149,6 @@ namespace Sandbox.Player
             _xMax = Screen.width * viewportPct / 100;
             _yMin = Screen.height * (1 - viewportPct / 100);
             _yMax = Screen.height * viewportPct / 100;
-
         }
 
 
@@ -186,15 +167,10 @@ namespace Sandbox.Player
                 aimTarget = new Vector3(position.x + xd, position.y + yd,
                     position.z);
             }
-
-          
-
-            
         }
 
         public void SetIK()
         {
-         
         }
 
 
@@ -210,7 +186,7 @@ namespace Sandbox.Player
                 crosshairImage.enabled = false;
                 return;
             }
-           
+
             actorWeaponAimComponent.weaponLocation = playerWeaponLocation.position;
             var controller = Player.controllers.GetLastActiveController();
             if (controller == null && simController == false) return;
@@ -220,6 +196,7 @@ namespace Sandbox.Player
             {
                 if (controller.type == ControllerType.Joystick) gamePad = true;
             }
+
             //Debug.Log("MOUSE1 " + mousePosition);
             if (simController) gamePad = true;
             float3 position = transform.position;
@@ -233,8 +210,8 @@ namespace Sandbox.Player
             if (math.abs(y) < .000001) y = 0;
 
             var aim = new Vector3(
-                x * Time.deltaTime ,
-                y * Time.deltaTime ,
+                x * Time.deltaTime,
+                y * Time.deltaTime,
                 0
             );
 
@@ -244,7 +221,8 @@ namespace Sandbox.Player
 
             if (gamePad)
             {
-                mousePosition += new Vector3(_aimCrosshair.x * gamePadSensitivity, _aimCrosshair.y * gamePadSensitivity, 0);
+                mousePosition += new Vector3(_aimCrosshair.x * gamePadSensitivity, _aimCrosshair.y * gamePadSensitivity,
+                    0);
             }
             else
             {
@@ -269,9 +247,9 @@ namespace Sandbox.Player
 
 
             if (mousePosition.x < _xMin) mousePosition.x = _xMin;
-            if (mousePosition.x > _xMax) mousePosition.x = _xMax/2;
+            if (mousePosition.x > _xMax) mousePosition.x = _xMax / 2;
             if (mousePosition.y < _yMin) mousePosition.y = _yMin;
-            if (mousePosition.y > _yMax) mousePosition.y = _yMax/2;
+            if (mousePosition.y > _yMax) mousePosition.y = _yMax / 2;
 
             crosshairImage.transform.position = mousePosition; //*********************
             actorWeaponAimComponent.mousePosition = mousePosition;
@@ -292,13 +270,10 @@ namespace Sandbox.Player
             if (math.distancesq(currentMousePosition, lastMousePosition) > .00001)
             {
                 actorWeaponAimComponent.isMouseMoving = true;
-                //actorWeaponAimComponent.weaponRaised = WeaponMotion.Lowering;
-                //animator.SetInteger(WeaponRaised, 3);
-                animator.SetLayerWeight(1, 1);
             }
 
             lastMousePosition = mousePosition;
-           
+
             lastMousePosition.z = 0;
 
             _manager.SetComponentData(_entity, actorWeaponAimComponent);
@@ -310,7 +285,8 @@ namespace Sandbox.Player
         {
             if (_entity == Entity.Null) return;
             var hasComponent = _manager.HasComponent<ActorWeaponAimComponent>(_entity) &&
-                               _manager.HasComponent<ApplyImpulseComponent>(_entity) && _manager.HasComponent<WeaponComponent>(_entity) ;
+                               _manager.HasComponent<ApplyImpulseComponent>(_entity) &&
+                               _manager.HasComponent<WeaponComponent>(_entity);
             if (hasComponent == false) return;
             var roleReverse = _manager.GetComponentData<WeaponComponent>(_entity).roleReversal;
             Crosshair(roleReverse);
@@ -331,6 +307,5 @@ namespace Sandbox.Player
             SetAim();
             SetIK();
         }
-
     }
 }

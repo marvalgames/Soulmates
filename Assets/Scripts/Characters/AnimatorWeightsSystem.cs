@@ -4,12 +4,8 @@ using UnityEngine;
 
 public struct AnimatorWeightsComponent : IComponentData
 {
-    public int setIntegerDead;
-    public float speed;
     public float hitWeight;
     public float aimWeight;
-    public float deflectWeight;
-    public bool firstFrame;
 }
 
 [RequireMatchingQueriesForUpdate]

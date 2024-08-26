@@ -24,7 +24,6 @@ public partial class PlayerInputAmmoSystem : SystemBase
                 playerWeaponAimComponent.aimMode = !playerWeaponAimComponent.aimMode;
             }
 
-
             var rtPressed = inputController.rightTriggerPressed;
             var aimMode = playerWeaponAimComponent.aimMode;
             if (gunComponent.roleReversal == RoleReversalMode.On)
@@ -39,12 +38,11 @@ public partial class PlayerInputAmmoSystem : SystemBase
             }
             
        
-            if (aimMode && playerWeaponAimComponent.weaponRaised != WeaponMotion.Raised &&
+            if (aimMode && playerWeaponAimComponent.weaponRaised == WeaponMotion.None &&
                 (attachWeapon.attachWeaponType == (int) WeaponType.Gun && rtPressed ||
                  attachWeapon.attachSecondaryWeaponType == (int) WeaponType.Gun && rtPressed))
             {
                 gunComponent.IsFiring = 1;
-                playerWeaponAimComponent.weaponUpTimer = 0;
                 if (SystemAPI.HasComponent<ScoreComponent>(e))
                 {
                     var score = SystemAPI.GetComponent<ScoreComponent>(e);
@@ -53,19 +51,13 @@ public partial class PlayerInputAmmoSystem : SystemBase
                     SystemAPI.SetComponent(e, score);
                 }
 
-                playerWeaponAimComponent.weaponRaised = WeaponMotion.Raised;
-                SetAnimationLayerWeights(animator, WeaponMotion.Raised);
+                playerWeaponAimComponent.weaponRaised = WeaponMotion.Started;
+                SetAnimationLayerWeights(animator, WeaponMotion.Started);
             }
 
             if (playerWeaponAimComponent.weaponRaised == WeaponMotion.Raised)
             {
                 playerWeaponAimComponent.weaponUpTimer += SystemAPI.Time.DeltaTime;
-                if (animator.GetFloat(AimWeight) > .99f)
-                {
-                    //playerWeaponAimComponent.weaponUpTimer = 0;
-                    playerWeaponAimComponent.weaponRaised = WeaponMotion.Lowering;
-                    SetAnimationLayerWeights(animator, WeaponMotion.Lowering);
-                }
             }
             
         }).Run();
@@ -73,10 +65,9 @@ public partial class PlayerInputAmmoSystem : SystemBase
 
     private void SetAnimationLayerWeights(Animator animator, WeaponMotion weaponMotion)
     {
-        if (weaponMotion == WeaponMotion.Raised)
+        if (weaponMotion == WeaponMotion.Started)
         {
-            //animator.SetInteger("WeaponRaised", 1);
-            animator.SetInteger(WeaponRaised, 2);
+            animator.SetInteger(WeaponRaised, 1);
             animator.SetLayerWeight(0, 0);
             animator.SetLayerWeight(1, 1);
         }
