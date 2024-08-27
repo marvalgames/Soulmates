@@ -138,10 +138,11 @@ public partial class EvadeManagedSystem : SystemBase
                 agentTarget.x += evade.addX;
                 agentTarget.z += evade.addZ;
                 var next = math.lerp(agentPosition, agentTarget, evade.evadeMoveSpeed * 1 / 60);
-                //var offset = agentPosition - next;
+                var offset = agentPosition - next;
                 agent.speed = agentComponent.agentSpeed;
-                enemyMovementComponent.agentNextPosition = agentPosition;
-                //agent.Move(-offset);
+                //enemyMovementComponent.agentNextPosition = agentPosition;
+                //Debug.Log("Nav Off " + offset);
+                agent.Move(-offset);
             }
 
         }

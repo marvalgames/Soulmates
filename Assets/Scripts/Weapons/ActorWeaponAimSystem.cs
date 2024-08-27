@@ -42,9 +42,12 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
             var turnSpeed = mb.turnSpeed;
 
             if (math.abs(degrees - playerWeaponAimComponent.angleToTarget) < .03)
-            {
+            { 
+                Debug.Log("degrees 0");
                 degrees = 0;
             }
+            
+            Debug.Log("degrees");
 
             playerWeaponAimComponent.angleToTarget = degrees;
             var turningValue = math.sign(degrees);
@@ -56,6 +59,8 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
                 turningValue = 0;
                 slerpDampTime = 0;
             }
+            
+            //Debug.Log("dir " + direction);
 
             var targetRotation = quaternion.LookRotationSafe(direction, math.up()); //always face xHair
             localTransform.Rotation = math.slerp(localTransform.Rotation, targetRotation.value,

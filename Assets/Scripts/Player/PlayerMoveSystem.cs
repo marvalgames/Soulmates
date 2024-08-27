@@ -220,7 +220,7 @@ namespace Sandbox.Player
 
                 }
                 applyImpulseComponent.ValueRW.forwardSpeed = forwardSpeed;
-                if (combatMode && !inDash && range < 5)
+                if (combatMode && !inDash && range < 5 && !aimMode)
                 {
                     var slerpDampTime = playerMoveComponent.combatRotateSpeed;
                     var targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player

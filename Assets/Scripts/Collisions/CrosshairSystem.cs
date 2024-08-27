@@ -5,6 +5,8 @@ using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Physics.Systems;
 using Unity.Transforms;
+using UnityEngine;
+using RaycastHit = Unity.Physics.RaycastHit;
 
 
 //[UpdateAfter(typeof(Unity.Physics.Systems.EndFramePhysicsSystem))]
@@ -124,7 +126,7 @@ namespace Collisions
                                 actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
                                 actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
                             }
-                            //Debug.Log("hit enemy position ");
+                            Debug.Log("hit enemy position ");
                         }
                         else
                         {
@@ -143,7 +145,7 @@ namespace Collisions
                                 actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
                                 actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
                             }
-                            //Debug.Log("hit breakable position ");
+                            Debug.Log("hit breakable position ");
                         }
                         else
                         {
@@ -168,11 +170,11 @@ namespace Collisions
                             actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
                         }
 
-                        //Debug.Log("hit something ");
+                        Debug.Log("hit something ");
                     }
                     else
                     {
-                        //Debug.Log("hit terrain ");
+                        Debug.Log("hit terrain ");
                         actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
                         actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
                         actorWeaponAim.crosshairRaycastTarget.z = zLength;

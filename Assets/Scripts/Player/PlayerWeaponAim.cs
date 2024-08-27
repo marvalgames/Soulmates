@@ -152,27 +152,6 @@ namespace Sandbox.Player
         }
 
 
-        public void SetAim()
-        {
-            var transform1 = crossHair.transform;
-            var position1 = transform1.position;
-            var aimTarget = position1;
-            var cam2d = weaponCamera == CameraTypes.TwoD;
-            if (cam2d)
-            {
-                var position = crossHair.transform.position;
-                var xd = math.sign(position.x) * 50;
-                var yd = math.sign(position.y) * 50;
-
-                aimTarget = new Vector3(position.x + xd, position.y + yd,
-                    position.z);
-            }
-        }
-
-        public void SetIK()
-        {
-        }
-
 
         private void Crosshair(RoleReversalMode roleReversal)
         {
@@ -246,6 +225,7 @@ namespace Sandbox.Player
             }
 
 
+            
             if (mousePosition.x < _xMin) mousePosition.x = _xMin;
             if (mousePosition.x > _xMax) mousePosition.x = _xMax / 2;
             if (mousePosition.y < _yMin) mousePosition.y = _yMin;
@@ -255,8 +235,13 @@ namespace Sandbox.Player
             actorWeaponAimComponent.mousePosition = mousePosition;
             actorWeaponAimComponent.weaponCamera = weaponCamera;
             var ray = _cam.ScreenPointToRay(mousePosition);
+            Debug.Log("mouse " + ray.origin.z);
+
             float3 start = _cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
-            float3 end = ray.origin + Vector3.Normalize(ray.direction) * targetRange;
+            var direction = new float3(ray.direction.x, ray.direction.y, math.abs(ray.direction.z));
+            
+            
+            float3 end = ray.origin + Vector3.Normalize(direction) * targetRange;
             //Debug.DrawRay(start, Vector3.Normalize(ray.direction) * targetRange, Color.yellow, SystemAPI.Time.DeltaTime);
 
 
@@ -267,10 +252,15 @@ namespace Sandbox.Player
 
             var currentMousePosition = mousePosition;
             currentMousePosition.z = 0;
+            
             if (math.distancesq(currentMousePosition, lastMousePosition) > .00001)
             {
                 actorWeaponAimComponent.isMouseMoving = true;
+                //actorWeaponAimComponent.weaponRaised = WeaponMotion.Lowering;
+                //animator.SetInteger(WeaponRaised, 3);
+                animator.SetLayerWeight(1, 1);
             }
+
 
             lastMousePosition = mousePosition;
 
@@ -304,8 +294,7 @@ namespace Sandbox.Player
             var aimTarget = _targetPosition;
 
             aimDir = math.normalize(aimTarget - playerWeaponLocation.position);
-            SetAim();
-            SetIK();
+            Debug.Log("degrees aimDir " + aimTarget );
         }
     }
 }
