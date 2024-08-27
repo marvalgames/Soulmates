@@ -173,6 +173,7 @@ public class EnemyMove : MonoBehaviour
 
     [HideInInspector]
     public Vector3 originalPosition;
+    private float3 agentNextPosition;
 
 
     [Header("Misc")] public float locoPitch = .5f;
@@ -222,7 +223,7 @@ public class EnemyMove : MonoBehaviour
             //manager.AddComponent<NavMeshAgentComponent>(entity);
             agent.autoBraking = false;
             agent.updateRotation = false;
-            agent.updatePosition = false;
+            agent.updatePosition = true;
             agent.autoTraverseOffMeshLink = false;
             if (manager.HasComponent<NavMeshAgentComponent>(entity))
             {
@@ -309,6 +310,7 @@ public class EnemyMove : MonoBehaviour
         }
 
         currentWayPointIndex = 0;
+        agentNextPosition = agent.nextPosition;
 
 
     }
@@ -318,6 +320,8 @@ public class EnemyMove : MonoBehaviour
         //Debug.Log("UPDATE MOVE0");
         if (wayPoints.Count == 0 || agent.enabled == false)
             return;
+        
+        Debug.Log("Nav Patrol");
 
         if (wayPoints[currentWayPointIndex].action == WayPointAction.Idle)
         {
@@ -412,10 +416,7 @@ public class EnemyMove : MonoBehaviour
 
         if (agent.enabled)
         {
-            //Vector3 nextPosition = target.position;
-            var offset = transform.forward * Time.deltaTime * moveSpeed * backupSpeed;//try * 1
-            //offset.x += 1;
-            agent.Move(-offset);
+            Debug.Log("Nav Backup");
             backupTimer += Time.deltaTime;
             if (backupTimer >= backupSeconds)
             {
@@ -425,13 +426,16 @@ public class EnemyMove : MonoBehaviour
     }
 
 
-    private void Update()
+    public void Update()
     {
         if (manager.HasComponent<EnemyMovementComponent>(entity))
         {
             var enemyMovementComponent = manager.GetComponentData<EnemyMovementComponent>(entity);
-            enemyMovementComponent.agentNextPosition = agent.nextPosition;
-            manager.SetComponentData(entity, enemyMovementComponent);
+            if (enemyMovementComponent.updateAgent)
+            {
+                enemyMovementComponent.agentNextPosition = agent.nextPosition;
+                manager.SetComponentData(entity, enemyMovementComponent);
+            }
         }
 
     }
@@ -450,7 +454,7 @@ public class EnemyMove : MonoBehaviour
             aiTarget = target;
             if (backup == false)
             {
-                agent.updatePosition = true;
+                //agent.updatePosition = true;
             }
 
             state = manager.GetComponentData<EnemyStateComponent>(entity).MoveState;
@@ -493,9 +497,11 @@ public class EnemyMove : MonoBehaviour
             //if (wayPoints[currentWayPointIndex].action != WayPointAction.Jump)
             if(!ignoreAgentAI && !agentLinkMover.isAgentNavigatingLink)
             {
-                agent.updatePosition = false;
-                agent.updateRotation = false;
+                //Debug.Log("Nav Forward");
+                //agent.updatePosition = true;
+                //agent.updateRotation = false;
                 agent.destination = target;
+                agentNextPosition = agent.nextPosition;
                 //transform.position = agent.nextPosition;
                 anim.SetInteger(JumpState, 0);
             }
@@ -568,18 +574,21 @@ public class EnemyMove : MonoBehaviour
 
         if (wayPoints.Count <= currentWayPointIndex) return;
         anim.speed = impulseFactor;
-        agent.updatePosition = false;
-        agent.updateRotation = false;
+        //agent.updatePosition = true;
+        //agent.updateRotation = false;
         
 
         var isCurrentWayPointJump = wayPoints[currentWayPointIndex].action == WayPointAction.Jump;
+        Debug.Log("Nav UpdateEnemyMovement");
         if (isCurrentWayPointJump == false)
         {
-            agent.updatePosition = true;
+            Debug.Log("Nav pos true");
+            //agent.updatePosition = true;
         }
         else
         {
-            agent.updatePosition = false;
+            Debug.Log("Nav pos false");
+            //agent.updatePosition = false;
             Curve();
         }
     }

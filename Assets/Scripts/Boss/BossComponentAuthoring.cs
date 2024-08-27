@@ -62,7 +62,9 @@ public class BossComponentAuthoring : MonoBehaviour
             AddComponent(e, new EnemiesAttackComponent  {enemiesAttack = authoring.enemiesAttack} );
             SetComponentEnabled<EnemiesAttackComponent>(e, authoring.enemiesAttack);
 
-            
+
+            AddComponent(e, new EnemyMovementComponent()); //keep?
+
             AddComponent(e, 
                 new BossMovementComponent
                 {

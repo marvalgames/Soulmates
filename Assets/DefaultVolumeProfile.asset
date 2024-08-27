@@ -34,6 +34,63 @@ MonoBehaviour:
   highlightsEnd:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &-7479312624064981395
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c154ac594bb6646ae9a0accdfcdec3, type: 3}
+  m_Name: HatchPostProcessEffectVolumeComponent
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &-5413177226153875813
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512b7a2422a0daf49a93eb3ff8eb67f9, type: 3}
+  m_Name: SandboxBloomEffectComponent
+  m_EditorClassIdentifier: 
+  active: 1
+  threshold:
+    m_OverrideState: 1
+    m_Value: 0.9
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  scatter:
+    m_OverrideState: 1
+    m_Value: 0.7
+  clamp:
+    m_OverrideState: 1
+    m_Value: 65472
+  maxIterations:
+    m_OverrideState: 1
+    m_Value: 6
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    hdr: 0
+  dotsDensity:
+    m_OverrideState: 1
+    m_Value: 10
+  dotsCutoff:
+    m_OverrideState: 1
+    m_Value: 0.4
+  scrollDirection:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0}
 --- !u!114 &-4974419841468125752
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -383,11 +440,9 @@ MonoBehaviour:
   - {fileID: -4957856454638670303}
   - {fileID: 6353680277853585141}
   - {fileID: -4331256899879102559}
-  - {fileID: 7197230184637140248}
-  - {fileID: -718132961185116580}
-  - {fileID: 8379720122688428375}
-  - {fileID: -3673008830479221814}
-  - {fileID: 2787410632764252111}
+  - {fileID: 2474132648994592912}
+  - {fileID: -5413177226153875813}
+  - {fileID: -7479312624064981395}
 --- !u!114 &2027954723989208888
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -407,6 +462,47 @@ MonoBehaviour:
   cropToFit:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &2474132648994592912
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04d8769a4ef0754a9c2dbc2f5c08390, type: 3}
+  m_Name: BenDayBloomEffectComponent
+  m_EditorClassIdentifier: 
+  active: 1
+  threshold:
+    m_OverrideState: 1
+    m_Value: 0.9
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  scatter:
+    m_OverrideState: 1
+    m_Value: 0.7
+  clamp:
+    m_OverrideState: 1
+    m_Value: 65472
+  maxIterations:
+    m_OverrideState: 1
+    m_Value: 6
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    hdr: 0
+  dotsDensity:
+    m_OverrideState: 1
+    m_Value: 10
+  dotsCutoff:
+    m_OverrideState: 1
+    m_Value: 0.4
+  scrollDirection:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0}
 --- !u!114 &2787410632764252111
 MonoBehaviour:
   m_ObjectHideFlags: 3

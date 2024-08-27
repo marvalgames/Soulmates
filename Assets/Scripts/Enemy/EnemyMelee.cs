@@ -27,7 +27,6 @@ public class EnemyMelee : MonoBehaviour
 
     void Start()
     {
-        //if (!entityManager.HasComponent<EnemyMeleeMovementComponent>(meleeEntity)) return;
         if (meleeEntity == Entity.Null)
         {
             meleeEntity = GetComponent<CharacterEntityTracker>().linkedEntity;
@@ -35,14 +34,11 @@ public class EnemyMelee : MonoBehaviour
             {
                 entityManager = GetComponent<CharacterEntityTracker>().entityManager;
             }
-
-            //entityManager.AddComponentObject(meleeEntity, this);
             if (meleeEntity != Entity.Null)
                 entityManager.AddComponentObject(meleeEntity, this);
         }
 
         animator = GetComponent<Animator>();
-        //var em = GetComponent<EnemyMove>();
         agent = GetComponent<NavMeshAgent>();
 
         if (!movesInspector) return;
@@ -68,7 +64,6 @@ public class EnemyMelee : MonoBehaviour
             if (moveUsing.moveAudioSource && moveUsing.moveAudioClip &&
                 !moveUsing.moveAudioSource.isPlaying)
             {
-                //Debug.Log("PLAY SOUND");
                 moveUsing.moveAudioSource.clip = moveUsing.moveAudioClip;
                 moveUsing.moveAudioSource.PlayOneShot(moveUsing.moveAudioClip);
             }
@@ -87,10 +82,9 @@ public class EnemyMelee : MonoBehaviour
             var defense = animationIndex == (int)AnimationType.Deflect;
             var checkedComponent = entityManager.GetComponentData<CheckedComponent>(meleeEntity);
             checkedComponent.anyDefenseStarted = defense;
-            checkedComponent.primaryTrigger = primaryTrigger;         
+            checkedComponent.primaryTrigger = primaryTrigger;
             checkedComponent.animationIndex = animationIndex;
             entityManager.SetComponentData(meleeEntity, checkedComponent);
-            //Debug.Log("anim index " + animationIndex);
             StartMove(animationIndex);
         }
     }
@@ -101,41 +95,20 @@ public class EnemyMelee : MonoBehaviour
     {
         if (enemyStrikeAllowed)
         {
-            //Debug.Log("STRIKE UPDATE");
             animator.SetInteger(CombatAction, animationIndex);
-            //enemyStrikeAllowed = false;
-            //afterMoveTimer = 0;
         }
     }
 
     public void SetAfterMoveDelay(float afterMoveSeconds)
     {
-        //bool delayCompleted = true;
         if (agent == null) return;
-        //enemyStrikeAllowed = false;
-        //if (enemyStrikeAllowed == false)
+        afterMoveTimer += Time.deltaTime;
+        if (afterMoveTimer >= afterMoveSeconds)
         {
-            afterMoveTimer += Time.deltaTime;
-            if (afterMoveTimer >= afterMoveSeconds)
-            {
-                enemyStrikeAllowed = !enemyStrikeAllowed;
-                afterMoveTimer = 0;
-            }
+            enemyStrikeAllowed = !enemyStrikeAllowed;
+            afterMoveTimer = 0;
         }
 
-        // if (afterMoveTimer < afterMoveSeconds)
-        // {
-        //     afterMoveTimer += Time.deltaTime;
-        //     enemyStrikeAllowed = false;
-        // }
-        // else
-        // {
-        //     //afterMoveTimer = 0;
-        //     enemyStrikeAllowed = true;
-        // }
-
-        //enemyStrikeAllowed = true;
-        // return delayCompleted;
     }
 
     public void StartAttackUpdateCheckComponent() //event
@@ -146,7 +119,6 @@ public class EnemyMelee : MonoBehaviour
             checkedComponent.anyAttackStarted = true;
             checkedComponent.attackFirstFrame = true;
             checkedComponent.hitTriggered = false;
-            //checkedComponent.enemyStrikeAllowed = enemyStrikeAllowed;
             entityManager.SetComponentData(meleeEntity, checkedComponent);
         }
     }

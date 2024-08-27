@@ -124,7 +124,10 @@ public partial class EvadeManagedSystem : SystemBase
         }
         ).Run();
 
-        Entities.WithoutBurst().WithAny<EnemyComponent>().ForEach((Entity e, NavMeshAgent agent,
+        //Add EnemyMovementComponent to Boss authoring
+        //Change to EnemyMovementComponent Has SystemApi
+        //First try setting LocalTransform directly
+        Entities.WithoutBurst().WithAny<EnemyComponent>().ForEach((Entity e, NavMeshAgent agent, ref EnemyMovementComponent enemyMovementComponent,
                 in EvadeComponent evade, in NavMeshAgentComponent agentComponent) =>
         {
             if ((agent.hasPath || agentComponent.isStopped) && evade.InEvade)
@@ -135,9 +138,10 @@ public partial class EvadeManagedSystem : SystemBase
                 agentTarget.x += evade.addX;
                 agentTarget.z += evade.addZ;
                 var next = math.lerp(agentPosition, agentTarget, evade.evadeMoveSpeed * 1 / 60);
-                var offset = agentPosition - next;
+                //var offset = agentPosition - next;
                 agent.speed = agentComponent.agentSpeed;
-                agent.Move(-offset);
+                enemyMovementComponent.agentNextPosition = agentPosition;
+                //agent.Move(-offset);
             }
 
         }

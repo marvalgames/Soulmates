@@ -54,6 +54,8 @@ public struct EnemyMovementComponent : IComponentData
 {
     public bool enabled; //true if currently active movement state
     public float3 agentNextPosition;
+    public bool updateAgent;
+    public float enemyBackupSpeed;
     public float3 originalPosition;
     public bool nearEdge;
 
@@ -63,6 +65,7 @@ public class EnemyBehaviorManager : MonoBehaviour
 {
     [Header("Melee Switch Options")] public bool switchUp; //if true enemy will change states when tracking
     public float switchUpTime = 6.0f;
+    public float backupSpeed = 2.0f;
     [Header("Route Attributes")] public NavigationStates navigationStates;
 
     [Tooltip("If true use distance from original station for chasing player instead of distance from player")]
@@ -120,7 +123,7 @@ public class EnemyBehaviorManager : MonoBehaviour
             var position = authoring.transform.position;
             AddComponent(e, 
                 new EnemyMovementComponent
-                    { originalPosition = position, enabled = basicMovement });
+                    { originalPosition = position, enabled = basicMovement, updateAgent = true, enemyBackupSpeed = authoring.backupSpeed});
 
             AddComponent(e, 
                 new EnemyMeleeMovementComponent
