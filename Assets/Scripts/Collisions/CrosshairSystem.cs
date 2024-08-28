@@ -77,11 +77,19 @@ namespace Collisions
                     for (var i = 0; i < allHits.Length; i++)
                     {
                         var hitList = allHits[i];
-                        float dot = Vector3.Dot(actorTransform.Forward(),
+                        var fwd = actorTransform.Forward();
+                        //var invFwd = actorTransform.TransformDirection(math.forward());
+                        Vector3 worldForward = Camera.main.transform.TransformDirection(fwd);
+                        float dot = Vector3.Dot(worldForward,
                             math.normalize(hitList.Position - actorTransform.Position));
+                        
+                        //dot = math.sign(fwd.z) * dot;
+                        Debug.Log("Fwd " + worldForward);
+                        var facing =  dot > 0;
+
                         var body = collisionWorld.Bodies[hitList.RigidBodyIndex].Entity;
                         var enemy = (SystemAPI.HasComponent<EnemyComponent>(body));
-                        if (hitList.Fraction < hi && (dot > 0 || enemy))
+                        if (hitList.Fraction < hi && (facing || enemy))
                         {
                             closest = i;
                             hi = hitList.Fraction;
