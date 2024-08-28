@@ -83,7 +83,7 @@ namespace Collisions
                         float dot = Vector3.Dot(worldForward,
                             math.normalize(hitList.Position - actorTransform.Position));
                         
-                        //dot = math.sign(fwd.z) * dot;
+                        dot = math.sign(worldForward.z) * dot;
                         Debug.Log("Fwd " + worldForward);
                         var facing =  dot > 0;
 

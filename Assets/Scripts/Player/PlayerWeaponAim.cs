@@ -257,9 +257,14 @@ namespace Sandbox.Player
 
             float3 start = _cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
             var direction = new float3(ray.direction.x, ray.direction.y, math.abs(ray.direction.z));
+
             
             
             float3 end = ray.origin + Vector3.Normalize(direction) * targetRange;
+            
+            start = transform.position;
+            end = mouseWorldPosition;
+
             Debug.DrawRay(start, end - start, Color.yellow, Time.deltaTime);
             //Debug.DrawRay(start, playerToMouseDir , Color.yellow, Time.deltaTime);
 
