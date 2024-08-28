@@ -8,20 +8,12 @@ using Unity.Transforms;
 using UnityEngine;
 using RaycastHit = Unity.Physics.RaycastHit;
 
-
-//[UpdateAfter(typeof(Unity.Physics.Systems.EndFramePhysicsSystem))]
-//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 namespace Collisions
 {
     [UpdateInGroup(typeof(PhysicsSystemGroup))]
-
-
-
     [RequireMatchingQueriesForUpdate]
     public partial class CrosshairRaycastSystem : SystemBase
     {
-
-
         private enum CollisionLayer
         {
             Player = 1 << 0,
@@ -29,7 +21,7 @@ namespace Collisions
             Enemy = 1 << 2,
             WeaponItem = 1 << 3,
             Obstacle = 1 << 4,
-            NPC = 1 << 5,
+            Npc = 1 << 5,
             PowerUp = 1 << 6,
             Stairs = 1 << 7,
             Particle = 1 << 8,
@@ -38,46 +30,29 @@ namespace Collisions
             Breakable = 1 << 11
         }
 
-       
 
         protected override void OnUpdate()
         {
             var ecb = new EntityCommandBuffer(Allocator.Temp);
-            var actorWeaponAimQuery = GetEntityQuery(ComponentType.ReadOnly<ActorWeaponAimComponent>(), ComponentType.ReadOnly<PlayerComponent>());//player 0
+            var actorWeaponAimQuery = GetEntityQuery(ComponentType.ReadOnly<ActorWeaponAimComponent>(),
+                ComponentType.ReadOnly<PlayerComponent>()); //player 0
             var actorWeaponAimEntityList = actorWeaponAimQuery.ToEntityArray(Allocator.TempJob);
             if (actorWeaponAimEntityList.Length == 0)
             {
                 actorWeaponAimEntityList.Dispose();
                 return;
             }
-            //var playerLocalTransform = SystemAPI.GetComponent<LocalTransform>(actorWeaponAimEntityList[0]);
-            //var playerRotation = SystemAPI.GetComponent<Rotation>(actorWeaponAimEntityList[0]);
+
             var allHits = new NativeList<RaycastHit>(Allocator.Temp);
             var collisionWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
-
-
-
             Entities.WithoutBurst().ForEach((Entity entity, ref CrosshairComponent crosshair) =>
             {
                 var physicsWorldSystem = World.GetExistingSystem<BuildPhysicsWorld>();
                 var actorEntity = actorWeaponAimEntityList[0];
                 var actorWeaponAim = SystemAPI.GetComponent<ActorWeaponAimComponent>(actorEntity);
-                var LocalTransform = SystemAPI.GetComponent<LocalTransform>(entity);
                 var actorTransform = SystemAPI.GetComponent<LocalTransform>(actorEntity);
-
-                //var mouse = actorWeaponAim.mouseCrosshairWorldPosition;
-                var xHairPosition = new float3(LocalTransform.Position.x, LocalTransform.Position.y, actorWeaponAim.crosshairRaycastTarget.z);
-                //Debug.Log("mouse " + mouse);
-                //actorWeaponAim.crosshairRaycastTarget = mouse;
-
-                var distance = crosshair.raycastDistance;
-            
-                //actorWeaponAim.closetEnemyWeaponTargetPosition = new float3(0, 0, distance);
-
                 var start = actorWeaponAim.rayCastStart;
                 var end = actorWeaponAim.rayCastEnd;
-            
-            
                 var inputForward = new RaycastInput
                 {
                     Start = start,
@@ -85,7 +60,8 @@ namespace Collisions
                     Filter = new CollisionFilter
                     {
                         BelongsTo = (uint)CollisionLayer.Crosshair,
-                        CollidesWith = (uint)CollisionLayer.Enemy | (uint)CollisionLayer.Breakable  | (uint)CollisionLayer.Ground
+                        CollidesWith = (uint)CollisionLayer.Enemy | (uint)CollisionLayer.Breakable |
+                                       (uint)CollisionLayer.Ground
                                        | (uint)CollisionLayer.Obstacle,
                         GroupIndex = 0
                     }
@@ -95,83 +71,56 @@ namespace Collisions
                 if (hasHitPoints)
                 {
                     //code to check if hit point is behind player (facing same dir forward)
-                    //using Z then what about camera rotation. Need to use screen position - actorweaponaimcomponent xhair to player direction
-                    
-                    var closest = 0; ;
+                    var closest = 0;
+                    ;
                     double hi = 1;
                     for (var i = 0; i < allHits.Length; i++)
                     {
                         var hitList = allHits[i];
-                        var zOffset = hitList.Position.z - actorTransform.Position.z;
-                        //Debug.Log("index " + i + " f " + (int)(hitList.Fraction * 100));
-
-                        if (hitList.Fraction < hi && zOffset >= 0)
+                        float dot = Vector3.Dot(actorTransform.Forward(),
+                            math.normalize(hitList.Position - actorTransform.Position));
+                        var body = collisionWorld.Bodies[hitList.RigidBodyIndex].Entity;
+                        var enemy = (SystemAPI.HasComponent<EnemyComponent>(body));
+                        if (hitList.Fraction < hi && (dot > 0 || enemy))
                         {
                             closest = i;
                             hi = hitList.Fraction;
                         }
                     }
+
                     var hitForward = allHits[closest];
                     var e = collisionWorld.Bodies[hitForward.RigidBodyIndex].Entity;
-                    //Debug.Log("entity " + e);
-                    //float zLength = hitForward.Position.z * 1 / math.cos(29);
                     var zLength = hitForward.Position.z;
-                    //float zLength = hitForward.Position.z * math.cos(30);
-
 
                     if (SystemAPI.HasComponent<EnemyComponent>(e))
                     {
-                        // Debug.Log("hit enemy position 0");
                         actorWeaponAim.crosshairRaycastTarget.z = zLength;
-                        if (actorWeaponAim.weaponCamera != CameraTypes.TopDown)
-                        {
-                            if (actorWeaponAim.weaponCamera == CameraTypes.ThirdPerson)
-                            {
-                                actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
-                                actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
-                            }
-                            Debug.Log("hit enemy position ");
-                        }
-                        else
+                        if (actorWeaponAim.weaponCamera == CameraTypes.ThirdPerson)
                         {
                             actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
+                            actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
                         }
 
-                   
+                        Debug.Log("hit enemy position ");
                     }
                     else if (SystemAPI.HasComponent<BreakableComponent>(e))
                     {
                         actorWeaponAim.crosshairRaycastTarget.z = zLength;
-                        if (actorWeaponAim.weaponCamera != CameraTypes.TopDown)
-                        {
-                            if (actorWeaponAim.weaponCamera == CameraTypes.ThirdPerson)
-                            {
-                                actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
-                                actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
-                            }
-                            Debug.Log("hit breakable position ");
-                        }
-                        else
+                        if (actorWeaponAim.weaponCamera == CameraTypes.ThirdPerson)
                         {
                             actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
+                            actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
                         }
 
-                   
+                        Debug.Log("hit breakable position ");
                     }
                     else if (SystemAPI.HasComponent<TriggerComponent>(e))
                     {
                         actorWeaponAim.crosshairRaycastTarget.z = zLength;
-                        if (actorWeaponAim.weaponCamera != CameraTypes.TopDown)
-                        {
-                            if (actorWeaponAim.weaponCamera == CameraTypes.ThirdPerson)
-                            {
-                                actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
-                                actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
-                            }
-                        }
-                        else
+                        if (actorWeaponAim.weaponCamera == CameraTypes.ThirdPerson)
                         {
                             actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
+                            actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
                         }
 
                         Debug.Log("hit something ");
@@ -182,38 +131,19 @@ namespace Collisions
                         actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
                         actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
                         actorWeaponAim.crosshairRaycastTarget.z = zLength;
-
                     }
-                
+
 
                     crosshair.targetDelayCounter = 0;
-
                 }
-          
+
 
                 SystemAPI.SetComponent(actorEntity, actorWeaponAim);
-
-                
             }).Run();
 
             actorWeaponAimEntityList.Dispose();
             ecb.Playback(EntityManager);
             ecb.Dispose();
-
-
-
-
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-

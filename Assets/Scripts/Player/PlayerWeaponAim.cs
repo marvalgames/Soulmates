@@ -44,6 +44,7 @@ namespace Sandbox.Player
         public float distanceFromTarget;
         public bool startDashAimMode;
         public bool aimDisabled;
+        public float3 playerScreen;
     }
 
     public class PlayerWeaponAim : MonoBehaviour
@@ -180,8 +181,17 @@ namespace Sandbox.Player
             if (simController) gamePad = true;
             float3 position = transform.position;
             float3 playerScreen = _cam.WorldToScreenPoint(position);
-            var dir = (float3)mousePosition - playerScreen;
-            playerToMouseDir = new float3(dir.x, 0, dir.y);
+            
+            //var dir = (float3)mousePosition - playerScreen;
+            //playerToMouseDir = new float3(dir.x, 0, dir.y);
+            var mouseScreenPosition = Input.mousePosition;
+            var distFromCam =  math.distance(position, _cam.transform.position);
+            mouseScreenPosition.z = distFromCam;
+            var mouseWorldPosition = _cam.ScreenToWorldPoint(mouseScreenPosition);
+            Debug.DrawLine(mouseScreenPosition, mouseWorldPosition, Color.red);
+            var dir = (float3)mouseWorldPosition - position;
+            playerToMouseDir = new float3(dir.x, 0, dir.z);
+            //Debug.Log("mouse world " + playerToMouseDir);
             //bool behind = math.dot(playerToMouseDir, transform.forward) < 0;
             _aimCrosshair = Vector3.zero;
             var x = Player.GetAxis("RightHorizontal");
@@ -256,6 +266,7 @@ namespace Sandbox.Player
 
             actorWeaponAimComponent.rayCastStart = start;
             actorWeaponAimComponent.rayCastEnd = end;
+            actorWeaponAimComponent.playerScreen = playerScreen;
             //Debug.Log("Mouse Position " + _dir);
 
             
