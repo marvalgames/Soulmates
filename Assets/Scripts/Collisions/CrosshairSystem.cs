@@ -63,6 +63,7 @@ namespace Collisions
                 var actorEntity = actorWeaponAimEntityList[0];
                 var actorWeaponAim = SystemAPI.GetComponent<ActorWeaponAimComponent>(actorEntity);
                 var LocalTransform = SystemAPI.GetComponent<LocalTransform>(entity);
+                var actorTransform = SystemAPI.GetComponent<LocalTransform>(actorEntity);
 
                 //var mouse = actorWeaponAim.mouseCrosshairWorldPosition;
                 var xHairPosition = new float3(LocalTransform.Position.x, LocalTransform.Position.y, actorWeaponAim.crosshairRaycastTarget.z);
@@ -93,15 +94,18 @@ namespace Collisions
                 var hasHitPoints = collisionWorld.CastRay(inputForward, ref allHits);
                 if (hasHitPoints)
                 {
-                
+                    //code to check if hit point is behind player (facing same dir forward)
+                    //using Z then what about camera rotation. Need to use screen position - actorweaponaimcomponent xhair to player direction
+                    
                     var closest = 0; ;
                     double hi = 1;
                     for (var i = 0; i < allHits.Length; i++)
                     {
                         var hitList = allHits[i];
+                        var zOffset = hitList.Position.z - actorTransform.Position.z;
                         //Debug.Log("index " + i + " f " + (int)(hitList.Fraction * 100));
 
-                        if (hitList.Fraction < hi)
+                        if (hitList.Fraction < hi && zOffset >= 0)
                         {
                             closest = i;
                             hi = hitList.Fraction;

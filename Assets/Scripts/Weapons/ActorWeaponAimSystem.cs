@@ -31,8 +31,9 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
         {
             if (mb.Player.controllers.GetLastActiveController() == null || playerWeaponAimComponent.combatMode) return;
             mb.LateUpdateSystem(playerWeaponAimComponent.weaponRaised);
-            playerWeaponAimComponent.aimDirection = mb.aimDir;
-            var direction = math.normalize(mb.aimDir);
+            var aimDir = mb.aimDir;
+            playerWeaponAimComponent.aimDirection = aimDir;
+            var direction = math.normalize(aimDir);
             direction.y = 0;
 
 
@@ -43,11 +44,9 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
 
             if (math.abs(degrees - playerWeaponAimComponent.angleToTarget) < .03)
             { 
-                Debug.Log("degrees 0");
                 degrees = 0;
             }
             
-            Debug.Log("degrees");
 
             playerWeaponAimComponent.angleToTarget = degrees;
             var turningValue = math.sign(degrees);
@@ -61,6 +60,8 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
             }
             
             //Debug.Log("dir " + direction);
+            direction = mb.playerToMouseDir;
+            //Debug.Log("Direction " + direction.z);
 
             var targetRotation = quaternion.LookRotationSafe(direction, math.up()); //always face xHair
             localTransform.Rotation = math.slerp(localTransform.Rotation, targetRotation.value,
