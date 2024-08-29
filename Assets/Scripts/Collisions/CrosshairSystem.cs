@@ -83,13 +83,13 @@ namespace Collisions
                         float dot = Vector3.Dot(worldForward,
                             math.normalize(hitList.Position - actorTransform.Position));
 
-                        dot = math.sign(worldForward.z) * dot;
+                        //dot = math.sign(worldForward.z) * dot;
                         //Debug.Log("Fwd " + worldForward);
                         var facing = dot > 0;
                         var body = collisionWorld.Bodies[hitList.RigidBodyIndex].Entity;
                         var enemy = (SystemAPI.HasComponent<EnemyComponent>(body));
-                        //if (hitList.Fraction < hi && (facing || enemy))
-                        if (hitList.Fraction < hi)
+                        if (hitList.Fraction < hi && (facing || enemy))
+                        //if (hitList.Fraction < hi)
                         {
                             closest = i;
                             hi = hitList.Fraction;

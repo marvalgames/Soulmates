@@ -224,7 +224,7 @@ namespace Sandbox.Player
             actorWeaponAimComponent.weaponCamera = weaponCamera;
             var ray = _cam.ScreenPointToRay(mousePosition);
             float3 start = _cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y,0));
-            var direction = new float3(ray.direction.x, ray.direction.y, math.abs(ray.direction.z));//Absolute?
+            var direction = new float3(ray.direction.x, ray.direction.y, ray.direction.z);//Absolute?
             float3 end = ray.origin + Vector3.Normalize(direction) * targetRange;
             //start = transform.position;
             //end = mouseWorldPosition;
