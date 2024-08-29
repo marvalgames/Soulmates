@@ -52,6 +52,7 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
                 turningValue = 0;
                 slerpDampTime = 0;
             }
+            
             direction = mb.playerToMouseDir;
             
             

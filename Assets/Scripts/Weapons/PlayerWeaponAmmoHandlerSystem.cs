@@ -77,10 +77,12 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                         var e = commandBuffer.Instantiate(entityInQueryIndex, gun.PrimaryAmmo);
                         var weaponPosition = gun.AmmoStartLocalToWorld.Position; //use bone mb transform
                         var weaponRotation = gun.AmmoStartLocalToWorld.Rotation;
+                        var playerForward = SystemAPI.GetComponent<LocalTransform>(entity).Forward();
                         
                         var velocity = new PhysicsVelocity
                         {
                             Linear = actorWeaponAimComponent.aimDirection * strength,
+                            //Linear = playerForward * strength,
                             Angular = math.float3(0, 0, 0)
                         };
 

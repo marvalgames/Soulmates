@@ -66,7 +66,7 @@ namespace Collisions
                         GroupIndex = 0
                     }
                 };
-                //Debug.DrawLine(start, end, Color.green, SystemAPI.Time.DeltaTime);
+                Debug.DrawLine(start, end, Color.green, SystemAPI.Time.DeltaTime);
                 var hasHitPoints = collisionWorld.CastRay(inputForward, ref allHits);
                 if (hasHitPoints)
                 {
@@ -82,14 +82,14 @@ namespace Collisions
                         Vector3 worldForward = Camera.main.transform.TransformDirection(fwd);
                         float dot = Vector3.Dot(worldForward,
                             math.normalize(hitList.Position - actorTransform.Position));
-                        
-                        dot = math.sign(worldForward.z) * dot;
-                        Debug.Log("Fwd " + worldForward);
-                        var facing =  dot > 0;
 
+                        dot = math.sign(worldForward.z) * dot;
+                        //Debug.Log("Fwd " + worldForward);
+                        var facing = dot > 0;
                         var body = collisionWorld.Bodies[hitList.RigidBodyIndex].Entity;
                         var enemy = (SystemAPI.HasComponent<EnemyComponent>(body));
-                        if (hitList.Fraction < hi && (facing || enemy))
+                        //if (hitList.Fraction < hi && (facing || enemy))
+                        if (hitList.Fraction < hi)
                         {
                             closest = i;
                             hi = hitList.Fraction;

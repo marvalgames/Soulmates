@@ -91,6 +91,7 @@ namespace Sandbox.Player
         private Vector3 _targetPosition = Vector3.zero;
         private Vector3 _worldPosition = Vector3.zero;
         private float3 _closetEnemyWeaponTargetPosition;
+        private float3 _mouseWorldPosition;
 
         public float targetRange = 100;
 
@@ -153,7 +154,6 @@ namespace Sandbox.Player
         }
 
 
-
         private void Crosshair(RoleReversalMode roleReversal)
         {
             var actorWeaponAimComponent = _manager.GetComponentData<ActorWeaponAimComponent>(_entity);
@@ -177,29 +177,20 @@ namespace Sandbox.Player
                 if (controller.type == ControllerType.Joystick) gamePad = true;
             }
 
-            //Debug.Log("MOUSE1 " + mousePosition);
             if (simController) gamePad = true;
             float3 position = transform.position;
             float3 playerScreen = _cam.WorldToScreenPoint(position);
-            
-            //var dir = (float3)mousePosition - playerScreen;
-            //playerToMouseDir = new float3(dir.x, 0, dir.y);
             var mouseScreenPosition = Input.mousePosition;
-            var distFromCam =  math.distance(position, _cam.transform.position);
+            var distFromCam = math.distance(position, _cam.transform.position);
             mouseScreenPosition.z = distFromCam;
-            var mouseWorldPosition = _cam.ScreenToWorldPoint(mouseScreenPosition);
-            Debug.DrawLine(mouseScreenPosition, mouseWorldPosition, Color.red);
-            var dir = (float3)mouseWorldPosition - position;
+            _mouseWorldPosition = _cam.ScreenToWorldPoint(mouseScreenPosition);
+            var dir = _mouseWorldPosition - (float3)playerWeaponLocation.position;
             playerToMouseDir = new float3(dir.x, 0, dir.z);
-            //Debug.Log("mouse world " + playerToMouseDir);
-            //bool behind = math.dot(playerToMouseDir, transform.forward) < 0;
             _aimCrosshair = Vector3.zero;
             var x = Player.GetAxis("RightHorizontal");
             if (math.abs(x) < .000001) x = 0;
             var y = Player.GetAxis("RightVertical");
             if (math.abs(y) < .000001) y = 0;
-            
-            //Debug.Log("degrees aimDir " + playerToMouseDir);
 
 
             var aim = new Vector3(
@@ -209,8 +200,6 @@ namespace Sandbox.Player
             );
 
             aim.Normalize();
-            //Debug.Log("Behind " + behind);
-
             _aimCrosshair = aim;
 
             if (gamePad)
@@ -224,26 +213,7 @@ namespace Sandbox.Player
             }
 
 
-            if (weaponCamera == CameraTypes.ThirdPerson)
-            {
-                mousePosition.z = actorWeaponAimComponent.crosshairRaycastTarget.z - _cam.transform.position.z;
-                _worldPosition = _cam.ScreenToWorldPoint(mousePosition);
-                x = _worldPosition.x;
-                y = _worldPosition.y;
-                z = _worldPosition.z;
-
-                _targetPosition = new Vector3(
-                    x,
-                    y,
-                    z
-                );
-            }
-
-
-            //Debug.Log("Screen Position " + playerScreen);
-            //Debug.Log("Player Mouse Dir " + playerToMouseDir);
-            
-            
+            mousePosition.z = actorWeaponAimComponent.crosshairRaycastTarget.z - _cam.transform.position.z;
             if (mousePosition.x < _xMin) mousePosition.x = _xMin;
             if (mousePosition.x > _xMax) mousePosition.x = _xMax / 2;
             if (mousePosition.y < _yMin) mousePosition.y = _yMin;
@@ -253,57 +223,32 @@ namespace Sandbox.Player
             actorWeaponAimComponent.mousePosition = mousePosition;
             actorWeaponAimComponent.weaponCamera = weaponCamera;
             var ray = _cam.ScreenPointToRay(mousePosition);
-            //Debug.Log("mouse " + ray.origin.z);
-
-            float3 start = _cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
+            float3 start = _cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y,0));
             var direction = new float3(ray.direction.x, ray.direction.y, math.abs(ray.direction.z));
-
-            
-            
             float3 end = ray.origin + Vector3.Normalize(direction) * targetRange;
-            
-            start = transform.position;
-            end = mouseWorldPosition;
-
-            Debug.DrawRay(start, end - start, Color.yellow, Time.deltaTime);
+            //start = transform.position;
+            //end = mouseWorldPosition;
+            Debug.DrawRay(playerWeaponLocation.position, (Vector3) actorWeaponAimComponent.crosshairRaycastTarget - playerWeaponLocation.position, Color.red, Time.deltaTime);
             //Debug.DrawRay(start, playerToMouseDir , Color.yellow, Time.deltaTime);
-
-
             actorWeaponAimComponent.rayCastStart = start;
             actorWeaponAimComponent.rayCastEnd = end;
             actorWeaponAimComponent.playerScreen = playerScreen;
-            //Debug.Log("Mouse Position " + _dir);
-
-            
-            //Debug.DrawLine(start, end, Color.yellow, Time.deltaTime);
-
-            
-            //actorWeaponAimComponent.rayCastStart = start;
-            //actorWeaponAimComponent.rayCastEnd = transform.position;
-
-            
             actorWeaponAimComponent.targetPosition = _targetPosition;
             actorWeaponAimComponent.isMouseMoving = false;
-
             var currentMousePosition = mousePosition;
             currentMousePosition.z = 0;
-            
+
             if (math.distancesq(currentMousePosition, lastMousePosition) > .00001)
             {
                 actorWeaponAimComponent.isMouseMoving = true;
-                //actorWeaponAimComponent.weaponRaised = WeaponMotion.Lowering;
-                //animator.SetInteger(WeaponRaised, 3);
                 animator.SetLayerWeight(1, 1);
             }
-
-
             lastMousePosition = mousePosition;
-
             lastMousePosition.z = 0;
-
             _manager.SetComponentData(_entity, actorWeaponAimComponent);
-
             if (roleReversal == RoleReversalMode.On) crosshairImage.enabled = false;
+
+            aimDir = math.normalize(end - start);
         }
 
         public void LateUpdateSystem(WeaponMotion weaponMotion)
@@ -326,25 +271,16 @@ namespace Sandbox.Player
             _targetPosition.x = _manager.GetComponentData<ActorWeaponAimComponent>(_entity).crosshairRaycastTarget.x;
             _targetPosition.z = _manager.GetComponentData<ActorWeaponAimComponent>(_entity).crosshairRaycastTarget.z;
             _targetPosition.y = _manager.GetComponentData<ActorWeaponAimComponent>(_entity).crosshairRaycastTarget.y;
+            
+            
             var aimTarget = _targetPosition;
+            
+            // aimTarget.x = _mouseWorldPosition.x;
+            // aimTarget.y = _mouseWorldPosition.y;
+            // aimTarget.z = _mouseWorldPosition.z;
+            
             aimDir = aimTarget - playerWeaponLocation.position;
-            //aimDir = math.normalize(aimDir);
-            
-            //aimTarget = new float3(_targetPosition.x, _targetPosition.y, _targetPosition.z);
-            //aimTarget = math.normalize(aimTarget);
-            var x = aimDir.x;
-            var y = aimDir.y;
-            var z = aimDir.z;
-            
-            //y = playerToMouseDir.y;
-            
-
-            
-            aimTarget = new float3(x, y, z);
-            var playerToMouseTarget = math.normalize(aimTarget);
-            //var playerToMouseTarget = aimTarget;
-            aimDir = playerToMouseTarget;
-            
+            aimDir = math.normalize(aimDir);
         }
     }
 }
