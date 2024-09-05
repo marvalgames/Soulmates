@@ -35,7 +35,7 @@ public partial class CleanupSystem : SystemBase
             (Entity e, ref CollisionComponent collisionComponent) =>
             {
                 ecb.RemoveComponent<CollisionComponent>(e);
-                //Debug.Log("destroy collision from ch ef sys");
+                //Debug.Log("destroy collision");
 
             }
         ).Schedule(Dependency);
