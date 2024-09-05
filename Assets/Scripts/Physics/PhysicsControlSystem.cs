@@ -20,7 +20,7 @@ public partial class VelocityControlSystem : SystemBase
             {
                 var pv = SystemAPI.GetComponent<PhysicsVelocity>(e);
                 pv.Linear = new float3(0, 0, 0);
-                //SystemAPI.SetComponent(e, pv);
+                SystemAPI.SetComponent(e, pv);
                 //Debug.Log("freeze");
             }
             
