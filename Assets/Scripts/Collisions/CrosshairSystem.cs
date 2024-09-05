@@ -47,7 +47,6 @@ namespace Collisions
             var collisionWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
             Entities.WithoutBurst().ForEach((Entity entity, ref CrosshairComponent crosshair) =>
             {
-                var physicsWorldSystem = World.GetExistingSystem<BuildPhysicsWorld>();
                 var actorEntity = actorWeaponAimEntityList[0];
                 var actorWeaponAim = SystemAPI.GetComponent<ActorWeaponAimComponent>(actorEntity);
                 var actorTransform = SystemAPI.GetComponent<LocalTransform>(actorEntity);
@@ -78,18 +77,13 @@ namespace Collisions
                     {
                         var hitList = allHits[i];
                         var fwd = actorTransform.Forward();
-                        //var invFwd = actorTransform.TransformDirection(math.forward());
                         Vector3 worldForward = Camera.main.transform.TransformDirection(fwd);
                         float dot = Vector3.Dot(worldForward,
                             math.normalize(hitList.Position - actorTransform.Position));
-
-                        //dot = math.sign(worldForward.z) * dot;
-                        //Debug.Log("Fwd " + worldForward);
                         var facing = dot > 0;
                         var body = collisionWorld.Bodies[hitList.RigidBodyIndex].Entity;
                         var enemy = (SystemAPI.HasComponent<EnemyComponent>(body));
                         if (hitList.Fraction < hi && (facing || enemy))
-                        //if (hitList.Fraction < hi)
                         {
                             closest = i;
                             hi = hitList.Fraction;
@@ -103,33 +97,24 @@ namespace Collisions
                     if (SystemAPI.HasComponent<EnemyComponent>(e))
                     {
                         actorWeaponAim.crosshairRaycastTarget.z = zLength;
-                        if (actorWeaponAim.weaponCamera == CameraTypes.ThirdPerson)
-                        {
-                            actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
-                            actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
-                        }
+                        actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
+                        actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
 
                         Debug.Log("hit enemy position ");
                     }
                     else if (SystemAPI.HasComponent<BreakableComponent>(e))
                     {
                         actorWeaponAim.crosshairRaycastTarget.z = zLength;
-                        if (actorWeaponAim.weaponCamera == CameraTypes.ThirdPerson)
-                        {
-                            actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
-                            actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
-                        }
+                        actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
+                        actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
 
                         Debug.Log("hit breakable position ");
                     }
                     else if (SystemAPI.HasComponent<TriggerComponent>(e))
                     {
                         actorWeaponAim.crosshairRaycastTarget.z = zLength;
-                        if (actorWeaponAim.weaponCamera == CameraTypes.ThirdPerson)
-                        {
-                            actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
-                            actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
-                        }
+                        actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
+                        actorWeaponAim.crosshairRaycastTarget.x = hitForward.Position.x;
 
                         Debug.Log("hit something ");
                     }

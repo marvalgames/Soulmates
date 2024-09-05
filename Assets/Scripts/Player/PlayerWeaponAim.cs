@@ -111,7 +111,6 @@ namespace Sandbox.Player
             _startAimWeight = aimWeight;
             _startClampWeight = clampWeight;
             _startLookWeight = lookWeight;
-            //currentAimWeight = aimWeight;
             targetAimWeight = _startAimWeight;
 
             SetCursorBounds();
@@ -226,10 +225,7 @@ namespace Sandbox.Player
             float3 start = _cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y,0));
             var direction = new float3(ray.direction.x, ray.direction.y, ray.direction.z);//Absolute?
             float3 end = ray.origin + Vector3.Normalize(direction) * targetRange;
-            //start = transform.position;
-            //end = mouseWorldPosition;
-            Debug.DrawRay(playerWeaponLocation.position, (Vector3) actorWeaponAimComponent.crosshairRaycastTarget - playerWeaponLocation.position, Color.red, Time.deltaTime);
-            //Debug.DrawRay(start, playerToMouseDir , Color.yellow, Time.deltaTime);
+            //Debug.DrawRay(playerWeaponLocation.position, (Vector3) actorWeaponAimComponent.crosshairRaycastTarget - playerWeaponLocation.position, Color.red, Time.deltaTime);
             actorWeaponAimComponent.rayCastStart = start;
             actorWeaponAimComponent.rayCastEnd = end;
             actorWeaponAimComponent.playerScreen = playerScreen;
@@ -247,7 +243,6 @@ namespace Sandbox.Player
             lastMousePosition.z = 0;
             _manager.SetComponentData(_entity, actorWeaponAimComponent);
             if (roleReversal == RoleReversalMode.On) crosshairImage.enabled = false;
-
             aimDir = math.normalize(end - start);
         }
 
@@ -267,18 +262,11 @@ namespace Sandbox.Player
             {
                 lookWeight = _startLookWeight;
             }
-
             _targetPosition.x = _manager.GetComponentData<ActorWeaponAimComponent>(_entity).crosshairRaycastTarget.x;
             _targetPosition.z = _manager.GetComponentData<ActorWeaponAimComponent>(_entity).crosshairRaycastTarget.z;
             _targetPosition.y = _manager.GetComponentData<ActorWeaponAimComponent>(_entity).crosshairRaycastTarget.y;
             
-            
             var aimTarget = _targetPosition;
-            
-            // aimTarget.x = _mouseWorldPosition.x;
-            // aimTarget.y = _mouseWorldPosition.y;
-            // aimTarget.z = _mouseWorldPosition.z;
-            
             aimDir = aimTarget - playerWeaponLocation.position;
             aimDir = math.normalize(aimDir);
         }
