@@ -71,21 +71,17 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                 if (gun is { IsFiring: 1, Duration: 0 } && animatorWeightsComponent.aimWeight >= .98)
                 {
                     gun.Duration += dt;
-
                     if (gun.roleReversal == RoleReversalMode.Off)
                     {
                         var e = commandBuffer.Instantiate(entityInQueryIndex, gun.PrimaryAmmo);
                         var weaponPosition = gun.AmmoStartLocalToWorld.Position; //use bone mb transform
                         var weaponRotation = gun.AmmoStartLocalToWorld.Rotation;
                         var playerForward = SystemAPI.GetComponent<LocalTransform>(entity).Forward();
-                        
-                        var velocity = new PhysicsVelocity
-                        {
-                            Linear = actorWeaponAimComponent.aimDirection * strength,
-                            //Linear = playerForward * strength,
-                            Angular = math.float3(0, 0, 0)
-                        };
-
+                        var velocity = SystemAPI.GetComponent<PhysicsVelocity>(entity);
+                        velocity.Linear.y = 0;
+                        var currentLinearVelocity = velocity.Linear;
+                        velocity.Linear = actorWeaponAimComponent.aimDirection * strength + currentLinearVelocity;
+                        velocity.Angular = math.float3(0, 0, 0);
                         ammoDataComponent.Shooter = entity;
                         commandBuffer.SetComponent(entityInQueryIndex, e, ammoDataComponent);
                         commandBuffer.SetComponent(entityInQueryIndex, e, new TriggerComponent
