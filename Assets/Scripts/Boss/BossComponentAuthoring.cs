@@ -10,9 +10,10 @@ public struct BossAmmoListBuffer : IBufferElementData
 {
     public Entity E;
     public Entity StartLocationEntity;
-    //public LocalToWorld ammoStartLocalToWorld;
+    //public LocalToWorld ammoStartLocalToWorld; 
     public LocalTransform AmmoStartTransform;
 }
+
 //public struct BossWaypointDurationBufferElement : IBufferElementData
 //{
 //  public float duration;
