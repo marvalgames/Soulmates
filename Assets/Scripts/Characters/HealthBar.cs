@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Sandbox.Player;
+using TMPro;
 using Unity.Entities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +31,6 @@ public class HealthBar : MonoBehaviour
             {
                 entityManager = GetComponent<CharacterEntityTracker>().entityManager;
             }
-            //Debug.Log("LE1 " + entity);
             //entityManager.AddComponentObject(entity, this);
             if(entity != Entity.Null) entityManager.AddComponentObject(entity, this);
 
@@ -38,6 +38,9 @@ public class HealthBar : MonoBehaviour
 
         }
 
+
+
+        
         if (score3dText)
         {
             var ps = Instantiate(score3dText);
@@ -63,6 +66,10 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
+        //entity = GetComponent<ActorEntityTracker>().linkedEntity;
+        Debug.Log("LE1 " + entity);
+
+        
         if (showHealth && entity != Entity.Null)
         {
             showHealth = false;

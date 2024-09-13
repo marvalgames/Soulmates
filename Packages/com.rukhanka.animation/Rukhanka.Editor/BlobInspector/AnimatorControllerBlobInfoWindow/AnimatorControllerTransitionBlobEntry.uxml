@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Foldout text="Foldout" name="transitionInfoFoldout" value="false" style="border-top-width: 1px; border-top-color: rgb(127, 127, 127);">
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 0; width: 184px; flex-shrink: 0;">
+                <ui:Label tabindex="-1" text="Name Hash:" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Label tabindex="-1" text="Target State ID:" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" />
+                <ui:Label tabindex="-1" text="Duration:" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" />
+                <ui:Label tabindex="-1" text="Exit Time:" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" />
+                <ui:Label tabindex="-1" text="Offset:" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" />
+                <ui:Label tabindex="-1" text="Has Exit Time:" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" />
+                <ui:Label tabindex="-1" text="Has Fixed Duration:" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:Label tabindex="-1" text="asda" parse-escape-sequences="true" display-tooltip-when-elided="true" name="nameHashLabel" />
+                <ui:Label tabindex="-1" text="asda" parse-escape-sequences="true" display-tooltip-when-elided="true" name="targetStateIDLabel" />
+                <ui:Label tabindex="-1" text="asda" parse-escape-sequences="true" display-tooltip-when-elided="true" name="durationLabel" />
+                <ui:Label tabindex="-1" text="asda" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exitTimeLabel" />
+                <ui:Label tabindex="-1" text="asda" parse-escape-sequences="true" display-tooltip-when-elided="true" name="offsetLabel" />
+                <ui:Toggle name="hasExitTimeCheckbox" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                <ui:Toggle name="hasFixedDurationCheckbox" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Foldout text="Conditions" name="conditionsFoldout" value="false" />
+    </ui:Foldout>
+</ui:UXML>

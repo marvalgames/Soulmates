@@ -248,6 +248,9 @@ namespace Sandbox.Player
 
         public void LateUpdateSystem(WeaponMotion weaponMotion)
         {
+            //_entity = GetComponent<ActorEntityTracker>().linkedEntity;
+
+            
             if (_entity == Entity.Null) return;
             var hasComponent = _manager.HasComponent<ActorWeaponAimComponent>(_entity) &&
                                _manager.HasComponent<ApplyImpulseComponent>(_entity) &&

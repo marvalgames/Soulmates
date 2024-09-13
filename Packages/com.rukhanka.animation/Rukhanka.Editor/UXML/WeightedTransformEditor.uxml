@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement name="rootGroup" style="flex-grow: 1; flex-direction: row;">
+        <uie:ObjectField type="UnityEngine.Transform, UnityEngine.CoreModule" binding-path="bone" name="boneTransform" style="width: 50%;" />
+        <ui:Slider picking-mode="Ignore" value="1" high-value="1" show-input-field="true" name="weight" binding-path="weight" style="flex-grow: 1; margin-left: 8px;" />
+    </ui:VisualElement>
+</ui:UXML>

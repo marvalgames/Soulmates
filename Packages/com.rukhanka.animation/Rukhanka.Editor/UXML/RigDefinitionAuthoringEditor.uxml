@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:PropertyField name="rigConfigSource" binding-path="rigConfigSource" />
+    <ui:GroupBox name="rigUserConfigGroup" text="Rig Configuration" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); opacity: 1; -unity-font-style: bold;">
+        <uie:PropertyField name="avatar" binding-path="avatar" style="-unity-font-style: normal;" />
+        <uie:PropertyField name="applyRootMotion" binding-path="applyRootMotion" style="-unity-font-style: normal;" />
+        <uie:PropertyField name="animationCulling" binding-path="animationCulling" style="-unity-font-style: normal;" />
+    </ui:GroupBox>
+    <ui:GroupBox name="additionalOptions" text="Additional Options" style="border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); -unity-font-style: bold;">
+        <uie:PropertyField name="hasAnimationEvents" binding-path="hasAnimationEvents" tooltip="If animations played on this rig should emit events" style="-unity-font-style: normal;" />
+        <uie:PropertyField name="hasAnimatorControllerEvents" binding-path="hasAnimatorControllerEvents" style="-unity-font-style: normal;" />
+        <uie:PropertyField binding-path="boneEntityStrippingMode" label="Bone Entity Stripping Mode" name="strippingMode" style="-unity-font-style: normal;" />
+        <uie:PropertyField name="boneStrippingMask" binding-path="boneStrippingMask" label="Bone Stripping Mask" style="-unity-font-style: normal;" />
+    </ui:GroupBox>
+</ui:UXML>

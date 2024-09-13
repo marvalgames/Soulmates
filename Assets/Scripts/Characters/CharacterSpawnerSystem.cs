@@ -19,7 +19,7 @@ public partial struct CharacterSpawnerSystem : ISystem
             .CreateCommandBuffer(state.WorldUnmanaged);
 
         foreach (var (pgo, characterSpawnComponent, entity)
-                 in SystemAPI.Query<CharacterSpawnGameObject,  CharacterSpawnComponent>().WithEntityAccess())
+                 in SystemAPI.Query<CharacterSpawnGameObject, CharacterSpawnComponent>().WithEntityAccess())
         {
             if (!pgo.instantiated)
             {
@@ -36,19 +36,15 @@ public partial struct CharacterSpawnerSystem : ISystem
                     var positionList = characterPositionListBuffer[entity];
                     var position = positionList[i].localTransform.Position;
                     var rotation = positionList[i].localTransform.Rotation;
-                    commandBuffer.SetComponent(instance, 
+                    commandBuffer.SetComponent(instance,
                         LocalTransform.FromPositionRotation(position, rotation));
-                    
+
                     var go = GameObject.Instantiate(pgo.Prefab);
                     commandBuffer.AddComponent(instance, new TransformGO() { Transform = go.transform });
-
-                    
                 }
 
-                
 
-
-               // GameObject go = GameObject.Instantiate(pgo.Prefab);
+                // GameObject go = GameObject.Instantiate(pgo.Prefab);
                 //Debug.Log(go.name);
                 //go.AddComponent<EntityGameObject>().AssignEntity(entity, state.World);
                 //go.transform.position = transform.WorldPosition;

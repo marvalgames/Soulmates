@@ -1,0 +1,14 @@
+#include "DeformationCommon.hlsl"
+#include "CopyInitialMeshData.hlsl"
+#include "CopyInitialMeshBlendShapes.hlsl"
+#include "CreatePerVertexDeformationWorkload.hlsl"
+#include "Skinning.hlsl"
+
+/////////////////////////////////////////////////////////////////////////////////
+
+#pragma kernel CopyInitialMeshData
+#pragma kernel CopyInitialMeshBlendShapes
+#pragma kernel CreatePerVertexDeformationWorkload
+#pragma kernel Skinning
+
+//#pragma enable_d3d11_debug_symbols

@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:PropertyField name="cullingCameras" binding-path="cullingCameras" />
+    <uie:PropertyField name="shadowCastingLights" binding-path="shadowCastingLights" />
+    <uie:PropertyField name="addEditorSceneCamera" binding-path="addEditorSceneCamera" />
+    <ui:VisualElement name="separator" style="flex-grow: 1; height: 10px;" />
+    <ui:Foldout text="Debug And Visualization" name="debugAndVisualization" value="false">
+        <uie:PropertyField name="drawCullingVolumes" binding-path="drawCullingVolumes" />
+        <ui:VisualElement name="drawCullingVolumesChildren" style="flex-grow: 1;">
+            <uie:PropertyField name="cullingVolumeColor" binding-path="cullingVolumeColor" />
+        </ui:VisualElement>
+        <ui:VisualElement name="separator" style="flex-grow: 1; height: 10px;" />
+        <uie:PropertyField name="drawSceneBoundingBoxes" binding-path="drawSceneBoundingBoxes" />
+        <ui:VisualElement name="drawSceneBoundingBoxesChildren" style="flex-grow: 1;">
+            <uie:PropertyField name="visibleChunkColor" binding-path="visibleChunkColor" />
+            <uie:PropertyField name="invisibleChunkColor" binding-path="invisibleChunkColor" />
+            <uie:PropertyField name="visibleRendererColor" binding-path="visibleRendererColor" />
+            <uie:PropertyField name="invisibleRenderColor" binding-path="invisibleRendererColor" />
+        </ui:VisualElement>
+    </ui:Foldout>
+</ui:UXML>

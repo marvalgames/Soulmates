@@ -39,16 +39,8 @@ public class RigEntityTracker : MonoBehaviour
     private Animator _animator;
     public CharacterType characterType;
     public RigContainer[] rigContainers;
-    [Header("Mesh Size Reference Only")]
-    public Vector3 size;
-    public SkinnedMeshRenderer renderer;
     void Start()
     {
-
-        if (renderer)
-        {
-            size = renderer.bounds.size;
-        }
         
         if (linkedEntity == Entity.Null)
         {
