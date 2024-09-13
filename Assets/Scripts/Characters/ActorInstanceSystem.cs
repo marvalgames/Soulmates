@@ -27,6 +27,7 @@ namespace Sandbox.Player
                 if (!actorComponent.ValueRW.instantiated)
                 {
                     var go = GameObject.Instantiate(actorClass.actorPrefab);
+                    go.SetActive(true);
                     commandBuffer.AddComponent(entity, new ActorInstance { actorPrefabInstance = go, linkedEntity = entity });
                     actorComponent.ValueRW.instantiated = true;
                     
@@ -36,6 +37,7 @@ namespace Sandbox.Player
             foreach (var (actor, entityTransform, entity) in SystemAPI.Query<ActorInstance, RefRO<LocalTransform>>()
                          .WithEntityAccess())
             {
+                //actor.actorPrefabInstance.SetActive(true);
                 actor.actorPrefabInstance.transform.position = entityTransform.ValueRO.Position;
                 actor.actorPrefabInstance.transform.rotation = entityTransform.ValueRO.Rotation;
                 actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().linkedEntity = entity;
