@@ -33,8 +33,9 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                 in ActorWeaponAimComponent actorWeaponAimComponent,
                 in DeadComponent dead,
                 in PhysicsVelocity playerVelocity,
-                in AttachWeaponComponent attachWeapon,
-                in AnimatorWeightsComponent animatorWeightsComponent
+                //in AttachWeaponComponent attachWeapon,
+                in AnimatorWeightsComponent animatorWeightsComponent,
+                in TargetZoneComponent targetZone
             ) =>
             {
                 if (!SystemAPI.HasComponent<WeaponComponent>(entity) ||
@@ -42,11 +43,13 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                 var gun = SystemAPI.GetComponent<WeaponComponent>(entity);
                 if (gun.roleReversal == RoleReversalMode.Off)
                 {
-                    if (attachWeapon.attachedWeaponSlot < 0 ||
-                        attachWeapon.attachWeaponType != (int)WeaponType.Gun &&
-                        attachWeapon.attachSecondaryWeaponType != (int)WeaponType.Gun
-                        || !actorWeaponAimComponent.aimMode
-                       )
+                    if (
+                        //attachWeapon.attachedWeaponSlot < 0 ||
+                        //attachWeapon.attachWeaponType != (int)WeaponType.Gun &&
+                        //attachWeapon.attachSecondaryWeaponType != (int)WeaponType.Gun
+                        //|| 
+                        !actorWeaponAimComponent.aimMode
+                    )
                     {
                         gun.Duration = 0;
                         gun.IsFiring = 0;
@@ -68,7 +71,9 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                         if (strength <= 0) strength = 0;
                     }
                 }
-                if (gun is { IsFiring: 1, Duration: 0 } && animatorWeightsComponent.aimWeight >= .98)
+
+                if (gun is { IsFiring: 1, Duration: 0 } && animatorWeightsComponent.aimWeight >= 0)
+                    //if (gun is { IsFiring: 1, Duration: 0 } && animatorWeightsComponent.aimWeight >= .98)
                 {
                     gun.Duration += dt;
                     if (gun.roleReversal == RoleReversalMode.Off)
@@ -76,6 +81,10 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                         var e = commandBuffer.Instantiate(entityInQueryIndex, gun.PrimaryAmmo);
                         var weaponPosition = gun.AmmoStartLocalToWorld.Position; //use bone mb transform
                         var weaponRotation = gun.AmmoStartLocalToWorld.Rotation;
+                        //Target experimental
+                        weaponPosition = targetZone.headZonePosition;
+                        //weaponRotation = targetZone.headZone.Rotation;
+                        
                         var playerForward = SystemAPI.GetComponent<LocalTransform>(entity).Forward();
                         var velocity = SystemAPI.GetComponent<PhysicsVelocity>(entity);
                         velocity.Linear.y = 0;

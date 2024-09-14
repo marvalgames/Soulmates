@@ -131,12 +131,10 @@ namespace AI
 
             for (var j = 0; j < enemiesAttackEntityList.Length; j++)
             {
-
                 if (enemiesAttackEntityList[j] == enemyEntity || deadComponent.isDead) continue;
                 var playerEntity = enemiesAttackEntityList[j];
                 if (transformGroup.HasComponent(playerEntity))
                 {
-
                     var playerPosition = transformGroup[playerEntity].Position;
                     var distance = math.distance(playerPosition, enemyPosition);
                     var bothEnemies = !playersGroup.HasComponent(playerEntity) &&
@@ -172,17 +170,11 @@ namespace AI
                                        angleRadians && // player is within the cone angle bounds
                                        math.length(vectorToPlayer) <
                                        viewDistanceSq; // player is within vision distance (we use Squared Distance to avoid sqrt calculation)
-                    
-                    
-                    Debug.Log("Matchup 1 " + targetZonesGroup.HasComponent(playerEntity));
 
 
                     if (distance < closestDistance && canSeePlayer &&
                         targetZonesGroup.HasComponent(playerEntity))
                     {
-
-                        Debug.Log("Matchup 2");
-
                         closestPlayerEntity = playerEntity;
                         closestDistance = distance;
                     }
@@ -190,7 +182,7 @@ namespace AI
 
                 matchup.closestOpponent = closestPlayerEntity;
             }
-            
+
             var closestPlayer = matchup.closestOpponent;
             matchup.validTarget = false;
             if (closestPlayer != Entity.Null)

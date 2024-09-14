@@ -22,11 +22,7 @@ namespace Sandbox.Collision
                      in SystemAPI.Query<RefRW<TargetZoneComponent>, ActorInstance, RefRO<LocalTransform>>()
                          .WithEntityAccess())
             {
-                //actor.actorPrefabInstance.SetActive(true);
-                //actor.actorPrefabInstance.transform.position = entityTransform.ValueRO.Position;
-                //actor.actorPrefabInstance.transform.rotation = entityTransform.ValueRO.Rotation;
                 zone.ValueRW.headZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().headZone.position;
-                Debug.Log("Head Zone" + zone.ValueRW.headZonePosition);
             }
 
         }

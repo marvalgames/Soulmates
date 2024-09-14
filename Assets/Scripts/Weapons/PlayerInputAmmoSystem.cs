@@ -11,13 +11,17 @@ public partial class PlayerInputAmmoSystem : SystemBase
 
     protected override void OnUpdate()
     {
-        
         Entities.WithoutBurst().ForEach((
-            Animator animator, Entity e,
+            //Animator animator, 
+            Entity e,
             ref WeaponComponent gunComponent, ref ActorWeaponAimComponent playerWeaponAimComponent,
-            in InputControllerComponent inputController, in AttachWeaponComponent attachWeapon) =>
+            in InputControllerComponent inputController,
+            in ActorInstance actor
+            //, in AttachWeaponComponent attachWeapon
+        ) =>
         {
-            var currentWeaponMotion = (WeaponMotion) animator.GetInteger(WeaponRaised);
+            var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+            var currentWeaponMotion = (WeaponMotion)animator.GetInteger(WeaponRaised);
             playerWeaponAimComponent.weaponRaised = currentWeaponMotion;
             if (inputController.leftTriggerPressed)
             {
@@ -36,11 +40,15 @@ public partial class PlayerInputAmmoSystem : SystemBase
             {
                 playerWeaponAimComponent.combatMode = false;
             }
-            
-       
+
+
             if (aimMode && playerWeaponAimComponent.weaponRaised == WeaponMotion.None &&
-                (attachWeapon.attachWeaponType == (int) WeaponType.Gun && rtPressed ||
-                 attachWeapon.attachSecondaryWeaponType == (int) WeaponType.Gun && rtPressed))
+                (
+                    //attachWeapon.attachWeaponType == (int) WeaponType.Gun &&
+                    rtPressed
+                    //|| attachWeapon.attachSecondaryWeaponType == (int) WeaponType.Gun && rtPressed
+                )
+               )
             {
                 gunComponent.IsFiring = 1;
                 if (SystemAPI.HasComponent<ScoreComponent>(e))
@@ -59,7 +67,6 @@ public partial class PlayerInputAmmoSystem : SystemBase
             {
                 playerWeaponAimComponent.weaponUpTimer += SystemAPI.Time.DeltaTime;
             }
-            
         }).Run();
     }
 

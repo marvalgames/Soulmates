@@ -1,4 +1,5 @@
 ﻿using Collisions;
+using Sandbox.Player;
 using Unity.Entities;
 using UnityEngine;
 
@@ -16,31 +17,17 @@ public partial class AnimatorWeightsSystem : SystemBase
 
     protected override void OnUpdate()
     {
-
-      
-
         Entities.WithoutBurst().ForEach(
-            (Animator animator, ref AnimatorWeightsComponent animatorWeightsComponent, in CheckedComponent checkedComponent) =>
+            (
+                //Animator animator, 
+                ref AnimatorWeightsComponent animatorWeightsComponent, in CheckedComponent checkedComponent,
+                in ActorInstance actor
+            ) =>
             {
+                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                 animatorWeightsComponent.hitWeight = animator.GetFloat(HitWeight);
                 animatorWeightsComponent.aimWeight = animator.GetFloat(AimWeight);
             }
         ).Run();
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
 }
