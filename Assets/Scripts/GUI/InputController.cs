@@ -1,6 +1,8 @@
-﻿using Rewired;
+﻿using UnityEngine;
+using Rewired;
 using Unity.Entities;
-using UnityEngine;
+using Unity.Mathematics;
+
 
 public struct InputControllerComponent : IComponentData
 {
@@ -92,6 +94,7 @@ public struct InputControllerComponent : IComponentData
     public double comboBufferTimeEnd;
     public double comboBufferTimeMax;
 
+    public float2 mousePosition;
 
 
 }
@@ -101,11 +104,11 @@ public class InputController : MonoBehaviour
 {
     [HideInInspector]
     public bool mouse;
-    public bool rotating;
+    public bool rotating = false;
 
 
     public Rewired.Player Player;
-    public int playerId; // The Rewired player id of this character
+    public int playerId = 0; // The Rewired player id of this character
     
     
     public double buttonTimePressed;

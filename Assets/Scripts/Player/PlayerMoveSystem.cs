@@ -250,9 +250,10 @@ namespace Sandbox.Player
         protected override void OnUpdate()
         {
             Entities.WithoutBurst().ForEach(
-                (Animator animator, Entity e,
+                (ActorInstance actorInstance, Entity e,
                     in PlayerMoveComponent playerMove, in ApplyImpulseComponent applyImpulse) =>
                 {
+                    var animator = actorInstance.actorPrefabInstance.GetComponent<Animator>();
                     var animStickSpeed = applyImpulse.animatorStickSpeed;
                     if (SystemAPI.HasComponent<PlayerDashComponent>(e))
                     {

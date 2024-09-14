@@ -1,3 +1,4 @@
+using Collisions;
 using Sandbox.Player;
 using Unity.Burst;
 using Unity.Collections;
@@ -17,11 +18,10 @@ namespace AI
         {
             var meleeGroup = SystemAPI.GetComponentLookup<MeleeComponent>();
             var targetGroup = SystemAPI.GetComponentLookup<TargetZoneComponent>();
-            var job = new MatchupTargetZoneSystemJob
+            var job = new MatchupTargetZoneSystemJob()
             {
                 meleeGroup = meleeGroup,
                 targetGroup = targetGroup,
-                //Ecb = ecb
             };
             job.Schedule();
         }
@@ -34,15 +34,12 @@ namespace AI
         public ComponentLookup<MeleeComponent> meleeGroup;
 
         [ReadOnly] public ComponentLookup<TargetZoneComponent> targetGroup;
-        //public EntityCommandBuffer Ecb;
 
         void Execute(PlayerComponent playerComponent, DeadComponent deadComponent, Entity player,
             MatchupComponent matchComponent)
         {
             var closestEnemy = matchComponent.closestOpponent;
             matchComponent.validTarget = false;
-
-
             if (closestEnemy != Entity.Null && targetGroup.HasComponent(closestEnemy))
             {
                 matchComponent.validTarget = true;
@@ -54,7 +51,6 @@ namespace AI
                     var melee = meleeGroup[player];
                     melee.target =
                         targetZone.headZonePosition;
-                    //Ecb.SetComponent(player, melee);
                     meleeGroup[player] = melee;
                 }
                 else
@@ -62,8 +58,6 @@ namespace AI
                     matchComponent.lookAt = false;
                 }
             }
-
-            //Ecb.Dispose();
         }
     }
 
@@ -78,8 +72,6 @@ namespace AI
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
-            //var playerBuilder = new EntityQueryBuilder(Allocator.Temp);
-            //playerBuilder.WithAll<PlayerComponent>();
             var enemyBuilder = new EntityQueryBuilder(Allocator.Temp);
             enemyBuilder.WithAll<EnemyComponent>();
             enemyQuery = state.GetEntityQuery(enemyBuilder);
@@ -87,29 +79,24 @@ namespace AI
             attacksBuilder.WithAny<EnemiesAttackComponent, PlayerComponent>();
             enemiesAttackQuery = state.GetEntityQuery(attacksBuilder);
             state.RequireForUpdate<EndFixedStepSimulationEntityCommandBufferSystem.Singleton>();
-
         }
 
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            var ecbSingleton =
-                SystemAPI.GetSingleton<
-                    EndFixedStepSimulationEntityCommandBufferSystem.Singleton>();
             var enemyEntityList = enemyQuery.ToEntityArray(Allocator.TempJob);
             var transformGroup = SystemAPI.GetComponentLookup<LocalTransform>();
             var targetZonesGroup = SystemAPI.GetComponentLookup<TargetZoneComponent>();
             var playersGroup = SystemAPI.GetComponentLookup<PlayerComponent>();
             var enemyCount = enemyEntityList.Length;
             var enemiesAttackEntityList = enemiesAttackQuery.ToEntityArray(Allocator.TempJob);
-
             enemyEntityList.Dispose();
             if (enemyCount == 0)
             {
                 return;
             }
 
-            var matchupSystemJob = new MatchupSystemJob
+            var matchupSystemJob = new MatchupSystemJob()
             {
                 transformGroup = transformGroup,
                 targetZonesGroup = targetZonesGroup,
@@ -117,7 +104,6 @@ namespace AI
                 playersGroup = playersGroup
             };
             matchupSystemJob.ScheduleParallel();
-
         }
     }
 
@@ -129,7 +115,7 @@ namespace AI
         [ReadOnly] public ComponentLookup<LocalTransform> transformGroup;
         [ReadOnly] public ComponentLookup<TargetZoneComponent> targetZonesGroup;
         [ReadOnly] public ComponentLookup<PlayerComponent> playersGroup;
-        
+
 
         void Execute(Entity enemyEntity, DeadComponent deadComponent,
             EnemyComponent enemyComponent,
@@ -137,7 +123,6 @@ namespace AI
             in DefensiveStrategyComponent defensiveStrategyComponent,
             ref MatchupComponent matchup)
         {
-
             if (!transformGroup.HasComponent(enemyEntity)) return;
             var enemyPosition = transformGroup[enemyEntity].Position;
             var enemyRotation = transformGroup[enemyEntity].Rotation;
@@ -146,17 +131,21 @@ namespace AI
 
             for (var j = 0; j < enemiesAttackEntityList.Length; j++)
             {
+
                 if (enemiesAttackEntityList[j] == enemyEntity || deadComponent.isDead) continue;
                 var playerEntity = enemiesAttackEntityList[j];
                 if (transformGroup.HasComponent(playerEntity))
                 {
+
                     var playerPosition = transformGroup[playerEntity].Position;
                     var distance = math.distance(playerPosition, enemyPosition);
-                    var bothEnemies = !playersGroup.HasComponent(playerEntity) && !playersGroup.HasComponent(enemyEntity);
+                    var bothEnemies = !playersGroup.HasComponent(playerEntity) &&
+                                      !playersGroup.HasComponent(enemyEntity);
                     if (bothEnemies)
                     {
                         distance *= defensiveStrategyComponent.switchToPlayerMultiplier;
                     }
+
                     var forwardVector = math.forward(enemyRotation);
                     var vectorToPlayer = playerPosition - enemyPosition;
                     var unitVecToPlayer = math.normalize(vectorToPlayer);
@@ -183,20 +172,25 @@ namespace AI
                                        angleRadians && // player is within the cone angle bounds
                                        math.length(vectorToPlayer) <
                                        viewDistanceSq; // player is within vision distance (we use Squared Distance to avoid sqrt calculation)
+                    
+                    
+                    Debug.Log("Matchup 1 " + targetZonesGroup.HasComponent(playerEntity));
+
 
                     if (distance < closestDistance && canSeePlayer &&
                         targetZonesGroup.HasComponent(playerEntity))
                     {
+
+                        Debug.Log("Matchup 2");
+
                         closestPlayerEntity = playerEntity;
                         closestDistance = distance;
                     }
                 }
 
                 matchup.closestOpponent = closestPlayerEntity;
-
             }
-
-
+            
             var closestPlayer = matchup.closestOpponent;
             matchup.validTarget = false;
             if (closestPlayer != Entity.Null)
@@ -211,6 +205,5 @@ namespace AI
                 matchup.isWaypointTarget = true; //NEED? 
             }
         }
-        
     }
 }

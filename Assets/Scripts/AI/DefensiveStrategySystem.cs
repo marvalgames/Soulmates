@@ -1,12 +1,13 @@
 using Sandbox.Player;
-using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Burst;
+using Unity.Transforms;
 
 [RequireMatchingQueriesForUpdate]
 public partial struct DefensiveStrategySystem : ISystem
 {
-    private EntityQuery playerQuery;
+    private EntityQuery playerQuery; 
 
     [BurstCompile]
     public void OnCreate(ref SystemState state)

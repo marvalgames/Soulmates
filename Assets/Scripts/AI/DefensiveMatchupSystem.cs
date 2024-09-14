@@ -4,11 +4,12 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace AI
 {
     [RequireMatchingQueriesForUpdate]
-    public partial struct DefensiveMatchupSystem : ISystem
+    public partial struct DefensiveMatchupSystem : ISystem // Very Basic System Doesn't use target zones
     {
         private EntityQuery playerQuery;
 
@@ -29,7 +30,7 @@ namespace AI
             var enemiesGroup = SystemAPI.GetComponentLookup<EnemyComponent>();
 
 
-            var job = new DefensiveMatchUpJob
+            var job = new DefensiveMatchUpJob()
             {
                 PlayerEntities = playerEntities,
                 TransformGroup = transformGroup,
@@ -105,7 +106,7 @@ namespace AI
             var playerEntities = playerQuery.ToEntityArray(Allocator.TempJob);
             var transformGroup = SystemAPI.GetComponentLookup<LocalTransform>();
 
-            var job = new ClosestPlayerMatchUpJob
+            var job = new ClosestPlayerMatchUpJob()
             {
                 PlayerEntities = playerEntities,
                 TransformGroup = transformGroup

@@ -67,7 +67,7 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         //entity = GetComponent<ActorEntityTracker>().linkedEntity;
-        Debug.Log("LE1 " + entity);
+        //Debug.Log("LE1 " + entity);
 
         
         if (showHealth && entity != Entity.Null)

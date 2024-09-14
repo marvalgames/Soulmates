@@ -86,10 +86,10 @@ public class EnemyWeaponAim : MonoBehaviour
              var matchComponent = manager.GetComponentData<MatchupComponent>(entity);
              var aimTargetEntity = matchComponent.targetEntity;
              if(aimTargetEntity == Entity.Null) return;
-             var aimTargetGo = manager.GetComponentObject<GameObject>(aimTargetEntity);
+             //var aimTargetGo = manager.GetComponentObject<GameObject>(aimTargetEntity);
              var source1 = handConstraint.data.sourceObjects;
              var source2 = headConstraint.data.sourceObjects;
-             aimTarget.position = aimTargetGo.transform.position;
+             //aimTarget.position = aimTargetGo.transform.position;
              
              if (manager.HasComponent<PlayerComponent>(aimTargetEntity) && weaponRaised)
              {

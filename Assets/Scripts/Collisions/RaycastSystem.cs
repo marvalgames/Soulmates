@@ -45,7 +45,9 @@ namespace Collisions
         Stairs = 1 << 7,
         Particle = 1 << 8,
         Trigger = 1 << 12,
-        Platform = 1 << 13
+        Platform = 1 << 13,
+        Terrain = 1 << 14
+
     }
 
     [UpdateInGroup(typeof(PhysicsSystemGroup))]

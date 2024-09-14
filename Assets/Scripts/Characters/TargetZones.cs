@@ -1,15 +1,10 @@
-﻿using Unity.Entities;
+﻿using Collisions;
+using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
-public struct TargetZoneComponent : IComponentData
-{
-    //public LocalTransform headZone;
-    public LocalToWorld HeadZoneLocalToWorld;
-    public bool validTarget;
-    public float3 headZonePosition;
-}
+
 public class TargetZones : MonoBehaviour
 {
 

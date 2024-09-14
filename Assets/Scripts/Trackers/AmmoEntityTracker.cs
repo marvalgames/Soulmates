@@ -1,6 +1,7 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
+
 public struct AmmoComponent : IComponentData
 {
     public bool playerOwner;
@@ -8,6 +9,7 @@ public struct AmmoComponent : IComponentData
     public int deathBlowEffectsIndex;
     public Entity OwnerAmmoEntity;
     public Entity ammoEntity;
+    public bool isColliding;
     public bool AmmoDead;
     public float AmmoTime;
     public float AmmoTimeCounter;

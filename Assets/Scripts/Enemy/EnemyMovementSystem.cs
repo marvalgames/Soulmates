@@ -114,6 +114,8 @@ namespace Enemy
                         if (SystemAPI.GetComponent<DeadComponent>(e).isDead) return;
                         if (!SystemAPI.HasComponent<LocalTransform>(e)) return;
 
+
+                        
                         if (matchupComponent.closestOpponent == Entity.Null ||
                             matchupComponent.closestPlayerEntity == Entity.Null) return;
                         if (levelCompleteComponent.areaIndex > LevelManager.instance.currentLevelCompleted) return;
