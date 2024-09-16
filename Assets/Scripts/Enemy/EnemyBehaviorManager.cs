@@ -11,10 +11,10 @@ public struct DefensiveStrategyComponent : IComponentData
     public float currentRoleMaxTime;
     public float currentRoleTimer;
     public Entity closeBulletEntity;
-    public Entity closestEnemiesAttackEntity;
+    //public Entity closestEnemiesAttackEntity;
     public float switchToPlayerMultiplier;
     public float botSpeed;
-    public float distanceToOpponent;
+    //public float distanceToOpponent;
     public BotState botState;
 
 }
@@ -56,10 +56,16 @@ public struct EnemyMeleeMovementComponent : IComponentData
 
 public struct EnemyMovementComponent : IComponentData
 {
+    public bool AgentBackupMovement;
+    public bool AgentPatrolMovement;
+    public bool AgentAnimationMovement;
+    public bool backup;
+    public float speedMultiple;
     public bool enabled; //true if currently active movement state
     public float3 agentNextPosition;
     public bool updateAgent;
     public float enemyBackupSpeed;
+    public float backupTimer;
     public float3 originalPosition;
     public bool nearEdge;
 

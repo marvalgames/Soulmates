@@ -1,10 +1,19 @@
+using AI;
+using Collisions;
 using Sandbox.Player;
 using Unity.Burst;
+using Unity.Collections;
 using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Transforms;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Enemy
 {
     [RequireMatchingQueriesForUpdate]
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateAfter(typeof(MatchupSystem))]
     public partial struct EnemyActorMovementSystem : ISystem
     {
         [BurstCompile]
@@ -16,8 +25,19 @@ namespace Enemy
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
+            var weaponGroup = SystemAPI.GetComponentLookup<WeaponComponent>();
+            var actorWeaponAimGroup = SystemAPI.GetComponentLookup<ActorWeaponAimComponent>();
+            var transformGroup = SystemAPI.GetComponentLookup<LocalTransform>();
+            var deltaTime = SystemAPI.Time.DeltaTime;
+            
+            
+
             var job = new EnemyActorMovementJob
             {
+                weaponGroup = weaponGroup,
+                actorWeaponAimGroup = actorWeaponAimGroup,
+                transformGroup = transformGroup,
+                deltaTime = deltaTime
             };
 
             job.Schedule();
@@ -27,22 +47,219 @@ namespace Enemy
         [BurstCompile]
         partial struct EnemyActorMovementJob : IJobEntity
         {
-            void Execute(Entity e, ref DefensiveStrategyComponent matchup, in EnemyBehaviourComponent enemyBehaviour)
+            public ComponentLookup<WeaponComponent> weaponGroup;
+            public ComponentLookup<ActorWeaponAimComponent> actorWeaponAimGroup;
+            public ComponentLookup<LocalTransform> transformGroup;
+            public float deltaTime;
+
+            void Execute(Entity e, ref MatchupComponent matchup, ref DefensiveStrategyComponent defensiveStrategy,
+                ref EnemyMovementComponent enemyMovement,
+                ref EnemyStateComponent enemyState, 
+                in EnemyBehaviourComponent enemyBehaviour, in EnemyMeleeMovementComponent enemyMeleeMovement,
+                in EnemyWeaponMovementComponent enemyWeaponMovement,
+                in CheckedComponent checkedComponent)
             {
-                matchup.botState = BotState.MOVING;
-                var closestPlayer = matchup.closestEnemiesAttackEntity;
-                var distanceToPlayer = matchup.distanceToOpponent;
+                //if (defensiveStrategy.currentRole == DefensiveRoles.None || matchup.isWaypointTarget) return;
+                defensiveStrategy.botState = BotState.MOVING;
+                var enemyTransform = transformGroup[e];
+                Debug.Log("TRANS " + enemyTransform.Position);
+                var closestOpponent = matchup.closestOpponentEntity;
+                var enemyPosition = enemyTransform.Position;
+                var homePosition = enemyMovement.originalPosition;
+                var stayHome = enemyBehaviour.useDistanceFromStation;
+                var distFromStation = math.distance(homePosition, enemyPosition);
+
+                
+                var distanceToOpponent = matchup.closestDistance;
+                var chaseRange = enemyBehaviour.chaseRange;
                 var stopRange = enemyBehaviour.stopRange;
-                if (distanceToPlayer < stopRange)
+                var aggression = enemyBehaviour.aggression;
+                // if (distanceToOpponent < stopRange)
+                // {
+                //     defensiveStrategy.botState = BotState.STOP;
+                // }
+                //
+                var weaponRaised = WeaponMotion.None;
+                var basicMovement = enemyMovement.enabled;
+                var meleeMovement = enemyMeleeMovement.enabled;
+                var weaponMovement = enemyWeaponMovement.enabled;
+                var hasWeapon = weaponGroup.HasComponent(e);
+                var hasAim = actorWeaponAimGroup.HasComponent(e);
+
+                var agentNextPosition = enemyMovement.agentNextPosition;
+
+                
+                if (distanceToOpponent < stopRange && enemyMeleeMovement.switchUp)
                 {
-                    matchup.botState = BotState.STOP;
+                    weaponMovement = false;
+                    meleeMovement = true;
+                }
+
+                if (hasWeapon && hasAim && weaponMovement && !meleeMovement)
+                {
+                    var weapon = weaponGroup[e];
+                    var actorWeaponAim = actorWeaponAimGroup[e];
+                    if (weapon is { IsFiring: 1, tooFarTooAttack: false } ||
+                        distanceToOpponent < enemyWeaponMovement.shootRangeDistance)
+                    {
+                        if (weapon.firingStage == FiringStage.None)
+                        {
+                            weaponRaised = WeaponMotion.Started;
+                        }
+                        else if (weapon is { IsFiring: 1, firingStage: FiringStage.Start })
+                        {
+                            weapon.firingStage = FiringStage.Update;
+                            weaponRaised = WeaponMotion.Started;
+                        }
+
+                        weapon.IsFiring = 1;
+                    }
+
+                    actorWeaponAim.weaponRaised = weaponRaised;
+                    weaponGroup[e] = weapon;
+                    actorWeaponAimGroup[e] = actorWeaponAim;
                 }
 
 
+                var backupZoneClose = enemyMeleeMovement.combatStrikeDistanceZoneBegin;
+                var backupZoneFar = enemyMeleeMovement.combatStrikeDistanceZoneEnd;
+                var strike = false;
 
+                if (distanceToOpponent < backupZoneClose && meleeMovement)
+                {
+                    enemyMovement.backup = true;
+                    enemyMovement.speedMultiple = distanceToOpponent / backupZoneClose;
+                    var n = Random.Range(0f, 100f);
+                    if (n <= aggression && enemyMovement.backupTimer <= 0 && distanceToOpponent > backupZoneClose / 2)
+                    {
+                        enemyMovement.backup = false;
+                        strike = true;
+                    }
+                }
+
+                if (enemyMovement.backup && distanceToOpponent > backupZoneFar && meleeMovement)
+                {
+                    enemyMovement.backup = false;
+                    enemyMovement.backupTimer = 0;
+                }
+                else if (distanceToOpponent >= backupZoneClose && distanceToOpponent <= backupZoneFar && meleeMovement)
+                {
+                    enemyMovement.speedMultiple = math.sqrt((distanceToOpponent - backupZoneClose) / (backupZoneFar - backupZoneClose));
+                    var n = Random.Range(0f, 100f);
+                    if (n <= aggression && enemyMovement.backupTimer <= 0)
+                    {
+                        strike = true;
+                        enemyMovement.backup = false;
+                    }
+                }
+                
+                if (basicMovement || !enemyState.enemyStrikeAllowed)
+                {
+                    strike = false;
+                }
+
+
+                var backup = enemyMovement.backup;
+                MoveStates moveState;
+                var updateAgent = true;
+                if (stayHome && distFromStation > chaseRange)
+                {
+                    chaseRange = distFromStation;
+                }
+
+                if (!checkedComponent.anyAttackStarted && !backup && strike && distanceToOpponent < chaseRange)
+                {
+                    enemyState.selectMove = true;
+                    enemyState.Zone = 3;
+                }
+                else if (!checkedComponent.anyAttackStarted)
+                {
+                    if (backup && distanceToOpponent < chaseRange && meleeMovement)
+                    {
+                        moveState = MoveStates.Default;
+                        enemyState.Zone = 2;
+                        enemyMovement.AgentBackupMovement = true;//SetBackup EnemyMove
+                        var fwd = -enemyTransform.Forward();
+                        agentNextPosition += fwd * enemyMovement.enemyBackupSpeed * deltaTime;
+                        updateAgent = false;
+                    }
+                    else if (distanceToOpponent < enemyMeleeMovement.combatRangeDistance &&
+                             distanceToOpponent < chaseRange && meleeMovement)
+                    {
+                        moveState = MoveStates.Default;
+                        enemyState.Zone = 2;
+                    }
+                    else if (distanceToOpponent < chaseRange && distanceToOpponent > stopRange)
+                    {
+                        matchup.currentStrikeDistanceAdjustment = 1;
+                        moveState = MoveStates.Chase;
+                        enemyState.Zone = 1;
+                    }
+                    else if( distanceToOpponent < chaseRange && distanceToOpponent > stopRange && meleeMovement)
+                    {
+                        enemyState.Zone = 1;
+                        moveState = MoveStates.Idle;
+                    }
+                    else if (distanceToOpponent >= chaseRange && distanceToOpponent < stopRange && meleeMovement &&
+                             defensiveStrategy.currentRole == DefensiveRoles.Chase)
+                    {
+                        enemyState.Zone = 1;
+                        moveState = MoveStates.Idle;
+                    }
+                    else if (distanceToOpponent >= chaseRange && defensiveStrategy.currentRole == DefensiveRoles.Patrol)
+                    {
+                        enemyState.Zone = 1;
+                        moveState = MoveStates.Patrol;
+                    }
+                    else
+                    {
+                        enemyState.Zone = 1;
+                        moveState = MoveStates.Stopped;
+                    }
+                        
+                    var lastState = enemyState.MoveState; //reads previous
+                    enemyState.currentStateTimer += deltaTime;
+                    if (moveState == lastState || enemyState.MoveState == MoveStates.Default) //no change
+                    {
+                        enemyState.MoveState = moveState;
+                    }
+                    else if (moveState != lastState &&
+                             enemyState.currentStateTimer > enemyState.currentStateRequiredTime) //switched but after time required in role
+                    {
+                        enemyState.MoveState = moveState;
+                        enemyState.currentStateTimer = 0;
+                    }
+
+                    var state = enemyState.MoveState;
+                    enemyMovement.updateAgent = updateAgent;
+                    
+                    if (updateAgent)
+                    {
+                        enemyTransform.Position = enemyMovement.agentNextPosition;
+                        enemyMovement.AgentAnimationMovement = true;
+                    }
+                    else
+                    {
+                        enemyTransform.Position = agentNextPosition;
+                        enemyMovement.agentNextPosition = enemyTransform.Position;
+                    }
+                    //
+                    // if (transformGroup.HasComponent(closestOpponent))//Required?
+                    // {
+                    //     var closestOpponentPosition = transformGroup[closestOpponent].Position;
+                    //     var direction = math.normalize(closestOpponentPosition - enemyPosition);
+                    //     direction.y = 0;
+                    //     var targetRotation =
+                    //         quaternion.LookRotationSafe(direction, math.up()); //always face player
+                    //     enemyTransform.Rotation = targetRotation;
+                    // }
+
+
+                }
+                
+                transformGroup[e] = enemyTransform;
+                
             }
-            
-            
         }
     }
 }

@@ -38,7 +38,7 @@ namespace AI
         void Execute(PlayerComponent playerComponent, DeadComponent deadComponent, Entity player,
             MatchupComponent matchComponent)
         {
-            var closestEnemy = matchComponent.closestOpponent;
+            var closestEnemy = matchComponent.closestOpponentEntity;
             matchComponent.validTarget = false;
             if (closestEnemy != Entity.Null && targetGroup.HasComponent(closestEnemy))
             {
@@ -127,17 +127,17 @@ namespace AI
             var enemyPosition = transformGroup[enemyEntity].Position;
             var enemyRotation = transformGroup[enemyEntity].Rotation;
             var closestDistance = math.INFINITY;
-            var closestPlayerEntity = Entity.Null;
+            var closestOpponentEntity = Entity.Null;
 
             for (var j = 0; j < enemiesAttackEntityList.Length; j++)
             {
                 if (enemiesAttackEntityList[j] == enemyEntity || deadComponent.isDead) continue;
-                var playerEntity = enemiesAttackEntityList[j];
-                if (transformGroup.HasComponent(playerEntity))
+                var opponentEntity = enemiesAttackEntityList[j];//can be player or enemy vs enemy
+                if (transformGroup.HasComponent(opponentEntity))
                 {
-                    var playerPosition = transformGroup[playerEntity].Position;
-                    var distance = math.distance(playerPosition, enemyPosition);
-                    var bothEnemies = !playersGroup.HasComponent(playerEntity) &&
+                    var opponentPosition = transformGroup[opponentEntity].Position;
+                    var distance = math.distance(opponentPosition, enemyPosition);
+                    var bothEnemies = !playersGroup.HasComponent(opponentEntity) &&
                                       !playersGroup.HasComponent(enemyEntity);
                     if (bothEnemies)
                     {
@@ -145,8 +145,8 @@ namespace AI
                     }
 
                     var forwardVector = math.forward(enemyRotation);
-                    var vectorToPlayer = playerPosition - enemyPosition;
-                    var unitVecToPlayer = math.normalize(vectorToPlayer);
+                    var vectorToOpponent = opponentPosition - enemyPosition;
+                    var unitVectorToOpponent = math.normalize(vectorToOpponent);
                     var angleRadians = math.INFINITY;
                     var viewDistanceSq = math.INFINITY;
                     var dot = 1.0;
@@ -157,7 +157,7 @@ namespace AI
                     {
                         angleRadians = matchup.AngleRadians;
                         viewDistanceSq = matchup.ViewDistanceSQ;
-                        dot = math.dot(forwardVector, unitVecToPlayer);
+                        dot = math.dot(forwardVector, unitVectorToOpponent);
                         view360 = matchup.View360 ||
                                   enemyStateComponent.MoveState ==
                                   MoveStates.Chase ||
@@ -165,30 +165,31 @@ namespace AI
                                   MoveStates.Default;
                     }
 
-                    var canSeePlayer = (dot > 0.0f || view360) && // player is in front of us
+                    var canSeeOpponent = (dot > 0.0f || view360) && // player is in front of us
                                        math.degrees(math.abs(math.acos(dot))) <
                                        angleRadians && // player is within the cone angle bounds
-                                       math.length(vectorToPlayer) <
+                                       math.length(vectorToOpponent) <
                                        viewDistanceSq; // player is within vision distance (we use Squared Distance to avoid sqrt calculation)
 
 
-                    if (distance < closestDistance && canSeePlayer &&
-                        targetZonesGroup.HasComponent(playerEntity))
+                    if (distance < closestDistance && canSeeOpponent &&
+                        targetZonesGroup.HasComponent(opponentEntity))
                     {
-                        closestPlayerEntity = playerEntity;
+                        closestOpponentEntity = opponentEntity;
                         closestDistance = distance;
                     }
                 }
 
-                matchup.closestOpponent = closestPlayerEntity;
+                matchup.closestOpponentEntity = closestOpponentEntity;
+                matchup.closestDistance = closestDistance;
             }
 
-            var closestPlayer = matchup.closestOpponent;
+            var closestOpponent = matchup.closestOpponentEntity;
             matchup.validTarget = false;
-            if (closestPlayer != Entity.Null)
+            if (closestOpponent != Entity.Null)
             {
                 matchup.validTarget = true;
-                matchup.targetEntity = closestPlayer;
+                matchup.targetEntity = closestOpponent;
                 matchup.isWaypointTarget = false;
             }
             else //no valid player targets

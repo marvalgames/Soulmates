@@ -11,11 +11,11 @@ namespace Sandbox.Agents
     {
         public void OnUpdate(ref SystemState systemState)
         {
-            foreach (var (defensiveStrategy, locomotion, body) in SystemAPI
-                         .Query<RefRO<DefensiveStrategyComponent>, RefRW<AgentLocomotion>, RefRW<AgentBody>>())
+            foreach (var (defensiveStrategy, matchup, locomotion, body) in SystemAPI
+                         .Query<RefRO<DefensiveStrategyComponent>, RefRO<MatchupComponent>, RefRW<AgentLocomotion>, RefRW<AgentBody>>())
             {
                 var botState = defensiveStrategy.ValueRO.botState;
-                var match = defensiveStrategy.ValueRO.closestEnemiesAttackEntity;
+                var match = matchup.ValueRO.closestOpponentEntity;
                 if (!SystemAPI.HasComponent<LocalTransform>(match)) continue;
                 var position = SystemAPI.GetComponent<LocalTransform>(match).Position;
                 body.ValueRW.SetDestination(position);

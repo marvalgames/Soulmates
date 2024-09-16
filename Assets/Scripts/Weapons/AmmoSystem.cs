@@ -29,10 +29,7 @@ public partial struct AmmoSystem : ISystem
         var dt = SystemAPI.Time.fixedDeltaTime; //bullet duration
         var playerEntities = playerQuery.ToEntityArray(Allocator.Temp);
         if(playerEntities.Length == 0) return;
-        var player = playerEntities[0];//P1
-
-
-
+        //var player = playerEntities[0];//P1
         var scoreGroup = SystemAPI.GetComponentLookup<ScoreComponent>();
         foreach (var (ammo, entity) in SystemAPI.Query<RefRW<AmmoComponent>>().WithEntityAccess())
         {
@@ -44,7 +41,7 @@ public partial struct AmmoSystem : ISystem
                 var isPlayer = SystemAPI.HasComponent<PlayerComponent>(shooter);
                 var hasScore = SystemAPI.HasComponent<ScoreComponent>(shooter);
                 
-                if (hasScore && isPlayer)//always false for GMTK
+                if (hasScore && isPlayer)
                 {
                     var score = scoreGroup[shooter];
                     score.zeroPoints = false;

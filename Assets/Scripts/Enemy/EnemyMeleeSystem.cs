@@ -6,7 +6,7 @@ using Unity.Transforms;
 
 namespace Enemy
 {
-    [UpdateAfter(typeof(EnemyMovementSystem))]
+    //[UpdateAfter(typeof(EnemyMovementSystem))]
     public partial struct EnemyMeleeSystem : ISystem
     {
         [BurstCompile]

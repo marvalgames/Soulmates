@@ -3,6 +3,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 public partial struct ClosestEnemyMatchupSystem : ISystem
     {
@@ -59,6 +60,8 @@ public partial struct ClosestEnemyMatchupSystem : ISystem
                     }
                 }
                 matchupComponent.closestEnemyEntity = closestEnemy;
+                matchupComponent.closestDistance = closestDistance;
+
             }
         }
     }

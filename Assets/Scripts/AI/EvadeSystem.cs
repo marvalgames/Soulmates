@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using Random = Unity.Mathematics.Random;
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateBefore(typeof(BossStrategySystem))]
+//[UpdateBefore(typeof(BossStrategySystem))]
 [RequireMatchingQueriesForUpdate]
 public partial class EvadeSystem : SystemBase
 {

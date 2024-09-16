@@ -49,10 +49,12 @@ public class WayPoint
 public struct EnemyStateComponent : IComponentData
 {
     public float currentStateTimer;
+    public float currentStateRequiredTime;
     public MoveStates LastState;
     public bool selectMove;
     public bool selectMoveUsing;//choose from move list in enemy melee mb
     public MoveStates MoveState;
+    public int Zone;
     public CombatStates CombatState;
     //public AttackStages AttackStages;
     public LocalTransform targetZone;
