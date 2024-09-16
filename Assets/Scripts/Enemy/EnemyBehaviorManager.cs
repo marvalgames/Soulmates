@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using Sandbox.Player;
+using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public struct DefensiveStrategyComponent : IComponentData
     public Entity closestEnemiesAttackEntity;
     public float switchToPlayerMultiplier;
     public float botSpeed;
+    public float distanceToOpponent;
+    public BotState botState;
 
 }
 

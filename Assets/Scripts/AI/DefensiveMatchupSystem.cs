@@ -78,6 +78,7 @@ namespace AI
                 //Debug.Log("DEF MATCH " + closestPlayer);
 
                 defensiveStrategyComponent.closestEnemiesAttackEntity = closestPlayer;
+                defensiveStrategyComponent.distanceToOpponent = closestDistance;
             }
         }
     }

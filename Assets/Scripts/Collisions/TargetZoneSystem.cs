@@ -15,7 +15,7 @@ namespace Sandbox.Collision
             
         }
 
-        [BurstCompile]
+        
         public void OnUpdate(ref SystemState state)
         {
             foreach (var (zone, actor, entityTransform, entity) 
@@ -23,6 +23,12 @@ namespace Sandbox.Collision
                          .WithEntityAccess())
             {
                 zone.ValueRW.headZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().headZone.position;
+                zone.ValueRW.bodyZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().bodyZone.position;
+                zone.ValueRW.leftHandZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().leftHandZone.position;
+                zone.ValueRW.rightHandZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().rightHandZone.position;
+                zone.ValueRW.leftFootZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().leftFootZone.position;
+                zone.ValueRW.rightFootZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().rightFootZone.position;
+                
             }
 
         }

@@ -63,7 +63,9 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
         {
             playerWeaponAimComponent.aimMode = true;
             var mb = actor.actorPrefabInstance.GetComponent<PlayerWeaponAim>();
-            if (mb.Player.controllers.GetLastActiveController() == null || playerWeaponAimComponent.combatMode) return;
+            var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+            //if (mb.Player.controllers.GetLastActiveController() == null || playerWeaponAimComponent.combatMode) return;
+            if (playerWeaponAimComponent.combatMode) return;
             mb.LateUpdateSystem(playerWeaponAimComponent.weaponRaised);
             mb.aimDir = playerAimComponent.aimDirection;
             var aimDir = playerAimComponent.aimDirection;
@@ -97,7 +99,7 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
             var targetRotation = quaternion.LookRotationSafe(direction, math.up()); //always face xHair
             localTransform.Rotation = math.slerp(localTransform.Rotation, targetRotation.value,
                 slerpDampTime * SystemAPI.Time.DeltaTime);
-            mb.animator.SetFloat(Turning, turningValue, turnSpeed, SystemAPI.Time.DeltaTime);
+            animator.SetFloat(Turning, turningValue, turnSpeed, SystemAPI.Time.DeltaTime);
         }).Run();
     }
 }

@@ -82,7 +82,7 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                         var weaponPosition = gun.AmmoStartLocalToWorld.Position; //use bone mb transform
                         var weaponRotation = gun.AmmoStartLocalToWorld.Rotation;
                         //Target experimental
-                        weaponPosition = targetZone.headZonePosition;
+                        weaponPosition = targetZone.leftHandZonePosition;
                         //weaponRotation = targetZone.headZone.Rotation;
                         
                         var playerForward = SystemAPI.GetComponent<LocalTransform>(entity).Forward();

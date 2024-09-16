@@ -90,6 +90,7 @@ namespace Sandbox.Player
                              RefRO<RatingsComponent>>
                          ().WithEntityAccess())
             {
+                
                 var forwardSpeed = 1;
                 var currentSpeed = ratingsComponent.ValueRO.gameSpeed;
                 pv.ValueRW.Linear = float3.zero;
@@ -217,13 +218,12 @@ namespace Sandbox.Player
                         direction = math.normalize(targetPosition - playerPosition);
                         direction.y = 0;
                     }
-
                 }
                 applyImpulseComponent.ValueRW.forwardSpeed = forwardSpeed;
                 if (combatMode && !inDash && range < 5 && !aimMode)
                 {
                     var slerpDampTime = playerMoveComponent.combatRotateSpeed;
-                    var targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
+                    var targetRotation = quaternion.LookRotationSafe(direction, math.up()); //always face player
                     var playerRotation = SystemAPI.GetComponent<LocalTransform>(entity).Rotation;
                     playerRotation = math.slerp(playerRotation, targetRotation.value,
                         slerpDampTime * SystemAPI.Time.DeltaTime);
