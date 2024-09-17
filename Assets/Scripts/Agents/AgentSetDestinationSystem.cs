@@ -14,12 +14,12 @@ namespace Sandbox.Agents
             foreach (var (defensiveStrategy, matchup, locomotion, body) in SystemAPI
                          .Query<RefRO<DefensiveStrategyComponent>, RefRO<MatchupComponent>, RefRW<AgentLocomotion>, RefRW<AgentBody>>())
             {
-                var botState = defensiveStrategy.ValueRO.botState;
+                //var botState = defensiveStrategy.ValueRO.botState;
                 var match = matchup.ValueRO.closestOpponentEntity;
                 if (!SystemAPI.HasComponent<LocalTransform>(match)) continue;
                 var position = SystemAPI.GetComponent<LocalTransform>(match).Position;
                 body.ValueRW.SetDestination(position);
-                locomotion.ValueRW.Speed = botState == BotState.STOP ? 0 : defensiveStrategy.ValueRO.botSpeed;
+                //locomotion.ValueRW.Speed = botState == BotState.STOP ? 0 : defensiveStrategy.ValueRO.botSpeed;
             }
         }
     }

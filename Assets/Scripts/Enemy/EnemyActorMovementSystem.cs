@@ -1,5 +1,6 @@
 using AI;
 using Collisions;
+using ProjectDawn.Navigation;
 using Sandbox.Player;
 using Unity.Burst;
 using Unity.Collections;
@@ -29,15 +30,16 @@ namespace Enemy
             var actorWeaponAimGroup = SystemAPI.GetComponentLookup<ActorWeaponAimComponent>();
             var transformGroup = SystemAPI.GetComponentLookup<LocalTransform>();
             var deltaTime = SystemAPI.Time.DeltaTime;
-            
-            
+            var randomNumber = Random.Range(0f, 100f);
+
 
             var job = new EnemyActorMovementJob
             {
                 weaponGroup = weaponGroup,
                 actorWeaponAimGroup = actorWeaponAimGroup,
                 transformGroup = transformGroup,
-                deltaTime = deltaTime
+                deltaTime = deltaTime,
+                randomNumber = randomNumber
             };
 
             job.Schedule();
@@ -51,10 +53,13 @@ namespace Enemy
             public ComponentLookup<ActorWeaponAimComponent> actorWeaponAimGroup;
             public ComponentLookup<LocalTransform> transformGroup;
             public float deltaTime;
+            public float randomNumber;
 
             void Execute(Entity e, ref MatchupComponent matchup, ref DefensiveStrategyComponent defensiveStrategy,
                 ref EnemyMovementComponent enemyMovement,
-                ref EnemyStateComponent enemyState, 
+                ref EnemyStateComponent enemyState,
+                ref ImpulseComponent impulse,
+                ref AgentLocomotion locomotion,
                 in EnemyBehaviourComponent enemyBehaviour, in EnemyMeleeMovementComponent enemyMeleeMovement,
                 in EnemyWeaponMovementComponent enemyWeaponMovement,
                 in CheckedComponent checkedComponent)
@@ -62,14 +67,13 @@ namespace Enemy
                 //if (defensiveStrategy.currentRole == DefensiveRoles.None || matchup.isWaypointTarget) return;
                 defensiveStrategy.botState = BotState.MOVING;
                 var enemyTransform = transformGroup[e];
-                Debug.Log("TRANS " + enemyTransform.Position);
                 var closestOpponent = matchup.closestOpponentEntity;
                 var enemyPosition = enemyTransform.Position;
                 var homePosition = enemyMovement.originalPosition;
                 var stayHome = enemyBehaviour.useDistanceFromStation;
                 var distFromStation = math.distance(homePosition, enemyPosition);
 
-                
+
                 var distanceToOpponent = matchup.closestDistance;
                 var chaseRange = enemyBehaviour.chaseRange;
                 var stopRange = enemyBehaviour.stopRange;
@@ -88,7 +92,7 @@ namespace Enemy
 
                 var agentNextPosition = enemyMovement.agentNextPosition;
 
-                
+
                 if (distanceToOpponent < stopRange && enemyMeleeMovement.switchUp)
                 {
                     weaponMovement = false;
@@ -129,7 +133,7 @@ namespace Enemy
                 {
                     enemyMovement.backup = true;
                     enemyMovement.speedMultiple = distanceToOpponent / backupZoneClose;
-                    var n = Random.Range(0f, 100f);
+                    var n = randomNumber;
                     if (n <= aggression && enemyMovement.backupTimer <= 0 && distanceToOpponent > backupZoneClose / 2)
                     {
                         enemyMovement.backup = false;
@@ -144,15 +148,16 @@ namespace Enemy
                 }
                 else if (distanceToOpponent >= backupZoneClose && distanceToOpponent <= backupZoneFar && meleeMovement)
                 {
-                    enemyMovement.speedMultiple = math.sqrt((distanceToOpponent - backupZoneClose) / (backupZoneFar - backupZoneClose));
-                    var n = Random.Range(0f, 100f);
+                    enemyMovement.speedMultiple =
+                        math.sqrt((distanceToOpponent - backupZoneClose) / (backupZoneFar - backupZoneClose));
+                    var n = randomNumber;
                     if (n <= aggression && enemyMovement.backupTimer <= 0)
                     {
                         strike = true;
                         enemyMovement.backup = false;
                     }
                 }
-                
+
                 if (basicMovement || !enemyState.enemyStrikeAllowed)
                 {
                     strike = false;
@@ -178,7 +183,7 @@ namespace Enemy
                     {
                         moveState = MoveStates.Default;
                         enemyState.Zone = 2;
-                        enemyMovement.AgentBackupMovement = true;//SetBackup EnemyMove
+                        enemyMovement.AgentBackupMovement = true; //SetBackup EnemyMove
                         var fwd = -enemyTransform.Forward();
                         agentNextPosition += fwd * enemyMovement.enemyBackupSpeed * deltaTime;
                         updateAgent = false;
@@ -195,7 +200,7 @@ namespace Enemy
                         moveState = MoveStates.Chase;
                         enemyState.Zone = 1;
                     }
-                    else if( distanceToOpponent < chaseRange && distanceToOpponent > stopRange && meleeMovement)
+                    else if (distanceToOpponent < chaseRange && distanceToOpponent > stopRange && meleeMovement)
                     {
                         enemyState.Zone = 1;
                         moveState = MoveStates.Idle;
@@ -216,7 +221,7 @@ namespace Enemy
                         enemyState.Zone = 1;
                         moveState = MoveStates.Stopped;
                     }
-                        
+
                     var lastState = enemyState.MoveState; //reads previous
                     enemyState.currentStateTimer += deltaTime;
                     if (moveState == lastState || enemyState.MoveState == MoveStates.Default) //no change
@@ -224,7 +229,8 @@ namespace Enemy
                         enemyState.MoveState = moveState;
                     }
                     else if (moveState != lastState &&
-                             enemyState.currentStateTimer > enemyState.currentStateRequiredTime) //switched but after time required in role
+                             enemyState.currentStateTimer >
+                             enemyState.currentStateRequiredTime) //switched but after time required in role
                     {
                         enemyState.MoveState = moveState;
                         enemyState.currentStateTimer = 0;
@@ -232,7 +238,7 @@ namespace Enemy
 
                     var state = enemyState.MoveState;
                     enemyMovement.updateAgent = updateAgent;
-                    
+
                     if (updateAgent)
                     {
                         enemyTransform.Position = enemyMovement.agentNextPosition;
@@ -253,12 +259,45 @@ namespace Enemy
                     //         quaternion.LookRotationSafe(direction, math.up()); //always face player
                     //     enemyTransform.Rotation = targetRotation;
                     // }
-
-
                 }
+
+
+                //transformGroup[e] = enemyTransform;
+                var impulseFactor = 1f;
+                if (impulse.activate)
+                {
+                    impulseFactor = impulse.animSpeedRatio;
+                }
+                else if (impulse.activateOnReceived)
+                {
+                    impulseFactor = impulse.animSpeedRatioOnReceived;
+                }
+                enemyMovement.animatorSpeed = impulseFactor;
+                enemyMovement.forwardVelocity = impulseFactor;
+                var moveSpeed = 3.5f;
+                var velZ = 1f;
+                moveState = enemyState.MoveState;
+                var speed = enemyState.Zone >= 2 ? moveSpeed : moveSpeed * 1.5f;
+                if (moveState is MoveStates.Idle or MoveStates.Stopped or MoveStates.Defensive)
+                {
+                    speed = 0;
+                    velZ = 0;
+                    enemyState.Zone = 1;
+                }
+                else if (moveState == MoveStates.Patrol)
+                {
+                    speed = moveSpeed * 1f;
+                    velZ = 1f;
+                }
+
+                locomotion.Speed = speed * impulseFactor;
+                velZ *= impulseFactor;
+                enemyMovement.locomotionPitch = velZ;
+                enemyMovement.forwardVelocity = velZ;
                 
-                transformGroup[e] = enemyTransform;
-                
+
+
+
             }
         }
     }

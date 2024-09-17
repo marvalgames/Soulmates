@@ -68,6 +68,11 @@ public struct EnemyMovementComponent : IComponentData
     public float backupTimer;
     public float3 originalPosition;
     public bool nearEdge;
+    public float animatorSpeed;
+    public float forwardVelocity;
+    public float locomotionPitch;
+    public float blendSpeed;
+
 
 }
 
@@ -96,6 +101,9 @@ public class EnemyBehaviorManager : MonoBehaviour
     [Header("Mechanics")] [SerializeField] private bool canFreeze;
     [SerializeField]
     private float botSpeed = 5.0f;
+
+    [SerializeField] private float blendSpeed = .1f;
+    
 
 
     class EnemyBehaviourBaker : Baker<EnemyBehaviorManager>
@@ -137,7 +145,10 @@ public class EnemyBehaviorManager : MonoBehaviour
             var position = authoring.transform.position;
             AddComponent(e, 
                 new EnemyMovementComponent
-                    { originalPosition = position, enabled = basicMovement, updateAgent = true, enemyBackupSpeed = authoring.backupSpeed});
+                {
+                    originalPosition = position, enabled = basicMovement, updateAgent = true, enemyBackupSpeed = authoring.backupSpeed,
+                    blendSpeed = authoring.blendSpeed
+                });
 
             AddComponent(e, 
                 new EnemyMeleeMovementComponent
@@ -149,7 +160,7 @@ public class EnemyBehaviorManager : MonoBehaviour
                     originalSwitchUpTime = authoring.switchUpTime,
                     currentSwitchUpTime = authoring.switchUpTime,
                     combatRangeDistance = GetComponent<EnemyRatings>().Ratings.combatRangeDistance,
-                    enabled = meleeMovement
+                    enabled = meleeMovement,
                 });
 
             AddComponent(e, 

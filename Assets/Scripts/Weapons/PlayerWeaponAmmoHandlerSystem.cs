@@ -71,6 +71,7 @@ public partial class PlayerWeaponAmmoHandlerSystem : SystemBase
                         if (strength <= 0) strength = 0;
                     }
                 }
+                
 
                 if (gun is { IsFiring: 1, Duration: 0 } && animatorWeightsComponent.aimWeight >= 0)
                     //if (gun is { IsFiring: 1, Duration: 0 } && animatorWeightsComponent.aimWeight >= .98)
