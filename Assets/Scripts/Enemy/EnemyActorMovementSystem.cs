@@ -84,9 +84,10 @@ namespace Enemy
                 // }
                 //
                 var weaponRaised = WeaponMotion.None;
-                var basicMovement = enemyMovement.enabled;
                 var meleeMovement = enemyMeleeMovement.enabled;
                 var weaponMovement = enemyWeaponMovement.enabled;
+                var basicMovement = enemyMovement.enabled;
+
                 var hasWeapon = weaponGroup.HasComponent(e);
                 var hasAim = actorWeaponAimGroup.HasComponent(e);
 
@@ -274,7 +275,7 @@ namespace Enemy
                 }
                 enemyMovement.animatorSpeed = impulseFactor;
                 enemyMovement.forwardVelocity = impulseFactor;
-                var moveSpeed = 3.5f;
+                var moveSpeed = defensiveStrategy.botSpeed;
                 var velZ = 1f;
                 moveState = enemyState.MoveState;
                 var speed = enemyState.Zone >= 2 ? moveSpeed : moveSpeed * 1.5f;
