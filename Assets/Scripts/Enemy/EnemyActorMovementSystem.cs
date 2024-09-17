@@ -130,6 +130,7 @@ namespace Enemy
                 var backupZoneFar = enemyMeleeMovement.combatStrikeDistanceZoneEnd;
                 var strike = false;
 
+
                 if (distanceToOpponent < backupZoneClose && meleeMovement)
                 {
                     enemyMovement.backup = true;
@@ -159,6 +160,7 @@ namespace Enemy
                     }
                 }
 
+                enemyState.enemyStrikeAllowed = true; //temp set during enemy melee MB
                 if (basicMovement || !enemyState.enemyStrikeAllowed)
                 {
                     strike = false;
@@ -166,8 +168,9 @@ namespace Enemy
 
 
                 var backup = enemyMovement.backup;
+                var updateAgent = !backup; //if backup reverse agent direction and control rotation (to do)
+
                 MoveStates moveState;
-                var updateAgent = true;
                 if (stayHome && distFromStation > chaseRange)
                 {
                     chaseRange = distFromStation;
@@ -185,8 +188,9 @@ namespace Enemy
                         moveState = MoveStates.Default;
                         enemyState.Zone = 2;
                         enemyMovement.AgentBackupMovement = true; //SetBackup EnemyMove
-                        var fwd = -enemyTransform.Forward();
-                        agentNextPosition += fwd * enemyMovement.enemyBackupSpeed * deltaTime;
+                        //var fwd = -enemyTransform.Forward();
+                        //agentNextPosition += fwd * enemyMovement.enemyBackupSpeed * deltaTime;
+                        agentNextPosition = enemyTransform.Position + matchup.backupDirection;
                         updateAgent = false;
                     }
                     else if (distanceToOpponent < enemyMeleeMovement.combatRangeDistance &&
@@ -242,28 +246,31 @@ namespace Enemy
 
                     if (updateAgent)
                     {
-                        enemyTransform.Position = enemyMovement.agentNextPosition;
+                        //enemyTransform.Position = enemyMovement.agentNextPosition;
                         enemyMovement.AgentAnimationMovement = true;
                     }
                     else
                     {
-                        enemyTransform.Position = agentNextPosition;
-                        enemyMovement.agentNextPosition = enemyTransform.Position;
+                        //enemyTransform.Position = agentNextPosition;
+                        //enemyMovement.agentNextPosition = enemyTransform.Position;
+                        enemyMovement.agentNextPosition = agentNextPosition;
+                        if (transformGroup.HasComponent(closestOpponent)) //Required?
+                        {
+                            //var closestOpponentPosition = transformGroup[closestOpponent].Position;
+                            //var direction = math.normalize(closestOpponentPosition - enemyPosition);
+                            var direction = matchup.backupDirection;
+                            direction.y = 0;
+
+                            var targetRotation =
+                                quaternion.LookRotationSafe(-direction, math.up()); //always face player
+                            enemyTransform.Rotation = targetRotation;
+                            transformGroup[e] = enemyTransform;
+                        }
                     }
                     //
-                    // if (transformGroup.HasComponent(closestOpponent))//Required?
-                    // {
-                    //     var closestOpponentPosition = transformGroup[closestOpponent].Position;
-                    //     var direction = math.normalize(closestOpponentPosition - enemyPosition);
-                    //     direction.y = 0;
-                    //     var targetRotation =
-                    //         quaternion.LookRotationSafe(direction, math.up()); //always face player
-                    //     enemyTransform.Rotation = targetRotation;
-                    // }
                 }
 
 
-                //transformGroup[e] = enemyTransform;
                 var impulseFactor = 1f;
                 if (impulse.activate)
                 {
@@ -273,6 +280,7 @@ namespace Enemy
                 {
                     impulseFactor = impulse.animSpeedRatioOnReceived;
                 }
+
                 enemyMovement.animatorSpeed = impulseFactor;
                 enemyMovement.forwardVelocity = impulseFactor;
                 var moveSpeed = defensiveStrategy.botSpeed;
@@ -295,10 +303,6 @@ namespace Enemy
                 velZ *= impulseFactor;
                 enemyMovement.locomotionPitch = velZ;
                 enemyMovement.forwardVelocity = velZ;
-                
-
-
-
             }
         }
     }

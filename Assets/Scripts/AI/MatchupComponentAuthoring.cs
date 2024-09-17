@@ -19,6 +19,7 @@ public struct MatchupComponent : IComponentData
     public bool validTarget;
     public float lookAtDistance;
     public float closestDistance;
+    public float3 backupDirection;
     public bool lookAt;
     public float3 targetZone;
     public float3 wayPointTargetPosition;

@@ -147,6 +147,8 @@ namespace AI
                     var forwardVector = math.forward(enemyRotation);
                     var vectorToOpponent = opponentPosition - enemyPosition;
                     var unitVectorToOpponent = math.normalize(vectorToOpponent);
+                    matchup.backupDirection = math.normalize(enemyPosition - opponentPosition);
+                    
                     var angleRadians = math.INFINITY;
                     var viewDistanceSq = math.INFINITY;
                     var dot = 1.0;
@@ -180,8 +182,6 @@ namespace AI
                     }
                 }
 
-                matchup.closestOpponentEntity = closestOpponentEntity;
-                matchup.closestDistance = closestDistance;
             }
 
             var closestOpponent = matchup.closestOpponentEntity;
@@ -197,6 +197,10 @@ namespace AI
                 matchup.targetZone = Vector3.zero;
                 matchup.isWaypointTarget = true; //NEED? 
             }
+
+            matchup.closestOpponentEntity = closestOpponentEntity;
+            matchup.closestDistance = closestDistance;
+
         }
     }
 }
