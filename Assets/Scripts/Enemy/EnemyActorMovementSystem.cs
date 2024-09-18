@@ -78,15 +78,11 @@ namespace Enemy
                 var chaseRange = enemyBehaviour.chaseRange;
                 var stopRange = enemyBehaviour.stopRange;
                 var aggression = enemyBehaviour.aggression;
-                // if (distanceToOpponent < stopRange)
-                // {
-                //     defensiveStrategy.botState = BotState.STOP;
-                // }
-                //
                 var weaponRaised = WeaponMotion.None;
                 var meleeMovement = enemyMeleeMovement.enabled;
                 var weaponMovement = enemyWeaponMovement.enabled;
                 var basicMovement = enemyMovement.enabled;
+                var shootRange = enemyWeaponMovement.shootRangeDistance;
 
                 var hasWeapon = weaponGroup.HasComponent(e);
                 var hasAim = actorWeaponAimGroup.HasComponent(e);
@@ -105,7 +101,7 @@ namespace Enemy
                     var weapon = weaponGroup[e];
                     var actorWeaponAim = actorWeaponAimGroup[e];
                     if (weapon is { IsFiring: 1, tooFarTooAttack: false } ||
-                        distanceToOpponent < enemyWeaponMovement.shootRangeDistance)
+                        distanceToOpponent < shootRange)
                     {
                         if (weapon.firingStage == FiringStage.None)
                         {
@@ -121,6 +117,7 @@ namespace Enemy
                     }
 
                     actorWeaponAim.weaponRaised = weaponRaised;
+                    Debug.Log("weapon " + weapon.firingStage);
                     weaponGroup[e] = weapon;
                     actorWeaponAimGroup[e] = actorWeaponAim;
                 }
@@ -134,11 +131,13 @@ namespace Enemy
                 if (distanceToOpponent < backupZoneClose && meleeMovement)
                 {
                     enemyMovement.backup = true;
+                    enemyMovement.updateAgent = false;
                     enemyMovement.speedMultiple = distanceToOpponent / backupZoneClose;
                     var n = randomNumber;
                     if (n <= aggression && enemyMovement.backupTimer <= 0 && distanceToOpponent > backupZoneClose / 2)
                     {
                         enemyMovement.backup = false;
+                        enemyMovement.updateAgent = true;
                         strike = true;
                     }
                 }
@@ -146,6 +145,7 @@ namespace Enemy
                 if (enemyMovement.backup && distanceToOpponent > backupZoneFar && meleeMovement)
                 {
                     enemyMovement.backup = false;
+                    enemyMovement.updateAgent = true;
                     enemyMovement.backupTimer = 0;
                 }
                 else if (distanceToOpponent >= backupZoneClose && distanceToOpponent <= backupZoneFar && meleeMovement)
@@ -157,6 +157,7 @@ namespace Enemy
                     {
                         strike = true;
                         enemyMovement.backup = false;
+                        enemyMovement.updateAgent = true;
                     }
                 }
 
@@ -167,8 +168,7 @@ namespace Enemy
                 }
 
 
-                var backup = enemyMovement.backup;
-                var updateAgent = !backup; //if backup reverse agent direction and control rotation (to do)
+                var backup = enemyMovement.backup;//read only after set above
 
                 MoveStates moveState;
                 if (stayHome && distFromStation > chaseRange)
@@ -188,10 +188,7 @@ namespace Enemy
                         moveState = MoveStates.Default;
                         enemyState.Zone = 2;
                         enemyMovement.AgentBackupMovement = true; //SetBackup EnemyMove
-                        //var fwd = -enemyTransform.Forward();
-                        //agentNextPosition += fwd * enemyMovement.enemyBackupSpeed * deltaTime;
                         agentNextPosition = enemyTransform.Position + matchup.backupDirection;
-                        updateAgent = false;
                     }
                     else if (distanceToOpponent < enemyMeleeMovement.combatRangeDistance &&
                              distanceToOpponent < chaseRange && meleeMovement)
@@ -222,7 +219,7 @@ namespace Enemy
                         moveState = MoveStates.Patrol;
                     }
                     else
-                    {
+                    { 
                         enemyState.Zone = 1;
                         moveState = MoveStates.Stopped;
                     }
@@ -242,7 +239,7 @@ namespace Enemy
                     }
 
                     var state = enemyState.MoveState;
-                    enemyMovement.updateAgent = updateAgent;
+                    var updateAgent = enemyMovement.updateAgent;
 
                     if (updateAgent)
                     {
@@ -267,6 +264,11 @@ namespace Enemy
                             transformGroup[e] = enemyTransform;
                         }
                     }
+                    
+                    
+                    
+                    
+                    
                     //
                 }
 
@@ -303,6 +305,7 @@ namespace Enemy
                 velZ *= impulseFactor;
                 enemyMovement.locomotionPitch = velZ;
                 enemyMovement.forwardVelocity = velZ;
+
             }
         }
     }

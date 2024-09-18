@@ -4,10 +4,12 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Enemy
 {
-    [UpdateInGroup(typeof(LateSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(LateSimulationSystemGroup))]
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [RequireMatchingQueriesForUpdate]
     public partial class EnemyAmmoHandlerSystem : SystemBase
     {
@@ -26,6 +28,7 @@ namespace Enemy
                 (
                     Entity entity,
                     ref AmmoManagerComponent ammoManagerComponent,
+                    in TargetZoneComponent targetZone,
                     in MatchupComponent matchupComponent,
                     in AnimatorWeightsComponent animatorWeightsComponent,
                     in LocalTransform enemyLocalTransform
@@ -48,27 +51,34 @@ namespace Enemy
                     {
                         enemyWeapon.firingStage = FiringStage.Start;
                     }
-                    else if (enemyWeapon is { IsFiring: 1, Duration: 0, } &&
-                             animatorWeightsComponent.aimWeight <= enemyWeapon.animTriggerWeight
-                            )
-                    {
-                        enemyWeapon.firingStage = FiringStage.Start;
-                    }
+                    //else if (enemyWeapon is { IsFiring: 1, Duration: 0, } &&
+                             //animatorWeightsComponent.aimWeight <= enemyWeapon.animTriggerWeight
+                            //)
+                    //{
+                       // enemyWeapon.firingStage = FiringStage.Start;
+                    //}
                     else if (enemyWeapon is { IsFiring: 1, Duration: 0, firingStage: FiringStage.Update }
                              &&
-                             animatorWeightsComponent.aimWeight > enemyWeapon.animTriggerWeight
+                             animatorWeightsComponent.aimWeight >= 0 
+                             //animatorWeightsComponent.aimWeight > enemyWeapon.animTriggerWeight
                             )
                     {
+                        Debug.Log("I am aiming");
                         enemyWeapon.Duration += dt;
                         var e = commandBuffer.Instantiate(enemyWeapon.PrimaryAmmo);
-                        var ammoStartTransform =
-                            LocalTransform.FromPosition(enemyWeapon.AmmoStartTransform
-                                .Position); //use bone mb transform
+                        //var ammoStartTransform =
+                          //  LocalTransform.FromPosition(enemyWeapon.AmmoStartTransform
+                             //   .Position); //use bone mb transform
+
+                        var ammoStartPosition = targetZone.rightHandZonePosition;
+                        
                         var playerLocalTransform = SystemAPI.GetComponent<LocalTransform>(playerE).Position;
-                        var ammoRotation = enemyWeapon.AmmoStartTransform.Rotation;
+                            //var ammoRotation = enemyWeapon.AmmoStartTransform.Rotation;
+                        var ammoRotation = enemyLocalTransform.Rotation;
+                        
                         var velocity = new PhysicsVelocity();
-                        var ammoStartXZ = new float3(ammoStartTransform.Position.x, ammoStartTransform.Position.y,
-                            ammoStartTransform.Position.z);
+                        var ammoStartXZ = new float3(ammoStartPosition.x, ammoStartPosition.y,
+                            ammoStartPosition.z);
                         var yOffset = 1; //make member later
                         var playerStartXZ = new float3(playerLocalTransform.x, playerLocalTransform.y + yOffset,
                             playerLocalTransform.z);
@@ -81,13 +91,19 @@ namespace Enemy
                         }
 
                         velocity.Linear = math.normalize(forward) * strength;
-                        ammoStartTransform.Rotation = ammoRotation;
+                        var ammoStartRotation = ammoRotation;
                         ammoManagerComponent.playSound = true;
                         ammoDataComponent.Shooter = entity;
-                        ammoStartTransform.Scale = ammoDataComponent.AmmoScale;
+                        var ammoStartScale = ammoDataComponent.AmmoScale;
                         commandBuffer.SetComponent(e, ammoDataComponent);
                         commandBuffer.SetComponent(e, new TriggerComponent
                             { Type = (int)TriggerType.Ammo, ParentEntity = entity, Entity = e, Active = true });
+
+                        var ammoStartTransform =
+                            LocalTransform.FromPositionRotationScale(ammoStartPosition, ammoStartRotation,
+                                ammoStartScale);
+
+                        
                         commandBuffer.SetComponent(e, ammoStartTransform);
                         commandBuffer.SetComponent(e, velocity);
                     }
@@ -102,6 +118,7 @@ namespace Enemy
                         }
                     }
 
+                    //Debug.Log("weapon " + enemyWeapon.gameStrength);
                     commandBuffer.SetComponent(entity, enemyWeapon);
                 }
             ).Run();

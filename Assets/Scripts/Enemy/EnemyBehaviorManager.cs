@@ -72,6 +72,8 @@ public struct EnemyMovementComponent : IComponentData
     public float forwardVelocity;
     public float locomotionPitch;
     public float blendSpeed;
+    public float aimBlendSpeed;
+    public float aimBlendValue;
 
 
 }
@@ -103,6 +105,7 @@ public class EnemyBehaviorManager : MonoBehaviour
     private float botSpeed = 5.0f;
 
     [SerializeField] private float blendSpeed = .1f;
+    [SerializeField] private float aimBlendSpeed = 1f;
     
 
 
@@ -147,7 +150,8 @@ public class EnemyBehaviorManager : MonoBehaviour
                 new EnemyMovementComponent
                 {
                     originalPosition = position, enabled = basicMovement, updateAgent = true, enemyBackupSpeed = authoring.backupSpeed,
-                    blendSpeed = authoring.blendSpeed
+                    blendSpeed = authoring.blendSpeed,
+                    aimBlendSpeed = authoring.aimBlendSpeed
                 });
 
             AddComponent(e, 
@@ -160,7 +164,7 @@ public class EnemyBehaviorManager : MonoBehaviour
                     originalSwitchUpTime = authoring.switchUpTime,
                     currentSwitchUpTime = authoring.switchUpTime,
                     combatRangeDistance = GetComponent<EnemyRatings>().Ratings.combatRangeDistance,
-                    enabled = meleeMovement,
+                    enabled = meleeMovement
                 });
 
             AddComponent(e, 
