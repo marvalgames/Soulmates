@@ -130,10 +130,12 @@ namespace Collisions
                     transform.Position = mousePosition;
                     SystemAPI.SetComponent(entity, transform);
                     actorAim.mousePosition = mousePosition;
-
+                    actorAim.screenPosition = _cam.WorldToScreenPoint(actorTransform.Position);
                     var ray = _cam.ScreenPointToRay(mousePosition);
                     var start = _cam.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 0));
-                    var end = ray.origin + Vector3.Normalize(ray.direction) * targetRange;
+                    var rayDirection = ray.direction;
+                    //rayDirection.z = 1;
+                    var end = ray.origin + Vector3.Normalize(rayDirection) * targetRange;
 
 
                     actorAim.rayCastStart = start;
@@ -142,6 +144,7 @@ namespace Collisions
 
                     start = actorAim.rayCastStart;
                     end = actorAim.rayCastEnd;
+                    
                     var inputForward = new RaycastInput
                     {
                         Start = start,
@@ -161,7 +164,6 @@ namespace Collisions
                     {
                         //code to check if hit point is behind player (facing same dir forward)
                         var closest = 0;
-                        ;
                         double hi = 1;
                         for (var i = 0; i < allHits.Length; i++)
                         {
@@ -177,8 +179,7 @@ namespace Collisions
                             var facing = dot > 0;
                             var body = collisionWorld.Bodies[hitList.RigidBodyIndex].Entity;
                             var enemy = (SystemAPI.HasComponent<EnemyComponent>(body));
-                            if (hitList.Fraction < hi && (facing || enemy))
-                                //if (hitList.Fraction < hi)
+                            if (hitList.Fraction < hi) 
                             {
                                 closest = i;
                                 hi = hitList.Fraction;
@@ -236,20 +237,21 @@ namespace Collisions
                     SystemAPI.SetComponent(actorEntity, actorAim);
                 }).Run();
 
-             actorWeaponAimEntityList.Dispose();
-             ecb.Playback(EntityManager);
-             ecb.Dispose();
+            actorWeaponAimEntityList.Dispose();
+            ecb.Playback(EntityManager);
+            ecb.Dispose();
         }
-        
-        
+
+        bool IsHitPointInScreenBounds(float3 hitWorldPosition)
+        {
+            float3 screenPoint = _cam.WorldToScreenPoint(hitWorldPosition);
+            return screenPoint.x >= 0 && screenPoint.x <= Screen.width && screenPoint.y >= 0 && screenPoint.y <= Screen.height && screenPoint.z > 0;
+        }
+
         private void SetCursorBounds()
         {
             mousePosition = new float3(Screen.width / 2f, Screen.height * .75f, 0);
-           
         }
-
-        
-        
     }
 }
 

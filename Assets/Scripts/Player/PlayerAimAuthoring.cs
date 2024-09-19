@@ -8,6 +8,7 @@ namespace Player
     {
         public float3 aimDirection;
         public float3 aimLocation;
+        public float3 crosshairDirection;
     }
 
     public class PlayerAimAuthoring : MonoBehaviour

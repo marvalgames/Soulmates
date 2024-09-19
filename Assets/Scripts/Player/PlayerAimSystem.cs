@@ -23,7 +23,8 @@ namespace Player
                 var aimTarget = actorAim.ValueRO.crosshairRaycastTarget;
                 var transform = SystemAPI.GetComponent<LocalTransform>(entity);
                 //playerAim.ValueRW.aimDirection = math.normalize(aimTarget - playerAim.ValueRW.aimLocation);
-                playerAim.ValueRW.aimDirection = math.normalize(aimTarget - transform.Position);
+                var aimDirection = math.normalize(aimTarget - transform.Position);
+                playerAim.ValueRW.aimDirection = aimDirection;
             }
 
         }

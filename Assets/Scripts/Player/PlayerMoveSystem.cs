@@ -1,5 +1,6 @@
 using System;
 using Collisions;
+using Player;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -123,8 +124,15 @@ namespace Sandbox.Player
                 if (actorWeapon)
                 {
                     var aimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(entity);
-                    var distanceFromTarget = math.distance(transform.ValueRW.Position, aimComponent.targetPosition);
+                    var playerAim = SystemAPI.GetComponent<PlayerAimComponent>(entity);//redundant
+                    var playerPosition = transform.ValueRW.Position;
+                    var distanceFromTarget = math.distance(playerPosition, aimComponent.targetPosition);
+                    var crosshairPosition = aimComponent.targetPosition;
+                    crosshairPosition.y = 0;
+                    
+                    var crosshairDirection = math.normalize(crosshairPosition-playerPosition);
                     aimComponent.distanceFromTarget = distanceFromTarget;
+                    aimComponent.
                     combatMode = aimComponent.combatMode;
                     if (aimComponent.aimMode)
                     {
@@ -132,8 +140,9 @@ namespace Sandbox.Player
                         combatMode = false;
                         forwardAdjustment = 2;
                     }
-
-                    SystemAPI.SetComponent(entity, aimComponent);
+                    playerAim.crosshairDirection = crosshairDirection;
+                    SystemAPI.SetComponent(entity, aimComponent);//combine these two as one component
+                    SystemAPI.SetComponent(entity, playerAim);
                 }
 
                 applyImpulseComponent.ValueRW.playerMoving = false;

@@ -32,6 +32,7 @@ namespace Sandbox.Player
         public float3 crosshairRaycastTarget;
         public float3 weaponLocation;
         public float3 mousePosition;
+        public float3 screenPosition;
         public float3 targetPosition;
         public LocalTransform target;
         public float3 rayCastStart;
