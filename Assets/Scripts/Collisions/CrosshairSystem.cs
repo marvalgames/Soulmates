@@ -34,10 +34,15 @@ namespace Collisions
         private Camera _cam;
         private float3 mousePosition;
         private readonly float targetRange = 100;
+        private float _xMin;
+        private float _xMax;
+        private float _yMin;
+        private float _yMax;
 
         protected override void OnCreate()
         {
             _cam = Camera.main;
+            SetCursorBounds();
         }
 
         protected override void OnUpdate()
@@ -74,6 +79,11 @@ namespace Collisions
                     var actorAim = SystemAPI.GetComponent<ActorWeaponAimComponent>(actorEntity);
                     var actorTransform = SystemAPI.GetComponent<LocalTransform>(actorEntity);
                     var input = SystemAPI.GetComponent<InputControllerComponent>(actorEntity);
+                    var viewportPct = crosshair.viewportPct;
+                    _xMin = Screen.width * (1 - viewportPct / 100);
+                    _xMax = Screen.width * viewportPct / 100;
+                    _yMin = Screen.height * (1 - viewportPct / 100);
+                    _yMax = Screen.height * viewportPct / 100;
 
 
                     //var playerToMouseDir = (float3)mousePosition - playerScreen;
@@ -111,10 +121,10 @@ namespace Collisions
 
                     //_targetPosition = _cam.ScreenToWorldPoint(mousePosition);
 
-                    //if (mousePosition.x < _xMin) mousePosition.x = _xMin;
-                    //if (mousePosition.x > _xMax) mousePosition.x = _xMax / 2;
-                    //if (mousePosition.y < _yMin) mousePosition.y = _yMin;
-                    //if (mousePosition.y > _yMax) mousePosition.y = _yMax / 2;
+                    if (mousePosition.x < _xMin) mousePosition.x = _xMin;
+                    if (mousePosition.x > _xMax) mousePosition.x = _xMax / 2;
+                    if (mousePosition.y < _yMin) mousePosition.y = _yMin;
+                    if (mousePosition.y > _yMax) mousePosition.y = _yMax / 2;
 
                     //CrosshairClass.transform.position = mousePosition; //*********************
                     transform.Position = mousePosition;
@@ -230,6 +240,16 @@ namespace Collisions
              ecb.Playback(EntityManager);
              ecb.Dispose();
         }
+        
+        
+        private void SetCursorBounds()
+        {
+            mousePosition = new float3(Screen.width / 2f, Screen.height * .75f, 0);
+           
+        }
+
+        
+        
     }
 }
 

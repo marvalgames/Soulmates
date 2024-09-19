@@ -62,12 +62,12 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
             ref LocalTransform localTransform, in PlayerAimComponent playerAimComponent) =>
         {
             playerWeaponAimComponent.aimMode = true;
-            var mb = actor.actorPrefabInstance.GetComponent<PlayerWeaponAim>();
+            //var mb = actor.actorPrefabInstance.GetComponent<PlayerWeaponAim>();
             var animator = actor.actorPrefabInstance.GetComponent<Animator>();
             //if (mb.Player.controllers.GetLastActiveController() == null || playerWeaponAimComponent.combatMode) return;
             if (playerWeaponAimComponent.combatMode) return;
-            mb.LateUpdateSystem(playerWeaponAimComponent.weaponRaised);
-            mb.aimDir = playerAimComponent.aimDirection;
+            //mb.LateUpdateSystem(playerWeaponAimComponent.weaponRaised);
+            //mb.aimDir = playerAimComponent.aimDirection;
             var aimDir = playerAimComponent.aimDirection;
             playerWeaponAimComponent.aimDirection = aimDir;
             var direction = math.normalize(aimDir);
@@ -76,7 +76,8 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
             var forwardVector = math.forward(localTransform.Rotation);
             forwardVector.y = 0;
             var degrees = Vector3.SignedAngle(forwardVector, direction, Vector3.up);
-            var turnSpeed = mb.turnSpeed;
+            //var turnSpeed = mb.turnSpeed;
+            var turnSpeed = 1;
             if (math.abs(degrees - playerWeaponAimComponent.angleToTarget) < .03)
             {
                 degrees = 0;
@@ -84,7 +85,8 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
 
             playerWeaponAimComponent.angleToTarget = degrees;
             var turningValue = math.sign(degrees);
-            var slerpDampTime = mb.rotateSpeed;
+            var slerpDampTime = 15;
+            //var slerpDampTime = mb.rotateSpeed;
             if (playerWeaponAimComponent.aimMode == false)
             {
                 turningValue = 0;

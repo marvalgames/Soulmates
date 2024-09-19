@@ -10,6 +10,8 @@ namespace Collisions
         public float raycastDistance;
         public float targetDelayCounter;
         public bool spawnCrosshair;
+        public float gamePadSensitivity;
+        public float viewportPct;
     }
 
     public class CrosshairClass : IComponentData
@@ -21,14 +23,14 @@ namespace Collisions
     {
         public GameObject crosshairInstance;
     }
-    
-    
+
 
     public class CrosshairComponentAuthoring : MonoBehaviour
     {
         public float raycastDistance = 140;
         public GameObject crosshairPrefab;
-
+        [SerializeField] [Range(0.0f, 100.0f)] private float gamePadSensitivity = 20;
+        [Range(80f, 100.0f)] [SerializeField] private float viewportPct = 100;
 
         void Start()
         {
@@ -41,11 +43,15 @@ namespace Collisions
             public override void Bake(CrosshairComponentAuthoring authoring)
             {
                 var entity = GetEntity(authoring, TransformUsageFlags.Dynamic);
-                AddComponent(entity, new CrosshairComponent {raycastDistance = authoring.raycastDistance});
-                AddComponentObject(entity, new CrosshairClass {crosshairPrefab = authoring.crosshairPrefab});                
+                AddComponent(entity,
+                    new CrosshairComponent
+                    {
+                        raycastDistance = authoring.raycastDistance, gamePadSensitivity = authoring.gamePadSensitivity,
+                        viewportPct = authoring.viewportPct
+                    });
+                AddComponentObject(entity, new CrosshairClass { crosshairPrefab = authoring.crosshairPrefab });
             }
         }
-
     }
 }
 

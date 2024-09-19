@@ -3,11 +3,9 @@ using Collisions;
 using ProjectDawn.Navigation;
 using Sandbox.Player;
 using Unity.Burst;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Enemy
@@ -117,7 +115,6 @@ namespace Enemy
                     }
 
                     actorWeaponAim.weaponRaised = weaponRaised;
-                    Debug.Log("weapon " + weapon.firingStage);
                     weaponGroup[e] = weapon;
                     actorWeaponAimGroup[e] = actorWeaponAim;
                 }
@@ -168,7 +165,7 @@ namespace Enemy
                 }
 
 
-                var backup = enemyMovement.backup;//read only after set above
+                var backup = enemyMovement.backup; //read only after set above
 
                 MoveStates moveState;
                 if (stayHome && distFromStation > chaseRange)
@@ -219,7 +216,7 @@ namespace Enemy
                         moveState = MoveStates.Patrol;
                     }
                     else
-                    { 
+                    {
                         enemyState.Zone = 1;
                         moveState = MoveStates.Stopped;
                     }
@@ -241,12 +238,12 @@ namespace Enemy
                     var state = enemyState.MoveState;
                     var updateAgent = enemyMovement.updateAgent;
 
-                    if (updateAgent)
+                    if (updateAgent && moveState != MoveStates.Stopped)
                     {
                         //enemyTransform.Position = enemyMovement.agentNextPosition;
                         enemyMovement.AgentAnimationMovement = true;
                     }
-                    else
+                    else //if stopped or agent off control rotation
                     {
                         //enemyTransform.Position = agentNextPosition;
                         //enemyMovement.agentNextPosition = enemyTransform.Position;
@@ -264,11 +261,8 @@ namespace Enemy
                             transformGroup[e] = enemyTransform;
                         }
                     }
-                    
-                    
-                    
-                    
-                    
+
+
                     //
                 }
 
@@ -305,7 +299,6 @@ namespace Enemy
                 velZ *= impulseFactor;
                 enemyMovement.locomotionPitch = velZ;
                 enemyMovement.forwardVelocity = velZ;
-
             }
         }
     }

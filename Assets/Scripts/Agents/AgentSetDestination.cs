@@ -8,10 +8,6 @@ namespace Sandbox.Agents
     
     public class AgentSetDestination : MonoBehaviour
     {
-
-        void Start()
-        {
-        }
     }
 
 // ECS component
@@ -24,10 +20,6 @@ namespace Sandbox.Agents
     {
         public override void Bake(AgentSetDestination authoring)
         {
-            //AddComponent(GetEntity(TransformUsageFlags.Dynamic),
-                //new SetDestination { Value = authoring.Target.position });
-           // AddComponent(GetEntity(TransformUsageFlags.Dynamic),
-             //   new SetDestination { });
         }
     }
 }

@@ -32,5 +32,7 @@ namespace Sandbox.Player
                 crosshair.crosshairInstance.GetComponent<ImageContainer>().crosshairImage.transform.position = pos;
             }
         }
+        
+        
     }
 }

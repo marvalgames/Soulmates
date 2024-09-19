@@ -46,7 +46,7 @@ namespace Enemy
                 var blendValue = enemyMove.ValueRW.aimBlendValue;
                 var blendSpeed = enemyMove.ValueRW.aimBlendSpeed;
                 var deltaTime = SystemAPI.Time.DeltaTime;
-                weaponRaised = true;
+                //weaponRaised = true;
                 if (weaponRaised)
                 {
                     blendValue = Mathf.Lerp(blendValue, 1, deltaTime * blendSpeed);
