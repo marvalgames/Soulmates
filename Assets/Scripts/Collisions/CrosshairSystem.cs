@@ -210,7 +210,7 @@ namespace Collisions
                                 actorAim.crosshairRaycastTarget.x = hitForward.Position.x;
                             }
 
-                            Debug.Log("hit breakable position ");
+                            //Debug.Log("hit breakable position ");
                         }
                         else if (SystemAPI.HasComponent<TriggerComponent>(e))
                         {
@@ -221,11 +221,11 @@ namespace Collisions
                                 actorAim.crosshairRaycastTarget.x = hitForward.Position.x;
                             }
 
-                            Debug.Log("hit something ");
+                            //Debug.Log("hit something ");
                         }
                         else
                         {
-                            Debug.Log("hit terrain ");
+                            //Debug.Log("hit terrain ");
                             actorAim.crosshairRaycastTarget.y = hitForward.Position.y;
                             actorAim.crosshairRaycastTarget.x = hitForward.Position.x;
                             actorAim.crosshairRaycastTarget.z = zLength;

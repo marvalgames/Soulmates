@@ -40,13 +40,14 @@ namespace Enemy
         //public Entity targetEntity;//not shown
         public float timeAfterMove = .5f;
 
-        [Header("EFFECTS")] public AudioSource moveAudioSource;
+        [Header("EFFECTS")] public GameObject meleeAudioSourcePrefab;
         public AudioClip moveAudioClip;
         public ParticleSystem moveParticleSystem;
     }
+
     public class MovesClass
     {
-        public AudioSource moveAudioSource;
+        public GameObject meleeAudioSource;
         //public AudioClip moveAudioClip;
         //public ParticleSystem moveParticleSystem;
     }
@@ -54,6 +55,12 @@ namespace Enemy
     public class MovesClassHolder : IComponentData
     {
         public List<MovesClass> movesClassList = new();
+        public GameObject meleeAudioSourcePrefab;
+    }
+
+    public class MovesInstance : IComponentData
+    {
+        public GameObject meleeAudioSourceInstance;
     }
 
     [InternalBufferCapacity(8)]
@@ -75,8 +82,9 @@ namespace Enemy
         public float hitPower = 10f;
         public bool allEnemyCollisionsCauseDamage;
         public List<Moves> moveList;
-
-        class EnemyMeleeBaker : Baker<EnemyMeleeAuthoring>
+        public GameObject audioSourceMeleePrefab;
+        
+        private class EnemyMeleeBaker : Baker<EnemyMeleeAuthoring>
         {
             public override void Bake(EnemyMeleeAuthoring authoring)
             {
@@ -103,27 +111,13 @@ namespace Enemy
                     buffer.Add(movesComponentElement);
                 }
 
-                // var movesClassList = (from t in authoring.moveList
-                //     let moveClass = new MovesClass
-                //     {
-                //         //moveAudioClip = t.moveAudioClip, 
-                //         moveAudioSource = t.moveAudioSource
-                //         //moveParticleSystem = t.moveParticleSystem
-                //     }
-                //     select t).ToList();
-
-                var movesClassList = new List<MovesClass>();
-                for (int i = 0; i < authoring.moveList.Count; i++)
-                {
-                    var moveClass = new MovesClass
-                    {
-                        moveAudioSource = authoring.moveList[i].moveAudioSource
-                    };
-                    movesClassList.Add(moveClass);
-                }
+                var movesClassList = authoring.moveList
+                    .Select(t => new MovesClass { meleeAudioSource = t.meleeAudioSourcePrefab }).ToList();
                 var movesClassHolder = new MovesClassHolder
                 {
-                    movesClassList = movesClassList
+                    //inconsistent adding AudioSource to holder AND to each element - That is only needed for the Clip and VFX 
+                    movesClassList = movesClassList,
+                    meleeAudioSourcePrefab = authoring.audioSourceMeleePrefab
                 };
 
 

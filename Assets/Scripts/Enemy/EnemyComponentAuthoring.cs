@@ -1,5 +1,6 @@
 ﻿using System;
 using Collisions;
+using Enemy;
 using Sandbox.Player;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -52,15 +53,17 @@ public struct EnemyStateComponent : IComponentData
     public float currentStateRequiredTime;
     public MoveStates LastState;
     public bool selectMove;
-    public bool selectMoveUsing;//choose from move list in enemy melee mb
     public MoveStates MoveState;
     public int Zone;
     public CombatStates CombatState;
     //public AttackStages AttackStages;
     public LocalTransform targetZone;
     public bool enemyStrikeAllowed;
-
-
+    public bool selectMoveUsing;//choose from move list in enemy melee mb
+    public AnimationType animationIndex;
+    public bool startMove;
+    public TriggerType triggerType;
+    public int combatAction;
 }
 
 public enum MoveStates
@@ -134,6 +137,7 @@ public struct MeleeComponent : IComponentData
     public float gameHitPower;
     public bool anyTouchDamage;
     public float3 target;
+    public bool instantiated;
 }
 
 

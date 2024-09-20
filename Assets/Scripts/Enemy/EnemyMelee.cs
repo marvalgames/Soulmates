@@ -46,27 +46,27 @@ public class EnemyMelee : MonoBehaviour
 
     public void SelectMoveUsing()
     {
-        if (moveList.Count == 0) return;
-        combatAction = Random.Range(1, moveList.Count + 1);
-        moveUsing = moveList[combatAction - 1];
-        if (moveUsing.moveAudioSource.isActiveAndEnabled)
-        {
-            if (moveUsing.moveAudioSource && moveUsing.moveAudioClip &&
-                !moveUsing.moveAudioSource.isPlaying)
-            {
-                moveUsing.moveAudioSource.clip = moveUsing.moveAudioClip;
-                moveUsing.moveAudioSource.PlayOneShot(moveUsing.moveAudioClip);
-            }
-        }
-
-        if (moveUsing.moveParticleSystem)
-        {
-            moveUsing.moveParticleSystem.Play(true);
-        }
-        
-
-        var animationIndex = (int)moveUsing.animationType;
-        var primaryTrigger = moveUsing.triggerType;
+        // if (moveList.Count == 0) return;
+        // combatAction = Random.Range(1, moveList.Count + 1);
+        // moveUsing = moveList[combatAction - 1];
+        // if (moveUsing.moveAudioSource.isActiveAndEnabled)
+        // {
+        //     if (moveUsing.moveAudioSource && moveUsing.moveAudioClip &&
+        //         !moveUsing.moveAudioSource.isPlaying)
+        //     {
+        //         moveUsing.moveAudioSource.clip = moveUsing.moveAudioClip;
+        //         moveUsing.moveAudioSource.PlayOneShot(moveUsing.moveAudioClip);
+        //     }
+        // }
+        //
+        // if (moveUsing.moveParticleSystem)
+        // {
+        //     moveUsing.moveParticleSystem.Play(true);
+        // }
+        //
+        //
+        // var animationIndex = (int)moveUsing.animationType;
+        // var primaryTrigger = moveUsing.triggerType;
 
         // if (entityManager.HasComponent<CheckedComponent>(meleeEntity))
         // {

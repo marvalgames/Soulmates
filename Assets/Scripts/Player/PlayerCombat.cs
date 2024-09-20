@@ -125,11 +125,11 @@ namespace Sandbox.Player
                 moveUsing.target = melee.target;
             }
 
-            if (moveUsing.moveAudioSource && moveUsing.moveAudioClip)
-            {
-                moveUsing.moveAudioSource.clip = moveUsing.moveAudioClip;
-                moveUsing.moveAudioSource.PlayOneShot(moveUsing.moveAudioClip);
-            }
+            // if (moveUsing.moveAudioSource && moveUsing.moveAudioClip)
+            // {
+            //     moveUsing.moveAudioSource.clip = moveUsing.moveAudioClip;
+            //     moveUsing.moveAudioSource.PlayOneShot(moveUsing.moveAudioClip);
+            // }
 
             if (moveUsing.moveParticleSystem)
             {

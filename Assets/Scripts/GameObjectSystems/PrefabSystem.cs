@@ -75,6 +75,7 @@ public partial struct InstantiatePrefabSystem : ISystem
             }
 
             GameObject audioGo = GameObject.Instantiate(prefab.audioSourceGo);
+            Debug.Log("Audio Player Jumped");
             ecb.AddComponent(entity,
                 new AudioPlayerJumpGO { AudioSource = audioGo.GetComponent<AudioSource>(), AudioClip = prefab.clip });
             ecb.RemoveComponent<PlayerJumpGameObjectClass>(entity);
