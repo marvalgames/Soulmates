@@ -82,7 +82,7 @@ namespace FIMSpace.Generating
                                 if (e.button < 2)
                                 {
                                     FieldCell c;
-                                    if (modifyGrid) c = PaintGrid(grid, preset, e, sceneCam, e.button == 1, root, yLevel, cellWorldSize, rootOff, is2D);
+                                    if (modifyGrid) c = PaintGrid(grid, preset, e, sceneCam, e.button == 1 || e.control /* mac */, root, yLevel, cellWorldSize, rootOff, is2D);
                                     else c = PaintGrid(grid, preset, e, sceneCam, null, root, yLevel, cellWorldSize, rootOff, is2D);
 
                                     ClearEvent(e, paintNow);

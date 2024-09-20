@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FIMSpace.Generating.Planning
 {
-    [CreateAssetMenu] // Use to generate reference file
+    //[CreateAssetMenu] // Use to generate reference file
     public class RandomizeInstancesCountOperation : FieldPlannerOperationBase
     {
         public override string Description => "Randomize intanes count for the planner, called for main instance, before generating.";

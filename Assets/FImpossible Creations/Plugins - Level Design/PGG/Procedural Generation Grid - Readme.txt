@@ -1,7 +1,7 @@
 __________________________________________________________________________________________
 
 Package "Procedural Generation Grid"
-Version 1.6.6.2.3 (Beta)
+Version 1.6.6.2.7 (Beta)
 
 Made by FImpossible Creations - Filip Moeglich
 https://www.FilipMoeglich.pl
@@ -64,6 +64,18 @@ Description:
 - Package is providing additional packages for randomly placing smaller objects in physical space using Unity’s collision system (Object’s Stamper and Pipe Generator)
 
 __________________________________________________________________________________________
+
+Beta Version 1.6.6.2.7:
+- Added Sync Instances Count Planner Operation
+
+Beta Version 1.6.6.2.6:
+- Grid Painter now will remove cells with the first mouse button when holding control in the same time (for mac users)
+
+Beta Version 1.6.6.2.5:
+- Now adding cell instructions to the cell is allowing to add multiple instructions with the same definition but different directions/positions/helper strings
+
+Beta Version 1.6.6.2.4:
+- Add Internal Field Planner value now has option to be Saved for later use after generating level
 
 Beta Version 1.6.6.2.3:
 - Added 'ApplyPrefabScale' property in 'Check If Collides' node

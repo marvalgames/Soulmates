@@ -683,8 +683,17 @@ namespace FIMSpace.Generating
         {
             if (CellInstructions == null) CellInstructions = new List<SpawnInstruction>();
 
-            for (int i = 0; i < CellInstructions.Count; i++)
-                if (CellInstructions[i].definition.InstructionType == instruction.definition.InstructionType) return;
+            // Prevent doubled instructions
+            for( int i = 0; i < CellInstructions.Count; i++ )
+            {
+                // If differs, don't need to check rest of the params for iterated instruction
+                if( CellInstructions[i].definition.InstructionType != instruction.definition.InstructionType ) continue;
+                if( CellInstructions[i].HelperString != instruction.HelperString ) continue;
+                if( CellInstructions[i].gridPosition != instruction.gridPosition ) continue;
+                if( CellInstructions[i].useDirection != instruction.useDirection ) continue;
+                if( instruction.useDirection ) if( CellInstructions[i].desiredDirection != instruction.desiredDirection ) continue;
+                return; // Don't add - instructions are doubled
+            }
 
             if (CellInstructions.Contains(instruction) == false) CellInstructions.Add(instruction);
         }

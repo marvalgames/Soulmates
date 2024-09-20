@@ -1617,7 +1617,7 @@ namespace FIMSpace.Generating
                     bool rem = false;
 
                     var e = Event.current;
-                    if (e != null) if (e.isMouse) if (e.type == EventType.MouseDown || e.type == EventType.MouseDrag) if (Event.current.button == 1) rem = true;
+                    if (e != null) if (e.isMouse) if (e.type == EventType.MouseDown || e.type == EventType.MouseDrag) if (Event.current.button == 1 || Event.current.control /* mac */) rem = true;
 
                     var cell = GridVisualize.ProcessInputEvents(ref Get._Editor_Paint, Get.grid, Get.FieldPreset, ref Get._Editor_YLevel, Get.transform, false, cSize.y, is2D);
 

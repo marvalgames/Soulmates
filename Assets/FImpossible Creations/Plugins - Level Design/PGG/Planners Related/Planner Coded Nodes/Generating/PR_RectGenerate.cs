@@ -39,13 +39,13 @@ namespace FIMSpace.Generating.Planning.PlannerNodes.Generating
 
             RectShape.Switch_DisconnectedReturnsByID = false;
 
-            CheckerField3D rectChecker = new CheckerField3D();
-
             CheckerField3D myChecker = null;
             if( ParentPlanner != null ) myChecker = ParentPlanner.LatestChecker;
             if( myChecker == null && CurrentExecutingPlanner != null ) myChecker = CurrentExecutingPlanner.LatestChecker;
             if( myChecker == null && newResult != null ) myChecker = newResult.Checker;
-            if( myChecker != null ) rectChecker.CopyParamsFrom( myChecker );
+
+            CheckerField3D rectChecker = new CheckerField3D();
+            if ( myChecker != null ) rectChecker.CopyParamsFrom( myChecker );
 
             rectChecker.SetSize( Width.GetInputValue, Mathf.Max( 1, Height.GetInputValue ), Depth.GetInputValue );
             if( CenterOrigin.GetInputValue ) rectChecker.CenterizeOrigin();

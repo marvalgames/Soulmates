@@ -31,6 +31,7 @@ namespace FIMSpace.Generating.Planning.PlannerNodes.Field
         [HideInInspector] public EOperation Operation = EOperation.Assign;
         [Tooltip("If it will be new variable generation, it can assign custom value as initial value")]
         [HideInInspector][Port(EPortPinType.Input, 1)] public PGGUniversalPort DefaultValue;
+        [HideInInspector, Tooltip("Variable can be saved and used after generating fields using Build Planner Executor, through custom coding")] public bool AddToSaved = false;
 
         public enum EOperation { Assign, Add, Subtract, Divide, Multiply }
 
@@ -96,7 +97,8 @@ namespace FIMSpace.Generating.Planning.PlannerNodes.Field
                 }
             }
 
-            var internalVar = field.GetInternalValueVariable(name, defaultValue);
+            FieldVariable internalVar = AddToSaved ? field.GetSavedInternalValueVariable(name, defaultValue) : field.GetInternalValueVariable(name, defaultValue);
+
             if (internalVar != null)
             {
                 if (Operation == EOperation.Assign)
@@ -135,10 +137,11 @@ namespace FIMSpace.Generating.Planning.PlannerNodes.Field
 
             if (_EditorFoldout)
             {
-                _extraHeight = 38;
+                _extraHeight = 60;
                 if (sp == null) sp = baseSerializedObject.FindProperty("Operation");
                 SerializedProperty s = sp.Copy();
                 EditorGUILayout.PropertyField(s);
+                s.Next(false); EditorGUILayout.PropertyField(s);
                 s.Next(false); EditorGUILayout.PropertyField(s);
             }
 
