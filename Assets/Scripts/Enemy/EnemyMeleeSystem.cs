@@ -1,4 +1,5 @@
 using Collisions;
+using Sandbox.Player;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -47,11 +48,24 @@ namespace Enemy
     {
         protected override void OnUpdate()
         {
-            Entities.WithoutBurst().ForEach((EnemyMelee enemyMelee, in EnemyStateComponent enemyStateComponent )=>
+            Entities.WithoutBurst().ForEach((ActorInstance actorInstance, in EnemyStateComponent enemyStateComponent )=>
             {
+                var enemyMelee = actorInstance.actorPrefabInstance.GetComponent<EnemyMelee>();
                 if (enemyStateComponent.selectMoveUsing)
                 {
                     enemyMelee.SelectMoveUsing();
+                    // if (entityManager.HasComponent<CheckedComponent>(meleeEntity))
+                    // {
+                    //     var defense = animationIndex == (int)AnimationType.Deflect;
+                    //     var checkedComponent = entityManager.GetComponentData<CheckedComponent>(meleeEntity);
+                    //     checkedComponent.anyDefenseStarted = defense;
+                    //     checkedComponent.primaryTrigger = primaryTrigger;
+                    //     checkedComponent.animationIndex = animationIndex;
+                    //     entityManager.SetComponentData(meleeEntity, checkedComponent);
+                    //     StartMove(animationIndex);
+                    // }
+                    
+                    
                 }
                 
             }).Run();

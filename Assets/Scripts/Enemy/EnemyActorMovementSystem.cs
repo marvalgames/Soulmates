@@ -6,6 +6,7 @@ using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Enemy
@@ -186,6 +187,11 @@ namespace Enemy
                         enemyState.Zone = 2;
                         enemyMovement.AgentBackupMovement = true; //SetBackup EnemyMove
                         agentNextPosition = enemyTransform.Position + matchup.backupDirection;
+                        enemyMovement.backupTimer += deltaTime;
+                        if (enemyMovement.backupTimer >= enemyMovement.backupSeconds)
+                        {
+                            enemyMovement.backupTimer = 0;
+                        }
                     }
                     else if (distanceToOpponent < enemyMeleeMovement.combatRangeDistance &&
                              distanceToOpponent < chaseRange && meleeMovement)

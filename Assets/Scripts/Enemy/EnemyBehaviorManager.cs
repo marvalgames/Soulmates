@@ -66,6 +66,7 @@ public struct EnemyMovementComponent : IComponentData
     public bool updateAgent;
     public float enemyBackupSpeed;
     public float backupTimer;
+    public float backupSeconds;
     public float3 originalPosition;
     public bool nearEdge;
     public float animatorSpeed;
@@ -106,6 +107,7 @@ public class EnemyBehaviorManager : MonoBehaviour
 
     [SerializeField] private float blendSpeed = .1f;
     [SerializeField] private float aimBlendSpeed = 1f;
+    [SerializeField] private float backupSeconds = 1.5f;
     
 
 
@@ -151,7 +153,8 @@ public class EnemyBehaviorManager : MonoBehaviour
                 {
                     originalPosition = position, enabled = basicMovement, updateAgent = true, enemyBackupSpeed = authoring.backupSpeed,
                     blendSpeed = authoring.blendSpeed,
-                    aimBlendSpeed = authoring.aimBlendSpeed
+                    aimBlendSpeed = authoring.aimBlendSpeed,
+                    backupSeconds = authoring.backupSeconds
                 });
 
             AddComponent(e, 

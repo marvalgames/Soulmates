@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Collisions;
+using Enemy;
 using Unity.Entities;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ namespace Sandbox.Player
             {
                 var move = movesInspector.Moves[i];
                 move.target = moveUsing.target; //default target assigned in system
-                move.targetEntity = meleeEntity;
+                //move.targetEntity = meleeEntity;
                 moveList.Add(move);
             }
 

@@ -1,4 +1,5 @@
-﻿using Sandbox.Player;
+﻿using Enemy;
+using Sandbox.Player;
 using UnityEngine;
 
 public class LocomotionState : StateMachineBehaviour

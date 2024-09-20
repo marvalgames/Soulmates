@@ -3,7 +3,140 @@ using Collisions;
 using Sandbox.Player;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
+
+
+public enum WayPointAction
+{
+    Move,
+    Jump,
+    Idle,
+    Attack,
+    Fire,
+    N_A//strike
+}
+
+public enum WayPointAnimation
+{
+    Move,
+    Jump,
+    Idle,
+    Attack,
+    Strike,
+    N_A
+}
+
+
+[Serializable]
+public class WayPoint
+{
+    public Vector3 targetPosition;
+    public Vector3 offset;
+    public WayPointAction action;
+    //public WayPointAnimation animation;
+    //public WeaponType wayPointWeaponType;//used for strike type
+    public float duration = 1;
+    public float speed = 1;
+    public bool chase;
+    public int weaponListIndex;// from weapon manager
+    public int ammoListIndex;//from ammo manager
+    public int audioListIndex;
+
+}
+
+
+public struct EnemyStateComponent : IComponentData
+{
+    public float currentStateTimer;
+    public float currentStateRequiredTime;
+    public MoveStates LastState;
+    public bool selectMove;
+    public bool selectMoveUsing;//choose from move list in enemy melee mb
+    public MoveStates MoveState;
+    public int Zone;
+    public CombatStates CombatState;
+    //public AttackStages AttackStages;
+    public LocalTransform targetZone;
+    public bool enemyStrikeAllowed;
+
+
+}
+
+public enum MoveStates
+{
+    Default,
+    Idle,
+    Patrol,
+    Chase,
+    Defensive,
+    Stopped
+}
+
+public enum CombatStates
+{
+    Default,
+    Idle,
+    Chase,
+    Stance,
+    Aim
+}
+
+public enum EnemyRoles
+{
+    None,
+    Chase,
+    Patrol,
+    Security,//removes all but first waypoint
+    Evade,
+    Random
+}
+
+public enum DefensiveRoles
+{
+    None,
+    Chase,
+    Patrol,
+    Evade,
+    Random
+}
+
+public enum NavigationStates
+{
+    Default,
+    Movement,
+    Melee,
+    Weapon
+}
+
+
+
+public enum AttackStages
+{
+    No,
+    Start,
+    Action,
+    End
+}
+
+public struct NavMeshAgentComponent : IComponentData
+{
+    public float agentSpeed;
+    public bool hasPath;
+    public bool isStopped;
+
+}
+
+public struct MeleeComponent : IComponentData
+{
+    public bool Available;
+    public float hitPower;
+    public float gameHitPower;
+    public bool anyTouchDamage;
+    public float3 target;
+}
+
+
 
 [Serializable]
 public class EnemyClass : IComponentData
