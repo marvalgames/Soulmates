@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 namespace Enemy
 {
     //[UpdateAfter(typeof(EnemyMovementSystem))]
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     public partial struct EnemySetupMoveMeleeSystem : ISystem
     {
         [BurstCompile]
@@ -26,7 +27,7 @@ namespace Enemy
                 var enemyPosition = enemyLocalTransform.ValueRO.Position;
                 var playerPosition = matchupComponent.ValueRO.wayPointTargetPosition;
                 var dist = math.distance(playerPosition, enemyPosition);
-                if (enemyAttackComponent.ValueRW.selectMove)
+                if (enemyAttackComponent.ValueRW is { selectMove: true })
                 {
                     enemyAttackComponent.ValueRW.selectMoveUsing = true;
                 }
@@ -50,14 +51,14 @@ namespace Enemy
     public partial struct EnemySelectMoveMeleeSystem : ISystem
     {
         private Unity.Mathematics.Random random;
+
         public void OnCreate(ref SystemState state)
         {
             // Seed the random generator (for example, with a frame count or a time-based value)
             random = new Unity.Mathematics.Random(65535);
         }
-        
-        
-        
+
+
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
@@ -85,22 +86,19 @@ namespace Enemy
                     }
                 }
             }
-
-
         }
     }
-    
+
     [UpdateAfter(typeof(EnemySelectMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveManagedMeleeSystem : ISystem
     {
-        
         public void OnUpdate(ref SystemState state)
         {
             var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
                 .CreateCommandBuffer(state.WorldUnmanaged);
 
-            foreach (var (movesHolder, melee , entity)
+            foreach (var (movesHolder, melee, entity)
                      in SystemAPI.Query<MovesClassHolder, RefRW<MeleeComponent>>().WithEntityAccess())
             {
                 if (!melee.ValueRW.instantiated)
@@ -108,41 +106,54 @@ namespace Enemy
                     var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
                     go.SetActive(true);
                     commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
-                    //commandBuffer.AddComponent(entity, new ActorInstance { actorPrefabInstance = go, linkedEntity = entity });
                     melee.ValueRW.instantiated = true;
                 }
             }
-            
-            
-            foreach (var (actor, moves, enemyState, entity) in SystemAPI.Query<ActorInstance, MovesInstance, RefRW<EnemyStateComponent>>().WithEntityAccess())
+
+
+            foreach (var (actor, movesHolder, movesInstance, enemyState, entity) in SystemAPI
+                         .Query<ActorInstance, MovesClassHolder, MovesInstance, RefRW<EnemyStateComponent>>()
+                         .WithEntityAccess())
             {
                 var combatAction = Animator.StringToHash("CombatAction");
-
+                var animationStage = Animator.StringToHash("State");
+                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
-                if (enemyState.ValueRW is { startMove: true, enemyStrikeAllowed: true })//check strike allowed always true for testing
+                var audioClipElement = movesHolder.movesClassList;
+                var animatorState = animator.GetCurrentAnimatorStateInfo(0);
+                //var normalizedTime = enemyState.ValueRW.normalizedTime;
+                //Debug.Log("animator " + animator.GetInteger(combatAction));
+                //Debug.Log("name " + animatorState.shortNameHash.ToString());
+                //animatorState.
+
+                //enemyState.ValueRW.enemyStrikeAllowed = true;
+                //enemyState.ValueRW.enemyStrikeAllowed = animator.GetInteger(combatAction) == 0;
+
+                //var normalizedTime = math.frac(animatorState.normalizedTime);
+                //enemyState.ValueRW.normalizedTime = normalizedTime;
+                //enemyState.ValueRW.enemyStrikeAllowed = animatorState.normalizedTime >= 1f;
+                
+                enemyState.ValueRW.animationStage = (AnimationStage)animator.GetInteger(animationStage);
+                Debug.Log("stage " + animator.GetInteger(animationStage));
+                
+                if (enemyState.ValueRW is { startMove: true, animationStage: AnimationStage.Enter }) //check strike allowed always true for testing
                 {
-                    var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                    Debug.Log("Move started");
+                    enemyState.ValueRW.startMove = false;
+                    //var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                     var animationIndex = enemyState.ValueRW.animationIndex;
                     var combatActionIndex = enemyState.ValueRW.combatAction;
-                    //var audioSource = moves.movesClassList[combatActionIndex].;
-                    var audioSource = moves.meleeAudioSourceInstance.GetComponent<AudioSource>();
-                    var audioClip = moves.meleeAudioSourceInstance.GetComponent<AudioSource>().clip;
-                    Debug.Log("Audio Source " + audioSource.clip);
+                    var clip = audioClipElement[combatActionIndex].moveAudioClip;
+                    var audioSource = movesInstance.meleeAudioSourceInstance.GetComponent<AudioSource>();
                     if (!audioSource.isPlaying)
                     {
-                        audioSource.PlayOneShot(audioClip);
+                        audioSource.PlayOneShot(clip);
                     }
 
                     //var info = animator.GetCurrentAnimatorClipInfo(0).GetValue()
                     animator.SetInteger(combatAction, (int)animationIndex);
                 }
             }
-            
         }
     }
-    
-    
-    
-    
-    
 }

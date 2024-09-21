@@ -727,6 +727,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: State
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -783,7 +789,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f6d788ee7125f94b88f6306c1190a4a, type: 3}
   m_Name: 
@@ -1455,7 +1461,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: sword shield kick
+  m_Name: kick
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1512,7 +1518,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: lead_jab
+  m_Name: jab
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1541,7 +1547,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack Start State
+  m_Name: Attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1629,15 +1635,15 @@ AnimatorStateMachine:
   m_StateMachineTransitions:
   - first: {fileID: 1107207875399562484}
     second: []
+  - first: {fileID: 1107307722106823392}
+    second:
+    - {fileID: 7894211219712173314}
   - first: {fileID: 1107438325616211404}
     second:
     - {fileID: 6712230498449495909}
   - first: {fileID: 1107753936289822652}
     second:
     - {fileID: -7115883707691550307}
-  - first: {fileID: 1107307722106823392}
-    second:
-    - {fileID: 7894211219712173314}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -5380, y: -4110, z: 0}
   m_EntryPosition: {x: -5280, y: -4310, z: 0}
@@ -1735,7 +1741,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pro longbow STRIKE
+  m_Name: strike
   m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:

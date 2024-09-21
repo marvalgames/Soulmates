@@ -45,10 +45,10 @@ namespace Enemy
         public ParticleSystem moveParticleSystem;
     }
 
-    public class MovesClass
+    public class MovesClass : IComponentData
     {
         public GameObject meleeAudioSource;
-        //public AudioClip moveAudioClip;
+        public AudioClip moveAudioClip;
         //public ParticleSystem moveParticleSystem;
     }
 
@@ -111,8 +111,14 @@ namespace Enemy
                     buffer.Add(movesComponentElement);
                 }
 
-                var movesClassList = authoring.moveList
-                    .Select(t => new MovesClass { meleeAudioSource = t.meleeAudioSourcePrefab }).ToList();
+                var movesClassList = new List<MovesClass>();
+                for (var i = 0; i < authoring.moveList.Count; i++)
+                {
+                    var move = authoring.moveList[i];
+                    var addMove = new MovesClass
+                        { meleeAudioSource = authoring.audioSourceMeleePrefab, moveAudioClip = move.moveAudioClip };
+                    movesClassList.Add(addMove);
+                }
                 var movesClassHolder = new MovesClassHolder
                 {
                     //inconsistent adding AudioSource to holder AND to each element - That is only needed for the Clip and VFX 

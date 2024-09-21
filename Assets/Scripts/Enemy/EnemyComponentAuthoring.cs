@@ -28,6 +28,13 @@ public enum WayPointAnimation
     N_A
 }
 
+public enum AnimationStage
+{
+    Enter,
+    Update,
+    Exit
+    
+}
 
 [Serializable]
 public class WayPoint
@@ -64,7 +71,11 @@ public struct EnemyStateComponent : IComponentData
     public bool startMove;
     public TriggerType triggerType;
     public int combatAction;
+    public float normalizedTime;
+    public AnimationStage animationStage;
+    
 }
+
 
 public enum MoveStates
 {
@@ -298,7 +309,7 @@ public class EnemyComponentAuthoring : MonoBehaviour
             AddComponent(e, new CheckedComponent());
 
             AddComponent(e,
-                new EnemyStateComponent { MoveState = MoveStates.Default, CombatState = CombatStates.Default });
+                new EnemyStateComponent { MoveState = MoveStates.Default, CombatState = CombatStates.Default, animationStage = AnimationStage.Exit});
 
             //AddComponent(new EnemyClass(){go = authoring.gameObject});
         }

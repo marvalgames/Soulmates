@@ -159,8 +159,9 @@ namespace Enemy
                     }
                 }
 
-                enemyState.enemyStrikeAllowed = true; //temp set during enemy melee MB
-                if (basicMovement || !enemyState.enemyStrikeAllowed)
+                //enemyState.enemyStrikeAllowed = enemyState.normalizedTime < .1f; //temp set during enemy melee MB
+                
+                if (basicMovement)
                 {
                     strike = false;
                 }
