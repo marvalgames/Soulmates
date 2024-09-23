@@ -40,7 +40,6 @@ namespace Sandbox.Player
                 //actor.actorPrefabInstance.SetActive(true);
                 actor.actorPrefabInstance.transform.position = entityTransform.ValueRO.Position;
                 actor.actorPrefabInstance.transform.rotation = entityTransform.ValueRO.Rotation;
-                actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().linkedEntity = entity;
             }
 
 

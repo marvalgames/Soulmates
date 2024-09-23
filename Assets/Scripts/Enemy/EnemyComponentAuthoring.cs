@@ -66,6 +66,9 @@ public struct EnemyStateComponent : IComponentData
     //public AttackStages AttackStages;
     public LocalTransform targetZone;
     public bool enemyStrikeAllowed;
+    public int animationFrameCounter;
+    public bool firstFrame;
+    public bool lastFrame;
     public bool selectMoveUsing;//choose from move list in enemy melee mb
     public AnimationType animationIndex;
     public bool startMove;
@@ -309,7 +312,7 @@ public class EnemyComponentAuthoring : MonoBehaviour
             AddComponent(e, new CheckedComponent());
 
             AddComponent(e,
-                new EnemyStateComponent { MoveState = MoveStates.Default, CombatState = CombatStates.Default, animationStage = AnimationStage.Exit});
+                new EnemyStateComponent { enemyStrikeAllowed = true, MoveState = MoveStates.Default, CombatState = CombatStates.Default});
 
             //AddComponent(new EnemyClass(){go = authoring.gameObject});
         }

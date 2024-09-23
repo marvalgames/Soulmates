@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sandbox.Player;
+using UnityEngine;
 
 public class CombatActionState : StateMachineBehaviour
 {
@@ -14,6 +15,8 @@ public class CombatActionState : StateMachineBehaviour
         // animator.GetComponent<EnemyMelee>().StartIK();
         //
         animator.SetInteger(State, 0);
+        animator.GetComponent<ActorEntityTracker>().animationStage = AnimationStage.Enter;
+        Debug.Log("STRIKE START");
 
 
     }
@@ -23,7 +26,9 @@ public class CombatActionState : StateMachineBehaviour
     {
         // Implement code that processes and affects root motion
         //animator.GetComponent<EnemyMelee>().StartMotionUpdateCheckComponent();
+        
         animator.SetInteger(State, 1);
+        animator.GetComponent<ActorEntityTracker>().animationStage = AnimationStage.Update;
 
     }
 
@@ -41,6 +46,7 @@ public class CombatActionState : StateMachineBehaviour
         // animator.GetComponent<EnemyMelee>().StopIK();
         // animator.GetComponent<EnemyMelee>().EndAttack();
         animator.SetInteger(State, 2);
+        animator.GetComponent<ActorEntityTracker>().animationStage = AnimationStage.Exit;
         Debug.Log("STRIKE END");
 
 

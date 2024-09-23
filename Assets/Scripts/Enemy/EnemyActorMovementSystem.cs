@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 namespace Enemy
 {
-    [RequireMatchingQueriesForUpdate]
+    //[RequireMatchingQueriesForUpdate]
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(MatchupSystem))]
     public partial struct EnemyActorMovementSystem : ISystem
@@ -64,6 +64,7 @@ namespace Enemy
                 in CheckedComponent checkedComponent)
             {
                 //if (defensiveStrategy.currentRole == DefensiveRoles.None || matchup.isWaypointTarget) return;
+
                 defensiveStrategy.botState = BotState.MOVING;
                 var enemyTransform = transformGroup[e];
                 var closestOpponent = matchup.closestOpponentEntity;
@@ -160,13 +161,21 @@ namespace Enemy
                 }
 
                 //enemyState.enemyStrikeAllowed = enemyState.normalizedTime < .1f; //temp set during enemy melee MB
+                //enemyState.enemyStrikeAllowed = enemyState.animationStage == AnimationStage.Exit;
+                //if (enemyState.enemyStrikeAllowed)
+                //{
+                //enemyState.enemyStrikeAllowed = enemyState.animationStage == AnimationStage.Exit || enemyState.animationFrameCounter == 0;
+                //}
+                
+                //enemyState.enemyStrikeAllowed = true;
+                enemyState.selectMove = false;
                 
                 if (basicMovement)
                 {
                     strike = false;
+                    //enemyState.enemyStrikeAllowed = false;
                 }
-
-
+                
                 var backup = enemyMovement.backup; //read only after set above
 
                 MoveStates moveState;
@@ -178,6 +187,7 @@ namespace Enemy
                 if (!checkedComponent.anyAttackStarted && !backup && strike && distanceToOpponent < chaseRange)
                 {
                     enemyState.selectMove = true;
+                    enemyState.enemyStrikeAllowed = true;
                     enemyState.Zone = 3;
                 }
                 else if (!checkedComponent.anyAttackStarted)

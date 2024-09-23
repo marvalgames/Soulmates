@@ -24,6 +24,7 @@ namespace Enemy
             var zone = Animator.StringToHash("Zone");
             var velz = Animator.StringToHash("velz");
             var Aim = Animator.StringToHash("Aim");
+            var combatAction = Animator.StringToHash("CombatAction");
 
 
             foreach (var (enemyState, enemyMove, actor, entity) in
@@ -32,6 +33,7 @@ namespace Enemy
             {
                 var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                 animator.speed = enemyMove.ValueRO.animatorSpeed;
+                animator.SetInteger(zone, animator.GetInteger(combatAction) > 0 ? 3 : enemyState.ValueRO.Zone);
                 animator.SetInteger(zone, enemyState.ValueRO.Zone);
                 animator.SetFloat(velz, enemyMove.ValueRO.forwardVelocity, enemyMove.ValueRO.blendSpeed,
                     SystemAPI.Time.DeltaTime);
