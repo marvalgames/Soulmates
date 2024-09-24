@@ -70,7 +70,7 @@ public struct EnemyStateComponent : IComponentData
     public int animationFrameCounter;
     public bool firstFrame;
     public bool lastFrame;
-    public bool selectMoveUsing;//choose from move list in enemy melee mb
+    //public bool selectMoveUsing;//choose from move list in enemy melee mb
     public AnimationType animationIndex;
     public bool startMove;
     public TriggerType triggerType;

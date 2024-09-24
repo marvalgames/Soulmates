@@ -9,6 +9,8 @@ using UnityEngine;
 
 namespace Enemy
 {
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateAfter(typeof(EnemyActorMovementSystem))]
     public partial struct EnemyActorManagedSystem : ISystem
     {
         [BurstCompile]

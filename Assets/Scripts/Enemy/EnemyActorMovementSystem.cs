@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 namespace Enemy
 {
-    //[RequireMatchingQueriesForUpdate]
+    [RequireMatchingQueriesForUpdate]
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(MatchupSystem))]
     public partial struct EnemyActorMovementSystem : ISystem
@@ -167,7 +167,7 @@ namespace Enemy
                 //}
                 
                 //enemyState.enemyStrikeAllowed = true;
-                enemyState.selectMove = false;
+                //enemyState.selectMove = false;
                 
                 if (basicMovement)
                 {

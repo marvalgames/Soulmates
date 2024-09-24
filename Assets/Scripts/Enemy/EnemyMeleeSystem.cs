@@ -27,23 +27,24 @@ namespace Enemy
                 var enemyPosition = enemyLocalTransform.ValueRO.Position;
                 var playerPosition = matchupComponent.ValueRO.wayPointTargetPosition;
                 var dist = math.distance(playerPosition, enemyPosition);
-                enemyAttackComponent.ValueRW.selectMoveUsing = false;
-                if (enemyAttackComponent.ValueRW is { selectMove: true })
-                {
-                    enemyAttackComponent.ValueRW.selectMoveUsing = true;
-                }
-                else if (checkedComponent.ValueRW is { AttackStages: AttackStages.End, anyAttackStarted: false })
-                    //AttackStarted set from animation - false at end so reset
-                {
-                    checkedComponent.ValueRW.totalAttempts += 1; //totalHits in AttackerSystem
-                    checkedComponent.ValueRW.hitReceived = false;
-                    checkedComponent.ValueRW.anyAttackStarted = false;
-                    checkedComponent.ValueRW.AttackStages = AttackStages.No;
-                }
+                //enemyAttackComponent.ValueRW.selectMoveUsing = false;
+                //if (enemyAttackComponent.ValueRW is { selectMove: true, selectMoveUsing: false })
+                //{
+                //  enemyAttackComponent.ValueRW.selectMoveUsing = true;
+                //}
+                //else if (checkedComponent.ValueRW is { AttackStages: AttackStages.End, anyAttackStarted: false })
+                //AttackStarted set from animation - false at end so reset
+                //{
+                //  checkedComponent.ValueRW.totalAttempts += 1; //totalHits in AttackerSystem
+                //checkedComponent.ValueRW.hitReceived = false;
+                //checkedComponent.ValueRW.anyAttackStarted = false;
+                //checkedComponent.ValueRW.AttackStages = AttackStages.No;
+                //}
             }
         }
     }
 
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(EnemySetupMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveMeleeSystem : ISystem
@@ -63,13 +64,13 @@ namespace Enemy
             foreach (var (enemyState, entity) in SystemAPI.Query<RefRW<EnemyStateComponent>>().WithEntityAccess())
             {
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
-                enemyState.ValueRW.startMove = false;
-                if (enemyState.ValueRW.selectMoveUsing)
+                if (enemyState.ValueRW is { selectMove: true, startMove: false })
                 {
                     var combatAction = random.NextInt(0, movesList[entity].Length);
                     var moveUsing = movesList[entity];
                     var animationIndex = moveUsing[combatAction].animationType;
                     var primaryTrigger = moveUsing[combatAction].triggerType;
+                    enemyState.ValueRW.startMove = true;
                     if (SystemAPI.HasComponent<CheckedComponent>(entity))
                     {
                         var defense = animationIndex == AnimationType.Deflect;
@@ -78,7 +79,6 @@ namespace Enemy
                         checkedComponent.primaryTrigger = primaryTrigger;
                         checkedComponent.animationIndex = (int)animationIndex;
                         SystemAPI.SetComponent(entity, checkedComponent);
-                        enemyState.ValueRW.startMove = true;
                         enemyState.ValueRW.animationIndex = animationIndex;
                         enemyState.ValueRW.triggerType = primaryTrigger;
                         enemyState.ValueRW.combatAction = combatAction;
@@ -88,6 +88,7 @@ namespace Enemy
         }
     }
 
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(EnemySelectMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveManagedMeleeSystem : ISystem
@@ -122,6 +123,10 @@ namespace Enemy
                 //var animatorState = animator.GetCurrentAnimatorStateInfo(0);
                 enemyState.ValueRW.animationStage = (AnimationStage)animator.GetInteger(animationStage);
                 var stage = enemyState.ValueRW.animationStage;
+                var stageTracker = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
+                if (stageTracker == AnimationStage.None) return; //no change so no animation playing or updated
+                Debug.Log("Track " + stageTracker);
+
 
                 if (stage == AnimationStage.Exit && enemyState.ValueRW.lastFrame == false)
                 {
@@ -134,24 +139,33 @@ namespace Enemy
                     enemyState.ValueRW.lastFrame = false;
                 }
 
-                
+
                 if (enemyState.ValueRW.firstFrame)
                 {
                     enemyState.ValueRW.firstFrame = false;
                 }
-                else if (stage == AnimationStage.Enter && enemyState.ValueRW.firstFrame == false)
+                else if (stageTracker == AnimationStage.Enter && enemyState.ValueRW.firstFrame == false)
+                    //else if (stage == AnimationStage.Enter && enemyState.ValueRW.firstFrame == false)
                 {
                     enemyState.ValueRW.firstFrame = true;
                 }
 
-                Debug.Log("Move ended " + enemyState.ValueRW.lastFrame);
+                var chk = stageTracker == AnimationStage.Exit;
+                Debug.Log("Move ended " + chk);
+                actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker =
+                    AnimationStage.None;
 
-                
                 if (enemyState.ValueRW is
-                    { startMove: true, firstFrame: true }) //check strike allowed always true for testing
+                    { startMove: true, firstFrame: true    }) //check strike allowed always true for testing
                 {
+                    enemyState.ValueRW.selectMove = false;
+                    enemyState.ValueRW.startMove = false;
                     enemyState.ValueRW.enemyStrikeAllowed = false;
                     enemyState.ValueRW.animationStage = AnimationStage.Enter;
+                    actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker =
+                        AnimationStage.Enter;
+
+
                     Debug.Log("Move started " + enemyState.ValueRW.firstFrame);
                     var animationIndex = enemyState.ValueRW.animationIndex;
                     var combatActionIndex = enemyState.ValueRW.combatAction;
