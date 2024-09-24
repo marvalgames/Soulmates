@@ -122,6 +122,18 @@ namespace Enemy
                 //var animatorState = animator.GetCurrentAnimatorStateInfo(0);
                 enemyState.ValueRW.animationStage = (AnimationStage)animator.GetInteger(animationStage);
                 var stage = enemyState.ValueRW.animationStage;
+
+                if (stage == AnimationStage.Exit && enemyState.ValueRW.lastFrame == false)
+                {
+                    enemyState.ValueRW.lastFrame = true;
+                    animator.SetInteger(animationStage, 0);
+                    enemyState.ValueRW.animationStage = AnimationStage.None;
+                }
+                else
+                {
+                    enemyState.ValueRW.lastFrame = false;
+                }
+
                 
                 if (enemyState.ValueRW.firstFrame)
                 {
@@ -132,11 +144,14 @@ namespace Enemy
                     enemyState.ValueRW.firstFrame = true;
                 }
 
+                Debug.Log("Move ended " + enemyState.ValueRW.lastFrame);
 
+                
                 if (enemyState.ValueRW is
                     { startMove: true, firstFrame: true }) //check strike allowed always true for testing
                 {
                     enemyState.ValueRW.enemyStrikeAllowed = false;
+                    enemyState.ValueRW.animationStage = AnimationStage.Enter;
                     Debug.Log("Move started " + enemyState.ValueRW.firstFrame);
                     var animationIndex = enemyState.ValueRW.animationIndex;
                     var combatActionIndex = enemyState.ValueRW.combatAction;

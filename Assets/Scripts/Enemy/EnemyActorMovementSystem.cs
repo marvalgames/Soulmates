@@ -125,8 +125,7 @@ namespace Enemy
                 var backupZoneClose = enemyMeleeMovement.combatStrikeDistanceZoneBegin;
                 var backupZoneFar = enemyMeleeMovement.combatStrikeDistanceZoneEnd;
                 var strike = false;
-
-
+                
                 if (distanceToOpponent < backupZoneClose && meleeMovement)
                 {
                     enemyMovement.backup = true;
@@ -184,8 +183,9 @@ namespace Enemy
                     chaseRange = distFromStation;
                 }
 
-                if (!checkedComponent.anyAttackStarted && !backup && strike && distanceToOpponent < chaseRange)
+                if (enemyState.firstFrame == false && !backup && strike && distanceToOpponent < chaseRange)
                 {
+                    //checkedComponent.anyAttackStarted = true;
                     enemyState.selectMove = true;
                     enemyState.enemyStrikeAllowed = true;
                     enemyState.Zone = 3;

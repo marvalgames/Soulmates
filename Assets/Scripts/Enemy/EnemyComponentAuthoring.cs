@@ -30,6 +30,7 @@ public enum WayPointAnimation
 
 public enum AnimationStage
 {
+    None,
     Enter,
     Update,
     Exit
