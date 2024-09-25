@@ -7,6 +7,7 @@ namespace Sandbox.Player
     {
         //[HideInInspector] 
         public AnimationStage animationStageTracker = AnimationStage.Enter;
+        public int debugCounter = 0;
         //public bool isAnimationUpdatedCurrentFrame;
 
     }

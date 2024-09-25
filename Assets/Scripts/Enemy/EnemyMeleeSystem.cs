@@ -120,12 +120,15 @@ namespace Enemy
                 var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                 //var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
                 var audioClipElement = movesHolder.movesClassList;
-                //var animatorState = animator.GetCurrentAnimatorStateInfo(0);
+                var animatorState = animator.GetCurrentAnimatorStateInfo(0);
+                //Debug.Log("transition " + animator.IsInTransition(0));
                 enemyState.ValueRW.animationStage = (AnimationStage)animator.GetInteger(animationStage);
                 var stage = enemyState.ValueRW.animationStage;
                 var stageTracker = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
+                var debugCounter = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().debugCounter;
                 if (stageTracker == AnimationStage.None) return; //no change so no animation playing or updated
-                Debug.Log("Track " + stageTracker);
+                //Debug.Log("Track " + stageTracker);
+                if(stageTracker != AnimationStage.Update) Debug.Log("Debug Counter " + debugCounter + " " + stageTracker);
 
 
                 if (stage == AnimationStage.Exit && enemyState.ValueRW.lastFrame == false)
@@ -151,7 +154,7 @@ namespace Enemy
                 }
 
                 var chk = stageTracker == AnimationStage.Exit;
-                Debug.Log("Move ended " + chk);
+                if(chk) Debug.Log("Move ended ");
                 actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker =
                     AnimationStage.None;
 
