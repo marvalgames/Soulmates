@@ -1,3 +1,4 @@
+using Audio;
 using Collisions;
 using Sandbox.Player;
 using Unity.Burst;
@@ -111,8 +112,9 @@ namespace Enemy
             }
 
 
-            foreach (var (actor, movesHolder, movesInstance, enemyState, entity) in SystemAPI
-                         .Query<ActorInstance, MovesClassHolder, MovesInstance, RefRW<EnemyStateComponent>>()
+            foreach (var (actor, audioClass, movesHolder, movesInstance, audio, enemyState, entity) in SystemAPI
+                         .Query<ActorInstance, AudioManagerClass, MovesClassHolder, MovesInstance,
+                             RefRW<AudioManagerComponent>, RefRW<EnemyStateComponent>>()
                          .WithEntityAccess())
             {
                 var combatAction = Animator.StringToHash("CombatAction");
@@ -154,12 +156,13 @@ namespace Enemy
                 }
 
                 var chk = stageTracker == AnimationStage.Exit;
-                if(chk) Debug.Log("Move ended ");
+                if (chk) Debug.Log("Move ended ");
                 actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker =
                     AnimationStage.None;
 
+
                 if (enemyState.ValueRW is
-                    { startMove: true, firstFrame: true    }) //check strike allowed always true for testing
+                    { startMove: true, firstFrame: true }) //check strike allowed always true for testing
                 {
                     enemyState.ValueRW.selectMove = false;
                     enemyState.ValueRW.startMove = false;
@@ -169,13 +172,17 @@ namespace Enemy
                         AnimationStage.Enter;
 
 
-                    Debug.Log("Move started " + enemyState.ValueRW.firstFrame);
                     var animationIndex = enemyState.ValueRW.animationIndex;
                     var combatActionIndex = enemyState.ValueRW.combatAction;
                     var clip = audioClipElement[combatActionIndex].moveAudioClip;
                     var audioSource = movesInstance.meleeAudioSourceInstance.GetComponent<AudioSource>();
-                    audioSource.PlayOneShot(clip);
+                    //if (audioSource.isPlaying == false)
+                    audio.ValueRW.play = true;
+                    audioClass.clip = clip;
+                    audioClass.source = audioSource;
+                    //audioSource.PlayOneShot(clip);
                     animator.SetInteger(combatAction, (int)animationIndex);
+                    Debug.Log("Move started " + combatActionIndex + " " + clip);
                 }
             }
         }
