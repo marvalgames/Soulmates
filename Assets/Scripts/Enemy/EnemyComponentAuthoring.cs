@@ -77,7 +77,7 @@ public struct EnemyStateComponent : IComponentData
     public int combatAction;
     public float normalizedTime;
     public AnimationStage animationStage;
-    
+    public int lastCombatAction;
 }
 
 

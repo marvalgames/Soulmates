@@ -82,6 +82,7 @@ namespace Enemy
                         SystemAPI.SetComponent(entity, checkedComponent);
                         enemyState.ValueRW.animationIndex = animationIndex;
                         enemyState.ValueRW.triggerType = primaryTrigger;
+                        enemyState.ValueRW.lastCombatAction = enemyState.ValueRW.combatAction;
                         enemyState.ValueRW.combatAction = combatAction;
                     }
                 }
@@ -94,6 +95,11 @@ namespace Enemy
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveManagedMeleeSystem : ISystem
     {
+        public void OnCreate(ref SystemState state)
+        {
+            state.RequireForUpdate<BeginSimulationEntityCommandBufferSystem.Singleton>();
+        }
+
         public void OnUpdate(ref SystemState state)
         {
             var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
@@ -112,8 +118,8 @@ namespace Enemy
             }
 
 
-            foreach (var (actor, audioClass, movesHolder, movesInstance, audio, enemyState, entity) in SystemAPI
-                         .Query<ActorInstance, AudioManagerClass, MovesClassHolder, MovesInstance,
+            foreach (var (actor, audioClass, movesHolder, audio, enemyState, entity) in SystemAPI
+                         .Query<ActorInstance, AudioManagerClass, MovesClassHolder,
                              RefRW<AudioManagerComponent>, RefRW<EnemyStateComponent>>()
                          .WithEntityAccess())
             {
@@ -127,9 +133,10 @@ namespace Enemy
                 enemyState.ValueRW.animationStage = (AnimationStage)animator.GetInteger(animationStage);
                 var stage = enemyState.ValueRW.animationStage;
                 var stageTracker = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
-                var debugCounter = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().debugCounter;
+                audioClass.stage = stageTracker;
+                //var debugCounter = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().debugCounter;
                 //if (stageTracker == AnimationStage.None) return; //no change so no animation playing or updated
-                Debug.Log("Track " + stageTracker);
+                //Debug.Log("Track " + stageTracker);
                 //if(stageTracker != AnimationStage.Update) Debug.Log("Debug Counter " + debugCounter + " " + stageTracker);
 
 
@@ -155,8 +162,8 @@ namespace Enemy
                     enemyState.ValueRW.firstFrame = true;
                 }
 
-                var chk = stageTracker == AnimationStage.Exit;
-                if (chk) Debug.Log("Move ended ");
+                //var chk = stageTracker == AnimationStage.Exit;
+                //if (chk) Debug.Log("Move ended ");
                 actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker =
                     AnimationStage.None;
 
@@ -174,15 +181,15 @@ namespace Enemy
 
                     var animationIndex = enemyState.ValueRW.animationIndex;
                     var combatActionIndex = enemyState.ValueRW.combatAction;
-                    var clip = audioClipElement[combatActionIndex].moveAudioClip;
-                    var audioSource = movesInstance.meleeAudioSourceInstance.GetComponent<AudioSource>();
+                    var clip = audioClipElement[enemyState.ValueRW.lastCombatAction].moveAudioClip;
+                    //var audioSource = movesInstance.meleeAudioSourceInstance.GetComponent<AudioSource>();
                     //if (audioSource.isPlaying == false)
                     audio.ValueRW.play = true;
                     audioClass.clip = clip;
-                    audioClass.source = audioSource;
+                    //audioClass.source = audioSource;
                     //audioSource.PlayOneShot(clip);
                     animator.SetInteger(combatAction, (int)animationIndex);
-                    Debug.Log("Move started " + combatActionIndex + " " + clip);
+                    //Debug.Log("Move started " + animationIndex + " " + clip);
                 }
             }
         }

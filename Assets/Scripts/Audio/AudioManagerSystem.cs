@@ -15,6 +15,7 @@ namespace Audio
     {
         public AudioSource source;
         public AudioClip clip;
+        public AnimationStage stage;
     }
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
@@ -30,14 +31,15 @@ namespace Audio
         //[BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            foreach (var (audioClass, audio, entity) in SystemAPI
-                         .Query<AudioManagerClass, RefRW<AudioManagerComponent>>()
+            foreach (var (audioClass, movesInstance, audio, entity) in SystemAPI
+                         .Query<AudioManagerClass, MovesInstance, RefRW<AudioManagerComponent>>()
                          .WithEntityAccess())
             {
-                if (audio.ValueRW.play && audioClass.source.isPlaying == false)
+                var audioSource = movesInstance.meleeAudioSourceInstance.GetComponent<AudioSource>();
+
+                if (audio.ValueRW.play && audioSource.isPlaying == false)
                 {
-                    audioClass.source.PlayOneShot(audioClass.clip);
-                    Debug.Log("Move started audio " + audioClass.clip);
+                    audioSource.PlayOneShot(audioClass.clip);
                 }
                 else
                 {
