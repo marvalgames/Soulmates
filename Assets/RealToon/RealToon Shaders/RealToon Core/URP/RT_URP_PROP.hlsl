@@ -542,12 +542,7 @@ static float unity_DOTS_Sampled_MaxFadDistance;
 static float unity_DOTS_Sampled_TriPlaTile;
 static float unity_DOTS_Sampled_TriPlaBlend;
 
-//static float unity_DOTS_Sampled_ReduceShadowSpotDirectionalLight;
-
 static float4 unity_DOTS_Sampled_SSAOColor;
-
-//static float unity_DOTS_Sampled_SkinMatrixIndex;
-//static float unity_DOTS_Sampled_ComputeMeshIndex;
 
 
 
@@ -684,13 +679,10 @@ void SetupDOTSLitMaterialPropertyCaches()
 	unity_DOTS_Sampled_MinFadDistance                                       = UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float, _MinFadDistance);
 	unity_DOTS_Sampled_MaxFadDistance                                       = UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float, _MaxFadDistance);
 
-    unity_DOTS_Sampled_TriPlaTile											= UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float, _TriPlaTile); //cc
-    unity_DOTS_Sampled_TriPlaBlend											= UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float, _TriPlaBlend); //cc
+    unity_DOTS_Sampled_TriPlaTile											= UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float, _TriPlaTile);
+    unity_DOTS_Sampled_TriPlaBlend											= UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float, _TriPlaBlend);
 
 	unity_DOTS_Sampled_SSAOColor											= UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float4, _SSAOColor);
-
-	//unity_DOTS_Sampled_SkinMatrixIndex										= UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float, _SkinMatrixIndex);
-	//unity_DOTS_Sampled_ComputeMeshIndex										= UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(float, _ComputeMeshIndex);
 
 }
 
@@ -832,16 +824,22 @@ void SetupDOTSLitMaterialPropertyCaches()
 
 #define _SSAOColor                                      unity_DOTS_Sampled_SSAOColor
 
-//#define _SkinMatrixIndex								unity_DOTS_Sampled_SkinMatrixIndex
-//#define _ComputeMeshIndex								unity_DOTS_Sampled_ComputeMeshIndex
-
 //=========
+
+
+
 #define UNITY_ACCESS_HYBRID_INSTANCED_PROP(var, type) UNITY_ACCESS_DOTS_INSTANCED_PROP_WITH_DEFAULT(type, var)
 #elif defined(UNITY_INSTANCING_ENABLED)
 
-#define UNITY_ACCESS_HYBRID_INSTANCED_PROP(var, type) UNITY_ACCESS_INSTANCED_PROP(type, var)
+UNITY_INSTANCING_BUFFER_START(DOTSMESDEF)
+	UNITY_DEFINE_INSTANCED_PROP(float, _SkinMatrixIndex)
+	UNITY_DEFINE_INSTANCED_PROP(float, _ComputeMeshIndex)
+UNITY_INSTANCING_BUFFER_END(DOTSMESDEF)
+
+#define UNITY_ACCESS_HYBRID_INSTANCED_PROP(var, type) UNITY_ACCESS_INSTANCED_PROP(DOTSMESDEF, var)
 #else
 #define UNITY_ACCESS_HYBRID_INSTANCED_PROP(var, type) var
+
 //=========
 
 #endif

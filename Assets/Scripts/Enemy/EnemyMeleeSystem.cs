@@ -128,7 +128,7 @@ namespace Enemy
                 var stage = enemyState.ValueRW.animationStage;
                 var stageTracker = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
                 var debugCounter = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().debugCounter;
-                if (stageTracker == AnimationStage.None) return; //no change so no animation playing or updated
+                //if (stageTracker == AnimationStage.None) return; //no change so no animation playing or updated
                 Debug.Log("Track " + stageTracker);
                 //if(stageTracker != AnimationStage.Update) Debug.Log("Debug Counter " + debugCounter + " " + stageTracker);
 

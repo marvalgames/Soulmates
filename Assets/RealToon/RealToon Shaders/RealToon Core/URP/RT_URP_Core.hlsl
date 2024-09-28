@@ -137,21 +137,35 @@ float EdgDet(float2 uv)
 }
 
 //DOTS_LinBlenSki
-uniform StructuredBuffer<float3x4> _SkinMatrices; 
+uniform ByteAddressBuffer _SkinMatrices;
+
+float3x4 LoadSkinMatrix(uint index)
+{
+    uint offset = index * 48;
+    float4 p1 = asfloat(_SkinMatrices.Load4(offset + 0 * 16));
+    float4 p2 = asfloat(_SkinMatrices.Load4(offset + 1 * 16));
+    float4 p3 = asfloat(_SkinMatrices.Load4(offset + 2 * 16));
+    return float3x4(p1.x, p1.w, p2.z, p3.y, p1.y, p2.x, p2.w, p3.z, p1.z, p2.y, p3.x, p3.w);
+}
 
 void DOTS_LiBleSki(uint4 indices, float4 weights, float3 positionIn, float3 normalIn, float3 tangentIn, out float3 positionOut, out float3 normalOut, out float3 tangentOut)
 {
-	for (int i = 0; i < 4; ++i)
-	{
-		float3x4 skinMatrix = _SkinMatrices[indices[i] + asint(UNITY_ACCESS_HYBRID_INSTANCED_PROP(_SkinMatrixIndex, float))];
-		float3 vtransformed = mul(skinMatrix, float4(positionIn, 1));
-		float3 ntransformed = mul(skinMatrix, float4(normalIn, 0));
-		float3 ttransformed = mul(skinMatrix, float4(tangentIn, 0));
+    positionOut = 0;
+    normalOut = 0;
+    tangentOut = 0;
+	
+    for (int i = 0; i < 4; ++i)
+    {
+        uint skinMatrixIndex = indices[i] + asint(UNITY_ACCESS_HYBRID_INSTANCED_PROP(_SkinMatrixIndex, float));
+        float3x4 skinMatrix = LoadSkinMatrix(skinMatrixIndex);
+        float3 vtransformed = mul(skinMatrix, float4(positionIn, 1));
+        float3 ntransformed = mul(skinMatrix, float4(normalIn, 0));
+        float3 ttransformed = mul(skinMatrix, float4(tangentIn, 0));
 
-		positionOut += vtransformed * weights[i];
-		normalOut += ntransformed * weights[i];
-		tangentOut += ttransformed * weights[i];
-	}
+        positionOut += vtransformed * weights[i];
+        normalOut += ntransformed * weights[i];
+        tangentOut += ttransformed * weights[i];
+    }
 }
 
 //DOTS_Compdef

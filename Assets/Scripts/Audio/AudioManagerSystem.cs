@@ -19,7 +19,7 @@ namespace Audio
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(EnemySelectMoveManagedMeleeSystem))]
-    [RequireMatchingQueriesForUpdate]
+    [RequireMatchingQueriesForUpdate] 
     public partial struct AudioManagerSystem : ISystem
     {
         [BurstCompile]
@@ -37,6 +37,7 @@ namespace Audio
                 if (audio.ValueRW.play && audioClass.source.isPlaying == false)
                 {
                     audioClass.source.PlayOneShot(audioClass.clip);
+                    Debug.Log("Move started audio " + audioClass.clip);
                 }
                 else
                 {
