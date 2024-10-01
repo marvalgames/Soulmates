@@ -3,6 +3,8 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Physics;
+using Unity.Transforms;
+using UnityEngine;
 
 namespace Collisions
 {
@@ -56,6 +58,10 @@ namespace Collisions
 
         protected override void OnUpdate()
         {
+            //var childBuffer = SystemAPI.GetBufferLookup<CompoundCollider.Child>(true);
+            //var childGroup = new BufferLookup<Child>();
+            
+            
             var collisionJob = new CollisionJob
             {
                 Ecb = m_ecbSystem.CreateCommandBuffer(),
@@ -63,7 +69,8 @@ namespace Collisions
                 healthGroup = GetComponentLookup<HealthComponent>(true),
                 ammoGroup = GetComponentLookup<AmmoComponent>(),
                 checkGroup = GetComponentLookup<CheckedComponent>(true),
-                bossGroup = GetComponentLookup<BossComponent>(true)
+                bossGroup = GetComponentLookup<BossComponent>(true),
+                childGroup = SystemAPI.GetBufferLookup<Child>()
             };
 
             Dependency = collisionJob.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), Dependency);
@@ -79,16 +86,38 @@ namespace Collisions
             [ReadOnly] public ComponentLookup<CheckedComponent> checkGroup;
             [ReadOnly] public ComponentLookup<BossComponent> bossGroup;
             public ComponentLookup<AmmoComponent> ammoGroup;
+            public BufferLookup<Child> childGroup;
             public EntityCommandBuffer Ecb;
 
             public void Execute(CollisionEvent ev) // this is never called
             {
                 var a = ev.EntityA;
                 var b = ev.EntityB;
+                Debug.Log("A " + a + ", B " + b);
+                //Debug.Log("child group: " + root);
+
                 if (triggerGroup.HasComponent(a) == false || triggerGroup.HasComponent(b) == false) return;
                 var triggerComponentA = triggerGroup[a];
                 var triggerComponentB = triggerGroup[b];
+                
+                var hitColliderKey = ev.ColliderKeyA;
+                var hitEntity = ev.EntityA;
+                PhysicsColliderKeyEntityPair colliderKeyEntityPair = new PhysicsColliderKeyEntityPair
+                {
+                    Key = hitColliderKey,
+                    Entity = hitEntity
+                    
+                    //ColliderKey = hitColliderKey,
+                    //Entity = hitEntity
+                };
+                Debug.Log($"Ray hit entity: {hitEntity}, Collider key: {hitColliderKey.Value}");
+                Debug.Log("child group: " + childGroup[hitEntity][0].Value );
+                Debug.Log("child group: " + childGroup[hitEntity][1].Value );
+                Debug.Log("child group: " + childGroup[hitEntity][2].Value );
+                Debug.Log("child group: " + childGroup[hitEntity][3].Value );
 
+                
+                
                 var chA = triggerComponentA.ParentEntity;
                 var chB = triggerComponentB.ParentEntity;
                 var typeA = triggerComponentA.Type;
@@ -96,6 +125,7 @@ namespace Collisions
                 var typeB = triggerComponentB.Type;
                 if (typeB == (int)TriggerType.Tail) typeB = (int)TriggerType.Melee;
 
+                
 
                 if (chA == chB && typeA != (int)TriggerType.Ammo && typeB != (int)TriggerType.Ammo) return; ////?????
 
