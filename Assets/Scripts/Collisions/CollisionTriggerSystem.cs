@@ -3,6 +3,7 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Physics;
+using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -23,7 +24,9 @@ namespace Collisions
         public int totalAttempts;
         public TriggerType primaryTrigger;
         public int animationIndex;
+
         public int comboIndexPlaying;
+
         //public int comboCounter;
         public bool comboButtonClicked;
     }
@@ -60,8 +63,11 @@ namespace Collisions
         {
             //var childBuffer = SystemAPI.GetBufferLookup<CompoundCollider.Child>(true);
             //var childGroup = new BufferLookup<Child>();
-            
-            
+            //var  _buildPhysicsWorld = World.GetOrCreateSystem<BuildPhysicsWorld>();
+            var collisionWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
+            //var colliderKeyEntityPairs = new NativeArray<PhysicsColliderKeyEntityPair>();
+
+
             var collisionJob = new CollisionJob
             {
                 Ecb = m_ecbSystem.CreateCommandBuffer(),
@@ -70,7 +76,10 @@ namespace Collisions
                 ammoGroup = GetComponentLookup<AmmoComponent>(),
                 checkGroup = GetComponentLookup<CheckedComponent>(true),
                 bossGroup = GetComponentLookup<BossComponent>(true),
-                childGroup = SystemAPI.GetBufferLookup<Child>()
+                //parentGroup = GetComponentLookup<Parent>(true),
+                //childGroup = SystemAPI.GetBufferLookup<Child>(),
+                //PhysicsWorld = collisionWorld, 
+                //ColliderKeyEntityPairs = new NativeArray<PhysicsColliderKeyEntityPair>() 
             };
 
             Dependency = collisionJob.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), Dependency);
@@ -85,9 +94,14 @@ namespace Collisions
             [ReadOnly] public ComponentLookup<HealthComponent> healthGroup;
             [ReadOnly] public ComponentLookup<CheckedComponent> checkGroup;
             [ReadOnly] public ComponentLookup<BossComponent> bossGroup;
+
             public ComponentLookup<AmmoComponent> ammoGroup;
-            public BufferLookup<Child> childGroup;
+
+            //public BufferLookup<Child> childGroup;
             public EntityCommandBuffer Ecb;
+            //[ReadOnly] public ComponentLookup<Parent> parentGroup;  // Assuming Parent component is used
+            //[ReadOnly] public PhysicsWorldSingleton PhysicsWorld;  // Required to map ColliderKey to entity
+            //[ReadOnly] public NativeArray<PhysicsColliderKeyEntityPair> ColliderKeyEntityPairs; // Array for ColliderKey to Entity mapping
 
             public void Execute(CollisionEvent ev) // this is never called
             {
@@ -99,25 +113,50 @@ namespace Collisions
                 if (triggerGroup.HasComponent(a) == false || triggerGroup.HasComponent(b) == false) return;
                 var triggerComponentA = triggerGroup[a];
                 var triggerComponentB = triggerGroup[b];
-                
-                var hitColliderKey = ev.ColliderKeyA;
-                var hitEntity = ev.EntityA;
-                PhysicsColliderKeyEntityPair colliderKeyEntityPair = new PhysicsColliderKeyEntityPair
-                {
-                    Key = hitColliderKey,
-                    Entity = hitEntity
-                    
-                    //ColliderKey = hitColliderKey,
-                    //Entity = hitEntity
-                };
-                Debug.Log($"Ray hit entity: {hitEntity}, Collider key: {hitColliderKey.Value}");
-                Debug.Log("child group: " + childGroup[hitEntity][0].Value );
-                Debug.Log("child group: " + childGroup[hitEntity][1].Value );
-                Debug.Log("child group: " + childGroup[hitEntity][2].Value );
-                Debug.Log("child group: " + childGroup[hitEntity][3].Value );
 
-                
-                
+                var hitColliderKeyA = ev.ColliderKeyA;
+                var hitColliderKeyB = ev.ColliderKeyB;
+
+                var hitEntityA = ev.EntityA;
+                var hitEntityB = ev.EntityB;
+
+                var colliderKeyEntityPair = new PhysicsColliderKeyEntityPair
+                {
+                    Key = hitColliderKeyA,
+                    Entity = hitEntityA
+                };
+
+                var colliderKeyEntityPairs = new NativeList<PhysicsColliderKeyEntityPair>(Allocator.Temp);
+                colliderKeyEntityPairs.Add(colliderKeyEntityPair);
+
+                //Iterate through the PhysicsColliderKeyEntityPair array to find the matching ColliderKey
+                Debug.Log("Count " + colliderKeyEntityPairs.Length);
+                for (int i = 0; i < colliderKeyEntityPairs.Length; i++)
+                {
+                    if (colliderKeyEntityPairs[i].Key.Equals(hitColliderKeyA))
+                    {
+                        // Return the corresponding entity from the pair
+                        var e = colliderKeyEntityPairs[i].Entity;
+                        Debug.Log("Entity " + e);
+                    }
+                }
+
+                //PhysicsColliderKeyEntityPair colliderKeyEntityPair = new PhysicsColliderKeyEntityPair
+                //{
+                //  Key = hitColliderKey,
+                //Entity = hitEntity
+                //};
+
+                // Debug.Log($"Ray hit entity: {hitEntity}, Collider key: {hitColliderKey.Value}");
+                //Debug.Log("child group: " + childGroup[hitEntity][0].Value + " " + hitColliderKey);
+                // Debug.Log("child group: " + childGroup[hitEntity][1].Value);
+                // Debug.Log("child group: " + childGroup[hitEntity][2].Value);
+                // Debug.Log("child group: " + childGroup[hitEntity][3].Value);
+
+                //var rigidBodyIndex = PhysicsWorld.GetRigidBodyIndex(hitEntity);
+                //var collider = PhysicsWorld.Bodies[rigidBodyIndex].Collider.Value;
+
+
                 var chA = triggerComponentA.ParentEntity;
                 var chB = triggerComponentB.ParentEntity;
                 var typeA = triggerComponentA.Type;
@@ -125,7 +164,6 @@ namespace Collisions
                 var typeB = triggerComponentB.Type;
                 if (typeB == (int)TriggerType.Tail) typeB = (int)TriggerType.Melee;
 
-                
 
                 if (chA == chB && typeA != (int)TriggerType.Ammo && typeB != (int)TriggerType.Ammo) return; ////?????
 
@@ -150,7 +188,7 @@ namespace Collisions
                     return;
                 }
 
- 
+
                 var primaryTriggerA = TriggerType.None;
                 var primaryTriggerB = TriggerType.None;
 
@@ -158,31 +196,29 @@ namespace Collisions
                 {
                     primaryTriggerA = checkGroup[chA].primaryTrigger;
                 }
+
                 if (checkGroup.HasComponent(chB))
                 {
                     primaryTriggerB = checkGroup[chB].primaryTrigger;
                 }
-            
 
 
                 var punchingA = false;
                 var punchingB = false;
                 if (typeA is (int)TriggerType.Body or (int)TriggerType.Base or (int)TriggerType.Head)
                 {
-                    punchingB = true;//B punch landed
+                    punchingB = true; //B punch landed
                 }
                 else if (typeB is (int)TriggerType.Body or (int)TriggerType.Base or (int)TriggerType.Head)
                 {
-                    punchingA = true;//A punch landed
+                    punchingA = true; //A punch landed
                 }
-
 
 
                 //if punching A or B is true then we dont skip eventhough type a = type b 
                 if (typeA == typeB && punchingA == false && punchingB == false && alwaysDamageA == false &&
                     alwaysDamageB == false)
                     return;
-
 
 
                 if (bossGroup.HasComponent(chA))
@@ -194,10 +230,10 @@ namespace Collisions
                     primaryTriggerB = TriggerType.Melee;
                 }
 
-            
+
                 var meleeA = (punchingA) &&
                              (typeA == (int)TriggerType.Melee && typeA == (int)primaryTriggerA);
- 
+
                 var meleeB = (punchingB) &&
                              (typeB == (int)TriggerType.Melee && typeB == (int)primaryTriggerB);
 
@@ -217,21 +253,24 @@ namespace Collisions
                 }
 
                 //check if arm/hands colliding with each other (feet for attacker? melee? setting trigger type to that instead of hand)
-                var primaryDefenseTriggerMatchA = (typeA is (int)TriggerType.LeftHand or (int)TriggerType.RightHand) && (int)primaryTriggerB == typeB; 
-                var primaryDefenseTriggerMatchB = (typeB is (int)TriggerType.LeftHand or (int)TriggerType.RightHand) && (int)primaryTriggerA == typeA; 
-                defenseA = typeB is (int)TriggerType.Melee &&  
+                var primaryDefenseTriggerMatchA = (typeA is (int)TriggerType.LeftHand or (int)TriggerType.RightHand) &&
+                                                  (int)primaryTriggerB == typeB;
+                var primaryDefenseTriggerMatchB = (typeB is (int)TriggerType.LeftHand or (int)TriggerType.RightHand) &&
+                                                  (int)primaryTriggerA == typeA;
+                defenseA = typeB is (int)TriggerType.Melee &&
                            primaryDefenseTriggerMatchA && defenseA;
                 defenseB = typeA is (int)TriggerType.Melee &&
                            primaryDefenseTriggerMatchB && defenseB;
 
                 var prA = (int)primaryTriggerA == typeA;
                 var prB = (int)primaryTriggerB == typeB;
-            
-                var primaryTriggerMatchA = (typeA is (int)TriggerType.LeftHand or (int)TriggerType.RightHand or (int)TriggerType.LeftFoot or (int)TriggerType.RightFoot)
-                                           && (int)primaryTriggerA == typeA; 
-                var primaryTriggerMatchB = (typeB is (int)TriggerType.LeftHand or (int)TriggerType.RightHand or (int)TriggerType.LeftFoot or (int)TriggerType.RightFoot)
-                                           && (int)primaryTriggerB == typeB;
 
+                var primaryTriggerMatchA = (typeA is (int)TriggerType.LeftHand or (int)TriggerType.RightHand
+                                               or (int)TriggerType.LeftFoot or (int)TriggerType.RightFoot)
+                                           && (int)primaryTriggerA == typeA;
+                var primaryTriggerMatchB = (typeB is (int)TriggerType.LeftHand or (int)TriggerType.RightHand
+                                               or (int)TriggerType.LeftFoot or (int)TriggerType.RightFoot)
+                                           && (int)primaryTriggerB == typeB;
 
 
                 punchingA = punchingA &&
@@ -294,7 +333,6 @@ namespace Collisions
                 }
                 else if (ammoB || effectB)
                 {
-
                     var collisionComponent =
                         new CollisionComponent
                         {
@@ -310,7 +348,6 @@ namespace Collisions
                 }
                 else if ((punchingA || meleeA || defenseA || alwaysDamageA) && !ammoA && !ammoB)
                 {
-
                     var collisionComponent =
                         new CollisionComponent
                         {
@@ -325,7 +362,6 @@ namespace Collisions
                 }
                 else if (punchingB || meleeB || defenseB || alwaysDamageB && !ammoA && !ammoB)
                 {
-
                     var collisionComponent =
                         new CollisionComponent
                         {
