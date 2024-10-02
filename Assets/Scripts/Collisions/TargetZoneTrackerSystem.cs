@@ -1,11 +1,15 @@
 using Sandbox.Player;
 using Unity.Burst;
 using Unity.Entities;
+using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
 
 namespace Collisions
 {
+    [UpdateInGroup(typeof(TransformSystemGroup))]
+    [UpdateAfter(typeof(ParentSystem))]
+
     public partial struct TargetZoneTrackerSystem : ISystem
     {
         [BurstCompile]

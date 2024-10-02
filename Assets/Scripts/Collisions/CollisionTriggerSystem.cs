@@ -61,11 +61,7 @@ namespace Collisions
 
         protected override void OnUpdate()
         {
-            //var childBuffer = SystemAPI.GetBufferLookup<CompoundCollider.Child>(true);
-            //var childGroup = new BufferLookup<Child>();
-            //var  _buildPhysicsWorld = World.GetOrCreateSystem<BuildPhysicsWorld>();
-            var collisionWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
-            //var colliderKeyEntityPairs = new NativeArray<PhysicsColliderKeyEntityPair>();
+            var colliderKeyEntityPairs = SystemAPI.GetBufferLookup<PhysicsColliderKeyEntityPair>();
 
 
             var collisionJob = new CollisionJob
@@ -76,10 +72,7 @@ namespace Collisions
                 ammoGroup = GetComponentLookup<AmmoComponent>(),
                 checkGroup = GetComponentLookup<CheckedComponent>(true),
                 bossGroup = GetComponentLookup<BossComponent>(true),
-                //parentGroup = GetComponentLookup<Parent>(true),
-                //childGroup = SystemAPI.GetBufferLookup<Child>(),
-                //PhysicsWorld = collisionWorld, 
-                //ColliderKeyEntityPairs = new NativeArray<PhysicsColliderKeyEntityPair>() 
+                colliderKeyEntityPairs = colliderKeyEntityPairs
             };
 
             Dependency = collisionJob.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), Dependency);
@@ -89,26 +82,20 @@ namespace Collisions
         [BurstCompile]
         struct CollisionJob : ICollisionEventsJob
         {
-            //[ReadOnly] public PhysicsWorld physicsWorld;
             [ReadOnly] public ComponentLookup<TriggerComponent> triggerGroup;
             [ReadOnly] public ComponentLookup<HealthComponent> healthGroup;
             [ReadOnly] public ComponentLookup<CheckedComponent> checkGroup;
             [ReadOnly] public ComponentLookup<BossComponent> bossGroup;
 
             public ComponentLookup<AmmoComponent> ammoGroup;
-
-            //public BufferLookup<Child> childGroup;
+            [ReadOnly] public BufferLookup<PhysicsColliderKeyEntityPair> colliderKeyEntityPairs;
             public EntityCommandBuffer Ecb;
-            //[ReadOnly] public ComponentLookup<Parent> parentGroup;  // Assuming Parent component is used
-            //[ReadOnly] public PhysicsWorldSingleton PhysicsWorld;  // Required to map ColliderKey to entity
-            //[ReadOnly] public NativeArray<PhysicsColliderKeyEntityPair> ColliderKeyEntityPairs; // Array for ColliderKey to Entity mapping
-
+            
             public void Execute(CollisionEvent ev) // this is never called
             {
                 var a = ev.EntityA;
                 var b = ev.EntityB;
                 Debug.Log("A " + a + ", B " + b);
-                //Debug.Log("child group: " + root);
 
                 if (triggerGroup.HasComponent(a) == false || triggerGroup.HasComponent(b) == false) return;
                 var triggerComponentA = triggerGroup[a];
@@ -120,50 +107,36 @@ namespace Collisions
                 var hitEntityA = ev.EntityA;
                 var hitEntityB = ev.EntityB;
 
-                var colliderKeyEntityPair = new PhysicsColliderKeyEntityPair
+                Debug.Log("Count A " + colliderKeyEntityPairs[hitEntityA].Length);
+                for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
                 {
-                    Key = hitColliderKeyA,
-                    Entity = hitEntityA
-                };
-
-                var colliderKeyEntityPairs = new NativeList<PhysicsColliderKeyEntityPair>(Allocator.Temp);
-                colliderKeyEntityPairs.Add(colliderKeyEntityPair);
-
-                //Iterate through the PhysicsColliderKeyEntityPair array to find the matching ColliderKey
-                Debug.Log("Count " + colliderKeyEntityPairs.Length);
-                for (int i = 0; i < colliderKeyEntityPairs.Length; i++)
-                {
-                    if (colliderKeyEntityPairs[i].Key.Equals(hitColliderKeyA))
+                    if (colliderKeyEntityPairs[hitEntityA][i].Key.Equals(hitColliderKeyA))
                     {
                         // Return the corresponding entity from the pair
-                        var e = colliderKeyEntityPairs[i].Entity;
-                        Debug.Log("Entity " + e);
+                        var e = colliderKeyEntityPairs[hitEntityA][i].Entity;
+                        Debug.Log("Entity A " + e);
+                    }
+                }
+                
+                Debug.Log("Count " + colliderKeyEntityPairs[hitEntityB].Length);
+                for (int i = 0; i < colliderKeyEntityPairs[hitEntityB].Length; i++)
+                {
+                    if (colliderKeyEntityPairs[hitEntityB][i].Key.Equals(hitColliderKeyB))
+                    {
+                        // Return the corresponding entity from the pair
+                        var e = colliderKeyEntityPairs[hitEntityB][i].Entity;
+                        Debug.Log("Entity B " + e);
                     }
                 }
 
-                //PhysicsColliderKeyEntityPair colliderKeyEntityPair = new PhysicsColliderKeyEntityPair
-                //{
-                //  Key = hitColliderKey,
-                //Entity = hitEntity
-                //};
 
-                // Debug.Log($"Ray hit entity: {hitEntity}, Collider key: {hitColliderKey.Value}");
-                //Debug.Log("child group: " + childGroup[hitEntity][0].Value + " " + hitColliderKey);
-                // Debug.Log("child group: " + childGroup[hitEntity][1].Value);
-                // Debug.Log("child group: " + childGroup[hitEntity][2].Value);
-                // Debug.Log("child group: " + childGroup[hitEntity][3].Value);
-
-                //var rigidBodyIndex = PhysicsWorld.GetRigidBodyIndex(hitEntity);
-                //var collider = PhysicsWorld.Bodies[rigidBodyIndex].Collider.Value;
-
-
+                
                 var chA = triggerComponentA.ParentEntity;
                 var chB = triggerComponentB.ParentEntity;
                 var typeA = triggerComponentA.Type;
                 if (typeA == (int)TriggerType.Tail) typeA = (int)TriggerType.Melee;
                 var typeB = triggerComponentB.Type;
                 if (typeB == (int)TriggerType.Tail) typeB = (int)TriggerType.Melee;
-
 
                 if (chA == chB && typeA != (int)TriggerType.Ammo && typeB != (int)TriggerType.Ammo) return; ////?????
 
