@@ -1,6 +1,7 @@
 using Sandbox.Player;
 using Unity.Burst;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
@@ -8,8 +9,8 @@ using UnityEngine;
 namespace Collisions
 {
     [UpdateInGroup(typeof(TransformSystemGroup))]
-    [UpdateAfter(typeof(ParentSystem))]
-
+    //[UpdateInGroup(typeof(PresentationSystemGroup))]
+    //[UpdateAfter(typeof(ParentSystem))]
     public partial struct TargetZoneTrackerSystem : ISystem
     {
         [BurstCompile]
@@ -19,8 +20,9 @@ namespace Collisions
 
         public void OnUpdate(ref SystemState state)
         {
-            foreach (var (targetZoneTracker, targetZoneTrackerTransform, entity)
-                     in SystemAPI.Query<RefRW<TargetZonesTrackerComponent>, RefRW<LocalTransform>>()
+            foreach (var (targetZoneTracker, targetLocalToWorld, targetZoneTrackerTransform, entity)
+                     in SystemAPI
+                         .Query<RefRW<TargetZonesTrackerComponent>, RefRW<LocalToWorld>, RefRW<LocalTransform>>()
                          .WithEntityAccess())
             {
                 var parentEntity = SystemAPI.GetComponent<Parent>(entity).Value;
@@ -42,12 +44,22 @@ namespace Collisions
                     var zone = targetZone.bodyZone;
                     targetZoneTrackerTransform.ValueRW.Position = zone.position;
                     targetZoneTrackerTransform.ValueRW.Rotation = zone.rotation;
+                    targetLocalToWorld.ValueRW.Value = float4x4.TRS(
+                        zone.position, // Position
+                        zone.rotation, // Rotation
+                        new float3(1f, 1f, 1f)); // Scale (uniform)
+
                 }
                 else if (targetZoneType == TriggerType.LeftHand)
                 {
                     var zone = targetZone.leftHandZone;
                     targetZoneTrackerTransform.ValueRW.Position = zone.position;
                     targetZoneTrackerTransform.ValueRW.Rotation = zone.rotation;
+
+                    targetLocalToWorld.ValueRW.Value = float4x4.TRS(
+                        zone.position, // Position
+                        zone.rotation, // Rotation
+                        new float3(1f, 1f, 1f)); // Scale (uniform)
                 }
                 else if (targetZoneType == TriggerType.RightHand)
                 {
