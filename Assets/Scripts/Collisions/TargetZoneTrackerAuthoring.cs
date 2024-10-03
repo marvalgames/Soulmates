@@ -16,8 +16,14 @@ namespace Collisions
             public override void Bake(TargetZoneTrackerAuthoring authoring)
             {
                 var  e = GetEntity(TransformUsageFlags.Dynamic);
-                AddComponent(e, new TargetZonesTrackerComponent {TriggerType = authoring.triggerType});
+                var parent = GetEntity( GetParent(authoring.gameObject), TransformUsageFlags.Dynamic);
+                //Debug.Log("Parent " + parent);
+                AddComponent(e, new TargetZonesTrackerComponent {TriggerType = authoring.triggerType, ParentEntity = parent});
+
                 
+
+
+
             }
         }
     }

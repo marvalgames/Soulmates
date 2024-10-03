@@ -27,6 +27,13 @@ public struct HealthComponent : IComponentData
     //Entity Entity;
 }
 
+public struct HealthBarComponent : IComponentData
+{
+    
+}
+
+
+
 
 
 public struct DamageComponent : IComponentData

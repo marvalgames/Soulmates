@@ -8,7 +8,8 @@ using UnityEngine;
 
 namespace Collisions
 {
-    [UpdateInGroup(typeof(TransformSystemGroup))]
+    //[UpdateInGroup(typeof(TransformSystemGroup))]
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     //[UpdateInGroup(typeof(PresentationSystemGroup))]
     //[UpdateAfter(typeof(ParentSystem))]
     public partial struct TargetZoneTrackerSystem : ISystem
@@ -25,7 +26,10 @@ namespace Collisions
                          .Query<RefRW<TargetZonesTrackerComponent>, RefRW<LocalToWorld>, RefRW<LocalTransform>>()
                          .WithEntityAccess())
             {
-                var parentEntity = SystemAPI.GetComponent<Parent>(entity).Value;
+                //if(SystemAPI.HasComponent<Parent>(entity) == false) continue;
+                //var parentEntity = SystemAPI.GetComponent<Parent>(entity).Value;
+                var parentEntity = targetZoneTracker.ValueRW.ParentEntity;
+                //Debug.Log("parent " + parentEntity);
                 if (!state.EntityManager.HasComponent<ActorInstance>(parentEntity)) return;
                 var targetZoneType = targetZoneTracker.ValueRW.TriggerType;
                 var parentGameObject = state.EntityManager.GetComponentObject<ActorInstance>(parentEntity);
@@ -44,10 +48,10 @@ namespace Collisions
                     var zone = targetZone.bodyZone;
                     targetZoneTrackerTransform.ValueRW.Position = zone.position;
                     targetZoneTrackerTransform.ValueRW.Rotation = zone.rotation;
-                    targetLocalToWorld.ValueRW.Value = float4x4.TRS(
-                        zone.position, // Position
-                        zone.rotation, // Rotation
-                        new float3(1f, 1f, 1f)); // Scale (uniform)
+                    // targetLocalToWorld.ValueRW.Value = float4x4.TRS(
+                    //     zone.position, // Position
+                    //     zone.rotation, // Rotation
+                    //     new float3(1f, 1f, 1f)); // Scale (uniform)
 
                 }
                 else if (targetZoneType == TriggerType.LeftHand)
@@ -56,10 +60,10 @@ namespace Collisions
                     targetZoneTrackerTransform.ValueRW.Position = zone.position;
                     targetZoneTrackerTransform.ValueRW.Rotation = zone.rotation;
 
-                    targetLocalToWorld.ValueRW.Value = float4x4.TRS(
-                        zone.position, // Position
-                        zone.rotation, // Rotation
-                        new float3(1f, 1f, 1f)); // Scale (uniform)
+                    // targetLocalToWorld.ValueRW.Value = float4x4.TRS(
+                    //     zone.position, // Position
+                    //     zone.rotation, // Rotation
+                    //     new float3(1f, 1f, 1f)); // Scale (uniform)
                 }
                 else if (targetZoneType == TriggerType.RightHand)
                 {
