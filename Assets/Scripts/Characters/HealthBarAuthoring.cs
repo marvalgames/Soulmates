@@ -14,26 +14,37 @@ public enum ShowText3D
 public struct HealthComponent : IComponentData
 {
     public bool combineDamage;
-    [FormerlySerializedAs("TotalDamageLanded")] public float totalDamageLanded;
-    [FormerlySerializedAs("TotalDamageReceived")] public float totalDamageReceived;
-    [FormerlySerializedAs("AlwaysDamage")] public bool alwaysDamage;//ignore hit weights and similar
-    [FormerlySerializedAs("ShowDamageMin")] public float showDamageMin;
+
+    [FormerlySerializedAs("TotalDamageLanded")]
+    public float totalDamageLanded;
+
+    [FormerlySerializedAs("TotalDamageReceived")]
+    public float totalDamageReceived;
+
+    [FormerlySerializedAs("AlwaysDamage")] public bool alwaysDamage; //ignore hit weights and similar
+
+    [FormerlySerializedAs("ShowDamageMin")]
+    public float showDamageMin;
+
     [FormerlySerializedAs("ShowDamage")] public bool showDamage;
     [FormerlySerializedAs("ShowText3D")] public ShowText3D showText3D;
     public int count;
     public bool losingHealth;
     public float losingHealthRate;
+
     public int meleeDamageEffectsIndex;
     //Entity Entity;
 }
 
 public struct HealthBarComponent : IComponentData
 {
-    
+    public bool instantiated;
 }
 
-
-
+public class HealthBarClass : IComponentData
+{
+    public GameObject actorGuiPrefab;
+}
 
 
 public struct DamageComponent : IComponentData
@@ -41,47 +52,36 @@ public struct DamageComponent : IComponentData
     public Entity EntityCausingDamage;
     public float DamageLanded;
     public float DamageReceived;
-    public float ScorePointsReceived;//to track if hit and points scored by player how many and what enemy
+    public float ScorePointsReceived; //to track if hit and points scored by player how many and what enemy
     public float StunLanded;
     public int EffectsIndex;
     public bool LosingDamage;
-
-
 }
+
 public struct DeflectComponent : IComponentData
 {
     public Entity EntityDeflecting;
     public float DeflectLanded;
     public float DeflectReceived;
-    public float ScorePointsReceived;//to track if hit and points scored by player how many and what enemy
+    public float ScorePointsReceived; //to track if hit and points scored by player how many and what enemy
     public int EffectsIndex;
-
-
 }
 
 
 public class HealthBarAuthoring : MonoBehaviour
 {
-   
-
-
     [SerializeField] bool combineDamage;
     [SerializeField] private float showDamageMin = 50;
     [SerializeField] private ShowText3D showText3D = ShowText3D.HitDamage;
-    [SerializeField]
-    bool losingHealth = true;
-    [SerializeField]
-    float losingHealthRate = 1;
-    public int meleeDamageEffectsIndex = 1;    
+    [SerializeField] bool losingHealth = true;
+    [SerializeField] float losingHealthRate = 1;
+    public int meleeDamageEffectsIndex = 1;
     public bool alwaysDamaging;
 
-
-   
-
+    public GameObject actorGuiPrefab;
 
     class HealthBaker : Baker<HealthBarAuthoring>
     {
-        
         public override void Bake(HealthBarAuthoring authoring)
         {
             var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
@@ -96,13 +96,15 @@ public class HealthBarAuthoring : MonoBehaviour
                 losingHealth = authoring.losingHealth,
                 losingHealthRate = authoring.losingHealthRate,
                 meleeDamageEffectsIndex = authoring.meleeDamageEffectsIndex
-            });;
-            
-            AddComponent(e, new AnimatorWeightsComponent());
+            });
+            ;
 
+            AddComponent(e, new AnimatorWeightsComponent());
+            AddComponent(e, new HealthBarComponent());
+            if (authoring.actorGuiPrefab != null)
+            {
+                AddComponentObject(e, new HealthBarClass { actorGuiPrefab = authoring.actorGuiPrefab });
+            }
         }
     }
-
-    
-
 }
