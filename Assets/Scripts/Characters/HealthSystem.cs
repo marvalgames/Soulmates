@@ -155,8 +155,8 @@ public partial class HealthSystem : SystemBase
     }
 }
 
-//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateInGroup(typeof(TransformSystemGroup))]
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(TransformSystemGroup))]
 public partial struct HealthBarManagedSystem : ISystem
 {
     public void OnCreate(ref SystemState state)
@@ -178,19 +178,19 @@ public partial struct HealthBarManagedSystem : ISystem
             if (!healthBarComponent.ValueRW.instantiated)
             {
                 var go = GameObject.Instantiate(guiClass.actorGuiPrefab);
-                go.SetActive(true);
-                //commandBuffer.AddComponent(entity,
-                //  new ActorInstance { actorPrefabInstance = go, linkedEntity = entity });
+                //go.SetActive(true);
+                commandBuffer.AddComponent(entity,
+                  new HealthBarInstance {actorGuiInstance = go});
                 healthBarComponent.ValueRW.instantiated = true;
             }
         }
 
         foreach (var (actorGui, health, healthBar, entity) in SystemAPI
-                     .Query<HealthBarClass, RefRO<HealthComponent>, RefRO<HealthBarComponent>>()
+                     .Query<HealthBarInstance, RefRO<HealthComponent>, RefRO<HealthBarComponent>>()
                      .WithEntityAccess())
         {
             //actor.actorPrefabInstance.SetActive(true);
-            var img = actorGui.actorGuiPrefab.GetComponent<HealthBar>()._healthBar;
+            var img = actorGui.actorGuiInstance.GetComponent<HealthBar>()._healthBar;
             var maxHealth = 20f;
             // if (SystemAPI.HasComponent<RatingsComponent>(entity))
             // {

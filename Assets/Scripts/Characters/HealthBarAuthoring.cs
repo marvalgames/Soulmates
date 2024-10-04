@@ -46,6 +46,11 @@ public class HealthBarClass : IComponentData
     public GameObject actorGuiPrefab;
 }
 
+public class HealthBarInstance : IComponentData
+{
+    public GameObject actorGuiInstance;
+}
+
 
 public struct DamageComponent : IComponentData
 {
