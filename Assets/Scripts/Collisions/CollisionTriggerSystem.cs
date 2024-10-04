@@ -208,8 +208,8 @@ namespace Collisions
                 }
 
 
-                Debug.Log("check primary trigger A " + primaryTriggerA);
-                Debug.Log("check primary trigger B " + primaryTriggerB);
+                //Debug.Log("check primary trigger A " + primaryTriggerA);
+                //Debug.Log("check primary trigger B " + primaryTriggerB);
 
                 
                 var meleeA = (punchingA) &&
@@ -254,7 +254,9 @@ namespace Collisions
                                            && (int)primaryTriggerB == typeB;
 
                 
-                
+
+                    //Debug.Log("punch A " + punchingA + " punch B " + punchingB);
+
 
                 punchingA = punchingA &&
                     primaryTriggerMatchA || meleeA;
@@ -263,7 +265,7 @@ namespace Collisions
                 punchingB = punchingB &&
                     primaryTriggerMatchB || meleeB;
                 
-                Debug.Log("punch A " + punchingA + " punch B " + punchingB);
+                //Debug.Log("trigger match A " + primaryTriggerMatchA + " trigger match  B " + primaryTriggerMatchB);
 
 
 

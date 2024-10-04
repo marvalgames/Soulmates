@@ -191,11 +191,11 @@ public partial struct HealthBarManagedSystem : ISystem
         {
             //actor.actorPrefabInstance.SetActive(true);
             var img = actorGui.actorGuiInstance.GetComponent<HealthBar>()._healthBar;
-            var maxHealth = 20f;
-            // if (SystemAPI.HasComponent<RatingsComponent>(entity))
-            // {
-            //     maxHealth = SystemAPI.GetComponent<RatingsComponent>(entity).maxHealth;
-            // }
+            var maxHealth = 100f;
+            if (SystemAPI.HasComponent<RatingsComponent>(entity))
+            {
+                maxHealth = SystemAPI.GetComponent<RatingsComponent>(entity).maxHealth;
+            }
 
             var damage = health.ValueRO.totalDamageReceived;
             var pct = 1.00f - (damage / maxHealth);
@@ -205,6 +205,7 @@ public partial struct HealthBarManagedSystem : ISystem
             }
 
             Debug.Log("health " + pct + " damage " + damage);
+            //img.fillAmount = pct;
 
             RectTransform rectTransform = img.GetComponent<RectTransform>();
             //rectTransform.localScale = new Vector3(pct, 1.0f, 1.0f);

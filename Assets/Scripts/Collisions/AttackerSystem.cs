@@ -55,16 +55,18 @@ namespace Collisions
                     if ((playerA && enemyB || playerB && enemyA) || (enemyA && enemyB))
                     {
                         var checkedComponentA = SystemAPI.GetComponent<CheckedComponent>(entityA);
+                        //Debug.Log("CHECK A " + checkedComponentA.hitTriggered + " " + checkedComponentA.attackCompleted);
                         var isDefenseA = checkedComponentA.animationIndex == (int)AnimationType.Deflect;
                         var checkedComponentB = SystemAPI.GetComponent<CheckedComponent>(entityB);
+                        //Debug.Log("CHECK B " + checkedComponentB.hitTriggered + " " + checkedComponentB.attackCompleted);
                         var isDefenseB = checkedComponentB.animationIndex == (int)AnimationType.Deflect;
                         if (
                             checkedComponentA is
                             {
-                                hitTriggered: false,
+                                hitTriggered: false
                                 //anyAttackStarted: true, 
                                 //anyDefenseStarted: true,
-                                attackCompleted: false
+                                //attackCompleted: false
                             } &&
                             hwB >= .3 && hwB < 1 && isDefenseB) //can change as skill
                         {
@@ -152,6 +154,7 @@ namespace Collisions
                             }
 
                             var damage = hitPower * hwA;
+                            
 
                             if (SystemAPI.HasComponent<EvadeComponent>(entityB))
                             {

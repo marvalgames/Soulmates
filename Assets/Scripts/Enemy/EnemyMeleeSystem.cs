@@ -79,6 +79,7 @@ namespace Enemy
                         checkedComponent.anyDefenseStarted = defense;
                         checkedComponent.primaryTrigger = primaryTrigger;
                         checkedComponent.animationIndex = (int)animationIndex;
+                        checkedComponent.hitTriggered = false;
                         SystemAPI.SetComponent(entity, checkedComponent);
                         enemyState.ValueRW.animationIndex = animationIndex;
                         enemyState.ValueRW.triggerType = primaryTrigger;
