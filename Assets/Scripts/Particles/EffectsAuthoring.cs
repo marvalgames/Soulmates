@@ -30,6 +30,7 @@ public class Effect : IComponentData //use in system to spawn members
 [Serializable]
 public class EffectClass : IComponentData //use in authoring
 {
+    //instances could probably changed from Game Object to type and the GetComponent to retrieve
     public AudioClip effectClip;
     public GameObject effectParticleSystem;
     public GameObject effectVisualEffect;
@@ -46,6 +47,7 @@ public class EffectClassHolder : IComponentData
 {
     public List<EffectClass> effectsClassList = new();
     public GameObject effectAudioSourcePrefab;
+    public AudioSource effectAudioSourceInstance;
 }
 
 

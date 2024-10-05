@@ -191,30 +191,83 @@ public partial struct SlashManagedSystem : ISystem
 public partial struct ActorDamageEffectsSystem : ISystem
 {
     private bool isInitialized;
+    private static readonly int HitReact = Animator.StringToHash("HitReact");
 
     public void OnUpdate(ref SystemState state)
     {
         if (!isInitialized)
         {
-            isInitialized = true;
             var ecb = new EntityCommandBuffer(Allocator.Temp);
             var effectBuffer = SystemAPI.GetBufferLookup<EffectComponentElement>(true);
-            
 
-            foreach (var (transform, effect, effectHolder, entity) in SystemAPI.Query<RefRW<LocalTransform>, RefRO<EffectComponent>, EffectClassHolder>()
+
+            foreach (var (actor, transform, effect, effectHolder, entity) in SystemAPI
+                         .Query<ActorInstance, RefRW<LocalTransform>, RefRO<EffectComponent>, EffectClassHolder>()
                          .WithEntityAccess())
             {
-                var effectElement = effectBuffer[entity]; 
+                isInitialized = true;
+                var effectElement = effectBuffer[entity];
                 var count = effectElement.Length;
                 Debug.Log("EFFECT COUNT " + count);
+                var asPrefab = effectHolder.effectAudioSourcePrefab;
+                var asInstance = GameObject.Instantiate(asPrefab);
+                effectHolder.effectAudioSourceInstance = asInstance.GetComponent<AudioSource>();
+
+
                 for (var i = 0; i < count; i++)
                 {
                     var ve = effectHolder.effectsClassList[i].effectVisualEffect;
                     var ps = effectHolder.effectsClassList[i].effectParticleSystem;
                     //ve
                     var go = GameObject.Instantiate(ve);
-                    effectHolder.effectsClassList[i].effectVisualEffectInstance = go;
+                    Debug.Log("VE " + ve);
+                    go.transform.parent = actor.actorPrefabInstance.transform;
+                    go.transform.localPosition = Vector3.zero;
+                    effectHolder.effectsClassList[i].effectVisualEffectInstance = go;//can change to vfx member
                 }
+            }
+        }
+        else
+        {
+            //since managed may not need this could probably just use effects holder but never know
+            var effectBuffer = SystemAPI.GetBufferLookup<EffectComponentElement>(true);
+
+
+            foreach (var (dead, actor, damage, effect, effectHolder, entity) in SystemAPI
+                         .Query<RefRO<DeadComponent>, ActorInstance, RefRO<DamageComponent>, RefRO<EffectComponent>,
+                             EffectClassHolder>().WithEntityAccess())
+            {
+                if (dead.ValueRO.isDead || damage.ValueRO.DamageReceived <= .0001f) continue;
+                
+                var effectElement = effectBuffer[entity];
+                var count = effectElement.Length;
+                GameObject veInstance = null;
+                AudioClip clip = null;
+                AudioSource audioSource = effectHolder.effectAudioSourceInstance;
+
+                for (var i = 0; i < count; i++)
+                {
+                    if (effectElement[i].playEffectType == EffectType.Damaged)
+                    {
+                        veInstance = effectHolder.effectsClassList[i].effectVisualEffectInstance;
+                        clip = effectHolder.effectsClassList[i].effectClip;
+                    }
+                }
+
+                if (veInstance != null)
+                {
+                    veInstance.GetComponent<VisualEffect>().Play();
+                }
+
+                if (audioSource != null)
+                {
+                    audioSource.clip = clip;
+                    audioSource.PlayOneShot(clip);
+                }
+
+                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                Debug.Log("Animator " + animator);
+                animator.SetInteger(HitReact, 1);
             }
         }
     }
