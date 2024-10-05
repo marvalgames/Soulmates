@@ -11,7 +11,7 @@ public class DeadAnimationState : StateMachineBehaviour
     {
         
         Debug.Log("animator dead");     
-        animator.SetInteger(dead, -1);
+        //animator.SetInteger(dead, -1);
         animator.SetBool(aim, false);
 
     }
@@ -19,6 +19,7 @@ public class DeadAnimationState : StateMachineBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.speed = 0;
+        Debug.Log("anim " + animator.speed);
 
     }
     public override void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

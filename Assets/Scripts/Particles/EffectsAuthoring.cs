@@ -16,6 +16,7 @@ public enum EffectType
 public struct EffectComponent : IComponentData
 {
     public bool visualEffect;
+    public bool disableEffect;
 }
 
 [Serializable]

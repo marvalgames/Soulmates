@@ -25,14 +25,14 @@ public partial class AnimatorWeightsSystem : SystemBase
             (
                 //Animator animator, 
                 ref AnimatorWeightsComponent animatorWeightsComponent, in CheckedComponent checkedComponent,
-                in ActorInstance actor
+                in ActorInstance actor, in DeadComponent dead
             ) =>
             {
                 var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                 animatorWeightsComponent.hitWeight = animator.GetFloat(HitWeight);
                 animatorWeightsComponent.aimWeight = animator.GetFloat(AimWeight);
                 animatorWeightsComponent.animSpeed = animator.speed;
-                if (animatorWeightsComponent.useImpulseSpeed)
+                if (animatorWeightsComponent.useImpulseSpeed && dead.isDead == false)
                 {
                     animator.speed = animatorWeightsComponent.impulseSpeed;
                 }

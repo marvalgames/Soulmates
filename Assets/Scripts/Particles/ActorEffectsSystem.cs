@@ -192,6 +192,7 @@ public partial struct ActorDamageEffectsSystem : ISystem
 {
     private bool isInitialized;
     private static readonly int HitReact = Animator.StringToHash("HitReact");
+    private static readonly int Dead = Animator.StringToHash("Dead");
 
     public void OnUpdate(ref SystemState state)
     {
@@ -208,7 +209,6 @@ public partial struct ActorDamageEffectsSystem : ISystem
                 isInitialized = true;
                 var effectElement = effectBuffer[entity];
                 var count = effectElement.Length;
-                Debug.Log("EFFECT COUNT " + count);
                 var asPrefab = effectHolder.effectAudioSourcePrefab;
                 var asInstance = GameObject.Instantiate(asPrefab);
                 effectHolder.effectAudioSourceInstance = asInstance.GetComponent<AudioSource>();
@@ -220,10 +220,10 @@ public partial struct ActorDamageEffectsSystem : ISystem
                     var ps = effectHolder.effectsClassList[i].effectParticleSystem;
                     //ve
                     var go = GameObject.Instantiate(ve);
-                    Debug.Log("VE " + ve);
+
                     go.transform.parent = actor.actorPrefabInstance.transform;
                     go.transform.localPosition = Vector3.zero;
-                    effectHolder.effectsClassList[i].effectVisualEffectInstance = go;//can change to vfx member
+                    effectHolder.effectsClassList[i].effectVisualEffectInstance = go; //can change to vfx member
                 }
             }
         }
@@ -233,194 +233,90 @@ public partial struct ActorDamageEffectsSystem : ISystem
             var effectBuffer = SystemAPI.GetBufferLookup<EffectComponentElement>(true);
 
 
-            foreach (var (dead, actor, damage, effect, effectHolder, entity) in SystemAPI
-                         .Query<RefRO<DeadComponent>, ActorInstance, RefRO<DamageComponent>, RefRO<EffectComponent>,
+            foreach (var (dead, actor, effect, effectHolder, entity) in SystemAPI
+                         .Query<RefRO<DeadComponent>, ActorInstance, RefRW<EffectComponent>,
                              EffectClassHolder>().WithEntityAccess())
             {
-                if (dead.ValueRO.isDead || damage.ValueRO.DamageReceived <= .0001f) continue;
-                
+             
+                //if (dead.ValueRO.isDead == false && damage.ValueRO.DamageReceived <= .0001f) continue;
+                var hasDamage = SystemAPI.HasComponent<DamageComponent>(entity);
+
+
                 var effectElement = effectBuffer[entity];
                 var count = effectElement.Length;
                 GameObject veInstance = null;
                 AudioClip clip = null;
                 AudioSource audioSource = effectHolder.effectAudioSourceInstance;
 
-                for (var i = 0; i < count; i++)
+                if (hasDamage)
                 {
-                    if (effectElement[i].playEffectType == EffectType.Damaged)
+                    var damage = SystemAPI.GetComponent<DamageComponent>(entity).DamageReceived;
+                    if (damage < .0001f)
                     {
-                        veInstance = effectHolder.effectsClassList[i].effectVisualEffectInstance;
-                        clip = effectHolder.effectsClassList[i].effectClip;
+                        hasDamage = false;
                     }
                 }
 
-                if (veInstance != null)
+                if (dead.ValueRO.isDead == false && hasDamage)
                 {
-                    veInstance.GetComponent<VisualEffect>().Play();
-                }
+                    for (var i = 0; i < count; i++)
+                    {
+                        if (effectElement[i].playEffectType == EffectType.Damaged)
+                        {
+                            veInstance = effectHolder.effectsClassList[i].effectVisualEffectInstance;
+                            clip = effectHolder.effectsClassList[i].effectClip;
+                        }
+                    }
 
-                if (audioSource != null)
+                    if (veInstance != null)
+                    {
+                        veInstance.GetComponent<VisualEffect>().Play();
+                    }
+
+                    if (audioSource != null)
+                    {
+                        audioSource.clip = clip;
+                        audioSource.PlayOneShot(clip);
+                    }
+
+                    var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                    Debug.Log("Animator " + animator);
+                    animator.SetInteger(HitReact, 1);
+                }
+                else if (dead.ValueRO.isDead && effect.ValueRW.disableEffect == false)
                 {
-                    audioSource.clip = clip;
-                    audioSource.PlayOneShot(clip);
-                }
+                    for (var i = 0; i < count; i++)
+                    {
+                        if (effectElement[i].playEffectType == EffectType.Dead)
+                        {
+                            veInstance = effectHolder.effectsClassList[i].effectVisualEffectInstance;
+                            clip = effectHolder.effectsClassList[i].effectClip;
+                        }
+                    }
 
-                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
-                Debug.Log("Animator " + animator);
-                animator.SetInteger(HitReact, 1);
+                    if (veInstance != null)
+                    {
+                        veInstance.GetComponent<VisualEffect>().Play();
+                        Debug.Log("dead " + dead.ValueRO.isDead);
+                        effect.ValueRW.disableEffect = true;
+                        
+                    }
+
+                    if (audioSource != null)
+                    {
+                        audioSource.clip = clip;
+                        audioSource.PlayOneShot(clip);
+                    }
+
+                    var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                    Debug.Log("Animator " + animator);
+                    animator.SetInteger(Dead, 1);
+                }
             }
         }
     }
 }
 
-
-// public partial class CharacterDamageEffectsSystem : SystemBase
-// {
-//     private static readonly int HitReact = Animator.StringToHash("HitReact");
-//
-//     protected override void OnUpdate()
-//     {
-//         // Entities.WithoutBurst().WithNone<Pause>().ForEach(
-//         //     (
-//         //         Entity e,
-//         //         ref DeadComponent deadComponent,
-//         //         ref EffectComponent effectsComponent,
-//         //         in Animator animator,
-//         //         in AudioSource audioSource,
-//         //         in EffectsManager effects
-//         //         ) =>
-//         //     {
-//         //         var hasDamage = SystemAPI.HasComponent<DamageComponent>(e);
-//         //         var losingDamage = false;
-//         //         if (hasDamage)
-//         //         {
-//         //             losingDamage = SystemAPI.GetComponent<DamageComponent>(e).LosingDamage;
-//         //         }
-//         //
-//         //         if (losingDamage) return;
-//         //
-//         //         if (hasDamage && deadComponent.isDead == false)
-//         //         {
-//         //             var damageComponent = SystemAPI.GetComponent<DamageComponent>(e);
-//         //             var effectsIndex = damageComponent.EffectsIndex;
-//         //             //set in attackersystem by readin visualeffect component index
-//         //             if (damageComponent.DamageReceived <= .0001) return;
-//         //             Debug.Log("effects index " + effectsIndex);
-//         //             animator.SetInteger(HitReact,
-//         //                 1); // can easily change to effect index (maybe new field in component ammo and visual effect) if we add more hitreact animations
-//         //             if (effects.actorEffect.Count > 0)
-//         //             {
-//         //                 if (effects.actorEffect != null)
-//         //                 {
-//         //                     effectsIndex--;
-//         //                     if (effects.actorEffect[effectsIndex].psInstance)
-//         //                     {
-//         //                         effects.actorEffect[effectsIndex].psInstance.Play(true);
-//         //                         //Debug.Log("ps dam " + effects.actorEffect[effectsIndex].psInstance);
-//         //                     }
-//         //
-//         //                     if (effects.actorEffect[effectsIndex].veInstance)
-//         //                     {
-//         //                         effects.actorEffect[effectsComponent.effectIndex].veInstance.Play();
-//         //                         Debug.Log("ps dam " + effects.actorEffect[effectsIndex].veInstance);
-//         //                     }
-//         //
-//         //
-//         //                     if (effects.actorEffect[effectsIndex].clip)
-//         //                     {
-//         //                         audioSource.clip = effects.actorEffect[effectsIndex].clip;
-//         //                         audioSource.PlayOneShot(audioSource.clip);
-//         //                     }
-//         //                 }
-//         //             }
-//         //         }
-//         //     }
-//         // ).Run();
-//     }
-// }
-
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateAfter(typeof(HealthSystem))]
-public partial class CharacterDeadEffectsSystem : SystemBase
-{
-    private static readonly int Dead = Animator.StringToHash("Dead");
-
-
-    protected override void OnUpdate()
-    {
-        // Entities.WithoutBurst().WithNone<Pause>().ForEach(
-        //     (
-        //         Entity e,
-        //         ref DeadComponent deadComponent,
-        //         ref EffectComponent effectsComponent,
-        //         in AudioSource audioSource,
-        //         in Animator animator,
-        //         in EffectsManager effects) =>
-        //     {
-        //         //var audioSource = effects.audioSource;
-        //
-        //
-        //         //int state = animator.GetInteger("Dead");
-        //
-        //         if (deadComponent.isDead &&
-        //             deadComponent.playDeadEffects) //can probably just use playEffectType in effectsComponent TO DO
-        //         {
-        //             deadComponent.playDeadEffects = false;
-        //             var isEnemy = SystemAPI.HasComponent<EnemyComponent>(e);
-        //             var isPlayer = SystemAPI.HasComponent<PlayerComponent>(e);
-        //             if (isPlayer)
-        //                 animator.SetInteger(Dead,
-        //                     1); // can easily change to effect index (maybe new field in component ammo and visual effect) if we add more DEAD animations
-        //             if (isEnemy) animator.SetInteger(Dead, 2);
-        //             var effectsIndex = deadComponent.effectsIndex;
-        //             Debug.Log("eff ind play " + effectsIndex);
-        //
-        //             if (effects.actorEffect != null && effects.actorEffect.Count > 0)
-        //             {
-        //                 if (effects.actorEffect[effectsIndex].veInstance)
-        //                 {
-        //                     effects.actorEffect[effectsComponent.effectIndex].veInstance.Play();
-        //                     if (effects.actorEffect[effectsIndex].clip)
-        //                     {
-        //                         //effectsComponent.startEffectSound = false;
-        //                         audioSource.clip = effects.actorEffect[effectsIndex].clip;
-        //                         if (!audioSource.isPlaying)
-        //                         {
-        //                             audioSource.PlayOneShot(audioSource.clip, .5f);
-        //                             //Log("play audio dead " + audioSource.clip);
-        //                         }
-        //                     }
-        //                 }
-        //
-        //                 if (effects.actorEffect[effectsIndex]
-        //                     .psInstance) //tryinmg to match index to effect type - 1 is dead
-        //                 {
-        //                     if (effects.actorEffect[effectsIndex].psInstance.isPlaying == false)
-        //                     {
-        //                         effects.actorEffect[effectsIndex].psInstance.Play(true);
-        //                         //Debug.Log("ps dead " + effects.actorEffect[effectsIndex].psInstance);
-        //                         if (effects.actorEffect[effectsIndex].clip)
-        //                         {
-        //                             //effectsComponent.startEffectSound = false;
-        //                             audioSource.clip = effects.actorEffect[effectsIndex].clip;
-        //                             if (!audioSource.isPlaying)
-        //                             {
-        //                                 audioSource.PlayOneShot(audioSource.clip, .5f);
-        //                                 //Log("play audio dead " + audioSource.clip);
-        //                             }
-        //                         }
-        //                     }
-        //                     else if (effectsComponent.playEffectAllowed == false)
-        //                     {
-        //                         effects.actorEffect[effectsIndex].psInstance.Stop(true);
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // ).Run();
-    }
-}
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateAfter(typeof(BreakableEffectsSystem))]

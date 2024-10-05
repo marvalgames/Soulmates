@@ -102,18 +102,17 @@ public partial class HealthSystem : SystemBase
                     Debug.Log("Destroyed " + LevelManager.instance.enemyDestroyed);
                     var isEnemy = SystemAPI.HasComponent<EnemyComponent>(entity);
                     var isPlayer = SystemAPI.HasComponent<PlayerComponent>(entity);
-                    //if (isPlayer) animator.SetInteger(Dead, 1);// can easily change to effect index (maybe new field in component ammo and visual effect) if we add more DEAD animations
-                    //if (isEnemy) animator.SetInteger(Dead, 2);
+                
                     if (SystemAPI.HasComponent<AmmoComponent>(entityCausingDamage))
                     {
                         var ammo = SystemAPI.GetComponent<AmmoComponent>(entityCausingDamage);
                         dead.effectsIndex = ammo.deathBlowEffectsIndex;
                     }
-                    else if (SystemAPI.HasComponent<VisualEffectEntityComponent>(entityCausingDamage))
-                    {
-                        var ve = SystemAPI.GetComponent<VisualEffectEntityComponent>(entityCausingDamage);
-                        dead.effectsIndex = ve.deathBlowEffectsIndex;
-                    }
+                    // else if (SystemAPI.HasComponent<VisualEffectEntityComponent>(entityCausingDamage))
+                    // {
+                    //     var ve = SystemAPI.GetComponent<VisualEffectEntityComponent>(entityCausingDamage);
+                    //     dead.effectsIndex = ve.deathBlowEffectsIndex;
+                    // }
 
                     ecb.SetComponent(entity, dead);
                 }
