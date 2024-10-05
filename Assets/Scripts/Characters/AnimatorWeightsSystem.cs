@@ -7,6 +7,10 @@ public struct AnimatorWeightsComponent : IComponentData
 {
     public float hitWeight;
     public float aimWeight;
+    public float animSpeed;
+    public float impulseSpeed;
+    public bool useImpulseSpeed;
+    public bool resetSpeed;
 }
 
 [RequireMatchingQueriesForUpdate]
@@ -27,6 +31,17 @@ public partial class AnimatorWeightsSystem : SystemBase
                 var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                 animatorWeightsComponent.hitWeight = animator.GetFloat(HitWeight);
                 animatorWeightsComponent.aimWeight = animator.GetFloat(AimWeight);
+                animatorWeightsComponent.animSpeed = animator.speed;
+                if (animatorWeightsComponent.useImpulseSpeed)
+                {
+                    animator.speed = animatorWeightsComponent.impulseSpeed;
+                }
+                else if (animatorWeightsComponent.resetSpeed)
+                {
+                    animator.speed = 1;
+                    animatorWeightsComponent.resetSpeed = false;
+                }
+                
             }
         ).Run();
     }

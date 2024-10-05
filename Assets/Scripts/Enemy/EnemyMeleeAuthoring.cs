@@ -99,15 +99,16 @@ namespace Enemy
                 );
 
                 var buffer = AddBuffer<MovesComponentElement>(e);
-                foreach (var movesComponentElement in authoring.moveList.Select(move => new MovesComponentElement
-                         {
-                             active = authoring.active,
-                             triggerType = move.triggerType,
-                             animationType = move.animationType,
-                             target = move.target,
-                             weight = move.weight
-                         }))
+                foreach (var move in authoring.moveList)
                 {
+                    var movesComponentElement = new MovesComponentElement
+                    {
+                        active = authoring.active,
+                        triggerType = move.triggerType,
+                        animationType = move.animationType,
+                        target = move.target,
+                        weight = move.weight
+                    };
                     buffer.Add(movesComponentElement);
                 }
 

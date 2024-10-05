@@ -7,6 +7,7 @@ namespace Collisions
     {
         public float timer;
         public float maxTime;
+        public float impulseAnimSpeed;
         public float animSpeedRatio;
         public bool activate;
 
@@ -14,6 +15,10 @@ namespace Collisions
         public float maxTimeOnReceived;
         public float animSpeedRatioOnReceived;
         public bool activateOnReceived;
+        //public bool aiAgent;
+
+        public bool hitReceivedGenerateImpulse;
+        public bool hitLandedGenerateImpulse;
     }
     public class ImpulseEffectsAuthoring : MonoBehaviour
     {
@@ -24,6 +29,8 @@ namespace Collisions
 
         public float maxTimeOnReceived = 1.0f;
         public float animSpeedRatioOnReceived = .5f;
+        
+        //public bool aiAgent = true;
 
         class ImpulseBaker : Baker<ImpulseEffectsAuthoring>
         {
@@ -31,9 +38,10 @@ namespace Collisions
             {
                 var e = GetEntity(effectsAuthoring.gameObject, TransformUsageFlags.Dynamic);
 
-                AddComponent(e, new EffectsComponent());
+                //AddComponent(e, new EffectComponent());
                 AddComponent(e, new ImpulseComponent
                     {
+                        //aiAgent = effectsAuthoring.aiAgent,
                         maxTime = effectsAuthoring.maxTime,
                         animSpeedRatio = effectsAuthoring.animSpeedRatio,
                         maxTimeOnReceived = effectsAuthoring.maxTimeOnReceived,

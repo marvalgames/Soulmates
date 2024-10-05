@@ -2,14 +2,7 @@
 using Unity.Entities;
 using UnityEngine;
 
-public struct EffectsComponent : IComponentData
-{
-    public bool pauseEffect;
-    public bool soundPlaying;
-    public bool playEffectAllowed;
-    public EffectType playEffectType;
-    public int effectIndex;
-}
+
 
 
 
@@ -42,24 +35,24 @@ public class EffectsManager : MonoBehaviour
 
         }
 
-        for (var i = 0; i < actorEffect.Count; i++)
-        {
-            if (actorEffect[i] == null) continue;
-            if (actorEffect[i].psPrefab != null)
-            {
-                var ps = Instantiate(actorEffect[i].psPrefab, transform);
-                actorEffect[i].psInstance = ps;
-            }
-
-            if (actorEffect[i].vePrefab != null)
-            {
-                var ve = Instantiate(actorEffect[i].vePrefab, transform);
-                Debug.Log("LOADED " + actorEffect[i].effectType);
-                actorEffect[i].veInstance = ve;
-                ve.Stop();
-            }
-
-        }
+        // for (var i = 0; i < actorEffect.Count; i++)
+        // {
+        //     if (actorEffect[i] == null) continue;
+        //     if (actorEffect[i].psPrefab != null)
+        //     {
+        //         var ps = Instantiate(actorEffect[i].psPrefab, transform);
+        //         actorEffect[i].psInstance = ps;
+        //     }
+        //
+        //     if (actorEffect[i].vePrefab != null)
+        //     {
+        //         var ve = Instantiate(actorEffect[i].vePrefab, transform);
+        //         Debug.Log("LOADED " + actorEffect[i].effectType);
+        //         actorEffect[i].veInstance = ve;
+        //         ve.Stop();
+        //     }
+        //
+        // }
     }
 
 

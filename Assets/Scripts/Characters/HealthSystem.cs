@@ -178,7 +178,6 @@ public partial struct HealthBarManagedSystem : ISystem
             if (!healthBarComponent.ValueRW.instantiated)
             {
                 var go = GameObject.Instantiate(guiClass.actorGuiPrefab);
-                //go.SetActive(true);
                 commandBuffer.AddComponent(entity,
                   new HealthBarInstance {actorGuiInstance = go});
                 healthBarComponent.ValueRW.instantiated = true;
@@ -189,7 +188,6 @@ public partial struct HealthBarManagedSystem : ISystem
                      .Query<HealthBarInstance, RefRO<HealthComponent>, RefRO<HealthBarComponent>>()
                      .WithEntityAccess())
         {
-            //actor.actorPrefabInstance.SetActive(true);
             var img = actorGui.actorGuiInstance.GetComponent<HealthBar>()._healthBar;
             var maxHealth = 100f;
             if (SystemAPI.HasComponent<RatingsComponent>(entity))
@@ -203,18 +201,6 @@ public partial struct HealthBarManagedSystem : ISystem
             {
                 pct = 0;
             }
-
-            Debug.Log("health " + pct + " damage " + damage);
-            //img.fillAmount = pct;
-
-            RectTransform rectTransform = img.GetComponent<RectTransform>();
-            //rectTransform.localScale = new Vector3(pct, 1.0f, 1.0f);
-
-            //actorGui.actorGuiPrefab.GetComponent<HealthBar>()._healthBar.rectTransform.localScale =
-            //  new Vector3(pct, 1f, 1f);
-
-            //img.GetComponent<UnityEngine.UI.Image>().gameObject.SetActive(false);
-            //img.fillAmount = pct;
             img.rectTransform.localScale = new Vector3(pct, 1, 1);
         }
     }
