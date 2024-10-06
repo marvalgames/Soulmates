@@ -4166,8 +4166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 0}
-  showTime: 3
-  score3dText: {fileID: 821383783832579042, guid: 99d3c87643eef064995e94c45a7a7ee1, type: 3}
 --- !u!114 &4732537677986497733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4195,20 +4193,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorEffect:
-  - effectType: 1
-    psPrefab: {fileID: 0}
-    psInstance: {fileID: 0}
-    vePrefab: {fileID: 3400481237609067969, guid: e01e5889d710c764c82935e41862d0fd, type: 3}
-    veInstance: {fileID: 0}
-    clip: {fileID: 8300000, guid: 6a7f6cc35dcf945488fd16521c28d3c6, type: 3}
-    transformGameObject: {fileID: 0}
-  - effectType: 2
-    psPrefab: {fileID: 0}
-    psInstance: {fileID: 0}
-    vePrefab: {fileID: 4626057397273206994, guid: 83d0f48e7be2585419b2239c484c3ba8, type: 3}
-    veInstance: {fileID: 0}
-    clip: {fileID: 8300000, guid: eaf7e12ec4ee1c94abc33e7561d20b6e, type: 3}
-    transformGameObject: {fileID: 0}
+  - effectClip: {fileID: 0}
+    effectParticleSystem: {fileID: 0}
+    effectVisualEffect: {fileID: 0}
+    effectParticleSystemInstance: {fileID: 0}
+    effectVisualEffectInstance: {fileID: 0}
+    pauseEffect: 0
+    soundPlaying: 0
+    playEffectAllowed: 0
+    playEffectType: 0
+    effectIndex: 0
+  - effectClip: {fileID: 0}
+    effectParticleSystem: {fileID: 0}
+    effectVisualEffect: {fileID: 0}
+    effectParticleSystemInstance: {fileID: 0}
+    effectVisualEffectInstance: {fileID: 0}
+    pauseEffect: 0
+    soundPlaying: 0
+    playEffectAllowed: 0
+    playEffectType: 0
+    effectIndex: 0
   audioSource: {fileID: 4368708599629919291}
 --- !u!114 &4338246946439923827
 MonoBehaviour:
@@ -4301,7 +4305,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8972776704480080788}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e88d81123eb3ff848a842bf8d7721a10, type: 3}
   m_Name: 

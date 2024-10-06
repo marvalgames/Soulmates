@@ -12,8 +12,8 @@ namespace Sandbox.Player
         [HideInInspector] public Animator animator;
         private List<Moves> moveList = new List<Moves>();
         public Moves moveUsing = new Moves();
-        private Entity meleeEntity;
-        private EntityManager entityManager;
+        public Entity meleeEntity;
+        public EntityManager entityManager;
         private static readonly int CombatAction = Animator.StringToHash("CombatAction");
         public int lastCombatAction;
         private static readonly int CombatMode = Animator.StringToHash("CombatMode");

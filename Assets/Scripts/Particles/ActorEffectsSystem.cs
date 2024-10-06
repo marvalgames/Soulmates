@@ -317,58 +317,58 @@ public partial struct ActorDamageEffectsSystem : ISystem
     }
 }
 
-
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateAfter(typeof(BreakableEffectsSystem))]
-[RequireMatchingQueriesForUpdate]
-public partial class ParticleInstanceSystem : SystemBase
-{
-    protected override void OnUpdate()
-    {
-        var ecb = new EntityCommandBuffer(Allocator.Temp);
-
-
-        Entities.WithoutBurst().ForEach(
-            (
-                Entity e,
-                ref ParticleSystemComponent psComponent,
-                in ParticleSystem particleSystem
-            ) =>
-            {
-                if (psComponent.spawnStage == SpawnStage.None)
-                {
-                    psComponent.spawnStage = SpawnStage.Play;
-                    if (particleSystem != null)
-                    {
-                        Debug.Log("ENTITY SPAWN STAGE " + e + " PS " + particleSystem.isPlaying + " " +
-                                  particleSystem);
-                    }
-                }
-                else if (!particleSystem.isPlaying && psComponent.spawnStage == SpawnStage.Play)
-                {
-                    particleSystem.Play(true);
-                    particleSystem.transform.position = psComponent.psLocalTransform.Position;
-                    Debug.Log("SPAWN PLAY " + e + " PS " + particleSystem.isPlaying + " " + particleSystem);
-                }
-                else if (particleSystem.isPlaying && psComponent.spawnStage == SpawnStage.Play)
-                {
-                    if (SystemAPI.HasComponent<PlayAndDestroyEffectComponent>(psComponent.parentEntity)
-                        && particleSystem.time >= .2) //make sure it plays first
-                    {
-                        psComponent.spawnStage = SpawnStage.End;
-                        ecb.AddComponent(e, typeof(DestroyComponent));
-                        particleSystem.Stop();
-                    }
-                }
-            }
-        ).Run();
-
-
-        ecb.Playback(EntityManager);
-        ecb.Dispose();
-    }
-}
-
+//
+// [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+// [UpdateAfter(typeof(BreakableEffectsSystem))]
+// [RequireMatchingQueriesForUpdate]
+// public partial class ParticleInstanceSystem : SystemBase
+// {
+//     protected override void OnUpdate()
+//     {
+//         var ecb = new EntityCommandBuffer(Allocator.Temp);
+//
+//
+//         Entities.WithoutBurst().ForEach(
+//             (
+//                 Entity e,
+//                 ref ParticleSystemComponent psComponent,
+//                 in ParticleSystem particleSystem
+//             ) =>
+//             {
+//                 if (psComponent.spawnStage == SpawnStage.None)
+//                 {
+//                     psComponent.spawnStage = SpawnStage.Play;
+//                     if (particleSystem != null)
+//                     {
+//                         Debug.Log("ENTITY SPAWN STAGE " + e + " PS " + particleSystem.isPlaying + " " +
+//                                   particleSystem);
+//                     }
+//                 }
+//                 else if (!particleSystem.isPlaying && psComponent.spawnStage == SpawnStage.Play)
+//                 {
+//                     particleSystem.Play(true);
+//                     particleSystem.transform.position = psComponent.psLocalTransform.Position;
+//                     Debug.Log("SPAWN PLAY " + e + " PS " + particleSystem.isPlaying + " " + particleSystem);
+//                 }
+//                 else if (particleSystem.isPlaying && psComponent.spawnStage == SpawnStage.Play)
+//                 {
+//                     if (SystemAPI.HasComponent<PlayAndDestroyEffectComponent>(psComponent.parentEntity)
+//                         && particleSystem.time >= .2) //make sure it plays first
+//                     {
+//                         psComponent.spawnStage = SpawnStage.End;
+//                         ecb.AddComponent(e, typeof(DestroyComponent));
+//                         particleSystem.Stop();
+//                     }
+//                 }
+//             }
+//         ).Run();
+//
+//
+//         ecb.Playback(EntityManager);
+//         ecb.Dispose();
+//     }
+// }
+//
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateAfter(typeof(BreakableCollisionHandlerSystem))]

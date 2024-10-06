@@ -19,8 +19,10 @@ namespace Sandbox.Player
         {
             Entities.WithoutBurst().ForEach(
                 (
-                    PlayerCombat playerCombat,
-                    Animator animator,
+                    //PlayerCombat playerCombat,
+                    //Animator animator,
+                    Entity e,   
+                    ActorInstance actor,
                     ref CheckedComponent checkedComponent,
                     ref LocalTransform localTransform,
                     ref InputControllerComponent inputController,
@@ -28,6 +30,10 @@ namespace Sandbox.Player
                     in ApplyImpulseComponent applyImpulse
                 ) =>
                 {
+                    var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                    var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
+                    playerCombat.meleeEntity = e;
+                    playerCombat.entityManager = EntityManager;
                     var buttonXpressed = inputController.buttonX_Press; //kick types
                     var buttonXtap = inputController.buttonX_Tap; //punch types
                     var leftBumperPressed = inputController.leftBumperPressed;
