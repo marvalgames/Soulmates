@@ -8,55 +8,46 @@ namespace Sandbox.Player
 {
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [RequireMatchingQueriesForUpdate]
-    public partial class PlayerCombatSystem : SystemBase
+    public partial struct PlayerCombatSystem : ISystem
     {
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int CombatAction = Animator.StringToHash("CombatAction");
         private static readonly int ComboAnimationPlayed = Animator.StringToHash("ComboAnimationPlayed");
 
 
-        protected override void OnUpdate()
+        public void OnUpdate(ref SystemState state)
         {
-            Entities.WithoutBurst().ForEach(
-                (
-                    //PlayerCombat playerCombat,
-                    //Animator animator,
-                    Entity e,   
-                    ActorInstance actor,
-                    ref CheckedComponent checkedComponent,
-                    ref LocalTransform localTransform,
-                    ref InputControllerComponent inputController,
-                    in LocalToWorld ltw,
-                    in ApplyImpulseComponent applyImpulse
-                ) =>
-                {
-                    var animator = actor.actorPrefabInstance.GetComponent<Animator>();
-                    var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
-                    playerCombat.meleeEntity = e;
-                    playerCombat.entityManager = EntityManager;
-                    var buttonXpressed = inputController.buttonX_Press; //kick types
-                    var buttonXtap = inputController.buttonX_Tap; //punch types
-                    var leftBumperPressed = inputController.leftBumperPressed;
-                    var leftBumperUp = inputController.leftBumperReleased;
+
+            foreach (var (actor, checkedComponent, inputController, applyImpulse,e  ) in SystemAPI.Query<ActorInstance, RefRW<CheckedComponent>,
+                     RefRW<InputControllerComponent>, RefRW<ApplyImpulseComponent>>().WithEntityAccess())
+            {
+                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
+                playerCombat.meleeEntity = e;
+                playerCombat.entityManager = state.EntityManager;
+                 var buttonXpressed = inputController.ValueRW.buttonX_Press; //kick types
+                    var buttonXtap = inputController.ValueRW.buttonX_Tap; //punch types
+                    var leftBumperPressed = inputController.ValueRW.leftBumperPressed;
+                    var leftBumperUp = inputController.ValueRW.leftBumperReleased;
                     var allowKick = buttonXpressed &&
-                                    (math.abs(animator.GetFloat(Vertical)) < 2 || applyImpulse.Grounded == false);
-                    var buttonXunPressed = inputController.buttonTimeX_UnPressed;
-                    var comboBufferTimeMax = inputController.comboBufferTimeMax;
+                                    (math.abs(animator.GetFloat(Vertical)) < 2 || applyImpulse.ValueRO.Grounded == false);
+                    var buttonXunPressed = inputController.ValueRW.buttonTimeX_UnPressed;
+                    var comboBufferTimeMax = inputController.ValueRW.comboBufferTimeMax;
 
                     if ((buttonXtap &&
-                         checkedComponent is { comboIndexPlaying: 0, AttackStages: AttackStages.End }) ||
-                        checkedComponent.AttackStages == AttackStages.No)
+                         checkedComponent.ValueRW is { comboIndexPlaying: 0, AttackStages: AttackStages.End } ) ||
+                        checkedComponent.ValueRW.AttackStages == AttackStages.No)
                     {
-                        checkedComponent.comboIndexPlaying = 1;
-                        inputController.comboBufferTimeStart = 0;
-                        inputController.comboBufferTimeEnd = 0;
+                        checkedComponent.ValueRW.comboIndexPlaying = 1;
+                        inputController.ValueRW.comboBufferTimeStart = 0;
+                        inputController.ValueRW.comboBufferTimeEnd = 0;
                         playerCombat.SelectMove(1);
                         animator.SetInteger(ComboAnimationPlayed, 1);
                     }
-                    else if (buttonXtap && checkedComponent.AttackStages == AttackStages.Action &&
-                             checkedComponent.comboIndexPlaying >= 1)
+                    else if (buttonXtap && checkedComponent.ValueRW.AttackStages == AttackStages.Action &&
+                             checkedComponent.ValueRW.comboIndexPlaying >= 1)
                     {
-                        checkedComponent.comboButtonClicked = true;
+                        checkedComponent.ValueRW.comboButtonClicked = true;
                     }
                     else if (allowKick) //kick
                     {
@@ -71,34 +62,37 @@ namespace Sandbox.Player
                         animator.SetInteger(CombatAction, 0);
                     }
 
-                    if (checkedComponent.AttackStages == AttackStages.End && checkedComponent.comboButtonClicked)
+                    if (checkedComponent.ValueRW.AttackStages == AttackStages.End && checkedComponent.ValueRW.comboButtonClicked)
                     {
-                        checkedComponent.comboIndexPlaying += 1;
-                        animator.SetInteger(ComboAnimationPlayed, checkedComponent.comboIndexPlaying);
+                        checkedComponent.ValueRW.comboIndexPlaying += 1;
+                        animator.SetInteger(ComboAnimationPlayed, checkedComponent.ValueRW.comboIndexPlaying);
                         playerCombat.SelectMove(1);
-                        inputController.comboBufferTimeStart = 0;
-                        checkedComponent.comboButtonClicked = false;
+                        inputController.ValueRW.comboBufferTimeStart = 0;
+                        checkedComponent.ValueRW.comboButtonClicked = false;
                     }
 
-                    if (checkedComponent.AttackStages == AttackStages.End)
+                    if (checkedComponent.ValueRW.AttackStages == AttackStages.End)
                     {
-                        if (inputController.comboBufferTimeStart == 0)
+                        if (inputController.ValueRW.comboBufferTimeStart == 0)
                         {
-                            inputController.comboBufferTimeStart = buttonXunPressed;
+                            inputController.ValueRW.comboBufferTimeStart = buttonXunPressed;
                         }
 
-                        inputController.comboBufferTimeEnd = buttonXunPressed;
+                        inputController.ValueRW.comboBufferTimeEnd = buttonXunPressed;
                         var timeSincePressed =
-                            inputController.comboBufferTimeEnd - inputController.comboBufferTimeStart;
+                            inputController.ValueRW.comboBufferTimeEnd - inputController.ValueRW.comboBufferTimeStart;
                         if (timeSincePressed > comboBufferTimeMax || timeSincePressed < 0)
                         {
-                            checkedComponent.comboIndexPlaying = 0;
+                            checkedComponent.ValueRW.comboIndexPlaying = 0;
                             animator.SetInteger(ComboAnimationPlayed, 0);
-                            checkedComponent.comboButtonClicked = false;
+                            checkedComponent.ValueRW.comboButtonClicked = false;
                         }
                     }
-                }
-            ).Run();
+                    
+                
+            }
         }
+        
+        
     }
 }

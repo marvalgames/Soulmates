@@ -60,7 +60,7 @@ namespace Sandbox.Player
                 }
             }
 
-            Debug.Log("SELECT MOVE");
+            Debug.Log("SELECT MOVE " + combatAction);
             if (animationIndex <= 0 || moveUsing.active == false) return; //0 is none on enum
             var defense = animationIndex == (int)AnimationType.Deflect;
             lastCombatAction = combatAction;
