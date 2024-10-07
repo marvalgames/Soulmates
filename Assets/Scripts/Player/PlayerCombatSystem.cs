@@ -101,12 +101,15 @@ namespace Sandbox.Player
                         checkedComponent.ValueRW.comboButtonClicked = false;
                     }
                 }
+                
+                
             }
         }
     }
 
 
     [UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateAfter(typeof(PlayerCombatSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerCombatManagedSystem : ISystem
     {
@@ -139,7 +142,7 @@ namespace Sandbox.Player
                     animator.SetInteger(CombatAction, melee.ValueRW.selectMove);
                     melee.ValueRW.selectMove = 0;
                 }
-                else
+                else if (melee.ValueRW.selectMove == 0)
                 {
                     var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
                     if (stage == AnimationStage.Enter)
@@ -164,19 +167,19 @@ namespace Sandbox.Player
                             score.streak = 0;
                             SystemAPI.SetComponent(e, score);
                         }
+
                         Debug.Log("End Attack SYSTEM");
                         checkedComponent.ValueRW.hitLanded = false; //set at end of attack only
                         checkedComponent.ValueRW.anyDefenseStarted = false;
                         checkedComponent.ValueRW.anyAttackStarted = false;
                         checkedComponent.ValueRW.AttackStages = AttackStages.End; //only for one frame
-                
                     }
-
                 }
             }
         }
 
-        private void SelectMove(Entity e, ActorInstance actor,  int combatAction, ref CheckedComponent checkedComponent, ref SystemState state)
+        private void SelectMove(Entity e, ActorInstance actor, int combatAction, ref CheckedComponent checkedComponent,
+            ref SystemState state)
         {
             var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
             if (movesList[e].Length <= 0) return;
@@ -210,8 +213,8 @@ namespace Sandbox.Player
             checkedComponent.primaryTrigger = primaryTrigger;
             checkedComponent.animationIndex = animationIndex;
             checkedComponent.totalAttempts += 1;
-            
-            
+
+
             // var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
             // if (stage == AnimationStage.Enter)
             // {
@@ -242,10 +245,8 @@ namespace Sandbox.Player
             //     checkedComponent.AttackStages = AttackStages.End; //only for one frame
             //     
             // }
-
         }
-        
-        
+
 
         private void StartMove(int animationIndex, TriggerType primaryTrigger, bool defense,
             ref CheckedComponent checkedComponent)
