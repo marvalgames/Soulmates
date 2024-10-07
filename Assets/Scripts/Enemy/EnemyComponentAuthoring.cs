@@ -145,15 +145,7 @@ public struct NavMeshAgentComponent : IComponentData
 
 }
 
-public struct MeleeComponent : IComponentData
-{
-    public bool Available;
-    public float hitPower;
-    public float gameHitPower;
-    public bool anyTouchDamage;
-    public float3 target;
-    public bool instantiated;
-}
+
 
 
 

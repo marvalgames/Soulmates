@@ -79,8 +79,8 @@ namespace Sandbox.Player
                 checkedComponent.animationIndex = animationIndex;
                 entityManager.SetComponentData(meleeEntity, checkedComponent);
             }
-
             animator.SetInteger(CombatAction, animationIndex);
+            
         }
 
 

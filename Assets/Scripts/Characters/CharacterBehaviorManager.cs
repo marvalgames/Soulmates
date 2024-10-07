@@ -1,6 +1,19 @@
 ﻿using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
-
+public struct MeleeComponent : IComponentData
+{
+    public bool Available;
+    public float hitPower;
+    public float gameHitPower;
+    public bool anyTouchDamage;
+    public float3 target;
+    public bool instantiated;
+    public float verticalSpeed;//speed check before combat move
+    public int comboAnimationPlayed;
+    public int combatAction;
+    public int selectMove;
+}
 public class CharacterBehaviorManager : MonoBehaviour
 {
     [SerializeField] private float currentRoleMaxTime = 3;
