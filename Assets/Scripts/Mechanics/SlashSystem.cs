@@ -39,7 +39,7 @@ namespace Mechanics
 
                     if (slashComponent.animate && animator.GetInteger(SlashState) == 0)
                     {
-                        playerCombat.SelectMove(3);
+                        //playerCombat.SelectMove(3);
                         slashComponent.animate = false;
                     }
                 }

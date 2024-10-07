@@ -15,7 +15,6 @@ namespace Sandbox.Player
         public Entity meleeEntity;
         public EntityManager entityManager;
         private static readonly int CombatAction = Animator.StringToHash("CombatAction");
-        public int lastCombatAction;
         private static readonly int CombatMode = Animator.StringToHash("CombatMode");
         private static readonly int Zone = Animator.StringToHash("Zone");
 
@@ -30,18 +29,6 @@ namespace Sandbox.Player
                 //move.targetEntity = meleeEntity;
                 moveList.Add(move);
             }
-
-
-            if (meleeEntity == Entity.Null)
-            {
-                meleeEntity = GetComponent<CharacterEntityTracker>().linkedEntity;
-                if (entityManager == default)
-                {
-                    entityManager = GetComponent<CharacterEntityTracker>().entityManager;
-                }
-
-                if (meleeEntity != Entity.Null) entityManager.AddComponentObject(meleeEntity, this);
-            }
         }
 
         public void SelectMove(int combatAction)
@@ -52,7 +39,8 @@ namespace Sandbox.Player
 
             for (var i = 0; i < moveList.Count; i++) //pick from list defined in inspector
             {
-                if ((int)moveList[i].animationType == combatAction)
+                //if ((int)moveList[i].animationType == combatAction) 
+                if (i == combatAction - 1)
                 {
                     moveUsing = moveList[i];
                     animationIndex = (int)moveUsing.animationType;
@@ -63,7 +51,6 @@ namespace Sandbox.Player
             Debug.Log("SELECT MOVE " + combatAction);
             if (animationIndex <= 0 || moveUsing.active == false) return; //0 is none on enum
             var defense = animationIndex == (int)AnimationType.Deflect;
-            lastCombatAction = combatAction;
             StartMove(animationIndex, primaryTrigger, defense);
         }
 
@@ -79,8 +66,9 @@ namespace Sandbox.Player
                 checkedComponent.animationIndex = animationIndex;
                 entityManager.SetComponentData(meleeEntity, checkedComponent);
             }
+
             animator.SetInteger(CombatAction, animationIndex);
-            
+            Debug.Log("STATE Start Move " + animationIndex);
         }
 
 
@@ -92,6 +80,7 @@ namespace Sandbox.Player
                 //Debug.Log("COMBAT MODE " + aimComponent.combatMode);
                 animator.SetInteger(Zone, aimComponent.combatMode ? 1 : 0);
                 animator.SetBool(CombatMode, aimComponent.combatMode);
+
             }
         }
 
@@ -101,9 +90,6 @@ namespace Sandbox.Player
             Aim();
         }
 
-        public void StartMotionUpdateCheckComponent() //event
-        {
-        }
 
         public void StateUpdateCheckComponent()
         {
@@ -112,8 +98,8 @@ namespace Sandbox.Player
                 var checkedComponent = entityManager.GetComponentData<CheckedComponent>(meleeEntity);
                 checkedComponent.AttackStages = AttackStages.Action;
                 entityManager.SetComponentData(meleeEntity, checkedComponent);
+
             }
-            
         }
 
 
@@ -124,12 +110,6 @@ namespace Sandbox.Player
                 var melee = entityManager.GetComponentData<MeleeComponent>(meleeEntity);
                 moveUsing.target = melee.target;
             }
-
-            // if (moveUsing.moveAudioSource && moveUsing.moveAudioClip)
-            // {
-            //     moveUsing.moveAudioSource.clip = moveUsing.moveAudioClip;
-            //     moveUsing.moveAudioSource.PlayOneShot(moveUsing.moveAudioClip);
-            // }
 
             if (moveUsing.moveParticleSystem)
             {
@@ -142,10 +122,11 @@ namespace Sandbox.Player
                 checkedComponent.anyAttackStarted = true;
                 checkedComponent.attackFirstFrame = true;
                 checkedComponent.AttackStages = AttackStages.Start;
-                //checkedComponent.anyDefenseStarted = false;
                 checkedComponent.hitTriggered = false;
                 entityManager.SetComponentData(meleeEntity, checkedComponent);
             }
+            Debug.Log("STATE Start Update");
+
         }
 
         public void EndAttack()
@@ -160,6 +141,7 @@ namespace Sandbox.Player
                     score.streak = 0;
                     entityManager.SetComponentData(meleeEntity, score);
                 }
+
                 Debug.Log("End Attack");
                 checkedComponent.hitLanded = false; //set at end of attack only
                 checkedComponent.anyDefenseStarted = false;
@@ -167,6 +149,8 @@ namespace Sandbox.Player
                 checkedComponent.AttackStages = AttackStages.End; //only for one frame
                 entityManager.SetComponentData(meleeEntity, checkedComponent);
             }
+            Debug.Log("STATE Start End");
+
         }
     }
 }

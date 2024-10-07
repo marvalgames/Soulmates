@@ -336,7 +336,7 @@ namespace Collisions
                 }
                 else if ((punchingA || meleeA || defenseA || alwaysDamageA) && !ammoA && !ammoB)
                 {
-                    Debug.Log("A " + (TriggerType) typeA + ", B " + (TriggerType) typeB);
+                    //Debug.Log("A " + (TriggerType) typeA + ", B " + (TriggerType) typeB);
 
                     var collisionComponent =
                         new CollisionComponent

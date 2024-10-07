@@ -1,4 +1,5 @@
 using Collisions;
+using Enemy;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -36,10 +37,10 @@ namespace Sandbox.Player
                 //melee.ValueRW.selectMove = 0;
 
                 Debug.Log("xtap " + buttonXtap);
-                
+
                 if (buttonXtap &&
-                     (checkedComponent.ValueRW is { comboIndexPlaying: 0, AttackStages: AttackStages.End } ||
-                    checkedComponent.ValueRW.AttackStages == AttackStages.No))
+                    (checkedComponent.ValueRW is { comboIndexPlaying: 0, AttackStages: AttackStages.End } ||
+                     checkedComponent.ValueRW.AttackStages == AttackStages.No))
                 {
                     checkedComponent.ValueRW.comboIndexPlaying = 1;
                     inputController.ValueRW.comboBufferTimeStart = 0;
@@ -50,7 +51,8 @@ namespace Sandbox.Player
                     //animator.SetInteger(ComboAnimationPlayed, 1);
                     melee.ValueRW.comboAnimationPlayed = 1;
                 }
-                else if (buttonXtap && checkedComponent.ValueRW is { AttackStages: AttackStages.Action, comboIndexPlaying: >= 1 })
+                else if (buttonXtap && checkedComponent.ValueRW is
+                             { AttackStages: AttackStages.Action, comboIndexPlaying: >= 1 })
                 {
                     checkedComponent.ValueRW.comboButtonClicked = true;
                 }
@@ -61,7 +63,7 @@ namespace Sandbox.Player
                 }
                 else if (leftBumperPressed)
                 {
-                    melee.ValueRW.selectMove = 10;
+                    melee.ValueRW.selectMove = 4;
                     //playerCombat.SelectMove(10);
                 }
                 else if (leftBumperUp)
@@ -111,6 +113,7 @@ namespace Sandbox.Player
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int CombatAction = Animator.StringToHash("CombatAction");
         private static readonly int ComboAnimationPlayed = Animator.StringToHash("ComboAnimationPlayed");
+        private MovesComponentElement moveUsing;
 
 
         public void OnUpdate(ref SystemState state)
@@ -125,18 +128,135 @@ namespace Sandbox.Player
 
                 if (melee.ValueRW.selectMove > 0)
                 {
-                    playerCombat.SelectMove(melee.ValueRW.selectMove);
-                    melee.ValueRW.selectMove = 0;
+                    SelectMove(e, actor, melee.ValueRW.selectMove, ref checkedComponent.ValueRW, ref state);
+                    Debug.Log("Player Select move " + melee.ValueRW.selectMove);
+                    //playerCombat.SelectMove(melee.ValueRW.selectMove);
                     var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                     melee.ValueRW.verticalSpeed = animator.GetFloat(Vertical);
                     //melee.ValueRW.comboAnimationPlayed = 1;
                     //melee.ValueRW.selectMove = 1;
                     animator.SetInteger(ComboAnimationPlayed, melee.ValueRW.comboAnimationPlayed);
-                    //animator.SetInteger(CombatAction, melee.ValueRW.combatAction);
+                    animator.SetInteger(CombatAction, melee.ValueRW.selectMove);
+                    melee.ValueRW.selectMove = 0;
+                }
+                else
+                {
+                    var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
+                    if (stage == AnimationStage.Enter)
+                    {
+                        //checkedComponent.anyAttackStarted = true;
+                        Debug.Log("Start Attack SYSTEM");
+                        checkedComponent.ValueRW.attackFirstFrame = true;
+                        checkedComponent.ValueRW.AttackStages = AttackStages.Start;
+                        checkedComponent.ValueRW.hitTriggered = false;
+                    }
+                    else if (stage == AnimationStage.Update)
+                    {
+                        checkedComponent.ValueRW.AttackStages = AttackStages.Action;
+                        Debug.Log("Update Attack SYSTEM");
+                    }
+                    else if (stage == AnimationStage.Exit)
+                    {
+                        if (checkedComponent.ValueRW.hitTriggered == false && SystemAPI.HasComponent<ScoreComponent>(e))
+                        {
+                            var score = SystemAPI.GetComponent<ScoreComponent>(e);
+                            score.combo = 0;
+                            score.streak = 0;
+                            SystemAPI.SetComponent(e, score);
+                        }
+                        Debug.Log("End Attack SYSTEM");
+                        checkedComponent.ValueRW.hitLanded = false; //set at end of attack only
+                        checkedComponent.ValueRW.anyDefenseStarted = false;
+                        checkedComponent.ValueRW.anyAttackStarted = false;
+                        checkedComponent.ValueRW.AttackStages = AttackStages.End; //only for one frame
+                
+                    }
+
                 }
             }
         }
+
+        private void SelectMove(Entity e, ActorInstance actor,  int combatAction, ref CheckedComponent checkedComponent, ref SystemState state)
+        {
+            var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
+            if (movesList[e].Length <= 0) return;
+            var animationIndex = -1;
+            var primaryTrigger = TriggerType.None;
+            moveUsing = new MovesComponentElement
+            {
+                active = false
+            };
+
+
+            for (var i = 0; i < movesList[e].Length; i++) //pick from list defined in inspector
+            {
+                //if ((int)movesList[e][i].animationType == combatAction)
+                if (i == combatAction -
+                    1) //check list and match animation in animator to trigger and type based on this
+                {
+                    moveUsing = movesList[e][i];
+                    animationIndex = (int)moveUsing.animationType;
+                    primaryTrigger = moveUsing.triggerType;
+                }
+            }
+
+            Debug.Log("Move Using " + moveUsing.animationType + " to " + moveUsing.triggerType);
+            //Debug.Log("SELECT MOVE " + combatAction);
+            if (animationIndex <= 0 || moveUsing.active == false) return; //0 is none on enum
+            var defense = animationIndex == (int)AnimationType.Deflect;
+            //StartMove(animationIndex, primaryTrigger, defense, ref checkedComponent);
+            checkedComponent.anyAttackStarted = true;
+            checkedComponent.anyDefenseStarted = defense;
+            checkedComponent.primaryTrigger = primaryTrigger;
+            checkedComponent.animationIndex = animationIndex;
+            checkedComponent.totalAttempts += 1;
+            
+            
+            // var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
+            // if (stage == AnimationStage.Enter)
+            // {
+            //     //checkedComponent.anyAttackStarted = true;
+            //     Debug.Log("Start Attack SYSTEM");
+            //     checkedComponent.attackFirstFrame = true;
+            //     checkedComponent.AttackStages = AttackStages.Start;
+            //     checkedComponent.hitTriggered = false;
+            // }
+            // else if (stage == AnimationStage.Update)
+            // {
+            //     checkedComponent.AttackStages = AttackStages.Action;
+            //     Debug.Log("Update Attack SYSTEM");
+            // }
+            // else if (stage == AnimationStage.Exit)
+            // {
+            //     if (checkedComponent.hitTriggered == false && SystemAPI.HasComponent<ScoreComponent>(e))
+            //     {
+            //         var score = SystemAPI.GetComponent<ScoreComponent>(e);
+            //         score.combo = 0;
+            //         score.streak = 0;
+            //         SystemAPI.SetComponent(e, score);
+            //     }
+            //     Debug.Log("End Attack SYSTEM");
+            //     checkedComponent.hitLanded = false; //set at end of attack only
+            //     checkedComponent.anyDefenseStarted = false;
+            //     checkedComponent.anyAttackStarted = false;
+            //     checkedComponent.AttackStages = AttackStages.End; //only for one frame
+            //     
+            // }
+
+        }
         
         
+
+        private void StartMove(int animationIndex, TriggerType primaryTrigger, bool defense,
+            ref CheckedComponent checkedComponent)
+        {
+            // checkedComponent.anyAttackStarted = true;
+            // checkedComponent.anyDefenseStarted = defense;
+            // checkedComponent.primaryTrigger = primaryTrigger;
+            // checkedComponent.animationIndex = animationIndex;
+            // checkedComponent.totalAttempts += 1;
+            //animator.SetInteger(CombatAction, animationIndex);
+            //Debug.Log(" Start Move " + animationIndex);
+        }
     }
 }
