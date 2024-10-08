@@ -5,6 +5,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Sandbox.Player
 {
@@ -139,7 +140,6 @@ namespace Sandbox.Player
 
             if (instantiated == false)
             {
-
                 foreach (var (actor, movesHolder, melee, entity)
                          in SystemAPI.Query<ActorInstance, MovesClassHolder, RefRW<MeleeComponent>>()
                              .WithEntityAccess().WithAny<PlayerComponent>())
@@ -160,11 +160,14 @@ namespace Sandbox.Player
                         movesClass.moveParticleSystemInstance = vfxGo;
                         movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;
                         movesClass.moveParticleSystemInstance.transform.localPosition = Vector3.zero;
+                        if (movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>())
+                        {
+                            movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>().Stop();
+                        }
                     }
 
                     //melee.ValueRW.instantiated = true;
                     instantiated = true;
-
                 }
             }
 
@@ -173,7 +176,8 @@ namespace Sandbox.Player
                      SystemAPI
                          .Query<ActorInstance, MovesClassHolder, AudioManagerClass, RefRW<MeleeComponent>,
                              RefRW<CheckedComponent>,
-                             RefRW<InputControllerComponent>, RefRW<ApplyImpulseComponent>>().WithEntityAccess().WithAny<PlayerComponent>())
+                             RefRW<InputControllerComponent>, RefRW<ApplyImpulseComponent>>().WithEntityAccess()
+                         .WithAny<PlayerComponent>())
             {
                 //var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
                 var animator = actor.actorPrefabInstance.GetComponent<Animator>();
@@ -207,6 +211,10 @@ namespace Sandbox.Player
                         melee.ValueRW.cancelMove = false;
                         melee.ValueRW.cancelMovement = 0;
                     }
+                    
+                    var vfxGraph = movesHolder.movesClassList[melee.ValueRW.lastCombatAction]
+                        .moveParticleSystemInstance.GetComponent<VisualEffect>();
+
 
                     var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
                     if (stage == AnimationStage.Enter)
@@ -217,6 +225,8 @@ namespace Sandbox.Player
                         audio.play = true;
                         audioClass.clip = clip;
                         SystemAPI.SetComponent(e, audio);
+                        //play vfx code here but may change to pass to VfxManager similar to AudioManagerSystem
+                        vfxGraph.Play();
 
                         //checkedComponent.anyAttackStarted = true;
                         Debug.Log("Start Attack SYSTEM");
@@ -227,6 +237,8 @@ namespace Sandbox.Player
                     else if (stage == AnimationStage.Update)
                     {
                         checkedComponent.ValueRW.AttackStages = AttackStages.Action;
+                        //play vfx code here but may change to pass to VfxManager similar to AudioManagerSystem
+                        vfxGraph.Stop();
                         Debug.Log("Update Attack SYSTEM");
                     }
                     else if (stage == AnimationStage.Exit)
@@ -241,6 +253,7 @@ namespace Sandbox.Player
                                 score.streak = 0;
                                 SystemAPI.SetComponent(e, score);
                             }
+
 
                             Debug.Log("End Attack SYSTEM");
                             melee.ValueRW.cancelMovement = 0;
