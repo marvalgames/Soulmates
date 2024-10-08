@@ -64,12 +64,15 @@ public partial struct InstantiatePrefabSystem : ISystem
             ecb.RemoveComponent<PlayerMoveGameObjectClass>(entity);
         }
 
-        foreach (var (prefab, entity) in
-                 SystemAPI.Query<PlayerJumpGameObjectClass>().WithEntityAccess())
+        foreach (var (prefab, actor, entity) in
+                 SystemAPI.Query<PlayerJumpGameObjectClass, ActorInstance>().WithEntityAccess())
         {
             if (prefab.vfxSystem)
             {
                 GameObject vfxGo = GameObject.Instantiate(prefab.vfxSystem);
+                vfxGo.transform.parent = actor.actorPrefabInstance.transform;
+                vfxGo.transform.localPosition = Vector3.zero;
+                
                 ecb.AddComponent(entity,
                     new VisualEffectJumpGO { VisualEffect = vfxGo.GetComponent<VisualEffect>() });
             }

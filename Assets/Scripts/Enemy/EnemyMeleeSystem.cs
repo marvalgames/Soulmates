@@ -99,6 +99,7 @@ namespace Enemy
         public void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<BeginSimulationEntityCommandBufferSystem.Singleton>();
+            state.RequireForUpdate<EnemyComponent>();
         }
 
         public void OnUpdate(ref SystemState state)
@@ -181,16 +182,10 @@ namespace Enemy
 
 
                     var animationIndex = enemyState.ValueRW.animationIndex;
-                    var combatActionIndex = enemyState.ValueRW.combatAction;
                     var clip = audioClipElement[enemyState.ValueRW.lastCombatAction].moveAudioClip;
-                    //var audioSource = movesInstance.meleeAudioSourceInstance.GetComponent<AudioSource>();
-                    //if (audioSource.isPlaying == false)
                     audio.ValueRW.play = true;
                     audioClass.clip = clip;
-                    //audioClass.source = audioSource;
-                    //audioSource.PlayOneShot(clip);
                     animator.SetInteger(combatAction, (int)animationIndex);
-                    //Debug.Log("Move started " + animationIndex + " " + clip);
                 }
             }
         }

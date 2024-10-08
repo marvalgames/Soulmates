@@ -1,3 +1,4 @@
+using Audio;
 using Collisions;
 using Enemy;
 using Unity.Entities;
@@ -7,7 +8,8 @@ using UnityEngine;
 
 namespace Sandbox.Player
 {
-    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    //[UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerCombatSystem : ISystem
     {
@@ -36,8 +38,6 @@ namespace Sandbox.Player
                 var comboBufferTimeMax = inputController.ValueRW.comboBufferTimeMax;
                 //melee.ValueRW.selectMove = 0;
 
-                Debug.Log("xtap " + buttonXtap);
-
                 if (buttonXtap &&
                     (checkedComponent.ValueRW is { comboIndexPlaying: 0, AttackStages: AttackStages.End } ||
                      checkedComponent.ValueRW.AttackStages == AttackStages.No))
@@ -64,12 +64,15 @@ namespace Sandbox.Player
                 else if (leftBumperPressed)
                 {
                     melee.ValueRW.selectMove = 4;
+                    Debug.Log("LEFT BUMPER DOWN");
                     //playerCombat.SelectMove(10);
                 }
                 else if (leftBumperUp)
                 {
                     //animator.SetInteger(CombatAction, 0);
-                    melee.ValueRW.combatAction = 0;
+                    melee.ValueRW.selectMove = 0;
+                    melee.ValueRW.cancelMove = true;
+                    Debug.Log("LEFT BUMPER UP");
                 }
 
                 if (checkedComponent.ValueRW is { AttackStages: AttackStages.End, comboButtonClicked: true })
@@ -101,14 +104,13 @@ namespace Sandbox.Player
                         checkedComponent.ValueRW.comboButtonClicked = false;
                     }
                 }
-                
-                
             }
         }
     }
 
 
-    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerCombatSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerCombatManagedSystem : ISystem
@@ -116,37 +118,85 @@ namespace Sandbox.Player
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int CombatAction = Animator.StringToHash("CombatAction");
         private static readonly int ComboAnimationPlayed = Animator.StringToHash("ComboAnimationPlayed");
+        private static readonly int CombatMode = Animator.StringToHash("CombatMode");
+        private static readonly int Zone = Animator.StringToHash("Zone");
+
         private MovesComponentElement moveUsing;
+
+        public void OnCreate(ref SystemState state)
+        {
+            state.RequireForUpdate<BeginSimulationEntityCommandBufferSystem.Singleton>();
+            state.RequireForUpdate<PlayerComponent>();
+        }
 
 
         public void OnUpdate(ref SystemState state)
         {
-            foreach (var (actor, melee, checkedComponent, inputController, applyImpulse, e) in SystemAPI
-                         .Query<ActorInstance, RefRW<MeleeComponent>, RefRW<CheckedComponent>,
+            var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
+                .CreateCommandBuffer(state.WorldUnmanaged);
+
+            foreach (var (movesHolder, melee, entity)
+                     in SystemAPI.Query<MovesClassHolder, RefRW<MeleeComponent>>().WithEntityAccess())
+            {
+                if (!melee.ValueRW.instantiated)
+                {
+                    var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
+                    go.SetActive(true);
+                    commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
+                    melee.ValueRW.instantiated = true;
+                }
+            }
+
+
+            foreach (var (actor, movesHolder, audioClass, melee, checkedComponent, inputController, applyImpulse, e) in
+                     SystemAPI
+                         .Query<ActorInstance, MovesClassHolder, AudioManagerClass, RefRW<MeleeComponent>,
+                             RefRW<CheckedComponent>,
                              RefRW<InputControllerComponent>, RefRW<ApplyImpulseComponent>>().WithEntityAccess())
             {
-                var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
-                playerCombat.meleeEntity = e;
-                playerCombat.entityManager = state.EntityManager;
+                //var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
+                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+
+
+                if (SystemAPI.HasComponent<ActorWeaponAimComponent>(e))
+                {
+                    var aimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
+                    Debug.Log("COMBAT MODE " + aimComponent.combatMode);
+                    animator.SetInteger(Zone, aimComponent.combatMode ? 1 : 0);
+                    animator.SetBool(CombatMode, aimComponent.combatMode);
+                }
+
+
 
                 if (melee.ValueRW.selectMove > 0)
                 {
+                    melee.ValueRW.cancelMovement = melee.ValueRW.selectMove == 4 ? 1 : .75f; 
+                    melee.ValueRW.lastCombatAction = melee.ValueRW.selectMove - 1;
                     SelectMove(e, actor, melee.ValueRW.selectMove, ref checkedComponent.ValueRW, ref state);
                     Debug.Log("Player Select move " + melee.ValueRW.selectMove);
-                    //playerCombat.SelectMove(melee.ValueRW.selectMove);
-                    var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                     melee.ValueRW.verticalSpeed = animator.GetFloat(Vertical);
-                    //melee.ValueRW.comboAnimationPlayed = 1;
-                    //melee.ValueRW.selectMove = 1;
                     animator.SetInteger(ComboAnimationPlayed, melee.ValueRW.comboAnimationPlayed);
                     animator.SetInteger(CombatAction, melee.ValueRW.selectMove);
                     melee.ValueRW.selectMove = 0;
                 }
                 else if (melee.ValueRW.selectMove == 0)
                 {
+                    if (melee.ValueRW.cancelMove)
+                    {
+                        animator.SetInteger(CombatAction, 0);
+                        melee.ValueRW.cancelMove = false;
+                        melee.ValueRW.cancelMovement = 0;
+                    }
                     var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
                     if (stage == AnimationStage.Enter)
                     {
+                        var audioClipElement = movesHolder.movesClassList;
+                        var clip = audioClipElement[melee.ValueRW.lastCombatAction].moveAudioClip;
+                        var audio = SystemAPI.GetComponent<AudioManagerComponent>(e);
+                        audio.play = true;
+                        audioClass.clip = clip;
+                        SystemAPI.SetComponent(e, audio);
+
                         //checkedComponent.anyAttackStarted = true;
                         Debug.Log("Start Attack SYSTEM");
                         checkedComponent.ValueRW.attackFirstFrame = true;
@@ -160,21 +210,28 @@ namespace Sandbox.Player
                     }
                     else if (stage == AnimationStage.Exit)
                     {
-                        if (checkedComponent.ValueRW.hitTriggered == false && SystemAPI.HasComponent<ScoreComponent>(e))
+                        if (checkedComponent.ValueRW.AttackStages != AttackStages.End)
                         {
-                            var score = SystemAPI.GetComponent<ScoreComponent>(e);
-                            score.combo = 0;
-                            score.streak = 0;
-                            SystemAPI.SetComponent(e, score);
-                        }
+                            if (checkedComponent.ValueRW.hitTriggered == false &&
+                                SystemAPI.HasComponent<ScoreComponent>(e))
+                            {
+                                var score = SystemAPI.GetComponent<ScoreComponent>(e);
+                                score.combo = 0;
+                                score.streak = 0;
+                                SystemAPI.SetComponent(e, score);
+                            }
 
-                        Debug.Log("End Attack SYSTEM");
-                        checkedComponent.ValueRW.hitLanded = false; //set at end of attack only
-                        checkedComponent.ValueRW.anyDefenseStarted = false;
-                        checkedComponent.ValueRW.anyAttackStarted = false;
-                        checkedComponent.ValueRW.AttackStages = AttackStages.End; //only for one frame
+                            Debug.Log("End Attack SYSTEM");
+                            melee.ValueRW.cancelMovement = 0;
+                            checkedComponent.ValueRW.hitLanded = false; //set at end of attack only
+                            checkedComponent.ValueRW.anyDefenseStarted = false;
+                            checkedComponent.ValueRW.anyAttackStarted = false;
+                            checkedComponent.ValueRW.AttackStages = AttackStages.End; //only for one frame
+                        }
                     }
                 }
+                
+                Debug.Log("Cancel " + melee.ValueRW.cancelMovement);
             }
         }
 

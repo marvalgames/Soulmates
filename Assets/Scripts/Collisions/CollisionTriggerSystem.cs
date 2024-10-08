@@ -13,7 +13,7 @@ namespace Collisions
     {
         public AttackStages AttackStages;
         public bool anyDefenseStarted;
-        public bool anyAttackStarted; //weapon or mellee
+        public bool anyAttackStarted; //weapon or melee
         public bool attackFirstFrame;
         public bool attackCompleted;
         public bool attackInProgress;
@@ -352,7 +352,7 @@ namespace Collisions
                 }
                 else if (punchingB || meleeB || defenseB || alwaysDamageB && !ammoA && !ammoB)
                 {
-                    Debug.Log("B " + (TriggerType) typeB + ", A " + (TriggerType) typeA);
+                    //Debug.Log("B " + (TriggerType) typeB + ", A " + (TriggerType) typeA);
 
                     var collisionComponent =
                         new CollisionComponent

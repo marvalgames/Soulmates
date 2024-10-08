@@ -68,6 +68,7 @@ namespace Sandbox.Player
 
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateAfter(typeof(PlayerCombatSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerMoveSystem : ISystem
     {
@@ -119,6 +120,8 @@ namespace Sandbox.Player
                     leftStickY = 0;
                 }
 
+            
+
                 var combatMode = false;
                 var aimMode = false;
                 if (actorWeapon)
@@ -147,6 +150,17 @@ namespace Sandbox.Player
 
                 applyImpulseComponent.ValueRW.playerMoving = false;
                 if (combatMode) currentSpeed = ratingsComponent.ValueRO.gameCombatSpeed;
+                if (SystemAPI.HasComponent<MeleeComponent>(entity))
+                {
+                    var meleeComponent = SystemAPI.GetComponent<MeleeComponent>(entity);
+                    if (meleeComponent.cancelMovement > 0)
+                    {
+                        currentSpeed *= (1 - meleeComponent.cancelMovement);
+                        Debug.Log("SPEED " + currentSpeed);
+                    }
+                }
+                
+                
                 if (currentSpeed == 0) stickSpeed = 0;
                 var targetDirection = (leftStickX * camTransform.right * forwardSpeed +
                                        leftStickY * camTransform.forward * forwardSpeed);

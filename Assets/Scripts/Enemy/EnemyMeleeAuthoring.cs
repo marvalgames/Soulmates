@@ -42,14 +42,14 @@ namespace Enemy
 
         [Header("EFFECTS")] public GameObject meleeAudioSourcePrefab;
         public AudioClip moveAudioClip;
-        public ParticleSystem moveParticleSystem;
+        public GameObject moveParticleSystemPrefab;
     }
 
     public class MovesClass : IComponentData
     {
         public GameObject meleeAudioSource;
         public AudioClip moveAudioClip;
-        //public ParticleSystem moveParticleSystem;
+        public GameObject moveParticleSystem;
     }
 
     public class MovesClassHolder : IComponentData

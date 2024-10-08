@@ -61,8 +61,8 @@ public partial class PlayerWeaponAimSystemLateUpdate : SystemBase
             ref ActorWeaponAimComponent playerWeaponAimComponent,
             ref LocalTransform localTransform, ref PlayerAimComponent playerAimComponent) =>
         {
-            playerWeaponAimComponent.aimMode = true;
-            var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+            //playerWeaponAimComponent.aimMode = true;
+            //var animator = actor.actorPrefabInstance.GetComponent<Animator>();
             if (playerWeaponAimComponent.combatMode) return;
             var aimDir = playerAimComponent.aimDirection;
             playerWeaponAimComponent.aimDirection = aimDir;

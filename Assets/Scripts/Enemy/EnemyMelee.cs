@@ -92,7 +92,6 @@ public class EnemyMelee : MonoBehaviour
 
     public void SetAfterMoveDelay(float afterMoveSeconds)
     {
-//        if (agent == null) return;
         afterMoveTimer += Time.deltaTime;
         if (afterMoveTimer >= afterMoveSeconds)
         {
@@ -191,14 +190,13 @@ public class EnemyMelee : MonoBehaviour
     {
     }
 
-    public void Aim()
+    private void Aim()
     {
         //moveUsing.target = entityManager.GetComponentData<MatchupComponent>(meleeEntity).targetZone;
     }
 
     public void LateUpdateSystem()
     {
-        //if (entityManager == default) return;
         SetAfterMoveDelay(afterMoveSeconds);
         GetEnemyState();
         Aim();

@@ -236,68 +236,53 @@ namespace Sandbox.Player
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerJumpSystem))]
     [RequireMatchingQueriesForUpdate]
-    public partial class PlayerJumpAudioSystem : SystemBase
+    public partial struct PlayerJumpAudioSystem : ISystem
     {
-        protected override void OnUpdate()
+        public void OnUpdate(ref SystemState state)
         {
-            Entities.WithoutBurst().ForEach(
-                (
-                    ref PlayerJumpComponent playerJumpComponent,
-                    in ApplyImpulseComponent applyImpulseComponent,
-                    in VisualEffectJumpGO goVisualEffect,
-                    in AudioPlayerJumpGO goAudioPlayer,
-                    in LocalTransform transform
-                    //PlayerJumpGameObjectClass playerJump, 
-                    //uses audio source created in PlayerJumpGameObjectClass sub-scene authoring 
-                ) =>
+            foreach (var (playerJumpComponent, applyImpulseComponent, goVisualEffect, goAudioPlayer) in SystemAPI
+                         .Query<RefRW<PlayerJumpComponent>, RefRO<ApplyImpulseComponent>, VisualEffectJumpGO, AudioPlayerJumpGO>())
+            {
+                if (goVisualEffect.VisualEffect && applyImpulseComponent.ValueRO.InJump)
                 {
-                    
-                    if (goVisualEffect.VisualEffect && applyImpulseComponent.InJump)
-                    {
-                        goVisualEffect.VisualEffect.transform.position = transform.Position;
-                        goVisualEffect.VisualEffect.SetFloat("FlareRate", 100);
-                        Debug.Log("VFX Jump");
-                    }
-                    else if (goVisualEffect.VisualEffect && !applyImpulseComponent.InJump)
-                    {
-                        goVisualEffect.VisualEffect.transform.position = transform.Position;
-                        goVisualEffect.VisualEffect.SetFloat("FlareRate", 0);
-                    }
-                    
-                    
-                    var audioSource = goAudioPlayer.AudioSource;
-                    if (audioSource && playerJumpComponent.playJumpAudio)
-                    {
-                        var clip = goAudioPlayer.AudioClip;
-                        audioSource.PlayOneShot(audioSource.clip);
-                        playerJumpComponent.playJumpAudio = false;
-                    }
+                    //goVisualEffect.VisualEffect.transform.position = transform.Position;
+                    goVisualEffect.VisualEffect.SetFloat("FlareRate", 100);
+                    Debug.Log("VFX Jump");
                 }
-            ).Run();
+                else if (goVisualEffect.VisualEffect && !applyImpulseComponent.ValueRO.InJump)
+                {
+                    //goVisualEffect.VisualEffect.transform.position = transform.Position;
+                    goVisualEffect.VisualEffect.SetFloat("FlareRate", 0);
+                }
+                var audioSource = goAudioPlayer.AudioSource;
+                if (audioSource && playerJumpComponent.ValueRW.playJumpAudio)
+                {
+                    var clip = goAudioPlayer.AudioClip;
+                    audioSource.PlayOneShot(audioSource.clip);
+                    playerJumpComponent.ValueRW.playJumpAudio = false;
+                }
+            }
+
         }
     }
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerJumpSystem))]
-    public partial class PlayerJumpAnimationSystem : SystemBase
+    public partial struct PlayerJumpAnimationSystem : ISystem
     {
         private static readonly int JumpState = Animator.StringToHash("JumpState");
 
-        protected override void OnUpdate()
+        public void OnUpdate(ref SystemState state)
         {
-            Entities.WithoutBurst().WithNone<Pause>().ForEach(
-                (
-                    Animator animator,
-                    ref PlayerJumpComponent jump //uses animator that is added to entity from main scene Player Object
-                ) =>
+            foreach (var (actor, jump) in SystemAPI.Query<ActorInstance, RefRW<PlayerJumpComponent>>())
+            {
+                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                if (jump.ValueRW.playJumpAnimation)
                 {
-                    if (jump.playJumpAnimation)
-                    {
-                        jump.playJumpAnimation = false;
-                        animator.SetInteger(JumpState, 1);
-                    }
+                    jump.ValueRW.playJumpAnimation = false;
+                    animator.SetInteger(JumpState, 1);
                 }
-            ).Run();
+            }
         }
     }
 }

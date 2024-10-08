@@ -13,6 +13,9 @@ public struct MeleeComponent : IComponentData
     public int comboAnimationPlayed;
     public int combatAction;
     public int selectMove;
+    public bool cancelMove;
+    public float cancelMovement;
+    public int lastCombatAction;
 }
 public class CharacterBehaviorManager : MonoBehaviour
 {

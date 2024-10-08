@@ -44,7 +44,10 @@ namespace Sandbox.Player
                 {
                     var move = authoring.moveList[i];
                     var addMove = new MovesClass
-                        { meleeAudioSource = authoring.audioSourceMeleePrefab, moveAudioClip = move.moveAudioClip };
+                    {
+                        meleeAudioSource = authoring.audioSourceMeleePrefab, moveAudioClip = move.moveAudioClip,
+                        moveParticleSystem = move.moveParticleSystemPrefab
+                    };
                     movesClassList.Add(addMove);
                 }
 
