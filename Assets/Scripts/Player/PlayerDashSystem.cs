@@ -24,16 +24,18 @@ namespace Sandbox.Player
             Entities.WithoutBurst().ForEach(
                 (
                     Entity e,
+                    ActorInstance actor,
                     ref PlayerDashComponent playerDash,
                     in InputControllerComponent inputController,
                     in LocalToWorld ltw,
-                    in Animator animator,
+                    //in Animator animator,
                     in DashAudioVideoGO player
                 ) =>
                 {
                     if (playerDash.active == false) return;
                     var audioSource = player.AudioSource;
-                    //Debug.Log("DASH");
+                    var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                    Debug.Log("DASH");
 
                     
                     if (playerDash.DelayTimeTicker > 0)

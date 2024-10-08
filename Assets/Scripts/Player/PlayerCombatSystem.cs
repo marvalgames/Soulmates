@@ -151,14 +151,41 @@ namespace Sandbox.Player
                     var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
                     go.SetActive(true);
                     commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
+                    var zone = actor.actorPrefabInstance.GetComponent<TargetZone>().headZone.transform;
+                    var rhZone = actor.actorPrefabInstance.GetComponent<TargetZone>().rightHandZone.transform;
+                    var rfZone = actor.actorPrefabInstance.GetComponent<TargetZone>().rightFootZone.transform;
+                    var lhZone = actor.actorPrefabInstance.GetComponent<TargetZone>().leftHandZone.transform;
+                    var lfZone = actor.actorPrefabInstance.GetComponent<TargetZone>().leftFootZone.transform;
                     for (var i = 0; i < count; i++)
                     {
+                        
                         var movesClass = movesHolder.movesClassList[i];
+                        var target = movesList[entity][i].triggerType;
+                        switch (target)
+                        {
+                            case TriggerType.RightHand:
+                                zone = rhZone;
+                                Debug.Log("ZONE RH");
+                                break;
+                            case TriggerType.LeftHand:
+                                zone = lhZone;
+                                Debug.Log("ZONE LH");
+                                break;
+                            case TriggerType.RightFoot:
+                                zone = rfZone;
+                                Debug.Log("ZONE RF");
+                                break;
+                            case TriggerType.LeftFoot:
+                                zone = lfZone;
+                                Debug.Log("ZONE LF");
+                                break;
+                        }
                         var prefab = movesClass.moveParticleSystem;
                         var vfxGo = GameObject.Instantiate(prefab);
                         Debug.Log("PREFAB " + vfxGo);
                         movesClass.moveParticleSystemInstance = vfxGo;
-                        movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;
+                        //movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;
+                        movesClass.moveParticleSystemInstance.transform.parent = zone;
                         movesClass.moveParticleSystemInstance.transform.localPosition = Vector3.zero;
                         if (movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>())
                         {

@@ -84,6 +84,8 @@ namespace Collisions
                     if (actorCollisionElement.Length <= 0 || playerDashComponent.active == false)
                         return;
 
+
+                    
                     var addColliders = false;
                     var removeColliders = false;
                     bool hasActorWeaponAim = SystemAPI.HasComponent<ActorWeaponAimComponent>(e);
