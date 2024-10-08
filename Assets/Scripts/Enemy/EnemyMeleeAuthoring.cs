@@ -50,12 +50,15 @@ namespace Enemy
         public GameObject meleeAudioSource;
         public AudioClip moveAudioClip;
         public GameObject moveParticleSystem;
+        public GameObject moveParticleSystemInstance;
     }
 
     public class MovesClassHolder : IComponentData
     {
         public List<MovesClass> movesClassList = new();
         public GameObject meleeAudioSourcePrefab;
+        public int moveCount;
+
     }
 
     public class MovesInstance : IComponentData
@@ -124,6 +127,7 @@ namespace Enemy
                 {
                     //inconsistent adding AudioSource to holder AND to each element - That is only needed for the Clip and VFX 
                     movesClassList = movesClassList,
+                    moveCount = authoring.moveList.Count,
                     meleeAudioSourcePrefab = authoring.audioSourceMeleePrefab
                 };
 

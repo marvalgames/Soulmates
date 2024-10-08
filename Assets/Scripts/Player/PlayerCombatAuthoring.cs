@@ -22,7 +22,8 @@ namespace Sandbox.Player
                 {
                     Available = authoring.active,
                     hitPower = authoring.hitPower,
-                    gameHitPower = authoring.hitPower
+                    gameHitPower = authoring.hitPower,
+                    instantiated = false
                 });
 
                 var buffer = AddBuffer<MovesComponentElement>(e);
@@ -55,7 +56,8 @@ namespace Sandbox.Player
                 {
                     //inconsistent adding AudioSource to holder AND to each element - That is only needed for the Clip and VFX 
                     movesClassList = movesClassList,
-                    meleeAudioSourcePrefab = authoring.audioSourceMeleePrefab
+                    meleeAudioSourcePrefab = authoring.audioSourceMeleePrefab,
+                    moveCount = authoring.moveList.Count
                 };
 
 

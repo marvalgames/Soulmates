@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Sandbox.Player
 {
     //[UpdateInGroup(typeof(SimulationSystemGroup))]
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerCombatSystem : ISystem
     {
@@ -109,8 +109,8 @@ namespace Sandbox.Player
     }
 
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    //[UpdateInGroup(typeof(SimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerCombatSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerCombatManagedSystem : ISystem
@@ -122,11 +122,12 @@ namespace Sandbox.Player
         private static readonly int Zone = Animator.StringToHash("Zone");
 
         private MovesComponentElement moveUsing;
+        private bool instantiated;
 
         public void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<BeginSimulationEntityCommandBufferSystem.Singleton>();
-            state.RequireForUpdate<PlayerComponent>();
+            instantiated = false;
         }
 
 
@@ -135,15 +136,35 @@ namespace Sandbox.Player
             var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
                 .CreateCommandBuffer(state.WorldUnmanaged);
 
-            foreach (var (movesHolder, melee, entity)
-                     in SystemAPI.Query<MovesClassHolder, RefRW<MeleeComponent>>().WithEntityAccess())
+
+            if (instantiated == false)
             {
-                if (!melee.ValueRW.instantiated)
+
+                foreach (var (actor, movesHolder, melee, entity)
+                         in SystemAPI.Query<ActorInstance, MovesClassHolder, RefRW<MeleeComponent>>()
+                             .WithEntityAccess().WithAny<PlayerComponent>())
                 {
+                    if (melee.ValueRW.instantiated) continue;
+                    var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
+                    var count = movesList[entity].Length;
+                    //if (count < movesHolder.moveCount) return; //hack
                     var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
                     go.SetActive(true);
                     commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
-                    melee.ValueRW.instantiated = true;
+                    for (var i = 0; i < count; i++)
+                    {
+                        var movesClass = movesHolder.movesClassList[i];
+                        var prefab = movesClass.moveParticleSystem;
+                        var vfxGo = GameObject.Instantiate(prefab);
+                        Debug.Log("PREFAB " + vfxGo);
+                        movesClass.moveParticleSystemInstance = vfxGo;
+                        movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;
+                        movesClass.moveParticleSystemInstance.transform.localPosition = Vector3.zero;
+                    }
+
+                    //melee.ValueRW.instantiated = true;
+                    instantiated = true;
+
                 }
             }
 
@@ -152,7 +173,7 @@ namespace Sandbox.Player
                      SystemAPI
                          .Query<ActorInstance, MovesClassHolder, AudioManagerClass, RefRW<MeleeComponent>,
                              RefRW<CheckedComponent>,
-                             RefRW<InputControllerComponent>, RefRW<ApplyImpulseComponent>>().WithEntityAccess())
+                             RefRW<InputControllerComponent>, RefRW<ApplyImpulseComponent>>().WithEntityAccess().WithAny<PlayerComponent>())
             {
                 //var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
                 var animator = actor.actorPrefabInstance.GetComponent<Animator>();
@@ -161,19 +182,18 @@ namespace Sandbox.Player
                 if (SystemAPI.HasComponent<ActorWeaponAimComponent>(e))
                 {
                     var aimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
-                    Debug.Log("COMBAT MODE " + aimComponent.combatMode);
+                    //Debug.Log("COMBAT MODE " + aimComponent.combatMode);
                     animator.SetInteger(Zone, aimComponent.combatMode ? 1 : 0);
                     animator.SetBool(CombatMode, aimComponent.combatMode);
                 }
 
 
-
                 if (melee.ValueRW.selectMove > 0)
                 {
-                    melee.ValueRW.cancelMovement = melee.ValueRW.selectMove == 4 ? 1 : .75f; 
+                    melee.ValueRW.cancelMovement = melee.ValueRW.selectMove == 4 ? 1 : .95f;
                     melee.ValueRW.lastCombatAction = melee.ValueRW.selectMove - 1;
                     SelectMove(e, actor, melee.ValueRW.selectMove, ref checkedComponent.ValueRW, ref state);
-                    Debug.Log("Player Select move " + melee.ValueRW.selectMove);
+                    //Debug.Log("Player Select move " + melee.ValueRW.selectMove);
                     melee.ValueRW.verticalSpeed = animator.GetFloat(Vertical);
                     animator.SetInteger(ComboAnimationPlayed, melee.ValueRW.comboAnimationPlayed);
                     animator.SetInteger(CombatAction, melee.ValueRW.selectMove);
@@ -187,6 +207,7 @@ namespace Sandbox.Player
                         melee.ValueRW.cancelMove = false;
                         melee.ValueRW.cancelMovement = 0;
                     }
+
                     var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
                     if (stage == AnimationStage.Enter)
                     {
@@ -230,8 +251,6 @@ namespace Sandbox.Player
                         }
                     }
                 }
-                
-                Debug.Log("Cancel " + melee.ValueRW.cancelMovement);
             }
         }
 
@@ -270,51 +289,6 @@ namespace Sandbox.Player
             checkedComponent.primaryTrigger = primaryTrigger;
             checkedComponent.animationIndex = animationIndex;
             checkedComponent.totalAttempts += 1;
-
-
-            // var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
-            // if (stage == AnimationStage.Enter)
-            // {
-            //     //checkedComponent.anyAttackStarted = true;
-            //     Debug.Log("Start Attack SYSTEM");
-            //     checkedComponent.attackFirstFrame = true;
-            //     checkedComponent.AttackStages = AttackStages.Start;
-            //     checkedComponent.hitTriggered = false;
-            // }
-            // else if (stage == AnimationStage.Update)
-            // {
-            //     checkedComponent.AttackStages = AttackStages.Action;
-            //     Debug.Log("Update Attack SYSTEM");
-            // }
-            // else if (stage == AnimationStage.Exit)
-            // {
-            //     if (checkedComponent.hitTriggered == false && SystemAPI.HasComponent<ScoreComponent>(e))
-            //     {
-            //         var score = SystemAPI.GetComponent<ScoreComponent>(e);
-            //         score.combo = 0;
-            //         score.streak = 0;
-            //         SystemAPI.SetComponent(e, score);
-            //     }
-            //     Debug.Log("End Attack SYSTEM");
-            //     checkedComponent.hitLanded = false; //set at end of attack only
-            //     checkedComponent.anyDefenseStarted = false;
-            //     checkedComponent.anyAttackStarted = false;
-            //     checkedComponent.AttackStages = AttackStages.End; //only for one frame
-            //     
-            // }
-        }
-
-
-        private void StartMove(int animationIndex, TriggerType primaryTrigger, bool defense,
-            ref CheckedComponent checkedComponent)
-        {
-            // checkedComponent.anyAttackStarted = true;
-            // checkedComponent.anyDefenseStarted = defense;
-            // checkedComponent.primaryTrigger = primaryTrigger;
-            // checkedComponent.animationIndex = animationIndex;
-            // checkedComponent.totalAttempts += 1;
-            //animator.SetInteger(CombatAction, animationIndex);
-            //Debug.Log(" Start Move " + animationIndex);
         }
     }
 }

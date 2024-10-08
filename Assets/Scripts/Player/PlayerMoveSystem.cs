@@ -156,7 +156,6 @@ namespace Sandbox.Player
                     if (meleeComponent.cancelMovement > 0)
                     {
                         currentSpeed *= (1 - meleeComponent.cancelMovement);
-                        Debug.Log("SPEED " + currentSpeed);
                     }
                 }
                 

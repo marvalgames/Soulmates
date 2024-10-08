@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 namespace Enemy
 {
     [UpdateAfter(typeof(EnemyActorMovementSystem))]
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
     public partial struct EnemySetupMoveMeleeSystem : ISystem
     {
         [BurstCompile]
@@ -45,7 +45,7 @@ namespace Enemy
         }
     }
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateAfter(typeof(EnemySetupMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveMeleeSystem : ISystem
@@ -91,7 +91,7 @@ namespace Enemy
         }
     }
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateAfter(typeof(EnemySelectMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveManagedMeleeSystem : ISystem
@@ -108,13 +108,14 @@ namespace Enemy
                 .CreateCommandBuffer(state.WorldUnmanaged);
 
             foreach (var (movesHolder, melee, entity)
-                     in SystemAPI.Query<MovesClassHolder, RefRW<MeleeComponent>>().WithEntityAccess())
+                     in SystemAPI.Query<MovesClassHolder, RefRW<MeleeComponent>>().WithEntityAccess().WithAny<EnemyComponent>())
             {
                 if (!melee.ValueRW.instantiated)
                 {
                     var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
                     go.SetActive(true);
                     commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
+                    Debug.Log("ENEMY INST " + melee.ValueRW.instantiated);
                     melee.ValueRW.instantiated = true;
                 }
             }
