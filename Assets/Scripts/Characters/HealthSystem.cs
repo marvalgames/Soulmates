@@ -181,7 +181,7 @@ public partial struct HealthBarManagedSystem : ISystem
                 {
                     //enemy gets parent
                     go.transform.parent = actor.actorPrefabInstance.transform;
-                    go.transform.localPosition = new Vector3(0, 3, 0);
+                    go.transform.localPosition = new Vector3(0, 3.5f, 0);
                 }
                     
                 

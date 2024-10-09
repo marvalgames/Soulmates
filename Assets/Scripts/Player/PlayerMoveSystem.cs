@@ -193,7 +193,6 @@ namespace Sandbox.Player
                     {
                         pv.ValueRW.Linear.x = inputDirection.x * currentSpeed * impulseFactor;
                         pv.ValueRW.Linear.z = inputDirection.z * currentSpeed * impulseFactor;
-                        Debug.Log("impulse " + impulseFactor);
                     }
                     else
                     {
