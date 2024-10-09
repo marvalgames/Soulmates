@@ -38,6 +38,35 @@ public struct PlayAndDestroyEffectComponent : IComponentData
     public float playTime;
 }
 
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateBefore(typeof(HealthSystem))]
+[UpdateAfter(typeof(PlayerMoveSystem))]
+public partial struct ActorEffectsManagedSystem : ISystem
+{
+    public void OnUpdate(ref SystemState state)
+    {
+        foreach (var (actor, impulseComponent) in SystemAPI.Query<ActorInstance, RefRW<ImpulseComponent>>())
+        {
+            var impulse = actor.actorPrefabInstance.GetComponent<Impulse>();
+            if(!impulse) continue;
+            var hitLanded = impulse.impulseSourceHitLanded;
+            var hitReceived = impulse.impulseSourceHitReceived;
+            if(!hitLanded || !hitReceived) continue;
+            if (impulseComponent.ValueRW.hitLandedGenerateImpulse)
+            {
+                hitLanded.GenerateImpulse();
+                impulseComponent.ValueRW.hitLandedGenerateImpulse = false;
+            }
+            else if (impulseComponent.ValueRW.hitReceivedGenerateImpulse)
+            {
+                hitReceived.GenerateImpulse();
+                impulseComponent.ValueRW.hitReceivedGenerateImpulse = false;
+            }
+        }
+    }
+    
+}
+
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateBefore(typeof(HealthSystem))]
@@ -316,6 +345,9 @@ public partial struct ActorDamageEffectsSystem : ISystem
         }
     }
 }
+
+
+
 
 //
 // [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]

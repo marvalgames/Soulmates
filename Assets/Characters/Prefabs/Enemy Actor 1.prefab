@@ -751,7 +751,7 @@ MonoBehaviour:
     timeAfterMove: 0.5
     meleeAudioSourcePrefab: {fileID: 0}
     moveAudioClip: {fileID: 8300000, guid: 2bc5c891329678e4a83cd6a4faf33fea, type: 3}
-    moveParticleSystem: {fileID: 0}
+    moveParticleSystemPrefab: {fileID: 0}
   - active: 1
     triggerType: 7
     animationType: 2
@@ -760,7 +760,7 @@ MonoBehaviour:
     timeAfterMove: 0.5
     meleeAudioSourcePrefab: {fileID: 0}
     moveAudioClip: {fileID: 8300000, guid: 0e7de8b1302b80e42ac0d6ac58c0e725, type: 3}
-    moveParticleSystem: {fileID: 0}
+    moveParticleSystemPrefab: {fileID: 0}
   - active: 1
     triggerType: 12
     animationType: 3
@@ -769,7 +769,7 @@ MonoBehaviour:
     timeAfterMove: 0.5
     meleeAudioSourcePrefab: {fileID: 0}
     moveAudioClip: {fileID: 8300000, guid: 0e7de8b1302b80e42ac0d6ac58c0e725, type: 3}
-    moveParticleSystem: {fileID: 0}
+    moveParticleSystemPrefab: {fileID: 0}
 --- !u!1 &1934914828558551753
 GameObject:
   m_ObjectHideFlags: 0
@@ -3929,7 +3929,6 @@ GameObject:
   - component: {fileID: 584317025465800291}
   - component: {fileID: 4699300602744123290}
   - component: {fileID: 6400456524036587835}
-  - component: {fileID: 5831068671110627575}
   - component: {fileID: 3243428910035825770}
   - component: {fileID: 5001907036879230942}
   - component: {fileID: -5626797827756339465}
@@ -3999,8 +3998,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 1241805495120575216}
-  showTime: 3
-  score3dText: {fileID: 821383783832579042, guid: 70aed6e00832f9442b6c3e53fc04944c, type: 3}
 --- !u!114 &5237636288271540100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4030,20 +4027,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorEffect:
-  - effectType: 1
-    psPrefab: {fileID: 0}
-    psInstance: {fileID: 0}
-    vePrefab: {fileID: 1890689106275310789, guid: 7c5bece0abfa80b4a88e1a3e100e8533, type: 3}
-    veInstance: {fileID: 0}
-    clip: {fileID: 8300000, guid: 48b780eabe74d264d832cc7e3a69c662, type: 3}
-    transformGameObject: {fileID: 0}
-  - effectType: 2
-    psPrefab: {fileID: 0}
-    psInstance: {fileID: 0}
-    vePrefab: {fileID: 0}
-    veInstance: {fileID: 0}
-    clip: {fileID: 8300000, guid: 84a60574abb0f1142b49b0508d785b35, type: 3}
-    transformGameObject: {fileID: 0}
+  - effectClip: {fileID: 0}
+    effectParticleSystem: {fileID: 0}
+    effectVisualEffect: {fileID: 0}
+    effectParticleSystemInstance: {fileID: 0}
+    effectVisualEffectInstance: {fileID: 0}
+    pauseEffect: 0
+    soundPlaying: 0
+    playEffectAllowed: 0
+    playEffectType: 0
+    effectIndex: 0
+  - effectClip: {fileID: 0}
+    effectParticleSystem: {fileID: 0}
+    effectVisualEffect: {fileID: 0}
+    effectParticleSystemInstance: {fileID: 0}
+    effectVisualEffectInstance: {fileID: 0}
+    pauseEffect: 0
+    soundPlaying: 0
+    playEffectAllowed: 0
+    playEffectType: 0
+    effectIndex: 0
   audioSource: {fileID: 5760034181052827602}
 --- !u!195 &6137694122875077461
 NavMeshAgent:
@@ -4151,7 +4154,7 @@ MonoBehaviour:
     timeAfterMove: 0.5
     meleeAudioSourcePrefab: {fileID: 0}
     moveAudioClip: {fileID: 0}
-    moveParticleSystem: {fileID: 0}
+    moveParticleSystemPrefab: {fileID: 0}
   moveList: []
   movesInspector: {fileID: 3479528373508952011}
   afterMoveTimer: 0
@@ -4221,20 +4224,6 @@ MonoBehaviour:
   index: 101
   followLocalTransform: 1
   followPlayerCharacter: 0
---- !u!114 &5831068671110627575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6978897398500713101}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 485780a61c7bf3d4d9b6c9df8cb95f7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impulseSourceHitReceived: {fileID: 0}
-  impulseSourceHitLanded: {fileID: 0}
 --- !u!114 &3243428910035825770
 MonoBehaviour:
   m_ObjectHideFlags: 0

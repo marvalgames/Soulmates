@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using Unity.Cinemachine;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Collisions
@@ -30,6 +31,11 @@ namespace Collisions
         public float maxTimeOnReceived = 1.0f;
         public float animSpeedRatioOnReceived = .5f;
         
+        // [Header("Player Only")] [Tooltip("Player Hurt")]
+        // public CinemachineImpulseSource impulseSourceHitReceived;
+        //
+        // [Tooltip("Player Hits Enemy")] public CinemachineImpulseSource impulseSourceHitLanded;
+
         //public bool aiAgent = true;
 
         class ImpulseBaker : Baker<ImpulseEffectsAuthoring>
