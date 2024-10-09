@@ -199,7 +199,7 @@ public partial struct ActorImpulseEffectsSystem : ISystem
 [UpdateAfter(typeof(PlayerMoveSystem))]
 public partial struct SlashManagedSystem : ISystem
 {
-    public void Update(ref SystemState state)
+    public void OnUpdate(ref SystemState state)
     {
         foreach (var (slash, slashClass) in SystemAPI.Query<RefRO<SlashComponent>, SlashClass>())
         {
