@@ -79,39 +79,45 @@ public class EffectsBaker : Baker<EffectsAuthoring>
         var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
         AddComponent(e, new EffectComponent { visualEffect = authoring.visualEffect });
 
-        var buffer = AddBuffer<EffectComponentElement>(e);
-        foreach (var effect in authoring.effectList)
+        if (authoring.effectList.Count > 0)
         {
-            var effectComponentElement = new EffectComponentElement
-            {
-                effectIndex = effect.effectIndex,
-                playEffectType = effect.playEffectType
-            };
-            buffer.Add(effectComponentElement);
-        }
 
-        var effectsClassList = new List<EffectClass>();
-        for (var i = 0; i < authoring.effectList.Count; i++)
-        {
-            var effect = authoring.effectList[i];
-            var addEffect =
-                new EffectClass
+            var buffer = AddBuffer<EffectComponentElement>(e);
+            foreach (var effect in authoring.effectList)
+            {
+                var effectComponentElement = new EffectComponentElement
                 {
-                    effectVisualEffect = effect.effectVisualEffect, effectParticleSystem = effect.effectParticleSystem,
-                    effectClip = effect.effectClip, effectIndex = effect.effectIndex,
+                    effectIndex = effect.effectIndex,
                     playEffectType = effect.playEffectType
                 };
-            effectsClassList.Add(addEffect);
+                buffer.Add(effectComponentElement);
+            }
+
+            var effectsClassList = new List<EffectClass>();
+            for (var i = 0; i < authoring.effectList.Count; i++)
+            {
+                var effect = authoring.effectList[i];
+                var addEffect =
+                    new EffectClass
+                    {
+                        effectVisualEffect = effect.effectVisualEffect,
+                        effectParticleSystem = effect.effectParticleSystem,
+                        effectClip = effect.effectClip, effectIndex = effect.effectIndex,
+                        playEffectType = effect.playEffectType
+                    };
+                effectsClassList.Add(addEffect);
+            }
+
+
+            var effectClassHolder = new EffectClassHolder
+            {
+                effectsClassList = effectsClassList,
+                effectAudioSourcePrefab = authoring.audioSourceEffectsPrefab
+            };
+            
+            AddComponentObject(e, effectClassHolder);
         }
 
-        var effectClassHolder = new EffectClassHolder
-        {
-            effectsClassList = effectsClassList,
-            effectAudioSourcePrefab = authoring.audioSourceEffectsPrefab
-        };
-        
-        AddComponentObject(e, effectClassHolder);
-        
     }
 }
 

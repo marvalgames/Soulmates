@@ -248,6 +248,7 @@ public partial struct ActorDamageEffectsSystem : ISystem
                     var ve = effectHolder.effectsClassList[i].effectVisualEffect;
                     var ps = effectHolder.effectsClassList[i].effectParticleSystem;
                     //ve
+                    if(!ve) continue;
                     var go = GameObject.Instantiate(ve);
 
                     go.transform.parent = actor.actorPrefabInstance.transform;
@@ -327,8 +328,6 @@ public partial struct ActorDamageEffectsSystem : ISystem
                     {
                         veInstance.GetComponent<VisualEffect>().Play();
                         Debug.Log("dead " + dead.ValueRO.isDead);
-                        effect.ValueRW.disableEffect = true;
-                        
                     }
 
                     if (audioSource != null)
@@ -338,7 +337,8 @@ public partial struct ActorDamageEffectsSystem : ISystem
                     }
 
                     var animator = actor.actorPrefabInstance.GetComponent<Animator>();
-                    Debug.Log("Animator " + animator);
+                    Debug.Log("Dead " + animator);
+                    effect.ValueRW.disableEffect = true;
                     animator.SetInteger(Dead, 1);
                 }
             }
