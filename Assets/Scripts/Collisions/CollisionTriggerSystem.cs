@@ -249,8 +249,6 @@ namespace Collisions
                                            && (int)primaryTriggerB == typeB;
 
 
-
-
                 punchingA = punchingA &&
                     primaryTriggerMatchA || meleeA;
 
@@ -329,8 +327,7 @@ namespace Collisions
                 }
                 else if ((punchingA || meleeA || defenseA || alwaysDamageA) && !ammoA && !ammoB)
                 {
-                                    
-                    Debug.Log("punch A " + punchingA + " punch B " + punchingB);
+                    //Debug.Log("punch A " + punchingA + " punch B " + punchingB);
 
 
                     var collisionComponent =

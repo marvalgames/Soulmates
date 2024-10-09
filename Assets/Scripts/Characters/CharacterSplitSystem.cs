@@ -7,7 +7,7 @@ using Unity.Transforms;
 using UnityEngine;
 
 
-[UpdateInGroup(typeof(PhysicsSystemGroup))]
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateBefore(typeof(CleanupSystem))]
 public partial struct SplitSystem : ISystem
 {

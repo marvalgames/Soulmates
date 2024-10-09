@@ -19,7 +19,7 @@ namespace Audio
     }
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateAfter(typeof(EnemySelectMoveManagedMeleeSystem))]
+    //[UpdateAfter(typeof(EnemySelectMoveManagedMeleeSystem))]
     [RequireMatchingQueriesForUpdate] 
     public partial struct AudioManagerSystem : ISystem
     {

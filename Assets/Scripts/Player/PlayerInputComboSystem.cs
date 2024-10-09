@@ -6,22 +6,21 @@ namespace Player
 {
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [RequireMatchingQueriesForUpdate]
-
-    public partial class PlayerInputComboSystem : SystemBase
+    public partial struct PlayerInputComboSystem : ISystem
     {
-        protected override void OnUpdate()
+        public void OnUpdate(ref SystemState state)
         {
-            Entities.ForEach((ref ActorWeaponAimComponent actorAimComponent,
-                in InputControllerComponent inputControllerComponent) =>
+            foreach (var (actorAimComponent, inputControllerComponent) in SystemAPI
+                         .Query<RefRW<ActorWeaponAimComponent>, RefRO<InputControllerComponent>>())
             {
-                var rightStickPressed = inputControllerComponent.rightStickPressed;
+                var rightStickPressed = inputControllerComponent.ValueRO.rightStickPressed;
                 if (rightStickPressed)
                 {
-                    actorAimComponent.combatMode = !actorAimComponent.combatMode;
-                    if (actorAimComponent.combatMode) actorAimComponent.aimMode = false;
+                    actorAimComponent.ValueRW.combatMode = !actorAimComponent.ValueRW.combatMode;
+                    if (actorAimComponent.ValueRW.combatMode) actorAimComponent.ValueRW.aimMode = false;
                     //Debug.Log("Combat System " + actorAimComponent.combatMode);
                 }
-            }).Run();
+            }
         }
     }
 }

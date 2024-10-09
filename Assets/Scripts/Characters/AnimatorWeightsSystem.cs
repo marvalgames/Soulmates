@@ -48,14 +48,10 @@ public partial struct AnimatorWeightsSystem : ISystem
 
             var currentLayer = animator.GetLayerIndex("Default");
             var playingLayer0 = animator.IsInTransition(0);
-            var playingLayer1 = animator.IsInTransition(1);
             animatorValues.ValueRW.animatorInTransition = playingLayer0;
-            if (playingLayer1 == false)
-            {
-                var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-                animatorValues.ValueRW.animatorStateWeight = math.frac(stateInfo.normalizedTime);
-                animatorValues.ValueRW.stateName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-            }
+            var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            animatorValues.ValueRW.animatorStateWeight = math.frac(stateInfo.normalizedTime);
+            animatorValues.ValueRW.stateName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
             //test
             if (animatorValues.ValueRW.animatorStateWeight > animatorValues.ValueRW.hitWeight)

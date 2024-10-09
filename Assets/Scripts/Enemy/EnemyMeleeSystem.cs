@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace Enemy
 {
-    [UpdateAfter(typeof(EnemyActorMovementSystem))]
+    //[UpdateAfter(typeof(EnemyActorMovementSystem))]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     public partial struct EnemySetupMoveMeleeSystem : ISystem
     {

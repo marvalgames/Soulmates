@@ -68,7 +68,7 @@ namespace Sandbox.Player
 
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateAfter(typeof(PlayerCombatSystem))]
+    //[UpdateAfter(typeof(PlayerCombatSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerMoveSystem : ISystem
     {
