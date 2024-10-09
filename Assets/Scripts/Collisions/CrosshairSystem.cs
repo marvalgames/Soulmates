@@ -47,6 +47,7 @@ namespace Collisions
 
         protected override void OnUpdate()
         {
+            if(_cam == null) return;
             var ecb = new EntityCommandBuffer(Allocator.Temp);
             var actorWeaponAimQuery = GetEntityQuery(ComponentType.ReadOnly<ActorWeaponAimComponent>(),
                 ComponentType.ReadOnly<PlayerComponent>()); //player 0

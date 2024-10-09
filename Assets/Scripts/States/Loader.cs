@@ -55,6 +55,7 @@ namespace States
         void LoadYourScene(int sceneIndex)
         {
             SceneManager.LoadScene(sceneIndex);
+            Debug.Log(sceneIndex + " loaded");
         }
     }
 }

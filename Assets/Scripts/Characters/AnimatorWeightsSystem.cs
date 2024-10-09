@@ -46,17 +46,23 @@ public partial struct AnimatorWeightsSystem : ISystem
                 animatorValues.ValueRW.resetSpeed = false;
             }
 
-            animatorValues.ValueRW.animatorInTransition = animator.IsInTransition(0);
-            var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-            animatorValues.ValueRW.animatorStateWeight = math.frac(stateInfo.normalizedTime);
-            animatorValues.ValueRW.stateName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-            
+            var currentLayer = animator.GetLayerIndex("Default");
+            var playingLayer0 = animator.IsInTransition(0);
+            var playingLayer1 = animator.IsInTransition(1);
+            animatorValues.ValueRW.animatorInTransition = playingLayer0;
+            if (playingLayer1 == false)
+            {
+                var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                animatorValues.ValueRW.animatorStateWeight = math.frac(stateInfo.normalizedTime);
+                animatorValues.ValueRW.stateName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+            }
+
             //test
             if (animatorValues.ValueRW.animatorStateWeight > animatorValues.ValueRW.hitWeight)
             {
                 animatorValues.ValueRW.hitWeight = animatorValues.ValueRW.animatorStateWeight;
             }
-            
+
 
             //Fast-forward to the middle of the animation
             //animator["Walk"].normalizedTime = 0.5f;
