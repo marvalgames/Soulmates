@@ -319,7 +319,7 @@ namespace Sandbox.Player
                 }
             }
 
-            Debug.Log("Move Using " + moveUsing.animationType + " to " + moveUsing.triggerType);
+            //Debug.Log("Move Using " + moveUsing.animationType + " to " + moveUsing.triggerType);
             //Debug.Log("SELECT MOVE " + combatAction);
             if (animationIndex <= 0 || moveUsing.active == false) return; //0 is none on enum
             var defense = animationIndex == (int)AnimationType.Deflect;

@@ -154,6 +154,7 @@ namespace Collisions
                             }
 
                             var damage = hitPower * hwA;
+                            Debug.Log("HWA " + hwA + " hp " + hitPower);
                             
 
                             if (SystemAPI.HasComponent<EvadeComponent>(entityB))

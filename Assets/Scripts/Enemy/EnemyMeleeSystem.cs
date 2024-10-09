@@ -65,6 +65,7 @@ namespace Enemy
             foreach (var (enemyState, entity) in SystemAPI.Query<RefRW<EnemyStateComponent>>().WithEntityAccess())
             {
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
+                if(movesList[entity].Length == 0) continue;
                 if (enemyState.ValueRW is { selectMove: true, startMove: false })
                 {
                     var combatAction = random.NextInt(0, movesList[entity].Length);

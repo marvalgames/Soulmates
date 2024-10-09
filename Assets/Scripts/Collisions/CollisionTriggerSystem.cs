@@ -90,7 +90,7 @@ namespace Collisions
             public ComponentLookup<AmmoComponent> ammoGroup;
             [ReadOnly] public BufferLookup<PhysicsColliderKeyEntityPair> colliderKeyEntityPairs;
             public EntityCommandBuffer Ecb;
-            
+
             public void Execute(CollisionEvent ev) // this is never called
             {
                 var a = ev.EntityA;
@@ -129,7 +129,6 @@ namespace Collisions
                 // }
 
 
-                
                 var chA = triggerComponentA.ParentEntity;
                 var chB = triggerComponentB.ParentEntity;
                 var typeA = triggerComponentA.Type;
@@ -138,7 +137,6 @@ namespace Collisions
                 if (typeB == (int)TriggerType.Tail) typeB = (int)TriggerType.Melee;
 
                 if (chA == chB && typeA != (int)TriggerType.Ammo && typeB != (int)TriggerType.Ammo) return; ////?????
-                                                                                                            
 
 
                 var alwaysDamageA = false;
@@ -194,9 +192,6 @@ namespace Collisions
                     alwaysDamageB == false)
                     return;
 
-                
-
-                
 
                 if (bossGroup.HasComponent(chA))
                 {
@@ -208,10 +203,10 @@ namespace Collisions
                 }
 
 
-                //Debug.Log("check primary trigger A " + primaryTriggerA);
-                //Debug.Log("check primary trigger B " + primaryTriggerB);
+                //Debug.Log("check primary trigger A " + primaryTriggerA + " " + chA);
+                //Debug.Log("check primary trigger B " + primaryTriggerB + " " + chB);
 
-                
+
                 var meleeA = (punchingA) &&
                              (typeA == (int)TriggerType.Melee && typeA == (int)primaryTriggerA);
 
@@ -253,9 +248,7 @@ namespace Collisions
                                                or (int)TriggerType.LeftFoot or (int)TriggerType.RightFoot)
                                            && (int)primaryTriggerB == typeB;
 
-                
 
-                    //Debug.Log("punch A " + punchingA + " punch B " + punchingB);
 
 
                 punchingA = punchingA &&
@@ -264,9 +257,9 @@ namespace Collisions
 
                 punchingB = punchingB &&
                     primaryTriggerMatchB || meleeB;
-                
-                //Debug.Log("trigger match A " + primaryTriggerMatchA + " trigger match  B " + primaryTriggerMatchB);
 
+
+                //Debug.Log("trigger match A " + primaryTriggerMatchA + " trigger match  B " + primaryTriggerMatchB);
 
 
                 var ammoA = typeB is (int)TriggerType.Base or (int)TriggerType.Head or (int)TriggerType.Body &&
@@ -336,7 +329,9 @@ namespace Collisions
                 }
                 else if ((punchingA || meleeA || defenseA || alwaysDamageA) && !ammoA && !ammoB)
                 {
-                    //Debug.Log("A " + (TriggerType) typeA + ", B " + (TriggerType) typeB);
+                                    
+                    Debug.Log("punch A " + punchingA + " punch B " + punchingB);
+
 
                     var collisionComponent =
                         new CollisionComponent

@@ -65,7 +65,7 @@ public partial class HealthSystem : SystemBase
                     healthComponent.showDamage = true;
                 }
 
-                Debug.Log("Damaged " + damageComponent.DamageReceived);
+                //Debug.Log("Damaged " + damageComponent.DamageReceived);
 
                 healthComponent.totalDamageReceived += damageComponent.DamageReceived;
 
