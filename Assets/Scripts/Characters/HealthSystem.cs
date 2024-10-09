@@ -171,12 +171,20 @@ public partial struct HealthBarManagedSystem : ISystem
         var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
             .CreateCommandBuffer(state.WorldUnmanaged);
 
-        foreach (var (guiClass, healthBarComponent, entity)
-                 in SystemAPI.Query<HealthBarClass, RefRW<HealthBarComponent>>().WithEntityAccess())
+        foreach (var (actor, guiClass, healthBarComponent, entity)
+                 in SystemAPI.Query<ActorInstance, HealthBarClass, RefRW<HealthBarComponent>>().WithEntityAccess())
         {
             if (!healthBarComponent.ValueRW.instantiated)
             {
                 var go = GameObject.Instantiate(guiClass.actorGuiPrefab);
+                if (SystemAPI.HasComponent<EnemyComponent>(entity))
+                {
+                    //enemy gets parent
+                    go.transform.parent = actor.actorPrefabInstance.transform;
+                    go.transform.localPosition = new Vector3(0, 3, 0);
+                }
+                    
+                
                 commandBuffer.AddComponent(entity,
                   new HealthBarInstance {actorGuiInstance = go});
                 healthBarComponent.ValueRW.instantiated = true;
