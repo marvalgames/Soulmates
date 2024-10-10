@@ -11,6 +11,8 @@ namespace Collisions
         public Transform leftFootZone;
         public Transform rightFootZone;
         public Transform bodyZone;
+        public Transform weapon1Zone;
+        public Transform weapon2Zone;
         private void Start()
         {
             var animator = GetComponent<Animator>();

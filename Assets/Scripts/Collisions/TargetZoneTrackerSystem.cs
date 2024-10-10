@@ -17,6 +17,7 @@ namespace Collisions
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
+            
         }
 
         public void OnUpdate(ref SystemState state)
@@ -48,22 +49,12 @@ namespace Collisions
                     var zone = targetZone.bodyZone;
                     targetZoneTrackerTransform.ValueRW.Position = zone.position;
                     targetZoneTrackerTransform.ValueRW.Rotation = zone.rotation;
-                    // targetLocalToWorld.ValueRW.Value = float4x4.TRS(
-                    //     zone.position, // Position
-                    //     zone.rotation, // Rotation
-                    //     new float3(1f, 1f, 1f)); // Scale (uniform)
-
                 }
                 else if (targetZoneType == TriggerType.LeftHand)
                 {
                     var zone = targetZone.leftHandZone;
                     targetZoneTrackerTransform.ValueRW.Position = zone.position;
                     targetZoneTrackerTransform.ValueRW.Rotation = zone.rotation;
-
-                    // targetLocalToWorld.ValueRW.Value = float4x4.TRS(
-                    //     zone.position, // Position
-                    //     zone.rotation, // Rotation
-                    //     new float3(1f, 1f, 1f)); // Scale (uniform)
                 }
                 else if (targetZoneType == TriggerType.RightHand)
                 {
@@ -80,6 +71,12 @@ namespace Collisions
                 else if (targetZoneType == TriggerType.RightFoot)
                 {
                     var zone = targetZone.rightFootZone;
+                    targetZoneTrackerTransform.ValueRW.Position = zone.position;
+                    targetZoneTrackerTransform.ValueRW.Rotation = zone.rotation;
+                }
+                else if (targetZoneType == TriggerType.Melee)
+                {
+                    var zone = targetZone.weapon1Zone;
                     targetZoneTrackerTransform.ValueRW.Position = zone.position;
                     targetZoneTrackerTransform.ValueRW.Rotation = zone.rotation;
                 }

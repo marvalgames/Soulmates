@@ -32,6 +32,16 @@ namespace Collisions
         public bool rightFootZoneEnabled;
         public LocalTransform rightFootZone;
         public float3 rightFootZonePosition;
+        
+        public bool weapon1ZoneEnabled;
+        public LocalTransform weapon1Zone;
+        public float3 weapon1ZonePosition;
+
+        public bool weapon2ZoneEnabled;
+        public LocalTransform weapon2Zone;
+        public float3 weapon2ZonePosition;
+
+        
     }
 
     public class TargetZoneAuthoring : MonoBehaviour
@@ -42,6 +52,8 @@ namespace Collisions
         public bool rightHandZoneEnabled = true;
         public bool leftFootZoneEnabled = true;
         public bool rightFootZoneEnabled = true;
+        public bool weapon1ZoneEnabled = true;
+        public bool weapon2ZoneEnabled = true;
 
         private class TargetZoneAuthoringBaker : Baker<TargetZoneAuthoring>
         {
@@ -55,7 +67,9 @@ namespace Collisions
                     leftHandZoneEnabled = authoring.leftHandZoneEnabled,
                     rightHandZoneEnabled = authoring.rightHandZoneEnabled,
                     leftFootZoneEnabled = authoring.leftFootZoneEnabled,
-                    rightFootZoneEnabled = authoring.rightFootZoneEnabled
+                    rightFootZoneEnabled = authoring.rightFootZoneEnabled,
+                    weapon1ZoneEnabled = authoring.weapon1ZoneEnabled,
+                    weapon2ZoneEnabled = authoring.weapon2ZoneEnabled
                 });
             }
         }

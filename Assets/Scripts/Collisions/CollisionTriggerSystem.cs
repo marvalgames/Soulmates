@@ -103,8 +103,9 @@ namespace Collisions
                 var hitColliderKeyA = ev.ColliderKeyA;
                 var hitColliderKeyB = ev.ColliderKeyB;
 
-                var hitEntityA = ev.EntityA;
-                var hitEntityB = ev.EntityB;
+                //var hitEntityA = ev.EntityA;
+                //var hitEntityB = ev.EntityB;
+                
 
                 //Debug.Log("Count A " + colliderKeyEntityPairs[hitEntityA].Length);
                 // for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
@@ -167,23 +168,28 @@ namespace Collisions
                 if (checkGroup.HasComponent(chA))
                 {
                     primaryTriggerA = checkGroup[chA].primaryTrigger;
+                    Debug.Log("check primary trigger A " + primaryTriggerA + " " + chA);
+
                 }
 
                 if (checkGroup.HasComponent(chB))
                 {
                     primaryTriggerB = checkGroup[chB].primaryTrigger;
+                    Debug.Log("check primary trigger B " + primaryTriggerB + " " + chB);
                 }
-
+                
 
                 var punchingA = false;
                 var punchingB = false;
                 if (typeA is (int)TriggerType.Body or (int)TriggerType.Base or (int)TriggerType.Head)
                 {
                     punchingB = true; //B punch landed
+                    Debug.Log("punchingB " + punchingB);
                 }
                 else if (typeB is (int)TriggerType.Body or (int)TriggerType.Base or (int)TriggerType.Head)
                 {
                     punchingA = true; //A punch landed
+                    Debug.Log("punchingA " + punchingA);
                 }
 
 
@@ -203,8 +209,6 @@ namespace Collisions
                 }
 
 
-                //Debug.Log("check primary trigger A " + primaryTriggerA + " " + chA);
-                //Debug.Log("check primary trigger B " + primaryTriggerB + " " + chB);
 
 
                 var meleeA = (punchingA) &&
@@ -327,7 +331,7 @@ namespace Collisions
                 }
                 else if ((punchingA || meleeA || defenseA || alwaysDamageA) && !ammoA && !ammoB)
                 {
-                    //Debug.Log("punch A " + punchingA + " punch B " + punchingB);
+                    Debug.Log("A " + (TriggerType) typeA + ", B " + (TriggerType) typeB);
 
 
                     var collisionComponent =
@@ -344,7 +348,7 @@ namespace Collisions
                 }
                 else if (punchingB || meleeB || defenseB || alwaysDamageB && !ammoA && !ammoB)
                 {
-                    //Debug.Log("B " + (TriggerType) typeB + ", A " + (TriggerType) typeA);
+                    Debug.Log("B " + (TriggerType) typeB + ", A " + (TriggerType) typeA);
 
                     var collisionComponent =
                         new CollisionComponent

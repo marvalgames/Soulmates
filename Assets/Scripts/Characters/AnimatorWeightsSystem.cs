@@ -17,6 +17,7 @@ public struct AnimatorWeightsComponent : IComponentData
     public bool animatorInTransition;
     public FixedString64Bytes currentStateName;
     public FixedString64Bytes stateName;
+    public FixedString64Bytes defaultStateName;
 }
 
 [RequireMatchingQueriesForUpdate]
@@ -33,6 +34,7 @@ public partial struct AnimatorWeightsSystem : ISystem
                          RefRO<DeadComponent>>())
         {
             var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+            if (animator.GetCurrentAnimatorClipInfo(0).Length == 0) continue;
             animatorValues.ValueRW.hitWeight = animator.GetFloat(HitWeight);
             animatorValues.ValueRW.aimWeight = animator.GetFloat(AimWeight);
             animatorValues.ValueRW.animSpeed = animator.speed;
@@ -46,10 +48,10 @@ public partial struct AnimatorWeightsSystem : ISystem
                 animatorValues.ValueRW.resetSpeed = false;
             }
 
-            var currentLayer = animator.GetLayerIndex("Default");
-            var playingLayer0 = animator.IsInTransition(0);
-            animatorValues.ValueRW.animatorInTransition = playingLayer0;
+            var playingLayer = animator.IsInTransition(0);
+            animatorValues.ValueRW.animatorInTransition = playingLayer;
             var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            //Debug.Log("Default State YES " + animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
             animatorValues.ValueRW.animatorStateWeight = math.frac(stateInfo.normalizedTime);
             animatorValues.ValueRW.stateName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
