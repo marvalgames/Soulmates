@@ -28,6 +28,7 @@ namespace Sandbox.Collision
                 zone.ValueRW.rightHandZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().rightHandZone.position;
                 zone.ValueRW.leftFootZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().leftFootZone.position;
                 zone.ValueRW.rightFootZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().rightFootZone.position;
+                zone.ValueRW.weapon1ZonePosition = actor.actorPrefabInstance.GetComponent<TargetZone>().weapon1Zone.position;
                 
             }
 

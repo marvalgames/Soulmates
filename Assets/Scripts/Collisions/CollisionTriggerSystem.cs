@@ -100,44 +100,15 @@ namespace Collisions
                 var triggerComponentA = triggerGroup[a];
                 var triggerComponentB = triggerGroup[b];
 
-                var hitColliderKeyA = ev.ColliderKeyA;
-                var hitColliderKeyB = ev.ColliderKeyB;
-
-                //var hitEntityA = ev.EntityA;
-                //var hitEntityB = ev.EntityB;
-                
-
-                //Debug.Log("Count A " + colliderKeyEntityPairs[hitEntityA].Length);
-                // for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
-                // {
-                //     if (colliderKeyEntityPairs[hitEntityA][i].Key.Equals(hitColliderKeyA))
-                //     {
-                //         // Return the corresponding entity from the pair
-                //         var e = colliderKeyEntityPairs[hitEntityA][i].Entity;
-                //         Debug.Log("Entity A " + e);
-                //     }
-                // }
-                //
-                // Debug.Log("Count " + colliderKeyEntityPairs[hitEntityB].Length);
-                // for (int i = 0; i < colliderKeyEntityPairs[hitEntityB].Length; i++)
-                // {
-                //     if (colliderKeyEntityPairs[hitEntityB][i].Key.Equals(hitColliderKeyB))
-                //     {
-                //         // Return the corresponding entity from the pair
-                //         var e = colliderKeyEntityPairs[hitEntityB][i].Entity;
-                //         Debug.Log("Entity B " + e);
-                //     }
-                // }
-
 
                 var chA = triggerComponentA.ParentEntity;
                 var chB = triggerComponentB.ParentEntity;
-                var typeA = triggerComponentA.Type;
-                if (typeA == (int)TriggerType.Tail) typeA = (int)TriggerType.Melee;
-                var typeB = triggerComponentB.Type;
-                if (typeB == (int)TriggerType.Tail) typeB = (int)TriggerType.Melee;
+                var typeA = (TriggerType)triggerComponentA.Type;
+                if (typeA == TriggerType.Tail) typeA = TriggerType.Melee;
+                var typeB = (TriggerType)triggerComponentB.Type;
+                if (typeB == TriggerType.Tail) typeB = TriggerType.Melee;
 
-                if (chA == chB && typeA != (int)TriggerType.Ammo && typeB != (int)TriggerType.Ammo) return; ////?????
+                if (chA == chB && typeA != TriggerType.Ammo && typeB != TriggerType.Ammo) return;
 
 
                 var alwaysDamageA = false;
@@ -155,8 +126,8 @@ namespace Collisions
                 }
 
 
-                if (triggerComponentA.Type == (int)TriggerType.Ground ||
-                    triggerComponentB.Type == (int)TriggerType.Ground)
+                if (typeA == TriggerType.Ground ||
+                    typeB == TriggerType.Ground)
                 {
                     return;
                 }
@@ -169,7 +140,6 @@ namespace Collisions
                 {
                     primaryTriggerA = checkGroup[chA].primaryTrigger;
                     Debug.Log("check primary trigger A " + primaryTriggerA + " " + chA);
-
                 }
 
                 if (checkGroup.HasComponent(chB))
@@ -177,46 +147,25 @@ namespace Collisions
                     primaryTriggerB = checkGroup[chB].primaryTrigger;
                     Debug.Log("check primary trigger B " + primaryTriggerB + " " + chB);
                 }
-                
 
-                var punchingA = false;
-                var punchingB = false;
-                if (typeA is (int)TriggerType.Body or (int)TriggerType.Base or (int)TriggerType.Head)
-                {
-                    punchingB = true; //B punch landed
-                    Debug.Log("punchingB " + punchingB);
-                }
-                else if (typeB is (int)TriggerType.Body or (int)TriggerType.Base or (int)TriggerType.Head)
-                {
-                    punchingA = true; //A punch landed
-                    Debug.Log("punchingA " + punchingA);
-                }
+                //var punchingA = false;
+                //var punchingB = false;
+                var defenderA = typeA is TriggerType.Body or TriggerType.Head or TriggerType.Base;
+                var defenderB = typeB is TriggerType.Body or TriggerType.Head or TriggerType.Base;
+                var attackerA = typeA is TriggerType.LeftHand or TriggerType.RightHand or TriggerType.LeftFoot
+                    or TriggerType.RightFoot;
+                var attackerB = typeB is TriggerType.LeftHand or TriggerType.RightHand or TriggerType.LeftFoot
+                    or TriggerType.RightFoot;
 
+                var punchingA = attackerA && defenderB && primaryTriggerA == typeA;
+                var punchingB = attackerB && defenderA && primaryTriggerB == typeB;
+                var meleeA = typeA == TriggerType.Melee && typeA == primaryTriggerA && defenderB;
+                var meleeB = typeB == TriggerType.Melee && typeB == primaryTriggerA && defenderA;
 
-                //if punching A or B is true then we dont skip eventhough type a = type b 
+                //do not skip when typeA is not typeB 
                 if (typeA == typeB && punchingA == false && punchingB == false && alwaysDamageA == false &&
                     alwaysDamageB == false)
                     return;
-
-
-                if (bossGroup.HasComponent(chA))
-                {
-                    primaryTriggerA = TriggerType.Melee;
-                }
-                else if (bossGroup.HasComponent(chB))
-                {
-                    primaryTriggerB = TriggerType.Melee;
-                }
-
-
-
-
-                var meleeA = (punchingA) &&
-                             (typeA == (int)TriggerType.Melee && typeA == (int)primaryTriggerA);
-
-                var meleeB = (punchingB) &&
-                             (typeB == (int)TriggerType.Melee && typeB == (int)primaryTriggerB);
-
 
                 var defenseA = false;
                 var defenseB = false;
@@ -233,54 +182,38 @@ namespace Collisions
                 }
 
                 //check if arm/hands colliding with each other (feet for attacker? melee? setting trigger type to that instead of hand)
-                var primaryDefenseTriggerMatchA = (typeA is (int)TriggerType.LeftHand or (int)TriggerType.RightHand) &&
-                                                  (int)primaryTriggerB == typeB;
-                var primaryDefenseTriggerMatchB = (typeB is (int)TriggerType.LeftHand or (int)TriggerType.RightHand) &&
-                                                  (int)primaryTriggerA == typeA;
-                defenseA = typeB is (int)TriggerType.Melee &&
+                var primaryDefenseTriggerMatchA = (typeA is TriggerType.LeftHand or TriggerType.RightHand) &&
+                                                  primaryTriggerB == typeB;
+                var primaryDefenseTriggerMatchB = (typeB is TriggerType.LeftHand or TriggerType.RightHand) &&
+                                                  primaryTriggerA == typeA;
+                defenseA = typeB is TriggerType.Melee &&
                            primaryDefenseTriggerMatchA && defenseA;
-                defenseB = typeA is (int)TriggerType.Melee &&
+                defenseB = typeA is TriggerType.Melee &&
                            primaryDefenseTriggerMatchB && defenseB;
 
-                var prA = (int)primaryTriggerA == typeA;
-                var prB = (int)primaryTriggerB == typeB;
 
-                var primaryTriggerMatchA = (typeA is (int)TriggerType.LeftHand or (int)TriggerType.RightHand
-                                               or (int)TriggerType.LeftFoot or (int)TriggerType.RightFoot)
-                                           && (int)primaryTriggerA == typeA;
-                var primaryTriggerMatchB = (typeB is (int)TriggerType.LeftHand or (int)TriggerType.RightHand
-                                               or (int)TriggerType.LeftFoot or (int)TriggerType.RightFoot)
-                                           && (int)primaryTriggerB == typeB;
+                punchingA = punchingA || meleeA;
+
+                punchingB = punchingB || meleeB;
 
 
-                punchingA = punchingA &&
-                    primaryTriggerMatchA || meleeA;
+                var ammoA = typeB is TriggerType.Base or TriggerType.Head or TriggerType.Body &&
+                            (typeA == TriggerType.Ammo);
 
+                var ammoB = typeA is TriggerType.Base or TriggerType.Head or TriggerType.Body &&
+                            (typeB == TriggerType.Ammo);
 
-                punchingB = punchingB &&
-                    primaryTriggerMatchB || meleeB;
+                var ammoBlockedA = (typeB == TriggerType.Blocks) &&
+                                   (typeA == TriggerType.Ammo);
 
+                var ammoBlockedB = (typeA == TriggerType.Blocks) &&
+                                   (typeB == TriggerType.Ammo);
 
-                //Debug.Log("trigger match A " + primaryTriggerMatchA + " trigger match  B " + primaryTriggerMatchB);
+                var effectA = typeB is TriggerType.Base or TriggerType.Head or TriggerType.Body &&
+                              (typeA == TriggerType.Particle);
 
-
-                var ammoA = typeB is (int)TriggerType.Base or (int)TriggerType.Head or (int)TriggerType.Body &&
-                            (typeA == (int)TriggerType.Ammo);
-
-                var ammoB = typeA is (int)TriggerType.Base or (int)TriggerType.Head or (int)TriggerType.Body &&
-                            (typeB == (int)TriggerType.Ammo);
-
-                var ammoBlockedA = (typeB == (int)TriggerType.Blocks) &&
-                                   (typeA == (int)TriggerType.Ammo);
-
-                var ammoBlockedB = (typeA == (int)TriggerType.Blocks) &&
-                                   (typeB == (int)TriggerType.Ammo);
-
-                var effectA = typeB is (int)TriggerType.Base or (int)TriggerType.Head or (int)TriggerType.Body &&
-                              (typeA == (int)TriggerType.Particle);
-
-                var effectB = typeA is (int)TriggerType.Base or (int)TriggerType.Head or (int)TriggerType.Body &&
-                              (typeB == (int)TriggerType.Particle);
+                var effectB = typeA is TriggerType.Base or TriggerType.Head or TriggerType.Body &&
+                              (typeB == TriggerType.Particle);
 
 
                 if (ammoBlockedA)
@@ -331,8 +264,7 @@ namespace Collisions
                 }
                 else if ((punchingA || meleeA || defenseA || alwaysDamageA) && !ammoA && !ammoB)
                 {
-                    Debug.Log("A " + (TriggerType) typeA + ", B " + (TriggerType) typeB);
-
+                    Debug.Log("A " + a + ", B " + b);
 
                     var collisionComponent =
                         new CollisionComponent
@@ -348,7 +280,7 @@ namespace Collisions
                 }
                 else if (punchingB || meleeB || defenseB || alwaysDamageB && !ammoA && !ammoB)
                 {
-                    Debug.Log("B " + (TriggerType) typeB + ", A " + (TriggerType) typeA);
+                    Debug.Log("B " + typeB + ", A " + typeA);
 
                     var collisionComponent =
                         new CollisionComponent
@@ -366,3 +298,30 @@ namespace Collisions
         }
     } // System
 }
+
+
+//var hitColliderKeyA = ev.ColliderKeyA;
+//var hitColliderKeyB = ev.ColliderKeyB;
+//var hitEntityA = ev.EntityA;
+//var hitEntityB = ev.EntityB;
+//Debug.Log("Count A " + colliderKeyEntityPairs[hitEntityA].Length);
+// for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
+// {
+//     if (colliderKeyEntityPairs[hitEntityA][i].Key.Equals(hitColliderKeyA))
+//     {
+//         // Return the corresponding entity from the pair
+//         var e = colliderKeyEntityPairs[hitEntityA][i].Entity;
+//         Debug.Log("Entity A " + e);
+//     }
+// }
+//
+// Debug.Log("Count " + colliderKeyEntityPairs[hitEntityB].Length);
+// for (int i = 0; i < colliderKeyEntityPairs[hitEntityB].Length; i++)
+// {
+//     if (colliderKeyEntityPairs[hitEntityB][i].Key.Equals(hitColliderKeyB))
+//     {
+//         // Return the corresponding entity from the pair
+//         var e = colliderKeyEntityPairs[hitEntityB][i].Entity;
+//         Debug.Log("Entity B " + e);
+//     }
+// }

@@ -136,7 +136,7 @@ namespace Collisions
                                      //hitLanded: false, anyAttackStarted: true, attackCompleted: false,
                                      hitTriggered: false,
                                      anyDefenseStarted: false
-                                 } && hwA >= .6 && !isDefenseA)
+                                 } && hwA >= .3 && !isDefenseA)
                         {
                             var effectsIndex = 1; //0 dead usually 1 hurt
                             float hitPower = 10; //need to be able to change eventually

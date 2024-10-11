@@ -58,7 +58,7 @@ public partial struct AnimatorWeightsSystem : ISystem
             //test
             if (animatorValues.ValueRW.animatorStateWeight > animatorValues.ValueRW.hitWeight)
             {
-                animatorValues.ValueRW.hitWeight = animatorValues.ValueRW.animatorStateWeight;
+                //animatorValues.ValueRW.hitWeight = animatorValues.ValueRW.animatorStateWeight;
             }
 
 
