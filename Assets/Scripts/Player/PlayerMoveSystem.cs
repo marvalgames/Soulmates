@@ -174,18 +174,21 @@ namespace Sandbox.Player
                 right.y = 0;
                 fwd = math.normalize(fwd);
                 right = math.normalize(right);
-                var impulse = SystemAPI.GetComponent<ImpulseComponent>(entity);
                 if (math.abs(stickSpeed) > .0000f)
                 {
                     applyImpulseComponent.ValueRW.playerMoving = true; //moving forward
                     float impulseFactor = 1;
-                    if (impulse.activate)
+                    if (SystemAPI.HasComponent<ImpulseComponent>(entity))
                     {
-                        impulseFactor = impulse.animSpeedRatio;
-                    }
-                    else if (impulse.activateOnReceived)
-                    {
-                        impulseFactor = impulse.animSpeedRatioOnReceived;
+                        var impulse = SystemAPI.GetComponent<ImpulseComponent>(entity);
+                        if (impulse.activate)
+                        {
+                            impulseFactor = impulse.animSpeedRatio;
+                        }
+                        else if (impulse.activateOnReceived)
+                        {
+                            impulseFactor = impulse.animSpeedRatioOnReceived;
+                        }
                     }
 
 

@@ -79,6 +79,7 @@ namespace Sandbox.Player
                 if (checkedComponent.ValueRW is { AttackStages: AttackStages.End, comboButtonClicked: true })
                 {
                     checkedComponent.ValueRW.comboIndexPlaying += 1;
+                    if(checkedComponent.ValueRW.comboIndexPlaying >= 4) checkedComponent.ValueRW.comboIndexPlaying = 1;
                     //animator.SetInteger(ComboAnimationPlayed, checkedComponent.ValueRW.comboIndexPlaying);
                     melee.ValueRW.comboAnimationPlayed = checkedComponent.ValueRW.comboIndexPlaying;
                     melee.ValueRW.selectMove = 1;

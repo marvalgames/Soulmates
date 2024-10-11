@@ -133,7 +133,8 @@ public partial struct ActorImpulseEffectsSystem : ISystem
                         SystemAPI.SetComponent(e, agent);
                     }
 
-                    physicsVelocity.ValueRW.Linear *= math.float3(animSpeed, animSpeed, animSpeed);
+                    physicsVelocity.ValueRW.Linear *= animSpeed; 
+                    //math.float3(animSpeed, animSpeed, animSpeed);
                     animatorWeights.ValueRW.useImpulseSpeed = true;
                     animatorWeights.ValueRW.impulseSpeed = animSpeed;
                 }
