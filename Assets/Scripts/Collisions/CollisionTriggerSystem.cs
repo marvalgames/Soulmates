@@ -160,7 +160,7 @@ namespace Collisions
                 var punchingA = attackerA && defenderB && primaryTriggerA == typeA;
                 var punchingB = attackerB && defenderA && primaryTriggerB == typeB;
                 var meleeA = typeA == TriggerType.Melee && typeA == primaryTriggerA && defenderB;
-                var meleeB = typeB == TriggerType.Melee && typeB == primaryTriggerA && defenderA;
+                var meleeB = typeB == TriggerType.Melee && typeB == primaryTriggerB && defenderA;
 
                 //do not skip when typeA is not typeB 
                 if (typeA == typeB && punchingA == false && punchingB == false && alwaysDamageA == false &&
