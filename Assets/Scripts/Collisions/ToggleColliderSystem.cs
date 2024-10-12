@@ -9,28 +9,27 @@ using UnityEngine;
 
 namespace Collisions
 {
-
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateBefore(typeof(ToggleColliderSystem))]
-
     public partial class SetDefaultColliderSystem : SystemBase
     {
         protected override void OnUpdate()
         {
             Entities.WithStructuralChanges().WithNone<ToggleFilterComponent>()
-                .ForEach((Entity e, in PhysicsCollider collider) =>
+                .ForEach(
+                    (Entity e, in PhysicsCollider collider, in ToggleCollisionComponent toggleCollisionComponent) =>
                     {
+                        Debug.Log("E " + e);
                         if (collider.IsValid)
                         {
                             var filter = collider.Value.Value.GetCollisionFilter();
-                            //Debug.Log("FILTER " + filter);
+                            Debug.Log("FILTER " + filter);
                             EntityManager.AddComponentData
-                                (e, new ToggleFilterComponent
-                                    {
+                            (e, new ToggleFilterComponent
+                                {
                                     defaultFilter = filter
                                 }
-
-                                );
+                            );
                         }
                     }
                 ).Run();
@@ -77,88 +76,90 @@ namespace Collisions
             var actorCollisionBufferElement = GetBufferLookup<ActorCollisionBufferElement>(true);
 
 
-            var inputDeps = 
+            var inputDeps =
                 Entities.ForEach((Entity e, ref PlayerDashComponent playerDashComponent) =>
-                {
-                    var actorCollisionElement = actorCollisionBufferElement[e];
-                    if (actorCollisionElement.Length <= 0 || playerDashComponent.active == false)
-                        return;
-
-
-                    
-                    var addColliders = false;
-                    var removeColliders = false;
-                    bool hasActorWeaponAim = SystemAPI.HasComponent<ActorWeaponAimComponent>(e);
-
-
-                    var hasToggleCollision =
-                        SystemAPI.HasComponent<ToggleCollisionComponent>(e);
-                    //SystemAPI.HasComponent<ToggleCollisionComponent>(e) && SystemAPI.HasComponent<ToggleFilterComponent>(e);
-                    playerDashComponent.Invincible = false;
-                    if (playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleStart &&
-                        playerDashComponent.DashTimeTicker < playerDashComponent.invincibleEnd)
                     {
-                        playerDashComponent.Invincible = true;
-                        if (hasToggleCollision)
+                        var actorCollisionElement = actorCollisionBufferElement[e];
+                        if (actorCollisionElement.Length <= 0 || playerDashComponent.active == false)
+                            return;
+
+
+                        var addColliders = false;
+                        var removeColliders = false;
+                        bool hasActorWeaponAim = SystemAPI.HasComponent<ActorWeaponAimComponent>(e);
+
+
+                        var hasToggleCollision =
+                            SystemAPI.HasComponent<ToggleCollisionComponent>(e);
+                        //SystemAPI.HasComponent<ToggleCollisionComponent>(e) && SystemAPI.HasComponent<ToggleFilterComponent>(e);
+                        playerDashComponent.Invincible = false;
+                        if (playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleStart &&
+                            playerDashComponent.DashTimeTicker < playerDashComponent.invincibleEnd)
                         {
-                            ecb.RemoveComponent<ToggleCollisionComponent>(e);
-                            //Debug.Log("remove colliders");
-                            removeColliders = true;
-                        }
-                    }
-                    else if ((playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleEnd ||
-                              playerDashComponent.DashTimeTicker == 0) && hasToggleCollision == false)
-                    {
-                        ecb.AddComponent(e, new ToggleCollisionComponent());
-                        addColliders = true;//set default colliders back
-                    }
-
-                    if (hasActorWeaponAim && removeColliders)
-                    {
-                        var actorWeaponAimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
-                        actorWeaponAimComponent.startDashAimMode = actorWeaponAimComponent.aimMode;
-                        actorWeaponAimComponent.aimMode = false;
-                        SystemAPI.SetComponent(e, actorWeaponAimComponent);
-                    }
-                    else if (hasActorWeaponAim && addColliders)
-                    {
-                        var actorWeaponAimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
-                        actorWeaponAimComponent.aimMode = actorWeaponAimComponent.startDashAimMode;
-                        SystemAPI.SetComponent(e, actorWeaponAimComponent);
-                    }
-
-                    for (var i = 0; i < actorCollisionElement.Length; i++) //fix for ecs 1.0
-                    {
-                        var childEntity = actorCollisionElement[i]._child;
-                        bool hasToggleFilter = SystemAPI.HasComponent<ToggleFilterComponent>(childEntity);
-                        bool hasPhysicsCollider = SystemAPI.HasComponent<PhysicsCollider>(childEntity);
-                        if (!hasPhysicsCollider || !hasToggleFilter) continue;
-                         //recent change: player probably doesn't have collider only child colliders  
-
-                        if (addColliders)
-                        {
-                            var collider = SystemAPI.GetComponent<PhysicsCollider>(childEntity);
-                            var filter = SystemAPI.GetComponent<ToggleFilterComponent>(childEntity).defaultFilter;
-                            collider.Value.Value.SetCollisionFilter(filter);
-                            //CollisionFilter r = collider.Value.Value.GetCollisionFilter();
-                            Debug.Log("ADD COLLIDERS");
-                            ecb.SetComponent(childEntity, collider);
-                        }
-                        else if (removeColliders)
-                        {
-                            var collider = SystemAPI.GetComponent<PhysicsCollider>(childEntity);
-                            Debug.Log("REMOVE COLLIDERS");
-                            var filter = new CollisionFilter
+                            playerDashComponent.Invincible = true;
+                            if (hasToggleCollision)
                             {
-                                BelongsTo = (uint)CollisionLayer.Player,
-                                CollidesWith = (uint)CollisionLayer.Ground
-                            };
-                            collider.Value.Value.SetCollisionFilter(filter);
-                            ecb.SetComponent(childEntity, collider);
+                                ecb.RemoveComponent<ToggleCollisionComponent>(e);
+                                Debug.Log("remove colliders");
+                                removeColliders = true;
+                            }
+                        }
+                        else if ((playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleEnd ||
+                                  playerDashComponent.DashTimeTicker == 0) && hasToggleCollision == false)
+                        {
+                            ecb.AddComponent(e, new ToggleCollisionComponent());
+                            addColliders = true; //set default colliders back
+                            Debug.Log("add colliders");
+                        }
+
+                        if (hasActorWeaponAim && removeColliders)
+                        {
+                            var actorWeaponAimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
+                            actorWeaponAimComponent.startDashAimMode = actorWeaponAimComponent.aimMode;
+                            actorWeaponAimComponent.aimMode = false;
+                            SystemAPI.SetComponent(e, actorWeaponAimComponent);
+                        }
+                        else if (hasActorWeaponAim && addColliders)
+                        {
+                            var actorWeaponAimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
+                            actorWeaponAimComponent.aimMode = actorWeaponAimComponent.startDashAimMode;
+                            SystemAPI.SetComponent(e, actorWeaponAimComponent);
+                        }
+
+                        for (var i = 0; i < actorCollisionElement.Length; i++) //always one length now 
+                        {
+                            var childEntity = actorCollisionElement[i]._child;
+                            bool hasToggleFilter = SystemAPI.HasComponent<ToggleFilterComponent>(childEntity);
+                            bool hasPhysicsCollider = SystemAPI.HasComponent<PhysicsCollider>(childEntity);
+                            Debug.Log("child E " + childEntity + " " + hasToggleFilter + " " + hasPhysicsCollider +
+                                      " " + i);
+                            if (hasPhysicsCollider == false || hasToggleFilter == false) continue;
+                            //recent change: player probably doesn't have collider only child colliders  
+
+                            if (addColliders)
+                            {
+                                var collider = SystemAPI.GetComponent<PhysicsCollider>(childEntity);
+                                var filter = SystemAPI.GetComponent<ToggleFilterComponent>(childEntity).defaultFilter;
+                                collider.Value.Value.SetCollisionFilter(filter);
+                                //CollisionFilter r = collider.Value.Value.GetCollisionFilter();
+                                Debug.Log("ADD COLLIDERS");
+                                ecb.SetComponent(childEntity, collider);
+                            }
+                            else if (removeColliders)
+                            {
+                                var collider = SystemAPI.GetComponent<PhysicsCollider>(childEntity);
+                                Debug.Log("REMOVE COLLIDERS");
+                                var filter = new CollisionFilter
+                                {
+                                    BelongsTo = (uint)CollisionLayer.Player,
+                                    CollidesWith = (uint)CollisionLayer.Ground
+                                };
+                                collider.Value.Value.SetCollisionFilter(filter);
+                                ecb.SetComponent(childEntity, collider);
+                            }
                         }
                     }
-                }
-            ).Schedule(Dependency);
+                ).Schedule(Dependency);
 
             inputDeps.Complete();
             ecb.Playback(EntityManager);

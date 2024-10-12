@@ -17,27 +17,23 @@ namespace Sandbox.Player
 
         protected override void OnUpdate()
         {
-            var ecb = new EntityCommandBuffer(Allocator.Temp);
-
             var dt = SystemAPI.Time.DeltaTime;
-
             Entities.WithoutBurst().ForEach(
                 (
                     Entity e,
                     ActorInstance actor,
                     ref PlayerDashComponent playerDash,
                     in InputControllerComponent inputController,
+                    in ApplyImpulseComponent applyImpulse,
                     in LocalToWorld ltw,
-                    //in Animator animator,
                     in DashAudioVideoGO player
                 ) =>
                 {
                     if (playerDash.active == false) return;
                     var audioSource = player.AudioSource;
+                    var visualEffect = player.VisualEffect;
                     var animator = actor.actorPrefabInstance.GetComponent<Animator>();
-                    Debug.Log("DASH");
 
-                    
                     if (playerDash.DelayTimeTicker > 0)
                     {
                         playerDash.DelayTimeTicker -= dt;
@@ -67,7 +63,7 @@ namespace Sandbox.Player
                                 }
                             }
 
-                            if (audioSource != null)
+                            if (audioSource)
                             {
                                 if (player.AudioClip)
                                 {
@@ -78,39 +74,16 @@ namespace Sandbox.Player
                                     }
                                 }
                             }
-                            //
-                            // if (goVisualEffect.VisualEffect && applyImpulseComponent.InJump)
-                            // {
-                            //     goVisualEffect.VisualEffect.transform.position = transform.Position;
-                            //     goVisualEffect.VisualEffect.SetFloat("FlareRate", 100);
-                            //     Debug.Log("VFX Jump");
-                            // }
-                            // else if (goVisualEffect.VisualEffect && !applyImpulseComponent.InJump)
-                            // {
-                            //     goVisualEffect.VisualEffect.transform.position = transform.Position;
-                            //     goVisualEffect.VisualEffect.SetFloat("FlareRate", 0);
-                            // }
-                            //
-                            //
-                            // var audioSource = goAudioPlayer.AudioSource;
-                            // if (audioSource && playerJumpComponent.playJumpAudio)
-                            // {
-                            //     var clip = goAudioPlayer.AudioClip;
-                            //     audioSource.PlayOneShot(audioSource.clip);
-                            //     playerJumpComponent.playJumpAudio = false;
-                            // }
-                            //
-                            //
-                            
-                            //
-                            // if (player.VisualEffect)
-                            // {
-                            //     if (player.VisualEffect.ps.isPlaying == false)
-                            //     {
-                            //         player.ps.transform.SetParent(player.transform);
-                            //         player.ps.Play(true);
-                            //     }
-                            // }
+
+
+                            if (visualEffect && applyImpulse.InJump == false)
+                            {
+                                visualEffect.Play();
+                            }
+                            else
+                            {
+                                visualEffect.Stop();
+                            }
                         }
                     }
                     else if (playerDash.DashTimeTicker < playerDash.dashTime && animator.speed > 0 &&
@@ -135,8 +108,6 @@ namespace Sandbox.Player
                     }
                 }
             ).Run();
-            ecb.Playback(EntityManager);
-            ecb.Dispose();
         }
     }
 }

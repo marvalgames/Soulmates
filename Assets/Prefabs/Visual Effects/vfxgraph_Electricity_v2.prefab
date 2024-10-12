@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6381288982757474652
+--- !u!1 &8709116747283820462
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8315478457430722813}
-  - component: {fileID: 6471798524329516955}
-  - component: {fileID: 8096548694047685576}
+  - component: {fileID: 8709116747283820461}
+  - component: {fileID: 8709116747283820460}
+  - component: {fileID: 8709116747283820463}
   m_Layer: 0
-  m_Name: vfxgraph_StylizedBeam_tut
+  m_Name: vfxgraph_Electricity_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8315478457430722813
+--- !u!4 &8709116747283820461
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6381288982757474652}
+  m_GameObject: {fileID: 8709116747283820462}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!2083052967 &6471798524329516955
+--- !u!2083052967 &8709116747283820460
 VisualEffect:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6381288982757474652}
+  m_GameObject: {fileID: 8709116747283820462}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 8c4e9406a2e4dd549b8a435b99b5c392, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: a1dab7ae2dd7ea045bcf47c9af764d31, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -50,13 +50,34 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 40
+        m_Name: ElectricityRate
+        m_Overridden: 1
+      - m_Value: 1.8
+        m_Name: ElectricitySize
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: SparksSize
+        m_Overridden: 1
+      - m_Value: 2.2
+        m_Name: FlashSize
+        m_Overridden: 1
+      - m_Value: 0.6
+        m_Name: SparksLifetime
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.18919738, y: 0.20721617, z: 1.1486983, w: 1}
+        m_Name: FlashColor
+        m_Overridden: 1
+      - m_Value: {x: 174.23013, y: 82.218704, z: 26.453789, w: 1}
+        m_Name: ElectricityColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -71,14 +92,14 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!73398921 &8096548694047685576
+--- !u!73398921 &8709116747283820463
 VFXRenderer:
   serializedVersion: 1
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6381288982757474652}
+  m_GameObject: {fileID: 8709116747283820462}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

@@ -325,7 +325,7 @@ namespace Sandbox.Player
                         {
                             var audioSource = goAudioPlayer.AudioSource;
                             var pitch = stickSpeed * playerMoveComponent.stepRate;
-                            // Debug.Log("audio source  " + audioSource);
+                            Debug.Log("audio source  " + audioSource);
                             if (audioSource.isPlaying == false)
                             {
                                 audioSource.pitch = pitch;
@@ -337,8 +337,9 @@ namespace Sandbox.Player
                         if (goVisualEffect.VisualEffect)
                         {
                             goVisualEffect.VisualEffect.transform.position = transform.Position;
-                            goVisualEffect.VisualEffect.SetFloat("FlareRate", 40);
-                            // Debug.Log("Flare Rate ");
+                            //goVisualEffect.VisualEffect.SetFloat("FlareRate", 40);
+                            goVisualEffect.VisualEffect.Play();
+                            Debug.Log("Flare Rate ");
                         }
                     }
                     else
@@ -355,7 +356,8 @@ namespace Sandbox.Player
                         if (goVisualEffect.VisualEffect != null)
                         {
                             goVisualEffect.VisualEffect.transform.position = transform.Position;
-                            goVisualEffect.VisualEffect.SetFloat("FlareRate", 0);
+                            //goVisualEffect.VisualEffect.SetFloat("FlareRate", 0);
+                            goVisualEffect.VisualEffect.Stop();
                         }
                     }
                 }

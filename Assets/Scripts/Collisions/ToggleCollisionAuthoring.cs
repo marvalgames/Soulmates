@@ -13,15 +13,12 @@ namespace Collisions
     {
         public CollisionFilter defaultFilter;
         public CollisionFilter dashFilter;
-    
     }
 
 
     [InternalBufferCapacity(8)]
-
     public struct ActorCollisionBufferElement : IBufferElementData
     {
-
         public bool isPlayer;
         public Entity _parent;
         public Entity _child;
@@ -29,8 +26,6 @@ namespace Collisions
 
     public class ToggleCollisionAuthoring : MonoBehaviour
     {
-
-
         public bool isPlayer = true;
         public GameObject _parent;
 
@@ -39,29 +34,32 @@ namespace Collisions
         {
             public override void Bake(ToggleCollisionAuthoring authoring)
             {
-            
                 var parentEntity = GetEntity(authoring._parent.transform.root.gameObject, TransformUsageFlags.Dynamic);
                 var entity = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
-                var buffer = AddBuffer<ActorCollisionBufferElement>(entity);
 
-
-                var collisionElement =
-                    new ActorCollisionBufferElement
+                if (authoring.isPlayer)
+                {
+                    var buffer = AddBuffer<ActorCollisionBufferElement>(entity);
+                    var go = GetChildren(authoring.gameObject);
+                    for (int i = 0; i < go.Length; i++)
                     {
-                        isPlayer = authoring.isPlayer,
-                        _parent = parentEntity,
-                        _child = entity
-                    };
+                        var child = go[i];
+                        var childEntity = GetEntity(child, TransformUsageFlags.Dynamic);
+                        Debug.Log("children " + GetEntity(child, TransformUsageFlags.Dynamic));
+                        var collisionElement =
+                            new ActorCollisionBufferElement
+                            {
+                                isPlayer = authoring.isPlayer,
+                                _parent = parentEntity,
+                                _child = childEntity
+                            };
 
-                buffer.Add(collisionElement);
-            
+                        buffer.Add(collisionElement);
+                    }
+                }
+
                 AddComponent(entity, new ToggleCollisionComponent());
-            
-
-           
-            
             }
         }
-
     }
 }
