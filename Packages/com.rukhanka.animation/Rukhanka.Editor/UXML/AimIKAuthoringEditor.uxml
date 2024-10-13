@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:PropertyField binding-path="target" name="target" />
+    <ui:Slider picking-mode="Ignore" label="Weight" value="1" high-value="1" name="weight" binding-path="weight" show-input-field="true" />
+    <ui:Slider picking-mode="Ignore" label="Min Angle" value="42" high-value="180" name="minAngleSlider" binding-path="angleLimitMin" low-value="-180" show-input-field="true" />
+    <ui:Slider picking-mode="Ignore" label="Max Angle" value="42" high-value="180" name="maxAngleSlider" binding-path="angleLimitMax" low-value="-180" show-input-field="true" />
+    <ui:Vector3Field label="Bone Forward Vector" name="forwardVec" binding-path="forwardVector" />
+    <uie:PropertyField name="bonesList" binding-path="affectedBones" tooltip="List of bones affected by aim IK algorithm. Note that rotations are applied in descending order (from top to bottom)." />
+</ui:UXML>

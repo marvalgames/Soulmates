@@ -181,6 +181,9 @@ namespace Sandbox.Player
                             break;
                     }
 
+                    actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().linkedEntity = entity;
+                    actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().manager = state.EntityManager;
+                    
                     var prefab = movesClass.moveParticleSystem;
                     var vfxGo = GameObject.Instantiate(prefab);
                     Debug.Log("PREFAB " + vfxGo);

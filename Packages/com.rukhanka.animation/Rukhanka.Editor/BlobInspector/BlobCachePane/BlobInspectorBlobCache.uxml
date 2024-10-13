@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement style="margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; border-left-color: rgb(123, 122, 122); border-right-color: rgb(123, 122, 122); border-top-color: rgb(123, 122, 122); border-bottom-color: rgb(123, 122, 122); flex-grow: 1;">
+        <ui:Label tabindex="-1" text="Blob Asset Cache" parse-escape-sequences="true" display-tooltip-when-elided="true" name="header" style="font-size: 16px; padding-right: 4px; padding-bottom: 8px; padding-left: 1px;" />
+        <ui:VisualElement name="blobCacheDisabledLabel" style="flex-grow: 0; flex-direction: row; align-items: center; margin-bottom: 3px;">
+            <ui:Label tabindex="-1" text="⚠" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 18px; color: rgb(255, 255, 0);" />
+            <ui:Label tabindex="-1" text="Blob cache is disabled. Animation clips and animator controllers will be rebaked on every subscene bake." parse-escape-sequences="true" display-tooltip-when-elided="true" />
+        </ui:VisualElement>
+        <ui:Label tabindex="-1" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="blobCachePathLabel" />
+        <ui:Label tabindex="-1" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="totalAnimationsMemLabel" />
+        <ui:Label tabindex="-1" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="totalControllerMemLabel" />
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; height: 40px; flex-shrink: 0;">
+            <ui:Button text="Clear Cache" parse-escape-sequences="true" display-tooltip-when-elided="true" name="clearCacheBtn" style="flex-grow: 1;" />
+            <ui:Button text="Disable Cache" parse-escape-sequences="true" display-tooltip-when-elided="true" name="disableEnableCacheBtn" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" style="margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; border-left-color: rgb(127, 127, 127); border-right-color: rgb(127, 127, 127); border-top-color: rgb(127, 127, 127); border-bottom-color: rgb(127, 127, 127);">
+            <ui:Foldout text="Animation Blobs" value="false" name="animationBlobsFoldout" />
+            <ui:Foldout text="Animator Controller Blobs" value="false" name="animatorControllerBlobsFoldout" />
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

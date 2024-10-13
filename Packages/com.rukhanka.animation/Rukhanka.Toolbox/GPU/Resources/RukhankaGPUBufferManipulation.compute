@@ -1,0 +1,36 @@
+#pragma kernel CopyBuffer
+#pragma kernel ClearBuffer
+
+/////////////////////////////////////////////////////////////////////////////////
+
+ByteAddressBuffer srcBuf;
+RWByteAddressBuffer dstBuf;
+int copyBufferElementsCount;
+int srcOffset, dstOffset;
+int clearValue;
+
+/////////////////////////////////////////////////////////////////////////////////
+
+[numthreads(128, 1, 1)]
+void CopyBuffer(uint tid: SV_DispatchThreadID)
+{
+    if (tid >= (uint)copyBufferElementsCount)
+        return;
+
+    uint inDataOffset = tid * 4 + srcOffset;
+    int v = srcBuf.Load(inDataOffset);
+    uint outDataOffset = tid * 4 + dstOffset;
+    dstBuf.Store(outDataOffset, v);
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+[numthreads(128, 1, 1)]
+void ClearBuffer(uint tid: SV_DispatchThreadID)
+{
+    if (tid >= (uint)copyBufferElementsCount)
+        return;
+
+    uint outDataOffset = tid * 4 + dstOffset;
+    dstBuf.Store(outDataOffset, clearValue);
+}
