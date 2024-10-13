@@ -63,6 +63,7 @@ namespace Collisions
 
         protected override void OnUpdate()
         {
+            
 
 
             var ecb = new EntityCommandBuffer(Allocator.TempJob);
