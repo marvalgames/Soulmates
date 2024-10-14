@@ -211,7 +211,7 @@ namespace Sandbox.Player
                          .WithAny<PlayerComponent>())
             {
                 //var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
-                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                //var animator = actor.actorPrefabInstance.GetComponent<Animator>();
 
 
                 if (SystemAPI.HasComponent<ActorWeaponAimComponent>(e))
@@ -241,7 +241,7 @@ namespace Sandbox.Player
                         animator.SetInteger(CombatAction, 0);
                         melee.ValueRW.cancelMove = false;
                         melee.ValueRW.cancelMovement = 0;
-                    }
+                    }  
 
                     var vfxGraph = movesHolder.movesClassList[melee.ValueRW.lastCombatAction]
                         .moveParticleSystemInstance.GetComponent<VisualEffect>();
