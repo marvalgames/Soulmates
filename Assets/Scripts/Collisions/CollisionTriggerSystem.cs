@@ -139,13 +139,13 @@ namespace Collisions
                 if (checkGroup.HasComponent(chA))
                 {
                     primaryTriggerA = checkGroup[chA].primaryTrigger;
-                    Debug.Log("check primary trigger A " + primaryTriggerA + " " + chA);
+                    //Debug.Log("check primary trigger A " + primaryTriggerA + " " + chA);
                 }
 
                 if (checkGroup.HasComponent(chB))
                 {
                     primaryTriggerB = checkGroup[chB].primaryTrigger;
-                    Debug.Log("check primary trigger B " + primaryTriggerB + " " + chB);
+                    //Debug.Log("check primary trigger B " + primaryTriggerB + " " + chB);
                 }
 
                 //var punchingA = false;
@@ -264,7 +264,7 @@ namespace Collisions
                 }
                 else if ((punchingA || meleeA || defenseA || alwaysDamageA) && !ammoA && !ammoB)
                 {
-                    Debug.Log("A " + a + ", B " + b);
+                    //Debug.Log("A " + a + ", B " + b);
 
                     var collisionComponent =
                         new CollisionComponent
@@ -280,7 +280,7 @@ namespace Collisions
                 }
                 else if (punchingB || meleeB || defenseB || alwaysDamageB && !ammoA && !ammoB)
                 {
-                    Debug.Log("B " + typeB + ", A " + typeA);
+                    //Debug.Log("B " + typeB + ", A " + typeA);
 
                     var collisionComponent =
                         new CollisionComponent

@@ -1,6 +1,7 @@
 using System;
 using Collisions;
 using Player;
+using Rukhanka;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -83,9 +84,15 @@ namespace Sandbox.Player
         {
             var time = SystemAPI.Time.DeltaTime;
             var camTransform = SystemAPI.GetSingleton<CameraControlsComponent>();
+            
+            
+            
+            
 
-            foreach (var (pv, transform, applyImpulseComponent, inputController, ratingsComponent, entity) in
-                     SystemAPI.Query<RefRW<PhysicsVelocity>,
+            foreach (var (param, pv, transform, applyImpulseComponent, inputController, ratingsComponent, entity) in
+                     SystemAPI.Query<
+                             DynamicBuffer<AnimatorControllerParameterComponent>,
+            RefRW<PhysicsVelocity>,
                              RefRW<LocalTransform>,
                              RefRW<ApplyImpulseComponent>,
                              RefRO<InputControllerComponent>,
@@ -260,9 +267,53 @@ namespace Sandbox.Player
                     transform.ValueRW.Rotation = math.slerp(transform.ValueRW.Rotation, targetRotation,
                         playerMoveComponent.rotateSpeed * time / forwardAdjustment);
                 }
+                
             }
+            
+            //
+            // var job = new ProcessInputJob()
+            // {
+            // };
+            // job.Run();
+            
         }
     }
+    
+    
+    
+    public partial struct PlayerAnimatorSystem : ISystem
+    {
+        [BurstCompile]
+        public void OnUpdate(ref SystemState state)
+        {
+            FastAnimatorParameter runSpeedParam  = new FastAnimatorParameter("Vertical");
+            
+            var job = new PlayerAnimatorJob()
+            {
+                runSpeedParam = runSpeedParam
+                
+            };
+            job.Schedule();
+        }
+    }
+    
+    [BurstCompile]
+    partial struct PlayerAnimatorJob: IJobEntity
+    {
+        public FastAnimatorParameter runSpeedParam;
+        
+        //void Execute(AnimatorParametersAspect paramAspect, ref DynamicBuffer<AnimatorControllerParameterComponent> allParams, in ApplyImpulseComponent applyImpulse)
+        void Execute(AnimatorParametersAspect paramAspect, in ApplyImpulseComponent applyImpulse)
+        {
+            paramAspect.SetFloatParameter(runSpeedParam, applyImpulse.animatorStickSpeed);
+            
+            //var verticalSpeed = allParams[9];
+            //verticalSpeed.FloatValue = applyImpulse.animatorStickSpeed;
+            //allParams[9] = verticalSpeed;
+            //Debug.Log("ProcessInputJob  " + verticalSpeed.FloatValue);
+        }
+    }
+    
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerMoveSystem))]
@@ -325,7 +376,7 @@ namespace Sandbox.Player
                         {
                             var audioSource = goAudioPlayer.AudioSource;
                             var pitch = stickSpeed * playerMoveComponent.stepRate;
-                            Debug.Log("audio source  " + audioSource);
+                            //Debug.Log("audio source  " + audioSource);
                             if (audioSource.isPlaying == false)
                             {
                                 audioSource.pitch = pitch;
@@ -339,7 +390,7 @@ namespace Sandbox.Player
                             goVisualEffect.VisualEffect.transform.position = transform.Position;
                             //goVisualEffect.VisualEffect.SetFloat("FlareRate", 40);
                             goVisualEffect.VisualEffect.Play();
-                            Debug.Log("Flare Rate ");
+                            //Debug.Log("Flare Rate ");
                         }
                     }
                     else

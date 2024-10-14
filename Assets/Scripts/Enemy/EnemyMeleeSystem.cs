@@ -116,7 +116,7 @@ namespace Enemy
                     var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
                     go.SetActive(true);
                     commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
-                    Debug.Log("ENEMY INST " + melee.ValueRW.instantiated);
+                    //Debug.Log("ENEMY INST " + melee.ValueRW.instantiated);
                     melee.ValueRW.instantiated = true;
                 }
             }
