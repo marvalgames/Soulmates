@@ -109,6 +109,8 @@ namespace Collisions
                 if (typeB == TriggerType.Tail) typeB = TriggerType.Melee;
 
                 if (chA == chB && typeA != TriggerType.Ammo && typeB != TriggerType.Ammo) return;
+                
+                Debug.Log("A " + a +" B " + b);
 
 
                 var alwaysDamageA = false;

@@ -1,6 +1,9 @@
+using System.ComponentModel;
 using Audio;
 using Collisions;
 using Enemy;
+using Rukhanka;
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -79,7 +82,7 @@ namespace Sandbox.Player
                 if (checkedComponent.ValueRW is { AttackStages: AttackStages.End, comboButtonClicked: true })
                 {
                     checkedComponent.ValueRW.comboIndexPlaying += 1;
-                    if(checkedComponent.ValueRW.comboIndexPlaying >= 4) checkedComponent.ValueRW.comboIndexPlaying = 1;
+                    if (checkedComponent.ValueRW.comboIndexPlaying >= 4) checkedComponent.ValueRW.comboIndexPlaying = 1;
                     //animator.SetInteger(ComboAnimationPlayed, checkedComponent.ValueRW.comboIndexPlaying);
                     melee.ValueRW.comboAnimationPlayed = checkedComponent.ValueRW.comboIndexPlaying;
                     melee.ValueRW.selectMove = 1;
@@ -110,8 +113,47 @@ namespace Sandbox.Player
         }
     }
 
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateAfter(typeof(PlayerCombatSystem))]
+    [RequireMatchingQueriesForUpdate]
+    public partial struct PlayerCombatAnimatorSystem : ISystem
+    {
+        [BurstCompile]
+        public void OnUpdate(ref SystemState state)
+        {
+            FastAnimatorParameter ZoneParam = new FastAnimatorParameter("Zone");
+            FastAnimatorParameter CombatModeParam = new FastAnimatorParameter("CombatMode");
+            var aimComponentGroup = SystemAPI.GetComponentLookup<ActorWeaponAimComponent>();
 
-    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+            var job = new PlayerCombatAnimatorJob()
+            {
+                ZoneParam = ZoneParam,
+                aimComponentGroup = aimComponentGroup
+            };
+            job.Schedule();
+        }
+    }
+
+    [BurstCompile]
+    partial struct PlayerCombatAnimatorJob : IJobEntity
+    {
+        public FastAnimatorParameter ZoneParam;
+        public FastAnimatorParameter CombatModeParam;
+        [ReadOnly(false)] public ComponentLookup<ActorWeaponAimComponent> aimComponentGroup;
+
+        void Execute(AnimatorParametersAspect paramAspect, Entity e, ApplyImpulseComponent applyImpulse)
+        {
+            if (aimComponentGroup.HasComponent(e))
+            {
+                var aimComponent = aimComponentGroup[e];
+                Debug.Log("COMBAT MODE " + aimComponent.combatMode);
+                paramAspect.SetIntParameter(ZoneParam, aimComponent.combatMode ? 1 : 0);
+                paramAspect.SetBoolParameter(CombatModeParam, aimComponent.combatMode);
+            }
+        }
+    }
+
+
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerCombatSystem))]
     [RequireMatchingQueriesForUpdate]
@@ -183,7 +225,7 @@ namespace Sandbox.Player
 
                     actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().linkedEntity = entity;
                     actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().manager = state.EntityManager;
-                    
+
                     var prefab = movesClass.moveParticleSystem;
                     var vfxGo = GameObject.Instantiate(prefab);
                     Debug.Log("PREFAB " + vfxGo);
@@ -202,6 +244,14 @@ namespace Sandbox.Player
             }
             //}
 
+            FastAnimatorParameter combatAction = new FastAnimatorParameter("CombatAction");
+            FastAnimatorParameter comboAnimationPlayed = new FastAnimatorParameter("CombatAnimationPlayed");
+            FastAnimatorParameter vertical = new FastAnimatorParameter("Vertical");
+
+            //private static readonly int Vertical = Animator.StringToHash("Vertical");
+            //private static readonly int CombatAction = Animator.StringToHash("CombatAction");
+            //private static readonly int ComboAnimationPlayed = Animator.StringToHash("ComboAnimationPlayed");
+
 
             foreach (var (actor, movesHolder, audioClass, melee, checkedComponent, inputController, applyImpulse, e) in
                      SystemAPI
@@ -210,17 +260,22 @@ namespace Sandbox.Player
                              RefRW<InputControllerComponent>, RefRW<ApplyImpulseComponent>>().WithEntityAccess()
                          .WithAny<PlayerComponent>())
             {
+                if (SystemAPI.HasComponent<AnimatorControllerParameterIndexTableComponent>(e) == false) continue;
+
+
+                var param = SystemAPI.GetAspect<AnimatorParametersAspect>(e);
+
                 //var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
                 //var animator = actor.actorPrefabInstance.GetComponent<Animator>();
 
 
-                if (SystemAPI.HasComponent<ActorWeaponAimComponent>(e))
-                {
-                    var aimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
-                    //Debug.Log("COMBAT MODE " + aimComponent.combatMode);
-                    animator.SetInteger(Zone, aimComponent.combatMode ? 1 : 0);
-                    animator.SetBool(CombatMode, aimComponent.combatMode);
-                }
+                // if (SystemAPI.HasComponent<ActorWeaponAimComponent>(e))
+                // {
+                //     var aimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
+                //     //Debug.Log("COMBAT MODE " + aimComponent.combatMode);
+                //     animator.SetInteger(Zone, aimComponent.combatMode ? 1 : 0);
+                //     animator.SetBool(CombatMode, aimComponent.combatMode);
+                // }
 
 
                 if (melee.ValueRW.selectMove > 0)
@@ -229,19 +284,45 @@ namespace Sandbox.Player
                     melee.ValueRW.lastCombatAction = melee.ValueRW.selectMove - 1;
                     SelectMove(e, actor, melee.ValueRW.selectMove, ref checkedComponent.ValueRW, ref state);
                     //Debug.Log("Player Select move " + melee.ValueRW.selectMove);
-                    melee.ValueRW.verticalSpeed = animator.GetFloat(Vertical);
-                    animator.SetInteger(ComboAnimationPlayed, melee.ValueRW.comboAnimationPlayed);
-                    animator.SetInteger(CombatAction, melee.ValueRW.selectMove);
+                    //melee.ValueRW.verticalSpeed = animator.GetFloat(Vertical);
+
+                    Debug.Log("vertical " + melee.ValueRW.verticalSpeed);
+
+                    if (param.HasParameter(vertical))
+                    {
+                        melee.ValueRW.verticalSpeed = param.GetFloatParameter(vertical);
+                    }
+
+
+                    if (param.HasParameter(comboAnimationPlayed))
+                    {
+                        param.SetIntParameter(comboAnimationPlayed, melee.ValueRW.comboAnimationPlayed);
+                        Debug.Log("Set Combo Animation Played");
+                    }
+
+                    if (param.HasParameter(combatAction))
+                    {
+                        param.SetIntParameter(combatAction, melee.ValueRW.selectMove);
+                        Debug.Log("Set Combat Action");
+                    }
+
                     melee.ValueRW.selectMove = 0;
                 }
                 else if (melee.ValueRW.selectMove == 0)
                 {
                     if (melee.ValueRW.cancelMove)
                     {
-                        animator.SetInteger(CombatAction, 0);
+                        if (param.HasParameter(combatAction))
+                        {
+                            param.SetIntParameter(combatAction, melee.ValueRW.comboAnimationPlayed);
+                            Debug.Log("Set Combat Action");
+
+                        }
+
+                        //animator.SetInteger(CombatAction, 0);
                         melee.ValueRW.cancelMove = false;
                         melee.ValueRW.cancelMovement = 0;
-                    }  
+                    }
 
                     var vfxGraph = movesHolder.movesClassList[melee.ValueRW.lastCombatAction]
                         .moveParticleSystemInstance.GetComponent<VisualEffect>();
