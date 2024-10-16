@@ -1,3 +1,4 @@
+using Rukhanka;
 using Sandbox.Player;
 using Unity.Burst;
 using Unity.Collections;
@@ -23,22 +24,24 @@ namespace Enemy
         // so we do not add the [BurstCompile] attribute.
         public void OnUpdate(ref SystemState state)
         {
-            var zone = Animator.StringToHash("Zone");
-            var velz = Animator.StringToHash("velz");
             var Aim = Animator.StringToHash("Aim");
-            var combatAction = Animator.StringToHash("CombatAction");
+            //var combatAction = Animator.StringToHash("CombatAction");
+            FastAnimatorParameter velz = new FastAnimatorParameter("velz");
+            FastAnimatorParameter zone = new FastAnimatorParameter("Zone");
+            FastAnimatorParameter combatAction = new FastAnimatorParameter("CombatAction");
 
 
-            foreach (var (enemyState, enemyMove, actor, entity) in
-                     SystemAPI.Query<RefRO<EnemyStateComponent>, RefRO<EnemyMovementComponent>, ActorInstance>()
+            foreach (var(parameters, enemyState, enemyMove, actor, entity) in
+                     SystemAPI.Query<AnimatorParametersAspect, RefRO<EnemyStateComponent>, RefRO<EnemyMovementComponent>, ActorInstance>()
                          .WithEntityAccess())
             {
-                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
-                animator.speed = enemyMove.ValueRO.animatorSpeed;
-                animator.SetInteger(zone, animator.GetInteger(combatAction) > 0 ? 3 : enemyState.ValueRO.Zone);
-                animator.SetInteger(zone, enemyState.ValueRO.Zone);
-                animator.SetFloat(velz, enemyMove.ValueRO.forwardVelocity, enemyMove.ValueRO.blendSpeed,
-                    SystemAPI.Time.DeltaTime);
+                Debug.Log("Ruk");
+                //var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                //animator.speed = enemyMove.ValueRO.animatorSpeed;
+                parameters.SetIntParameter(zone, parameters.GetIntParameter(combatAction) > 0 ? 3 : enemyState.ValueRO.Zone);
+                parameters.SetFloatParameter(zone, enemyState.ValueRO.Zone);
+                parameters.SetFloatParameter(velz, enemyMove.ValueRO.forwardVelocity);
+                //animator.SetFloat(velz, enemyMove.ValueRO.forwardVelocity, enemyMove.ValueRO.blendSpeed, SystemAPI.Time.DeltaTime);
             }
 
             foreach (var (actorAim, enemyMove, actor, entity) in

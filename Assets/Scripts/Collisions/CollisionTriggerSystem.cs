@@ -95,12 +95,41 @@ namespace Collisions
             {
                 var a = ev.EntityA;
                 var b = ev.EntityB;
+                Debug.Log("A " + a +" B " + b);
+
 
                 if (triggerGroup.HasComponent(a) == false || triggerGroup.HasComponent(b) == false) return;
                 var triggerComponentA = triggerGroup[a];
                 var triggerComponentB = triggerGroup[b];
 
 
+                var hitColliderKeyA = ev.ColliderKeyA;
+                var hitColliderKeyB = ev.ColliderKeyB;
+                var hitEntityA = ev.EntityA;
+                var hitEntityB = ev.EntityB;
+                Debug.Log("Count A " + colliderKeyEntityPairs[hitEntityA].Length);
+                for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
+                {
+                    if (colliderKeyEntityPairs[hitEntityA][i].Key.Equals(hitColliderKeyA))
+                    {
+                        // Return the corresponding entity from the pair
+                        var e = colliderKeyEntityPairs[hitEntityA][i].Entity;
+                        Debug.Log("Entity A " + e);
+                    }
+                }
+
+                Debug.Log("Count B " + colliderKeyEntityPairs[hitEntityB].Length);
+                for (int i = 0; i < colliderKeyEntityPairs[hitEntityB].Length; i++)
+                {
+                    if (colliderKeyEntityPairs[hitEntityB][i].Key.Equals(hitColliderKeyB))
+                    {
+                        // Return the corresponding entity from the pair
+                        var e = colliderKeyEntityPairs[hitEntityB][i].Entity;
+                        Debug.Log("Entity B " + e);
+                    }
+                }
+                
+                
                 var chA = triggerComponentA.ParentEntity;
                 var chB = triggerComponentB.ParentEntity;
                 var typeA = (TriggerType)triggerComponentA.Type;
@@ -110,8 +139,10 @@ namespace Collisions
 
                 if (chA == chB && typeA != TriggerType.Ammo && typeB != TriggerType.Ammo) return;
                 
-                Debug.Log("A " + a +" B " + b);
 
+                
+                
+                
 
                 var alwaysDamageA = false;
                 if (healthGroup.HasComponent(chA))
