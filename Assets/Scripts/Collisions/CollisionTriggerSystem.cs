@@ -11,7 +11,8 @@ namespace Collisions
 {
     public struct CheckedComponent : IComponentData
     {
-        public AttackStages AttackStages;
+        public AttackStages AttackStages;//messy because redundant with animationStage
+        public AnimationStage animationStage;
         public bool anyDefenseStarted;
         public bool anyAttackStarted; //weapon or melee
         public bool attackFirstFrame;

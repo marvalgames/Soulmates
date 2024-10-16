@@ -5,6 +5,7 @@ using Collisions;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Enemy
 {

@@ -183,8 +183,8 @@ namespace Sandbox.Player
 
             //if (instantiated == false)
             //{
-            foreach (var (actor, movesHolder, melee, entity)
-                     in SystemAPI.Query<ActorInstance, MovesClassHolder, RefRW<MeleeComponent>>()
+            foreach (var (checkedComponent, actor, movesHolder, melee, entity)
+                     in SystemAPI.Query<RefRW<CheckedComponent>, ActorInstance, MovesClassHolder, RefRW<MeleeComponent>>()
                          .WithEntityAccess().WithAny<PlayerComponent>())
             {
                 if (melee.ValueRW.instantiated) continue;
