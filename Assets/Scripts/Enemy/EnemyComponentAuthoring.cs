@@ -70,13 +70,14 @@ public struct EnemyStateComponent : IComponentData
     public int animationFrameCounter;
     public bool firstFrame;
     public bool lastFrame;
+    public bool isAnimating;
     //public bool selectMoveUsing;//choose from move list in enemy melee mb
     public AnimationType animationIndex;
     public bool startMove;
     public TriggerType triggerType;
     public int combatAction;
     public float normalizedTime;
-    public AnimationStage animationStage;
+    //public AnimationStage animationStage;
     public int lastCombatAction;
 }
 

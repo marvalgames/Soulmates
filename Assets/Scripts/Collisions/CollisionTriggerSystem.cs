@@ -96,7 +96,7 @@ namespace Collisions
             {
                 var a = ev.EntityA;
                 var b = ev.EntityB;
-                Debug.Log("A " + a +" B " + b);
+                //Debug.Log("A " + a +" B " + b);
 
 
                 if (triggerGroup.HasComponent(a) == false || triggerGroup.HasComponent(b) == false) return;
@@ -108,25 +108,25 @@ namespace Collisions
                 var hitColliderKeyB = ev.ColliderKeyB;
                 var hitEntityA = ev.EntityA;
                 var hitEntityB = ev.EntityB;
-                Debug.Log("Count A " + colliderKeyEntityPairs[hitEntityA].Length);
+                //Debug.Log("Count A " + colliderKeyEntityPairs[hitEntityA].Length);
                 for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
                 {
                     if (colliderKeyEntityPairs[hitEntityA][i].Key.Equals(hitColliderKeyA))
                     {
                         // Return the corresponding entity from the pair
                         var e = colliderKeyEntityPairs[hitEntityA][i].Entity;
-                        Debug.Log("Entity A " + e);
+                        //Debug.Log("Entity A " + e);
                     }
                 }
 
-                Debug.Log("Count B " + colliderKeyEntityPairs[hitEntityB].Length);
+                //Debug.Log("Count B " + colliderKeyEntityPairs[hitEntityB].Length);
                 for (int i = 0; i < colliderKeyEntityPairs[hitEntityB].Length; i++)
                 {
                     if (colliderKeyEntityPairs[hitEntityB][i].Key.Equals(hitColliderKeyB))
                     {
                         // Return the corresponding entity from the pair
                         var e = colliderKeyEntityPairs[hitEntityB][i].Entity;
-                        Debug.Log("Entity B " + e);
+                        //Debug.Log("Entity B " + e);
                     }
                 }
                 

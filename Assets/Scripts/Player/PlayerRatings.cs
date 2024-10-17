@@ -23,7 +23,7 @@ namespace Sandbox.Player
         {
             var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
             
-            Debug.Log("Player Ratings " + authoring.speed);
+            //Debug.Log("Player Ratings " + authoring.speed);
 
             AddComponent( e,
                     new RatingsComponent

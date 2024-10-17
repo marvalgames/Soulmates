@@ -128,6 +128,7 @@ namespace Sandbox.Player
             var job = new PlayerCombatAnimatorJob()
             {
                 ZoneParam = ZoneParam,
+                CombatModeParam = CombatModeParam,
                 aimComponentGroup = aimComponentGroup
             };
             job.Schedule();
@@ -141,12 +142,14 @@ namespace Sandbox.Player
         public FastAnimatorParameter CombatModeParam;
         [ReadOnly(false)] public ComponentLookup<ActorWeaponAimComponent> aimComponentGroup;
 
-        void Execute(AnimatorParametersAspect paramAspect, Entity e, ApplyImpulseComponent applyImpulse)
+
+        void Execute(AnimatorParametersAspect paramAspect, Entity e, ApplyImpulseComponent applyImpulse, PlayerComponent playerComponent)
         {
+            
             if (aimComponentGroup.HasComponent(e))
             {
                 var aimComponent = aimComponentGroup[e];
-                Debug.Log("COMBAT MODE " + aimComponent.combatMode);
+                //Debug.Log("COMBAT MODE " + aimComponent.combatMode);
                 paramAspect.SetIntParameter(ZoneParam, aimComponent.combatMode ? 1 : 0);
                 paramAspect.SetBoolParameter(CombatModeParam, aimComponent.combatMode);
             }
@@ -207,19 +210,19 @@ namespace Sandbox.Player
                     {
                         case TriggerType.RightHand:
                             zone = rhZone;
-                            Debug.Log("ZONE RH");
+                            //Debug.Log("ZONE RH");
                             break;
                         case TriggerType.LeftHand:
                             zone = lhZone;
-                            Debug.Log("ZONE LH");
+                            //Debug.Log("ZONE LH");
                             break;
                         case TriggerType.RightFoot:
                             zone = rfZone;
-                            Debug.Log("ZONE RF");
+                            //Debug.Log("ZONE RF");
                             break;
                         case TriggerType.LeftFoot:
                             zone = lfZone;
-                            Debug.Log("ZONE LF");
+                            //Debug.Log("ZONE LF");
                             break;
                     }
 
@@ -228,7 +231,7 @@ namespace Sandbox.Player
 
                     var prefab = movesClass.moveParticleSystem;
                     var vfxGo = GameObject.Instantiate(prefab);
-                    Debug.Log("PREFAB " + vfxGo);
+                    //Debug.Log("PREFAB " + vfxGo);
                     movesClass.moveParticleSystemInstance = vfxGo;
                     //movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;
                     movesClass.moveParticleSystemInstance.transform.parent = zone;
