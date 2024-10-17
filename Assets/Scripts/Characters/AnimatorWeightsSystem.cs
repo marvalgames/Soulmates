@@ -12,6 +12,7 @@ public struct AnimatorWeightsComponent : IComponentData
     public float aimWeight;
     public float impulseSpeed;
     public bool useImpulseSpeed;
+
     public bool resetSpeed;
     //public float animatorStateWeight;
 }
@@ -22,17 +23,19 @@ public partial struct AnimatorWeightsSystem : ISystem
     // private static readonly int HitWeight = Animator.StringToHash("HitWeight");
     // private static readonly int AimWeight = Animator.StringToHash("AimWeight");
     //
-    
+
 
     public void OnUpdate(ref SystemState state)
     {
-        foreach (var (animator, animatorState, animatorValues, checkedComponent, actor, dead) in
+        foreach (var (animator, animatorState, aces, animatorValues, checkedComponent, actor, dead, entity) in
                  SystemAPI
-                     .Query<AnimatorParametersAspect, AnimatorStateQueryAspect, RefRW<AnimatorWeightsComponent>, RefRO<CheckedComponent>, ActorInstance,
-                         RefRO<DeadComponent>>())
+                     .Query<AnimatorParametersAspect, AnimatorStateQueryAspect, DynamicBuffer<AnimatorControllerEventComponent>, RefRW<AnimatorWeightsComponent>,
+                         RefRO<CheckedComponent>, ActorInstance,
+                         RefRO<DeadComponent>>().WithEntityAccess())
         {
             var HitWeight = new FastAnimatorParameter("HitWeight");
             var AimWeight = new FastAnimatorParameter("AimWeight");
+            //Debug.Log("weights");
             //var animator = actor.actorPrefabInstance.GetComponent<Animator>();
             //if (animator.GetCurrentAnimatorClipInfo(0).Length == 0) continue;
             animatorValues.ValueRW.hitWeight = animator.GetFloatParameter(HitWeight);
@@ -50,12 +53,10 @@ public partial struct AnimatorWeightsSystem : ISystem
 
             //var playingLayer = animator.IsInTransition(0);
             //animatorValues.ValueRW.animatorInTransition = playingLayer;
+
             var stateInfo = animatorState.GetLayerCurrentStateInfo(0);
-            if (checkedComponent.ValueRO.animationStage == AnimationStage.Exit && stateInfo.normalizedTime > 0)
-            {
-                Debug.Log("ENTER STATE");
-                animatorValues.ValueRW.hitWeight = animator.GetFloatParameter(HitWeight);//set hit weight how Discord
-            }
+            var stage = checkedComponent.ValueRO.animationStage;
+            //Debug.Log("stage " + stage);
             //Debug.Log("Default State YES " + animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
             //animatorValues.ValueRW.animatorStateWeight = math.frac(stateInfo.normalizedTime);
             //animatorValues.ValueRW.stateName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
@@ -66,7 +67,7 @@ public partial struct AnimatorWeightsSystem : ISystem
             //animatorValues.ValueRW.hitWeight = animatorValues.ValueRW.animatorStateWeight;
             //}
 
-
+           
             //Fast-forward to the middle of the animation
             //animator["Walk"].normalizedTime = 0.5f;
         }

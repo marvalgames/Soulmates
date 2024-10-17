@@ -35,11 +35,11 @@ namespace Enemy
                      SystemAPI.Query<AnimatorParametersAspect, RefRO<EnemyStateComponent>, RefRO<EnemyMovementComponent>, ActorInstance>()
                          .WithEntityAccess())
             {
-                Debug.Log("Ruk");
+                Debug.Log("Ruk " + enemyState.ValueRO.Zone + " " + enemyMove.ValueRO.forwardVelocity);
                 //var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                 //animator.speed = enemyMove.ValueRO.animatorSpeed;
                 parameters.SetIntParameter(zone, parameters.GetIntParameter(combatAction) > 0 ? 3 : enemyState.ValueRO.Zone);
-                parameters.SetFloatParameter(zone, enemyState.ValueRO.Zone);
+                //parameters.SetFloatParameter(zone, enemyState.ValueRO.Zone);
                 parameters.SetFloatParameter(velz, enemyMove.ValueRO.forwardVelocity);
                 //animator.SetFloat(velz, enemyMove.ValueRO.forwardVelocity, enemyMove.ValueRO.blendSpeed, SystemAPI.Time.DeltaTime);
             }
