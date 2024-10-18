@@ -66,7 +66,7 @@ namespace Enemy
             foreach (var (enemyState, entity) in SystemAPI.Query<RefRW<EnemyStateComponent>>().WithEntityAccess())
             {
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
-                if(movesList[entity].Length == 0) continue;
+                if (movesList[entity].Length == 0) continue;
                 if (enemyState.ValueRW is { selectMove: true, startMove: false })
                 {
                     var combatAction = random.NextInt(0, movesList[entity].Length);
@@ -110,7 +110,8 @@ namespace Enemy
                 .CreateCommandBuffer(state.WorldUnmanaged);
 
             foreach (var (movesHolder, melee, entity)
-                     in SystemAPI.Query<MovesClassHolder, RefRW<MeleeComponent>>().WithEntityAccess().WithAny<EnemyComponent>())
+                     in SystemAPI.Query<MovesClassHolder, RefRW<MeleeComponent>>().WithEntityAccess()
+                         .WithAny<EnemyComponent>())
             {
                 if (!melee.ValueRW.instantiated)
                 {
@@ -122,64 +123,74 @@ namespace Enemy
                 }
             }
 
+            foreach (var (aces, checkedComponent, enemyState, entity)
+                     in SystemAPI
+                         .Query<DynamicBuffer<AnimatorControllerEventComponent>, RefRW<CheckedComponent>,
+                             RefRW<EnemyStateComponent>>()
+                         .WithEntityAccess())
+            {
+                foreach (var ace in aces)
+                {
+                    if (ace.stateId != 8) continue;
+
+                    if (ace.eventType == AnimatorControllerEventComponent.EventType.StateEnter)
+                    {
+                        checkedComponent.ValueRW.animationStage = AnimationStage.Enter;
+                        enemyState.ValueRW.firstFrame = true;
+                        enemyState.ValueRW.isAnimating = true;
+                        Debug.Log(
+                            "STAGE ENTER ANIMATING " + enemyState.ValueRW.isAnimating + " STATE ID " + ace.stateId);
+                    }
+                    else if (ace.eventType == AnimatorControllerEventComponent.EventType.StateUpdate)
+                    {
+                        checkedComponent.ValueRW.animationStage =
+                            AnimationStage
+                                .Update; // probably don't need both at some point. This was when using unity animator
+                        //enemyState.ValueRW.isAnimating = true;
+                        enemyState.ValueRW.firstFrame = false;
+                        Debug.Log("STAGE UPDATE ANIMATING " + enemyState.ValueRW.isAnimating + " STATE ID " +
+                                  ace.stateId);
+                    }
+                    else if (ace.eventType == AnimatorControllerEventComponent.EventType.StateExit)
+                    {
+                        enemyState.ValueRW.firstFrame = false;
+                        enemyState.ValueRW.lastFrame = true;
+                        checkedComponent.ValueRW.animationStage = AnimationStage.Exit;
+                        enemyState.ValueRW.isAnimating = false;
+                        Debug.Log("STAGE EXIT ANIMATING " + enemyState.ValueRW.isAnimating + " STATE ID " +
+                                  ace.stateId);
+                    }
+                }
+            }
+
 
             foreach (var (anim, actor, audioClass, movesHolder, audio, enemyState, entity) in SystemAPI
                          .Query<AnimatorParametersAspect, ActorInstance, AudioManagerClass, MovesClassHolder,
                              RefRW<AudioManagerComponent>, RefRW<EnemyStateComponent>>()
                          .WithEntityAccess())
             {
-                //var combatAction = Animator.StringToHash("CombatAction");
-                var combatAction = new FastAnimatorParameter("CombatAction");
-                var animationStage = Animator.StringToHash("State");
+                if (SystemAPI.HasComponent<CheckedComponent>(entity) == false) continue;
+
+                var checkedComponent = SystemAPI.GetComponent<CheckedComponent>(entity);
                 var animator = actor.actorPrefabInstance.GetComponent<Animator>();
-                //var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
+                var combatAction = new FastAnimatorParameter("CombatAction");
+                //var combatAction = Animator.StringToHash("CombatAction");
+                //var animationStage = new FastAnimatorParameter("State");
                 var audioClipElement = movesHolder.movesClassList;
-                var animatorState = animator.GetCurrentAnimatorStateInfo(0);
-                //Debug.Log("transition " + animator.IsInTransition(0));
-                enemyState.ValueRW.animationStage = (AnimationStage)animator.GetInteger(animationStage);
-                var stage = enemyState.ValueRW.animationStage;
-                var stageTracker = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
+                var stageTracker = checkedComponent.animationStage;
                 audioClass.stage = stageTracker;
 
-                if (stage == AnimationStage.Exit && enemyState.ValueRW.lastFrame == false)
+                if (stageTracker == AnimationStage.Exit)
                 {
-                    enemyState.ValueRW.lastFrame = true;
-                    animator.SetInteger(animationStage, 0);
-                    enemyState.ValueRW.animationStage = AnimationStage.None;
+                    //anim.SetIntParameter(animationStage, 0);
                 }
-                else
-                {
-                    enemyState.ValueRW.lastFrame = false;
-                }
-
-
-                if (enemyState.ValueRW.firstFrame)
-                {
-                    enemyState.ValueRW.firstFrame = false;
-                }
-                else if (stageTracker == AnimationStage.Enter && enemyState.ValueRW.firstFrame == false)
-                    //else if (stage == AnimationStage.Enter && enemyState.ValueRW.firstFrame == false)
-                {
-                    enemyState.ValueRW.firstFrame = true;
-                }
-
-                //var chk = stageTracker == AnimationStage.Exit;
-                //if (chk) Debug.Log("Move ended ");
-                actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker =
-                    AnimationStage.None;
-
 
                 if (enemyState.ValueRW is
-                    { startMove: true, firstFrame: true }) //check strike allowed always true for testing
+                    { startMove: true, isAnimating: false }) //check strike allowed always true for testing
                 {
                     enemyState.ValueRW.selectMove = false;
                     enemyState.ValueRW.startMove = false;
                     enemyState.ValueRW.enemyStrikeAllowed = false;
-                    enemyState.ValueRW.animationStage = AnimationStage.Enter;
-                    actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker =
-                        AnimationStage.Enter;
-
-
                     var animationIndex = enemyState.ValueRW.animationIndex;
                     var clip = audioClipElement[enemyState.ValueRW.lastCombatAction].moveAudioClip;
                     audio.ValueRW.play = true;

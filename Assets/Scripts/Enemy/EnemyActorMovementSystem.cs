@@ -1,6 +1,7 @@
 using AI;
 using Collisions;
 using ProjectDawn.Navigation;
+using Rukhanka;
 using Sandbox.Player;
 using Unity.Burst;
 using Unity.Entities;
@@ -59,12 +60,17 @@ namespace Enemy
                 ref EnemyStateComponent enemyState,
                 ref ImpulseComponent impulse,
                 ref AgentLocomotion locomotion,
+                AnimatorParametersAspect animator,
                 in EnemyBehaviourComponent enemyBehaviour, in EnemyMeleeMovementComponent enemyMeleeMovement,
                 in EnemyWeaponMovementComponent enemyWeaponMovement,
                 in CheckedComponent checkedComponent)
             {
                 //if (defensiveStrategy.currentRole == DefensiveRoles.None || matchup.isWaypointTarget) return;
 
+                var zone = new FastAnimatorParameter("Zone");
+                var velz = new FastAnimatorParameter("velz");
+
+                
                 defensiveStrategy.botState = BotState.MOVING;
                 var enemyTransform = transformGroup[e];
                 var closestOpponent = matchup.closestOpponentEntity;
@@ -158,17 +164,6 @@ namespace Enemy
                         enemyMovement.updateAgent = true;
                     }
                 }
-
-                //enemyState.enemyStrikeAllowed = enemyState.normalizedTime < .1f; //temp set during enemy melee MB
-                //enemyState.enemyStrikeAllowed = enemyState.animationStage == AnimationStage.Exit;
-                //if (enemyState.enemyStrikeAllowed)
-                //{
-                //enemyState.enemyStrikeAllowed = enemyState.animationStage == AnimationStage.Exit || enemyState.animationFrameCounter == 0;
-                //}
-                
-                //enemyState.enemyStrikeAllowed = true;
-                //enemyState.selectMove = false;
-                
                 if (basicMovement)
                 {
                     strike = false;
@@ -183,14 +178,14 @@ namespace Enemy
                     chaseRange = distFromStation;
                 }
 
-                if (enemyState.firstFrame == false && !backup && strike && distanceToOpponent < chaseRange)
+                if (enemyState.isAnimating == false && !backup && strike && distanceToOpponent < chaseRange)
                 {
                     //checkedComponent.anyAttackStarted = true;
                     enemyState.selectMove = true;
                     enemyState.enemyStrikeAllowed = true;
                     enemyState.Zone = 3;
                 }
-                else if (!checkedComponent.anyAttackStarted)
+                else if (checkedComponent.anyAttackStarted == false)
                 {
                     if (backup && distanceToOpponent < chaseRange && meleeMovement)
                     {
@@ -316,6 +311,10 @@ namespace Enemy
                 velZ *= impulseFactor;
                 enemyMovement.locomotionPitch = velZ;
                 enemyMovement.forwardVelocity = velZ;
+                animator.SetIntParameter( zone, enemyState.Zone);
+                animator.SetFloatParameter(velz, velZ);
+                
+                
             }
         }
     }
