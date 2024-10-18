@@ -3,6 +3,7 @@ using Sandbox.Player;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace Sandbox.Agents
 {
@@ -22,10 +23,17 @@ namespace Sandbox.Agents
                 {
                     position = enemyMovement.ValueRO.agentNextPosition;
                 }
-                
-                
-                
-                body.ValueRW.SetDestination(position);
+
+                if (enemyMovement.ValueRO.forwardVelocity == 0)
+                {
+                    Debug.Log("forward velocity");
+                    locomotion.ValueRW.Speed = 0;
+                }
+                else
+                {
+                    body.ValueRW.SetDestination(position);
+                    
+                }
                 //locomotion.ValueRW.Speed = botState == BotState.STOP ? 0 : defensiveStrategy.ValueRO.botSpeed;
             }
         }

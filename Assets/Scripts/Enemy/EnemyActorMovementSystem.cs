@@ -309,10 +309,12 @@ namespace Enemy
 
                 locomotion.Speed = speed * impulseFactor;
                 velZ *= impulseFactor;
+                if (enemyState.isAnimating) velZ = 0;
                 enemyMovement.locomotionPitch = velZ;
                 enemyMovement.forwardVelocity = velZ;
-                animator.SetIntParameter( zone, enemyState.Zone);
-                animator.SetFloatParameter(velz, velZ);
+                
+                //animator.SetIntParameter( zone, enemyState.Zone);
+                //animator.SetFloatParameter(velz, velZ);
                 
                 
             }

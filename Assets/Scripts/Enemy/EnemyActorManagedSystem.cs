@@ -24,12 +24,12 @@ namespace Enemy
         // so we do not add the [BurstCompile] attribute.
         public void OnUpdate(ref SystemState state)
         {
-            var zone = Animator.StringToHash("Zone");
-            var velz = Animator.StringToHash("velz");
+            //var zone = Animator.StringToHash("Zone");
+            //var velz = Animator.StringToHash("velz");
             var Aim = Animator.StringToHash("Aim");
             var combatAction = Animator.StringToHash("CombatAction");
-            //var zone = new FastAnimatorParameter("Zone");
-            //var velz = new FastAnimatorParameter("velz");
+            var zone = new FastAnimatorParameter("Zone");
+            var velz = new FastAnimatorParameter("velz");
 
 
             foreach (var (anim, enemyState, enemyMove, actor, entity) in
@@ -38,12 +38,14 @@ namespace Enemy
                              ActorInstance>()
                          .WithEntityAccess())
             {
-                //var animator = actor.actorPrefabInstance.GetComponent<Animator>();
-                //animator.speed = enemyMove.ValueRO.animatorSpeed;
+                var animator = actor.actorPrefabInstance.GetComponent<Animator>();
+                animator.speed = enemyMove.ValueRO.animatorSpeed;
                 //animator.SetInteger(zone, enemyState.ValueRO.Zone);
-                //anim.SetIntParameter(zone, enemyState.ValueRO.Zone);
+                anim.SetIntParameter(zone, enemyState.ValueRO.Zone);
                 //animator.SetFloat(velz, enemyMove.ValueRO.forwardVelocity, enemyMove.ValueRO.blendSpeed, SystemAPI.Time.DeltaTime);
-                //anim.SetFloatParameter(velz, enemyMove.ValueRO.forwardVelocity);
+                anim.SetFloatParameter(velz, enemyMove.ValueRO.forwardVelocity);
+                Debug.Log("VELZ " + enemyMove.ValueRO.forwardVelocity);
+
             }
 
             foreach (var (actorAim, enemyMove, actor, entity) in

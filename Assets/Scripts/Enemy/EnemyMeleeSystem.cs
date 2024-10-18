@@ -188,6 +188,7 @@ namespace Enemy
                 if (enemyState.ValueRW is
                     { startMove: true, isAnimating: false }) //check strike allowed always true for testing
                 {
+                    Debug.Log("MOVE START");
                     enemyState.ValueRW.selectMove = false;
                     enemyState.ValueRW.startMove = false;
                     enemyState.ValueRW.enemyStrikeAllowed = false;
