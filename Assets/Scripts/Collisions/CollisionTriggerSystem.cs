@@ -11,7 +11,8 @@ namespace Collisions
 {
     public struct CheckedComponent : IComponentData
     {
-        public AttackStages AttackStages;
+        public AttackStages AttackStages;//messy because redundant with animationStage
+        public AnimationStage animationStage;
         public bool anyDefenseStarted;
         public bool anyAttackStarted; //weapon or melee
         public bool attackFirstFrame;
@@ -95,12 +96,41 @@ namespace Collisions
             {
                 var a = ev.EntityA;
                 var b = ev.EntityB;
+                //Debug.Log("A " + a +" B " + b);
+
 
                 if (triggerGroup.HasComponent(a) == false || triggerGroup.HasComponent(b) == false) return;
                 var triggerComponentA = triggerGroup[a];
                 var triggerComponentB = triggerGroup[b];
 
 
+                var hitColliderKeyA = ev.ColliderKeyA;
+                var hitColliderKeyB = ev.ColliderKeyB;
+                var hitEntityA = ev.EntityA;
+                var hitEntityB = ev.EntityB;
+                //Debug.Log("Count A " + colliderKeyEntityPairs[hitEntityA].Length);
+                for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
+                {
+                    if (colliderKeyEntityPairs[hitEntityA][i].Key.Equals(hitColliderKeyA))
+                    {
+                        // Return the corresponding entity from the pair
+                        var e = colliderKeyEntityPairs[hitEntityA][i].Entity;
+                        //Debug.Log("Entity A " + e);
+                    }
+                }
+
+                //Debug.Log("Count B " + colliderKeyEntityPairs[hitEntityB].Length);
+                for (int i = 0; i < colliderKeyEntityPairs[hitEntityB].Length; i++)
+                {
+                    if (colliderKeyEntityPairs[hitEntityB][i].Key.Equals(hitColliderKeyB))
+                    {
+                        // Return the corresponding entity from the pair
+                        var e = colliderKeyEntityPairs[hitEntityB][i].Entity;
+                        //Debug.Log("Entity B " + e);
+                    }
+                }
+                
+                
                 var chA = triggerComponentA.ParentEntity;
                 var chB = triggerComponentB.ParentEntity;
                 var typeA = (TriggerType)triggerComponentA.Type;
@@ -109,7 +139,11 @@ namespace Collisions
                 if (typeB == TriggerType.Tail) typeB = TriggerType.Melee;
 
                 if (chA == chB && typeA != TriggerType.Ammo && typeB != TriggerType.Ammo) return;
+                
 
+                
+                
+                
 
                 var alwaysDamageA = false;
                 if (healthGroup.HasComponent(chA))
@@ -139,13 +173,13 @@ namespace Collisions
                 if (checkGroup.HasComponent(chA))
                 {
                     primaryTriggerA = checkGroup[chA].primaryTrigger;
-                    Debug.Log("check primary trigger A " + primaryTriggerA + " " + chA);
+                    //Debug.Log("check primary trigger A " + primaryTriggerA + " " + chA);
                 }
 
                 if (checkGroup.HasComponent(chB))
                 {
                     primaryTriggerB = checkGroup[chB].primaryTrigger;
-                    Debug.Log("check primary trigger B " + primaryTriggerB + " " + chB);
+                    //Debug.Log("check primary trigger B " + primaryTriggerB + " " + chB);
                 }
 
                 //var punchingA = false;
@@ -264,7 +298,7 @@ namespace Collisions
                 }
                 else if ((punchingA || meleeA || defenseA || alwaysDamageA) && !ammoA && !ammoB)
                 {
-                    Debug.Log("A " + a + ", B " + b);
+                    //Debug.Log("A " + a + ", B " + b);
 
                     var collisionComponent =
                         new CollisionComponent
@@ -280,7 +314,7 @@ namespace Collisions
                 }
                 else if (punchingB || meleeB || defenseB || alwaysDamageB && !ammoA && !ammoB)
                 {
-                    Debug.Log("B " + typeB + ", A " + typeA);
+                    //Debug.Log("B " + typeB + ", A " + typeA);
 
                     var collisionComponent =
                         new CollisionComponent

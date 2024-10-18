@@ -1,5 +1,6 @@
 using Audio;
 using Collisions;
+using Rukhanka;
 using Sandbox.Player;
 using Unity.Burst;
 using Unity.Entities;
@@ -122,12 +123,13 @@ namespace Enemy
             }
 
 
-            foreach (var (actor, audioClass, movesHolder, audio, enemyState, entity) in SystemAPI
-                         .Query<ActorInstance, AudioManagerClass, MovesClassHolder,
+            foreach (var (anim, actor, audioClass, movesHolder, audio, enemyState, entity) in SystemAPI
+                         .Query<AnimatorParametersAspect, ActorInstance, AudioManagerClass, MovesClassHolder,
                              RefRW<AudioManagerComponent>, RefRW<EnemyStateComponent>>()
                          .WithEntityAccess())
             {
-                var combatAction = Animator.StringToHash("CombatAction");
+                //var combatAction = Animator.StringToHash("CombatAction");
+                var combatAction = new FastAnimatorParameter("CombatAction");
                 var animationStage = Animator.StringToHash("State");
                 var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                 //var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
@@ -138,11 +140,6 @@ namespace Enemy
                 var stage = enemyState.ValueRW.animationStage;
                 var stageTracker = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
                 audioClass.stage = stageTracker;
-                //var debugCounter = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().debugCounter;
-                //if (stageTracker == AnimationStage.None) return; //no change so no animation playing or updated
-                //Debug.Log("Track " + stageTracker);
-                //if(stageTracker != AnimationStage.Update) Debug.Log("Debug Counter " + debugCounter + " " + stageTracker);
-
 
                 if (stage == AnimationStage.Exit && enemyState.ValueRW.lastFrame == false)
                 {
@@ -187,7 +184,8 @@ namespace Enemy
                     var clip = audioClipElement[enemyState.ValueRW.lastCombatAction].moveAudioClip;
                     audio.ValueRW.play = true;
                     audioClass.clip = clip;
-                    animator.SetInteger(combatAction, (int)animationIndex);
+                    anim.SetIntParameter(combatAction, (int)animationIndex);
+                    //animator.SetInteger(combatAction, (int)animationIndex);
                 }
             }
         }

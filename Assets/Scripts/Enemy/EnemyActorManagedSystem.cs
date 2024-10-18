@@ -25,22 +25,25 @@ namespace Enemy
         public void OnUpdate(ref SystemState state)
         {
             //var zone = Animator.StringToHash("Zone");
-            var velz = Animator.StringToHash("velz");
+            //var velz = Animator.StringToHash("velz");
             var Aim = Animator.StringToHash("Aim");
             var combatAction = Animator.StringToHash("CombatAction");
-            var  zone = new FastAnimatorParameter("Zone");
-            
+            var zone = new FastAnimatorParameter("Zone");
+            var velz = new FastAnimatorParameter("velz");
+
 
             foreach (var (anim, enemyState, enemyMove, actor, entity) in
-                     SystemAPI.Query<AnimatorParametersAspect, RefRO<EnemyStateComponent>, RefRO<EnemyMovementComponent>, ActorInstance>()
+                     SystemAPI
+                         .Query<AnimatorParametersAspect, RefRO<EnemyStateComponent>, RefRO<EnemyMovementComponent>,
+                             ActorInstance>()
                          .WithEntityAccess())
             {
                 var animator = actor.actorPrefabInstance.GetComponent<Animator>();
                 animator.speed = enemyMove.ValueRO.animatorSpeed;
                 //animator.SetInteger(zone, enemyState.ValueRO.Zone);
                 anim.SetIntParameter(zone, enemyState.ValueRO.Zone);
-                animator.SetFloat(velz, enemyMove.ValueRO.forwardVelocity, enemyMove.ValueRO.blendSpeed,
-                    SystemAPI.Time.DeltaTime);
+                //animator.SetFloat(velz, enemyMove.ValueRO.forwardVelocity, enemyMove.ValueRO.blendSpeed, SystemAPI.Time.DeltaTime);
+                anim.SetFloatParameter(velz, enemyMove.ValueRO.forwardVelocity);
             }
 
             foreach (var (actorAim, enemyMove, actor, entity) in
@@ -69,9 +72,8 @@ namespace Enemy
                     animator.SetBool(Aim, false);
                     //if (rig) rig.weight = 0;
                 }
+
                 enemyMove.ValueRW.aimBlendValue = blendValue;
-                
-                
             }
         }
     }

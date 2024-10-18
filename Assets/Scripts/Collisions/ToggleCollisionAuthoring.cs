@@ -45,7 +45,7 @@ namespace Collisions
                     {
                         var child = go[i];
                         var childEntity = GetEntity(child, TransformUsageFlags.Dynamic);
-                        Debug.Log("children " + GetEntity(child, TransformUsageFlags.Dynamic));
+                        //Debug.Log("children " + GetEntity(child, TransformUsageFlags.Dynamic));
                         var collisionElement =
                             new ActorCollisionBufferElement
                             {

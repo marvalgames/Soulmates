@@ -19,11 +19,11 @@ namespace Collisions
                 .ForEach(
                     (Entity e, in PhysicsCollider collider, in ToggleCollisionComponent toggleCollisionComponent) =>
                     {
-                        Debug.Log("E " + e);
+                        //Debug.Log("E " + e);
                         if (collider.IsValid)
                         {
                             var filter = collider.Value.Value.GetCollisionFilter();
-                            Debug.Log("FILTER " + filter);
+                            //Debug.Log("FILTER " + filter);
                             EntityManager.AddComponentData
                             (e, new ToggleFilterComponent
                                 {
@@ -100,7 +100,7 @@ namespace Collisions
                             if (hasToggleCollision)
                             {
                                 ecb.RemoveComponent<ToggleCollisionComponent>(e);
-                                Debug.Log("remove colliders");
+                                //Debug.Log("remove colliders");
                                 removeColliders = true;
                             }
                         }
@@ -109,7 +109,7 @@ namespace Collisions
                         {
                             ecb.AddComponent(e, new ToggleCollisionComponent());
                             addColliders = true; //set default colliders back
-                            Debug.Log("add colliders");
+                            //Debug.Log("add colliders");
                         }
 
                         if (hasActorWeaponAim && removeColliders)
@@ -131,8 +131,7 @@ namespace Collisions
                             var childEntity = actorCollisionElement[i]._child;
                             bool hasToggleFilter = SystemAPI.HasComponent<ToggleFilterComponent>(childEntity);
                             bool hasPhysicsCollider = SystemAPI.HasComponent<PhysicsCollider>(childEntity);
-                            Debug.Log("child E " + childEntity + " " + hasToggleFilter + " " + hasPhysicsCollider +
-                                      " " + i);
+                            //Debug.Log("child E " + childEntity + " " + hasToggleFilter + " " + hasPhysicsCollider + " " + i);
                             if (hasPhysicsCollider == false || hasToggleFilter == false) continue;
                             //recent change: player probably doesn't have collider only child colliders  
 
