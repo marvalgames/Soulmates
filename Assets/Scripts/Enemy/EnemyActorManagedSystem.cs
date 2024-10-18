@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace Enemy
 {
+    //[UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(EnemyActorMovementSystem))]
     public partial struct EnemyActorManagedSystem : ISystem
@@ -44,8 +45,7 @@ namespace Enemy
                 anim.SetIntParameter(zone, enemyState.ValueRO.Zone);
                 //animator.SetFloat(velz, enemyMove.ValueRO.forwardVelocity, enemyMove.ValueRO.blendSpeed, SystemAPI.Time.DeltaTime);
                 anim.SetFloatParameter(velz, enemyMove.ValueRO.forwardVelocity);
-                Debug.Log("VELZ " + enemyMove.ValueRO.forwardVelocity);
-
+                    Debug.Log("ZONE " + enemyState.ValueRO.Zone);
             }
 
             foreach (var (actorAim, enemyMove, actor, entity) in

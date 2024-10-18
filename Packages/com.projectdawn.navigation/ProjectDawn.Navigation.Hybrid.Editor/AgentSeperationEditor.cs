@@ -42,9 +42,10 @@ namespace ProjectDawn.Navigation.Hybrid.Editor
         {
             var authoring = target as AgentSeparationAuthoring;
             var transform = authoring.transform;
-
             Handles.color = Styles.Color;
             Handles.DrawWireDisc(transform.position, Vector3.forward, authoring.DefaultSeparation.Radius);
+            Handles.DrawWireDisc(transform.position, Vector3.right, authoring.DefaultSeparation.Radius);
+            Handles.DrawWireDisc(transform.position, Vector3.up, authoring.DefaultSeparation.Radius);
         }
 
         void OnEnable()

@@ -111,7 +111,11 @@ namespace ProjectDawn.Navigation.Astar
 
                 ref var autoRepath = ref pathing.ValueRW.AutoRepath;// new Pathfinding.ECS.AutoRepathPolicy(managedState.autoRepath);
                 bool wantsToRecalculatePath = autoRepath.ShouldRecalculatePath(transform.ValueRO.Position, shape.ValueRO.Radius, destination.destination, time);
+#if MODULE_ASTAR_5_2_0_OR_NEWER
+                RepairPathSystem.JobRecalculatePaths.MaybeRecalculatePath(managedState, ref pathing.ValueRW.AutoRepath, ref transformRW, ref destination, ref movementPlane, time, wantsToRecalculatePath);
+#else
                 JobRecalculatePaths.MaybeRecalculatePath(managedState, ref pathing.ValueRW.AutoRepath, ref transformRW, ref destination, ref movementPlane, time, wantsToRecalculatePath);
+#endif
             }
 
             pathfindingLock.Release();
@@ -131,12 +135,20 @@ namespace ProjectDawn.Navigation.Astar
                 // Initialize state machine with coroutine
                 if (managedLinkInfo.context == null)
                 {
+#if MODULE_ASTAR_5_2_0_OR_NEWER
+                    var linkInfo = RepairPathSystem.NextLinkToTraverse(managedState);
+#else
                     var linkInfo = FollowerControlSystem.NextLinkToTraverse(managedState);
+#endif
 
                     var ctx = new AstarLinkTraversalContext(linkInfo.link);
                     managedLinkInfo.link = new AgentOffMeshLinkTraversal(linkInfo);
                     managedLinkInfo.context = ctx;
+#if MODULE_ASTAR_5_2_0_OR_NEWER
+                    managedLinkInfo.handler = RepairPathSystem.ResolveOffMeshLinkHandler(managedState, ctx);
+#else
                     managedLinkInfo.handler = FollowerControlSystem.ResolveOffMeshLinkHandler(managedState, ctx);
+#endif
                     managedLinkInfo.stateMachine = null;
                     managedLinkInfo.coroutine = null;
                 }
@@ -254,7 +266,7 @@ namespace ProjectDawn.Navigation.Astar
             [ReadOnly]
             public ComponentTypeHandle<LocalTransform> LocalTransformTypeHandleRO;
             public ComponentTypeHandle<MovementState> MovementStateTypeHandleRW;
-            [ReadOnly]
+            [ReadOnly, NativeDisableContainerSafetyRestriction]
             public ComponentTypeHandle<ManagedState> ManagedStateTypeHandleRW;
 
             [ReadOnly]
@@ -374,7 +386,11 @@ namespace ProjectDawn.Navigation.Astar
 
                             if (HasSeekLinkTraversal)
                             {
+#if MODULE_ASTAR_5_2_0_OR_NEWER
+                                var linkInfo = RepairPathSystem.NextLinkToTraverse(managedState);
+#else
                                 var linkInfo = FollowerControlSystem.NextLinkToTraverse(managedState);
+#endif
                                 managedState.PopNextLinkFromPath();
                                 seekLinkTraversal[i] = new LinkTraversalSeek
                                 {

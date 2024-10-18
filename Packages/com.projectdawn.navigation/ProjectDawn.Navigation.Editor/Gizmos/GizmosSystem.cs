@@ -9,6 +9,8 @@ using static Unity.Entities.SystemAPI;
 
 namespace ProjectDawn.Navigation
 {
+#if UNITY_EDITOR
+
     [UnityEditor.InitializeOnLoad]
     static class SceneGizmosDrawer
     {
@@ -32,6 +34,7 @@ namespace ProjectDawn.Navigation
             gizmos.ExecuteCommandBuffers();
         }
     }
+#endif
 
     [BurstCompile]
     [UpdateInGroup(typeof(AgentSystemGroup))]
@@ -49,7 +52,7 @@ namespace ProjectDawn.Navigation
             m_FreeCommandBufferHandles = new NativeQueue<int>(Allocator.Persistent);
             m_ActiveCommandBufferHandle = new NativeList<int>(Allocator.Persistent);
 
-            state.EntityManager.AddComponentData(state.SystemHandle, new Singleton
+            state.EntityManager.AddComponentData(state.SystemHandle, new GizmosSystem.Singleton
             {
                 m_CommandBuffers = m_CommandBuffers,
                 m_ActiveCommandBufferHandle = m_ActiveCommandBufferHandle,
@@ -70,11 +73,11 @@ namespace ProjectDawn.Navigation
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            var gizmos = GetComponent<Singleton>(state.SystemHandle);
+            var gizmos = GetComponent<GizmosSystem.Singleton>(state.SystemHandle);
             gizmos.Clear();
         }
 
-        public struct Singleton : IComponentData
+        public unsafe struct Singleton : IComponentData
         {
             [NativeDisableUnsafePtrRestriction]
             internal UnsafeList<GizmosCommandBuffer>* m_CommandBuffers;

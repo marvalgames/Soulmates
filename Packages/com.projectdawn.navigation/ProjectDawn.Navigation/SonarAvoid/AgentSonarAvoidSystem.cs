@@ -77,6 +77,9 @@ namespace ProjectDawn.Navigation
                 float sonarRadius = min(distance(body.Destination, transform.Position), avoid.Radius);
 #endif
 
+                if (sonarRadius <= 0)
+                    return;
+
                 // Recreate avoidance structure
                 Sonar.Set(transform.Position, body.Velocity, rotation, shape.Radius, sonarRadius, avoid.MaxAngle * 0.5f);
 

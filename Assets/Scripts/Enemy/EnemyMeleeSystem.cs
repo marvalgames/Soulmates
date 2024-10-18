@@ -12,7 +12,8 @@ using Random = UnityEngine.Random;
 namespace Enemy
 {
     //[UpdateAfter(typeof(EnemyActorMovementSystem))]
-    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(SimulationSystemGroup))]
     public partial struct EnemySetupMoveMeleeSystem : ISystem
     {
         [BurstCompile]
@@ -46,7 +47,8 @@ namespace Enemy
         }
     }
 
-    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    //[UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(EnemySetupMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveMeleeSystem : ISystem
@@ -93,7 +95,8 @@ namespace Enemy
         }
     }
 
-    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    //[UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(EnemySelectMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveManagedMeleeSystem : ISystem
@@ -137,9 +140,9 @@ namespace Enemy
                     {
                         checkedComponent.ValueRW.animationStage = AnimationStage.Enter;
                         enemyState.ValueRW.firstFrame = true;
-                        enemyState.ValueRW.isAnimating = true;
+                        enemyState.ValueRW.isAnimatingMelee = true;
                         Debug.Log(
-                            "STAGE ENTER ANIMATING " + enemyState.ValueRW.isAnimating + " STATE ID " + ace.stateId);
+                            "STAGE ENTER ANIMATING " + enemyState.ValueRW.isAnimatingMelee + " STATE ID " + ace.stateId);
                     }
                     else if (ace.eventType == AnimatorControllerEventComponent.EventType.StateUpdate)
                     {
@@ -148,7 +151,7 @@ namespace Enemy
                                 .Update; // probably don't need both at some point. This was when using unity animator
                         //enemyState.ValueRW.isAnimating = true;
                         enemyState.ValueRW.firstFrame = false;
-                        Debug.Log("STAGE UPDATE ANIMATING " + enemyState.ValueRW.isAnimating + " STATE ID " +
+                        Debug.Log("STAGE UPDATE ANIMATING " + enemyState.ValueRW.isAnimatingMelee + " STATE ID " +
                                   ace.stateId);
                     }
                     else if (ace.eventType == AnimatorControllerEventComponent.EventType.StateExit)
@@ -156,8 +159,8 @@ namespace Enemy
                         enemyState.ValueRW.firstFrame = false;
                         enemyState.ValueRW.lastFrame = true;
                         checkedComponent.ValueRW.animationStage = AnimationStage.Exit;
-                        enemyState.ValueRW.isAnimating = false;
-                        Debug.Log("STAGE EXIT ANIMATING " + enemyState.ValueRW.isAnimating + " STATE ID " +
+                        enemyState.ValueRW.isAnimatingMelee = false;
+                        Debug.Log("STAGE EXIT ANIMATING " + enemyState.ValueRW.isAnimatingMelee + " STATE ID " +
                                   ace.stateId);
                     }
                 }
@@ -186,7 +189,7 @@ namespace Enemy
                 }
 
                 if (enemyState.ValueRW is
-                    { startMove: true, isAnimating: false }) //check strike allowed always true for testing
+                    { startMove: true, isAnimatingMelee: false }) //check strike allowed always true for testing
                 {
                     Debug.Log("MOVE START");
                     enemyState.ValueRW.selectMove = false;

@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEditor;
@@ -74,7 +75,7 @@ namespace ProjectDawn.Navigation
 
             GraphicsBuffer GetOrCrateHeightField()
             {
-                if (m_HeightField != null)
+                if (m_HeightField != null && m_HeightField.IsValid())
                     return m_HeightField;
 
                 m_HeightField = new GraphicsBuffer(GraphicsBuffer.Target.Structured, m_Capacity, sizeof(float));
@@ -84,7 +85,7 @@ namespace ProjectDawn.Navigation
 
             GraphicsBuffer GetOrCrateObstacleField()
             {
-                if (m_ObstacleField != null)
+                if (m_ObstacleField != null && m_ObstacleField.IsValid())
                     return m_ObstacleField;
 
                 m_ObstacleField = new GraphicsBuffer(GraphicsBuffer.Target.Structured, m_Capacity, sizeof(int));
@@ -94,7 +95,7 @@ namespace ProjectDawn.Navigation
 
             GraphicsBuffer GetOrCrateColorField()
             {
-                if (m_ColorField != null)
+                if (m_ColorField != null && m_ColorField.IsValid())
                     return m_ColorField;
 
                 m_ColorField = new GraphicsBuffer(GraphicsBuffer.Target.Structured, m_Capacity, sizeof(Color));
@@ -211,3 +212,4 @@ namespace ProjectDawn.Navigation
         }
     }
 }
+#endif

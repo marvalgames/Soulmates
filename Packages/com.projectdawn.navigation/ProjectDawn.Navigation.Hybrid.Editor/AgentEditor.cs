@@ -98,6 +98,8 @@ namespace ProjectDawn.Navigation.Hybrid.Editor
                 foreach (var target in targets)
                 {
                     var agent = target as AgentAuthoring;
+                    if (!agent.HasEntityBody)
+                        continue;
                     if (!manager.HasComponent<DrawGizmos>(agent.GetOrCreateEntity()))
                     {
                         manager.AddComponent<DrawGizmos>(agent.GetOrCreateEntity());
@@ -117,6 +119,8 @@ namespace ProjectDawn.Navigation.Hybrid.Editor
                 foreach (var target in targets)
                 {
                     var agent = target as AgentAuthoring;
+                    if (!agent.HasEntityBody)
+                        continue;
                     if (manager.HasComponent<DrawGizmos>(agent.GetOrCreateEntity()))
                     {
                         manager.RemoveComponent<DrawGizmos>(agent.GetOrCreateEntity());

@@ -81,7 +81,7 @@ namespace ProjectDawn.Navigation.Astar
             [ReadOnly]
             public ComponentTypeHandle<LocalTransform> LocalTransformTypeHandleRO;
             public ComponentTypeHandle<MovementState> MovementStateTypeHandleRW;
-            [ReadOnly]
+            [ReadOnly, NativeDisableContainerSafetyRestriction]
             public ComponentTypeHandle<ManagedState> ManagedStateTypeHandleRW;
 
             [ReadOnly]

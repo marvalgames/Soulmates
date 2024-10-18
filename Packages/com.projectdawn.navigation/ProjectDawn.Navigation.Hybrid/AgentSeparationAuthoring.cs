@@ -15,7 +15,7 @@ namespace ProjectDawn.Navigation.Hybrid
         [SerializeField]
         protected float Radius = 3;
 
-        [SerializeField, Range(0f, 1f)]
+        [SerializeField, Range(0f, 2f)]
         protected float Weight = 1;
 
         [SerializeField]

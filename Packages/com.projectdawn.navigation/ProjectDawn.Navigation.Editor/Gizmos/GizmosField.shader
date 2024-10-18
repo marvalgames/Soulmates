@@ -114,6 +114,8 @@ Shader "Hidden/GizmosField"
                 float2 vertex = cell + _Vertices[index];
                 float height = SampleHeight(vertex);
 
+                //height = GetHeight(cell);
+
                 float4 positionOS = mul(_Transform, float4(vertex, -height, 1));
 
                 float4 positionSS = UnityObjectToClipPos(positionOS);
@@ -149,6 +151,8 @@ Shader "Hidden/GizmosField"
 
                 float2 vertex = cell + _Vertices[index];
                 float height = SampleHeight(vertex);
+
+                //height = GetHeight(cell);
 
                 float4 positionOS = mul(_Transform, float4(vertex, -height, 1));
 
@@ -201,6 +205,8 @@ Shader "Hidden/GizmosField"
                 float2 vertex = cell + _Vertices[index];
                 float height = SampleHeight(vertex);
 
+                //height = GetHeight(cell);
+
                 float4 positionOS = mul(_Transform, float4(vertex, -height, 1));
 
                 o.positionSS = UnityObjectToClipPos(positionOS);
@@ -236,6 +242,8 @@ Shader "Hidden/GizmosField"
 
                 float2 vertex = cell + _Vertices[index];
                 float height = SampleHeight(vertex);
+
+                //height = GetHeight(cell);
 
                 float4 positionOS = mul(_Transform, float4(vertex, -height, 1));
 

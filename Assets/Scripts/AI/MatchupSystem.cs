@@ -62,7 +62,9 @@ namespace AI
     }
 
 
+//  [UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateAfter(typeof(TransformSystemGroup))]
     [RequireMatchingQueriesForUpdate]
     partial struct MatchupSystem : ISystem
     {
@@ -132,7 +134,7 @@ namespace AI
             for (var j = 0; j < enemiesAttackEntityList.Length; j++)
             {
                 if (enemiesAttackEntityList[j] == enemyEntity || deadComponent.isDead) continue;
-                var opponentEntity = enemiesAttackEntityList[j];//can be player or enemy vs enemy
+                var opponentEntity = enemiesAttackEntityList[j]; //can be player or enemy vs enemy
                 if (transformGroup.HasComponent(opponentEntity))
                 {
                     var opponentPosition = transformGroup[opponentEntity].Position;
@@ -148,7 +150,7 @@ namespace AI
                     var vectorToOpponent = opponentPosition - enemyPosition;
                     var unitVectorToOpponent = math.normalize(vectorToOpponent);
                     matchup.backupDirection = math.normalize(enemyPosition - opponentPosition);
-                    
+
                     var angleRadians = math.INFINITY;
                     var viewDistanceSq = math.INFINITY;
                     var dot = 1.0;
@@ -168,10 +170,10 @@ namespace AI
                     }
 
                     var canSeeOpponent = (dot > 0.0f || view360) && // player is in front of us
-                                       math.degrees(math.abs(math.acos(dot))) <
-                                       angleRadians && // player is within the cone angle bounds
-                                       math.length(vectorToOpponent) <
-                                       viewDistanceSq; // player is within vision distance (we use Squared Distance to avoid sqrt calculation)
+                                         math.degrees(math.abs(math.acos(dot))) <
+                                         angleRadians && // player is within the cone angle bounds
+                                         math.length(vectorToOpponent) <
+                                         viewDistanceSq; // player is within vision distance (we use Squared Distance to avoid sqrt calculation)
 
 
                     if (distance < closestDistance && canSeeOpponent &&
@@ -181,7 +183,6 @@ namespace AI
                         closestDistance = distance;
                     }
                 }
-
             }
 
             var closestOpponent = matchup.closestOpponentEntity;
@@ -200,7 +201,6 @@ namespace AI
 
             matchup.closestOpponentEntity = closestOpponentEntity;
             matchup.closestDistance = closestDistance;
-
         }
     }
 }

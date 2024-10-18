@@ -6,6 +6,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public enum WayPointAction
@@ -69,7 +70,7 @@ public struct EnemyStateComponent : IComponentData
     public bool enemyStrikeAllowed;
     public int animationFrameCounter;
     public bool firstFrame;
-    public bool isAnimating;
+    public bool isAnimatingMelee;
     public bool lastFrame;
     //public bool selectMoveUsing;//choose from move list in enemy melee mb
     public AnimationType animationIndex;
@@ -89,7 +90,8 @@ public enum MoveStates
     Patrol,
     Chase,
     Defensive,
-    Stopped
+    Stopped,
+    Combat
 }
 
 public enum CombatStates
@@ -195,6 +197,8 @@ public class EnemyComponentAuthoring : MonoBehaviour
     [SerializeField] bool paused;
 
     [SerializeField] int areaIndex;
+
+    public float currentStateRequiredTime = 2.5f;
 
 
     void LateUpdate()
@@ -306,7 +310,7 @@ public class EnemyComponentAuthoring : MonoBehaviour
             AddComponent(e, new CheckedComponent());
 
             AddComponent(e,
-                new EnemyStateComponent { enemyStrikeAllowed = true, MoveState = MoveStates.Default, CombatState = CombatStates.Default});
+                new EnemyStateComponent { currentStateRequiredTime = authoring.currentStateRequiredTime, enemyStrikeAllowed = true, MoveState = MoveStates.Default, CombatState = CombatStates.Default});
 
             //AddComponent(new EnemyClass(){go = authoring.gameObject});
         }

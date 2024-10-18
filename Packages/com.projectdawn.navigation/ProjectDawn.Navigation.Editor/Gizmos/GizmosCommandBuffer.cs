@@ -9,6 +9,7 @@ namespace ProjectDawn.Navigation
 {
     public unsafe struct GizmosCommandBuffer : IDisposable
     {
+#if UNITY_EDITOR
         static class Styles
         {
             public static readonly GUIStyle Label = new();
@@ -22,10 +23,13 @@ namespace ProjectDawn.Navigation
             }
         }
         NativeList<byte> m_Commands;
+#endif
 
         public GizmosCommandBuffer(Allocator allocator)
         {
+#if UNITY_EDITOR
             m_Commands = new NativeList<byte>(1024 * 8, allocator);
+#endif
         }
 
         public void Execute()
@@ -66,6 +70,15 @@ namespace ProjectDawn.Navigation
                         UnityEditor.Handles.color = reader.Read<Color>();
                         UnityEditor.Handles.zTest = UnityEngine.Rendering.CompareFunction.Disabled;
                         UnityEditor.Handles.DrawWireCube(reader.Read<Vector3>(), reader.Read<Vector3>());
+                        break;
+                    case CommandType.WireSphere:
+                        UnityEditor.Handles.color = reader.Read<Color>();
+                        UnityEditor.Handles.zTest = UnityEngine.Rendering.CompareFunction.Disabled;
+                        Vector3 position = reader.Read<Vector3>();
+                        float radius = reader.Read<float>();
+                        UnityEditor.Handles.DrawWireDisc(position, Vector3.right, radius);
+                        UnityEditor.Handles.DrawWireDisc(position, Vector3.up, radius);
+                        UnityEditor.Handles.DrawWireDisc(position, Vector3.forward, radius);
                         break;
                     case CommandType.AAConvexPolygon:
                         {
@@ -120,8 +133,10 @@ namespace ProjectDawn.Navigation
 #endif
         }
 
+        [Conditional("UNITY_EDITOR")]
         public void DrawSolidArc(float3 center, float3 normal, float3 from, float angle, float radius, Color color)
         {
+#if UNITY_EDITOR
             Write(CommandType.SolidArc);
             Write(color);
             Write(center);
@@ -130,10 +145,13 @@ namespace ProjectDawn.Navigation
             Write(angle);
             Write(radius);
             WriteEnd();
+#endif
         }
 
+        [Conditional("UNITY_EDITOR")]
         public void DrawWireArc(float3 center, float3 normal, float3 from, float angle, float radius, Color color)
         {
+#if UNITY_EDITOR
             Write(CommandType.WireArc);
             Write(color);
             Write(center);
@@ -142,58 +160,88 @@ namespace ProjectDawn.Navigation
             Write(angle);
             Write(radius);
             WriteEnd();
+#endif
         }
 
+        [Conditional("UNITY_EDITOR")]
         public void DrawSolidDisc(float3 center, float3 normal, float radius, Color color)
         {
+#if UNITY_EDITOR
             Write(CommandType.SolidDisc);
             Write(color);
             Write(center);
             Write(normal);
             Write(radius);
             WriteEnd();
+#endif
         }
 
+        [Conditional("UNITY_EDITOR")]
         public void DrawWireBox(float3 position, float3 size, Color color)
         {
+#if UNITY_EDITOR
             Write(CommandType.WireBox);
             Write(color);
             Write(position);
             Write(size);
             WriteEnd();
+#endif
         }
 
+        [Conditional("UNITY_EDITOR")]
+        public void DrawWireSphere(float3 position, float radius, Color color)
+        {
+#if UNITY_EDITOR
+            Write(CommandType.WireSphere);
+            Write(color);
+            Write(position);
+            Write(radius);
+            WriteEnd();
+#endif
+        }
+
+        [Conditional("UNITY_EDITOR")]
         public void DrawLine(float3 from, float3 to, Color color)
         {
+#if UNITY_EDITOR
             Write(CommandType.Line);
             Write(color);
             Write(from);
             Write(to);
             WriteEnd();
+#endif
         }
 
+        [Conditional("UNITY_EDITOR")]
         public void DrawArrow(float3 origin, float3 direction, float size, Color color)
         {
+#if UNITY_EDITOR
             Write(CommandType.Arrow);
             Write(color);
             Write(origin);
             Write(direction);
             Write(size);
             WriteEnd();
+#endif
         }
 
+        [Conditional("UNITY_EDITOR")]
         public void DrawAAConvexPolygon(NativeArray<float3> vertices, Color color, bool zTest = false)
         {
+#if UNITY_EDITOR
             Write(CommandType.AAConvexPolygon);
             Write(color);
             Write(zTest);
             Write(vertices.Length);
             m_Commands.AddRange(vertices.GetUnsafePtr(), sizeof(float3) * vertices.Length);
             WriteEnd();
+#endif
         }
 
+        [Conditional("UNITY_EDITOR")]
         public void DrawQuad(float3 a, float3 b, float3 c, float3 d, Color color, bool zTest = false)
         {
+#if UNITY_EDITOR
             Write(CommandType.Quad);
             Write(color);
             Write(zTest);
@@ -202,19 +250,25 @@ namespace ProjectDawn.Navigation
             Write(c);
             Write(d);
             WriteEnd();
+#endif
         }
 
-        internal void DrawNumber(float3 position, float value, Color color)
+        [Conditional("UNITY_EDITOR")]
+        public void DrawNumber(float3 position, float value, Color color)
         {
+#if UNITY_EDITOR
             Write(CommandType.Number);
             Write(color);
             Write(position);
             Write(value);
             WriteEnd();
+#endif
         }
 
-        internal void DrawField(NativeArray<float> heightField, NativeArray<int> obstacleField, NativeArray<Color> colorField, int width, int height, float4x4 transform, Color color)
+        [Conditional("UNITY_EDITOR")]
+        public void DrawField(NativeArray<float> heightField, NativeArray<int> obstacleField, NativeArray<Color> colorField, int width, int height, float4x4 transform, Color color)
         {
+#if UNITY_EDITOR
             Write(CommandType.Field);
             Write(width);
             Write(height);
@@ -224,8 +278,24 @@ namespace ProjectDawn.Navigation
             WriteArray(obstacleField);
             WriteArray(colorField);
             WriteEnd();
+#endif
         }
 
+        public void Clear()
+        {
+#if UNITY_EDITOR
+            m_Commands.Clear();
+#endif
+        }
+
+        public void Dispose()
+        {
+#if UNITY_EDITOR
+            m_Commands.Dispose();
+#endif
+        }
+
+#if UNITY_EDITOR
         void Write<T>(T value) where T : unmanaged
         {
             m_Commands.AddRange(&value, sizeof(T));
@@ -243,17 +313,6 @@ namespace ProjectDawn.Navigation
         Reader AsReader()
         {
             return new Reader(m_Commands);
-        }
-
-
-        public void Clear()
-        {
-            m_Commands.Clear();
-        }
-
-        public void Dispose()
-        {
-            m_Commands.Dispose();
         }
 
         struct Reader
@@ -306,10 +365,12 @@ namespace ProjectDawn.Navigation
             Arrow,
             SolidDisc,
             WireBox,
+            WireSphere,
             AAConvexPolygon,
             Quad,
             Number,
             Field,
         }
+#endif
     }
 }

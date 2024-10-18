@@ -13,6 +13,7 @@ using Random = UnityEngine.Random;
 namespace Enemy
 {
     [RequireMatchingQueriesForUpdate]
+    //[UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(MatchupSystem))]
     public partial struct EnemyActorMovementSystem : ISystem
@@ -70,7 +71,7 @@ namespace Enemy
                 var zone = new FastAnimatorParameter("Zone");
                 var velz = new FastAnimatorParameter("velz");
 
-                
+
                 defensiveStrategy.botState = BotState.MOVING;
                 var enemyTransform = transformGroup[e];
                 var closestOpponent = matchup.closestOpponentEntity;
@@ -127,11 +128,10 @@ namespace Enemy
                     actorWeaponAimGroup[e] = actorWeaponAim;
                 }
 
-
                 var backupZoneClose = enemyMeleeMovement.combatStrikeDistanceZoneBegin;
                 var backupZoneFar = enemyMeleeMovement.combatStrikeDistanceZoneEnd;
                 var strike = false;
-                
+
                 if (distanceToOpponent < backupZoneClose && meleeMovement)
                 {
                     enemyMovement.backup = true;
@@ -164,12 +164,12 @@ namespace Enemy
                         enemyMovement.updateAgent = true;
                     }
                 }
+
                 if (basicMovement)
                 {
                     strike = false;
-                    //enemyState.enemyStrikeAllowed = false;
                 }
-                
+
                 var backup = enemyMovement.backup; //read only after set above
 
                 MoveStates moveState;
@@ -178,7 +178,7 @@ namespace Enemy
                     chaseRange = distFromStation;
                 }
 
-                if (enemyState.isAnimating == false && !backup && strike && distanceToOpponent < chaseRange)
+                if (enemyState.isAnimatingMelee == false && !backup && strike && distanceToOpponent < chaseRange)
                 {
                     //checkedComponent.anyAttackStarted = true;
                     enemyState.selectMove = true;
@@ -234,36 +234,37 @@ namespace Enemy
                     }
 
                     var lastState = enemyState.MoveState; //reads previous
-                    enemyState.currentStateTimer += deltaTime;
-                    if (moveState == lastState || enemyState.MoveState == MoveStates.Default) //no change
-                    {
-                        enemyState.MoveState = moveState;
-                    }
-                    else if (moveState != lastState &&
-                             enemyState.currentStateTimer >
-                             enemyState.currentStateRequiredTime) //switched but after time required in role
-                    {
-                        enemyState.MoveState = moveState;
-                        enemyState.currentStateTimer = 0;
-                    }
+                    // enemyState.currentStateTimer += deltaTime;
+                    // if (moveState == lastState || enemyState.MoveState == MoveStates.Default) //no change
+                    // {
+                    //     enemyState.MoveState = moveState;
+                    // }
+                    // else if (moveState != lastState &&
+                    //          enemyState.currentStateTimer >
+                    //          enemyState.currentStateRequiredTime) //switched but after time required in role
+                    // {
+                    //     enemyState.MoveState = moveState;
+                    //     enemyState.currentStateTimer = 0;
+                    // }
 
-                    var state = enemyState.MoveState;
+                    if (enemyState.isAnimatingMelee)
+                    {
+                        enemyState.MoveState = MoveStates.Combat;
+                    }
+                    
+                    
+
                     var updateAgent = enemyMovement.updateAgent;
 
                     if (updateAgent && moveState != MoveStates.Stopped)
                     {
-                        //enemyTransform.Position = enemyMovement.agentNextPosition;
                         enemyMovement.AgentAnimationMovement = true;
                     }
                     else //if stopped or agent off control rotation
                     {
-                        //enemyTransform.Position = agentNextPosition;
-                        //enemyMovement.agentNextPosition = enemyTransform.Position;
                         enemyMovement.agentNextPosition = agentNextPosition;
                         if (transformGroup.HasComponent(closestOpponent)) //Required?
                         {
-                            //var closestOpponentPosition = transformGroup[closestOpponent].Position;
-                            //var direction = math.normalize(closestOpponentPosition - enemyPosition);
                             var direction = matchup.backupDirection;
                             direction.y = 0;
 
@@ -273,9 +274,6 @@ namespace Enemy
                             transformGroup[e] = enemyTransform;
                         }
                     }
-
-
-                    //
                 }
 
 
@@ -295,7 +293,11 @@ namespace Enemy
                 var velZ = 1f;
                 moveState = enemyState.MoveState;
                 var speed = enemyState.Zone >= 2 ? moveSpeed : moveSpeed * 1.5f;
-                if (moveState is MoveStates.Idle or MoveStates.Stopped or MoveStates.Defensive)
+                if (moveState is MoveStates.Chase)
+                {
+                    speed = moveSpeed * 2;
+                }
+                else if (moveState is MoveStates.Idle or MoveStates.Stopped or MoveStates.Defensive or MoveStates.Combat)
                 {
                     speed = 0;
                     velZ = 0;
@@ -309,14 +311,8 @@ namespace Enemy
 
                 locomotion.Speed = speed * impulseFactor;
                 velZ *= impulseFactor;
-                if (enemyState.isAnimating) velZ = 0;
-                enemyMovement.locomotionPitch = velZ;
                 enemyMovement.forwardVelocity = velZ;
-                
-                //animator.SetIntParameter( zone, enemyState.Zone);
-                //animator.SetFloatParameter(velz, velZ);
-                
-                
+                Debug.Log("SPEED " + speed);
             }
         }
     }
