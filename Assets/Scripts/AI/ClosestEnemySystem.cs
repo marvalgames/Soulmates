@@ -1,10 +1,12 @@
-﻿using Unity.Burst;
+﻿using AI;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
-
+[UpdateBefore(typeof(TransformSystemGroup))]
+[UpdateBefore(typeof(MatchupSystem))]
 public partial struct ClosestEnemyMatchupSystem : ISystem
     {
         private EntityQuery enemyQuery;

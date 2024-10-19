@@ -1,4 +1,5 @@
 using Collisions;
+using Rukhanka;
 using Sandbox.Player;
 using Unity.Burst;
 using Unity.Collections;
@@ -63,8 +64,6 @@ namespace AI
 
 
 //  [UpdateInGroup(typeof(SimulationSystemGroup))]
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateAfter(typeof(TransformSystemGroup))]
     [RequireMatchingQueriesForUpdate]
     partial struct MatchupSystem : ISystem
     {

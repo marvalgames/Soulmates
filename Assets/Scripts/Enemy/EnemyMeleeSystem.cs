@@ -11,8 +11,8 @@ using Random = UnityEngine.Random;
 
 namespace Enemy
 {
-    //[UpdateAfter(typeof(EnemyActorMovementSystem))]
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateAfter(typeof(EnemyActorManagedSystem))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     //[UpdateInGroup(typeof(SimulationSystemGroup))]
     public partial struct EnemySetupMoveMeleeSystem : ISystem
     {
@@ -48,7 +48,7 @@ namespace Enemy
     }
 
     //[UpdateInGroup(typeof(SimulationSystemGroup))]
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(EnemySetupMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveMeleeSystem : ISystem
@@ -69,13 +69,13 @@ namespace Enemy
             {
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
                 if (movesList[entity].Length == 0) continue;
-                if (enemyState.ValueRW is { selectMove: true, startMove: false })
+                if (enemyState.ValueRW is { selectMove: true })
                 {
                     var combatAction = random.NextInt(0, movesList[entity].Length);
                     var moveUsing = movesList[entity];
                     var animationIndex = moveUsing[combatAction].animationType;
                     var primaryTrigger = moveUsing[combatAction].triggerType;
-                    enemyState.ValueRW.startMove = true;
+                    //enemyState.ValueRW.startMove = true;
                     if (SystemAPI.HasComponent<CheckedComponent>(entity))
                     {
                         var defense = animationIndex == AnimationType.Deflect;
@@ -96,7 +96,8 @@ namespace Enemy
     }
 
     //[UpdateInGroup(typeof(SimulationSystemGroup))]
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateBefore(typeof(RukhankaAnimationSystemGroup))]
     [UpdateAfter(typeof(EnemySelectMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveManagedMeleeSystem : ISystem
@@ -189,11 +190,11 @@ namespace Enemy
                 }
 
                 if (enemyState.ValueRW is
-                    { startMove: true, isAnimatingMelee: false }) //check strike allowed always true for testing
+                    { selectMove: true, isAnimatingMelee: false }) //check strike allowed always true for testing
                 {
                     Debug.Log("MOVE START");
                     enemyState.ValueRW.selectMove = false;
-                    enemyState.ValueRW.startMove = false;
+                    //enemyState.ValueRW.startMove = false;
                     enemyState.ValueRW.enemyStrikeAllowed = false;
                     var animationIndex = enemyState.ValueRW.animationIndex;
                     var clip = audioClipElement[enemyState.ValueRW.lastCombatAction].moveAudioClip;

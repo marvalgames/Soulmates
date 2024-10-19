@@ -22,7 +22,7 @@ namespace Sandbox.Player
         {
        
             if(linkedEntity == Entity.Null) return;
-            Debug.Log("lock " + linkedEntity);
+            //Debug.Log("lock " + linkedEntity);
             if (manager.HasComponent<PhysicsMass>(linkedEntity))
             {
                 var mass = manager.GetComponentData<PhysicsMass>(linkedEntity);

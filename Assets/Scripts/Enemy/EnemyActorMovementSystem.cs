@@ -14,7 +14,7 @@ namespace Enemy
 {
     [RequireMatchingQueriesForUpdate]
     //[UpdateInGroup(typeof(SimulationSystemGroup))]
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(MatchupSystem))]
     public partial struct EnemyActorMovementSystem : ISystem
     {
@@ -171,21 +171,23 @@ namespace Enemy
                 }
 
                 var backup = enemyMovement.backup; //read only after set above
+                var selectMove = enemyState.currentStateTimer > enemyState.currentStateRequiredTime;
 
-                MoveStates moveState;
+                MoveStates moveState = MoveStates.Chase;
                 if (stayHome && distFromStation > chaseRange)
                 {
                     chaseRange = distFromStation;
                 }
 
-                if (enemyState.isAnimatingMelee == false && !backup && strike && distanceToOpponent < chaseRange)
+                if (!backup && strike && distanceToOpponent < chaseRange && selectMove)
                 {
                     //checkedComponent.anyAttackStarted = true;
+                    Debug.Log("move state " + enemyState.MoveState);
                     enemyState.selectMove = true;
                     enemyState.enemyStrikeAllowed = true;
                     enemyState.Zone = 3;
                 }
-                else if (checkedComponent.anyAttackStarted == false)
+                else if (checkedComponent.anyAttackStarted == false) //needed?
                 {
                     if (backup && distanceToOpponent < chaseRange && meleeMovement)
                     {
@@ -247,12 +249,6 @@ namespace Enemy
                     //     enemyState.currentStateTimer = 0;
                     // }
 
-                    if (enemyState.isAnimatingMelee)
-                    {
-                        enemyState.MoveState = MoveStates.Combat;
-                    }
-                    
-                    
 
                     var updateAgent = enemyMovement.updateAgent;
 
@@ -276,7 +272,21 @@ namespace Enemy
                     }
                 }
 
+                if (enemyState.isAnimatingMelee && enemyState.MoveState != MoveStates.Combat) //combat start
+                {
+                    enemyState.currentStateTimer = 0;
+                }
+                else if (enemyState.isAnimatingMelee) // combat updating
+                {
+                    enemyState.MoveState = MoveStates.Combat;
+                }
+                else if (enemyState.isAnimatingMelee == false)
+                {
+                    enemyState.currentStateTimer += deltaTime;
+                }
 
+                enemyState.MoveState = enemyState.isAnimatingMelee ? MoveStates.Combat : moveState;
+                
                 var impulseFactor = 1f;
                 if (impulse.activate)
                 {
@@ -297,7 +307,8 @@ namespace Enemy
                 {
                     speed = moveSpeed * 2;
                 }
-                else if (moveState is MoveStates.Idle or MoveStates.Stopped or MoveStates.Defensive or MoveStates.Combat)
+                else if (moveState is MoveStates.Idle or MoveStates.Stopped or MoveStates.Defensive
+                         or MoveStates.Combat)
                 {
                     speed = 0;
                     velZ = 0;
@@ -312,7 +323,6 @@ namespace Enemy
                 locomotion.Speed = speed * impulseFactor;
                 velZ *= impulseFactor;
                 enemyMovement.forwardVelocity = velZ;
-                Debug.Log("SPEED " + speed);
             }
         }
     }
