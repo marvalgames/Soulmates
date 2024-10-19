@@ -182,7 +182,7 @@ namespace Enemy
                 if (!backup && strike && distanceToOpponent < chaseRange && selectMove)
                 {
                     //checkedComponent.anyAttackStarted = true;
-                    Debug.Log("move state " + enemyState.MoveState);
+                    //Debug.Log("move state " + enemyState.MoveState);
                     enemyState.selectMove = true;
                     enemyState.enemyStrikeAllowed = true;
                     enemyState.Zone = 3;

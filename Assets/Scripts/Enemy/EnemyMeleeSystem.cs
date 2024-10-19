@@ -97,7 +97,7 @@ namespace Enemy
 
     //[UpdateInGroup(typeof(SimulationSystemGroup))]
     //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateBefore(typeof(RukhankaAnimationSystemGroup))]
+    [UpdateAfter(typeof(RukhankaAnimationSystemGroup))]
     [UpdateAfter(typeof(EnemySelectMoveMeleeSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct EnemySelectMoveManagedMeleeSystem : ISystem

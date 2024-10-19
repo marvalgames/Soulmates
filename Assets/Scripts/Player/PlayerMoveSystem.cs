@@ -325,7 +325,7 @@ namespace Sandbox.Player
                         {
                             var audioSource = goAudioPlayer.AudioSource;
                             var pitch = stickSpeed * playerMoveComponent.stepRate;
-                            Debug.Log("audio source  " + audioSource);
+                            //Debug.Log("audio source  " + audioSource);
                             if (audioSource.isPlaying == false)
                             {
                                 audioSource.pitch = pitch;

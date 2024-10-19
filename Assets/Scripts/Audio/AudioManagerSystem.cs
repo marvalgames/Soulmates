@@ -18,8 +18,8 @@ namespace Audio
         public AnimationStage stage;
     }
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    //[UpdateAfter(typeof(EnemySelectMoveManagedMeleeSystem))]
+    //UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateBefore(typeof(ClosestEnemyMatchupSystem))]
     [RequireMatchingQueriesForUpdate] 
     public partial struct AudioManagerSystem : ISystem
     {
@@ -35,14 +35,17 @@ namespace Audio
                          .Query<AudioManagerClass, MovesInstance, RefRW<AudioManagerComponent>>()
                          .WithEntityAccess())
             {
+                var moveStarted = false;
+                if (SystemAPI.HasComponent<EnemyComponent>(entity))
+                {
+                    moveStarted = SystemAPI.GetComponent<EnemyStateComponent>(entity).isAnimatingMelee;
+                }
+                
                 var audioSource = movesInstance.meleeAudioSourceInstance.GetComponent<AudioSource>();
 
-                if (audio.ValueRW.play && audioSource.isPlaying == false)
+                if (audio.ValueRW.play && audioSource.isPlaying == false && moveStarted)
                 {
                     audioSource.PlayOneShot(audioClass.clip);
-                }
-                else
-                {
                     audio.ValueRW.play = false;
                 }
             }
