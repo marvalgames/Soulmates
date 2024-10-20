@@ -1,6 +1,7 @@
 using System;
 using Collisions;
 using Player;
+using Rukhanka;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -266,36 +267,47 @@ namespace Sandbox.Player
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerMoveSystem))]
-    public partial class PlayerMoveAnimatorSystem : SystemBase
+    public partial struct PlayerMoveAnimatorSystem : ISystem
     {
-        private static readonly int Vertical = Animator.StringToHash("Vertical");
-        private static readonly int Grounded = Animator.StringToHash("Grounded");
+        //private static readonly int Vertical = Animator.StringToHash("Vertical");
+        //private static readonly int Grounded = Animator.StringToHash("Grounded");
+        
+    
 
-
-        protected override void OnUpdate()
+        
+        public void OnUpdate(ref SystemState state)
         {
-            Entities.WithoutBurst().ForEach(
-                (ActorInstance actorInstance, Entity e,
-                    in PlayerMoveComponent playerMove, in ApplyImpulseComponent applyImpulse) =>
+
+            var Vertical = new FastAnimatorParameter("Vertical");
+            var Grounded = new FastAnimatorParameter("Grounded"); 
+
+            foreach (var (anim, actorInstance, playerMove, applyImpulse, entity ) in SystemAPI.Query<AnimatorParametersAspect, ActorInstance, RefRO<PlayerMoveComponent>, RefRO<ApplyImpulseComponent>>().WithEntityAccess())
+            {
+                
+                var animator = actorInstance.actorPrefabInstance.GetComponent<Animator>();
+                    
+                var animStickSpeed = applyImpulse.ValueRO.animatorStickSpeed;
+                if (SystemAPI.HasComponent<PlayerDashComponent>(entity))
                 {
-                    var animator = actorInstance.actorPrefabInstance.GetComponent<Animator>();
-                    var animStickSpeed = applyImpulse.animatorStickSpeed;
-                    if (SystemAPI.HasComponent<PlayerDashComponent>(e))
-                    {
-                        var playerDashComponent = SystemAPI.GetComponent<PlayerDashComponent>(e);
-                        animStickSpeed = applyImpulse.Grounded || playerDashComponent.InDash
-                                                               || applyImpulse.ApproachingStairs
-                            ? applyImpulse.animatorStickSpeed
-                            : 0;
-                    }
-
-                    var dampTime =
-                        animStickSpeed < .003 ? 0 : playerMove.dampTime; //if stick not moved (stopping) then no damp
-
-                    animator.SetFloat(Vertical, animStickSpeed, dampTime, SystemAPI.Time.DeltaTime);
-                    animator.SetBool(Grounded, applyImpulse.Grounded);
+                    var playerDashComponent = SystemAPI.GetComponent<PlayerDashComponent>(entity);
+                    animStickSpeed = applyImpulse.ValueRO.Grounded || playerDashComponent.InDash
+                                                           || applyImpulse.ValueRO.ApproachingStairs
+                        ? applyImpulse.ValueRO.animatorStickSpeed
+                        : 0;
                 }
-            ).Run();
+
+                var dampTime =
+                    animStickSpeed < .003 ? 0 : playerMove.ValueRO.dampTime; //if stick not moved (stopping) then no damp
+                
+                anim.SetFloatParameter(Vertical, animStickSpeed);
+                anim.SetBoolParameter(Grounded, applyImpulse.ValueRO.Grounded);
+
+                //animator.SetFloat(Vertical, animStickSpeed, dampTime, SystemAPI.Time.DeltaTime);
+                //animator.SetBool(Grounded, applyImpulse.ValueRO.Grounded);
+                
+            }
+            
+           
         }
     }
 

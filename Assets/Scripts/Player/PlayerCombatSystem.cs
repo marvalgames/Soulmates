@@ -1,6 +1,7 @@
 using Audio;
 using Collisions;
 using Enemy;
+using Rukhanka;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -79,7 +80,7 @@ namespace Sandbox.Player
                 if (checkedComponent.ValueRW is { AttackStages: AttackStages.End, comboButtonClicked: true })
                 {
                     checkedComponent.ValueRW.comboIndexPlaying += 1;
-                    if(checkedComponent.ValueRW.comboIndexPlaying >= 4) checkedComponent.ValueRW.comboIndexPlaying = 1;
+                    if (checkedComponent.ValueRW.comboIndexPlaying >= 4) checkedComponent.ValueRW.comboIndexPlaying = 1;
                     //animator.SetInteger(ComboAnimationPlayed, checkedComponent.ValueRW.comboIndexPlaying);
                     melee.ValueRW.comboAnimationPlayed = checkedComponent.ValueRW.comboIndexPlaying;
                     melee.ValueRW.selectMove = 1;
@@ -117,11 +118,11 @@ namespace Sandbox.Player
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerCombatManagedSystem : ISystem
     {
-        private static readonly int Vertical = Animator.StringToHash("Vertical");
-        private static readonly int CombatAction = Animator.StringToHash("CombatAction");
-        private static readonly int ComboAnimationPlayed = Animator.StringToHash("ComboAnimationPlayed");
+        // private static readonly int Vertical = Animator.StringToHash("Vertical");
+        // private static readonly int CombatAction = Animator.StringToHash("CombatAction");
+        // private static readonly int ComboAnimationPlayed = Animator.StringToHash("ComboAnimationPlayed");
         private static readonly int CombatMode = Animator.StringToHash("CombatMode");
-        private static readonly int Zone = Animator.StringToHash("Zone");
+        //private static readonly int Zone = Animator.StringToHash("Zone");
 
         private MovesComponentElement moveUsing;
         //private bool instantiated;
@@ -138,6 +139,17 @@ namespace Sandbox.Player
             var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
                 .CreateCommandBuffer(state.WorldUnmanaged);
 
+            //private static readonly int Vertical = Animator.StringToHash("Vertical");
+            //private static readonly int CombatAction = Animator.StringToHash("CombatAction");
+            //private static readonly int ComboAnimationPlayed = Animator.StringToHash("ComboAnimationPlayed");
+            //private static readonly int CombatMode = Animator.StringToHash("CombatMode");
+            //private static readonly int Zone = Animator.StringToHash("Zone");
+
+            var Zone = new FastAnimatorParameter("Zone");
+            var Vertical = new FastAnimatorParameter("Vertical");
+            var ComboAnimationPlayed = new FastAnimatorParameter("ComboAnimationPlayed");
+            var CombatAction = new FastAnimatorParameter("CombatAction");
+            var CombatMode = new FastAnimatorParameter("CombatMode");
 
             //if (instantiated == false)
             //{
@@ -183,7 +195,7 @@ namespace Sandbox.Player
 
                     actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().linkedEntity = entity;
                     actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().manager = state.EntityManager;
-                    
+
                     var prefab = movesClass.moveParticleSystem;
                     var vfxGo = GameObject.Instantiate(prefab);
                     //Debug.Log("PREFAB " + vfxGo);
@@ -202,12 +214,43 @@ namespace Sandbox.Player
             }
             //}
 
+            
+               foreach (var (anim, aces, checkedComponent, entity)
+                     in SystemAPI
+                         .Query<AnimatorParametersAspect, DynamicBuffer<AnimatorControllerEventComponent>, RefRW<CheckedComponent>>()
+                         .WithEntityAccess())
+            {
+                foreach (var ace in aces)
+                {
+                    if (ace.stateId != 7) continue;
 
-            foreach (var (actor, movesHolder, audioClass, melee, checkedComponent, inputController, applyImpulse, e) in
+                    if (ace.eventType == AnimatorControllerEventComponent.EventType.StateEnter)
+                    {
+                        checkedComponent.ValueRW.animationStage = AnimationStage.Enter;
+                        Debug.Log("Animation Stage Enter " + ace.stateId);
+                    }
+                    else if (ace.eventType == AnimatorControllerEventComponent.EventType.StateUpdate)
+                    {
+                        checkedComponent.ValueRW.animationStage =
+                            AnimationStage
+                                .Update; // probably don't need both at some point. This was when using unity animator
+                    }
+                    else if (ace.eventType == AnimatorControllerEventComponent.EventType.StateExit)
+                    {
+                        checkedComponent.ValueRW.animationStage = AnimationStage.Exit;
+                        anim.SetIntParameter(CombatAction, 0);
+                    }
+                }
+            }
+
+            
+            
+
+            foreach (var (anim, actor, movesHolder, audioClass, melee, checkedComponent, applyImpulse, e) in
                      SystemAPI
-                         .Query<ActorInstance, MovesClassHolder, AudioManagerClass, RefRW<MeleeComponent>,
-                             RefRW<CheckedComponent>,
-                             RefRW<InputControllerComponent>, RefRW<ApplyImpulseComponent>>().WithEntityAccess()
+                         .Query<AnimatorParametersAspect, ActorInstance, MovesClassHolder, AudioManagerClass,
+                             RefRW<MeleeComponent>,
+                             RefRW<CheckedComponent>, RefRW<ApplyImpulseComponent>>().WithEntityAccess()
                          .WithAny<PlayerComponent>())
             {
                 //var playerCombat = actor.actorPrefabInstance.GetComponent<PlayerCombat>();
@@ -218,8 +261,9 @@ namespace Sandbox.Player
                 {
                     var aimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
                     //Debug.Log("COMBAT MODE " + aimComponent.combatMode);
-                    animator.SetInteger(Zone, aimComponent.combatMode ? 1 : 0);
-                    animator.SetBool(CombatMode, aimComponent.combatMode);
+                    //animator.SetInteger(Zone, aimComponent.combatMode ? 1 : 0);
+                    anim.SetIntParameter(Zone, aimComponent.combatMode ? 1 : 0);
+                    anim.SetBoolParameter(CombatMode, aimComponent.combatMode);
                 }
 
 
@@ -229,16 +273,21 @@ namespace Sandbox.Player
                     melee.ValueRW.lastCombatAction = melee.ValueRW.selectMove - 1;
                     SelectMove(e, actor, melee.ValueRW.selectMove, ref checkedComponent.ValueRW, ref state);
                     //Debug.Log("Player Select move " + melee.ValueRW.selectMove);
-                    melee.ValueRW.verticalSpeed = animator.GetFloat(Vertical);
-                    animator.SetInteger(ComboAnimationPlayed, melee.ValueRW.comboAnimationPlayed);
-                    animator.SetInteger(CombatAction, melee.ValueRW.selectMove);
+                    //melee.ValueRW.verticalSpeed = animator.GetFloat(Vertical);
+                    //animator.SetInteger(ComboAnimationPlayed, melee.ValueRW.comboAnimationPlayed);
+                    //animator.SetInteger(CombatAction, melee.ValueRW.selectMove);
+                    melee.ValueRW.verticalSpeed = anim.GetFloatParameter(Vertical);
+                    anim.SetIntParameter(ComboAnimationPlayed, melee.ValueRW.comboAnimationPlayed);
+                    anim.SetIntParameter(CombatAction, melee.ValueRW.selectMove);
+
                     melee.ValueRW.selectMove = 0;
                 }
                 else if (melee.ValueRW.selectMove == 0)
                 {
                     if (melee.ValueRW.cancelMove)
                     {
-                        animator.SetInteger(CombatAction, 0);
+                        //animator.SetInteger(CombatAction, 0);
+                        anim.SetIntParameter(CombatAction, 0);
                         melee.ValueRW.cancelMove = false;
                         melee.ValueRW.cancelMovement = 0;
                     }
@@ -247,7 +296,8 @@ namespace Sandbox.Player
                         .moveParticleSystemInstance.GetComponent<VisualEffect>();
 
 
-                    var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
+                    //var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
+                    var stage = checkedComponent.ValueRW.animationStage;
                     if (stage == AnimationStage.Enter)
                     {
                         var audioClipElement = movesHolder.movesClassList;
