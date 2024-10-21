@@ -1,3 +1,4 @@
+using Animate;
 using Audio;
 using Collisions;
 using Enemy;
@@ -111,12 +112,11 @@ namespace Sandbox.Player
         }
     }
 
-    
+
     //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerCombatSystem))]
     [RequireMatchingQueriesForUpdate]
-    
     public partial struct PlayerCombatManagedSystem : ISystem
     {
         // private static readonly int Vertical = Animator.StringToHash("Vertical");
@@ -159,7 +159,7 @@ namespace Sandbox.Player
                          .WithEntityAccess().WithAny<PlayerComponent>())
             {
                 if (melee.ValueRW.instantiated) continue;
-                
+
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
                 var count = movesList[entity].Length;
                 //if (count < movesHolder.moveCount) return; //hack
@@ -216,16 +216,19 @@ namespace Sandbox.Player
             }
             //}
 
-            
-               foreach (var (anim, aces, checkedComponent, entity)
+
+            foreach (var (animEntity, anim, aces, checkedComponent, entity)
                      in SystemAPI
-                         .Query<AnimatorParametersAspect, DynamicBuffer<AnimatorControllerEventComponent>, RefRW<CheckedComponent>>()
-                         .WithEntityAccess())
+                         .Query<RefRO<AnimatorEntityComponent>, AnimatorParametersAspect,
+                             DynamicBuffer<AnimatorControllerEventComponent>, RefRW<CheckedComponent>>()
+                         .WithEntityAccess().WithAny<PlayerComponent>())
             {
+
+                var stateId = animEntity.ValueRO.playerCombatStateID;
                 foreach (var ace in aces)
                 {
-                    if (ace.stateId != 7) continue;
-
+                    if(ace.stateId != stateId) continue;
+                    Debug.Log(" aces pl " + animEntity.ValueRO.playerCombatStateID);
                     if (ace.eventType == AnimatorControllerEventComponent.EventType.StateEnter)
                     {
                         checkedComponent.ValueRW.animationStage = AnimationStage.Enter;
@@ -245,8 +248,6 @@ namespace Sandbox.Player
                 }
             }
 
-            
-            
 
             foreach (var (anim, actor, movesHolder, audioClass, melee, checkedComponent, applyImpulse, e) in
                      SystemAPI

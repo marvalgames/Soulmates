@@ -1,3 +1,4 @@
+using Animate;
 using Audio;
 using Collisions;
 using Rukhanka;
@@ -127,23 +128,25 @@ namespace Enemy
                 }
             }
 
-            foreach (var (aces, checkedComponent, enemyState, entity)
+            foreach (var (animEntity, aces, checkedComponent, enemyState, entity)
                      in SystemAPI
-                         .Query<DynamicBuffer<AnimatorControllerEventComponent>, RefRW<CheckedComponent>,
+                         .Query<RefRO<AnimatorEntityComponent>, DynamicBuffer<AnimatorControllerEventComponent>, RefRW<CheckedComponent>,
                              RefRW<EnemyStateComponent>>()
                          .WithEntityAccess())
             {
+                var stateId = animEntity.ValueRO.enemyCombatStateID;
                 foreach (var ace in aces)
                 {
-                    if (ace.stateId != 8) continue;
-
+                    if(ace.stateId != stateId) continue;
+                    Debug.Log(" aces en " + animEntity.ValueRO.enemyCombatStateID);
                     if (ace.eventType == AnimatorControllerEventComponent.EventType.StateEnter)
                     {
                         checkedComponent.ValueRW.animationStage = AnimationStage.Enter;
                         enemyState.ValueRW.firstFrame = true;
                         enemyState.ValueRW.isAnimatingMelee = true;
                         Debug.Log(
-                            "STAGE ENTER ANIMATING " + enemyState.ValueRW.isAnimatingMelee + " STATE ID " + ace.stateId);
+                            "STAGE ENTER ANIMATING " + enemyState.ValueRW.isAnimatingMelee + " STATE ID " +
+                            ace.stateId);
                     }
                     else if (ace.eventType == AnimatorControllerEventComponent.EventType.StateUpdate)
                     {
