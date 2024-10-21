@@ -66,7 +66,7 @@ namespace Animate
             {
                 var playerCombatIndex =
                     ScriptedAnimator.GetStateIndexInControllerLayer(controllerBlob, 0, (uint)playerCombatStateHash);
-                Debug.Log("PLAYER COMBAT STATE HASH  " + playerCombatIndex);
+                //Debug.Log("PLAYER COMBAT STATE HASH  " + playerCombatIndex);
                 animatorEntity.playerCombatStateID = playerCombatIndex;
             }
 
@@ -74,7 +74,7 @@ namespace Animate
             {
                 var enemyCombatIndex =
                     ScriptedAnimator.GetStateIndexInControllerLayer(controllerBlob, 0, (uint)enemyCombatStateHash);
-                Debug.Log("ENEMY COMBAT STATE HASH  " + enemyCombatIndex);
+                //Debug.Log("ENEMY COMBAT STATE HASH  " + enemyCombatIndex);
                 animatorEntity.enemyCombatStateID = enemyCombatIndex;
             }
         }

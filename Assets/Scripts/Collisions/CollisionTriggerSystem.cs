@@ -97,7 +97,7 @@ namespace Collisions
             {
                 var hitEntityA = ev.EntityA;
                 var hitEntityB = ev.EntityB;
-                //Debug.Log("A " + a +" B " + b);
+                Debug.Log("PRE A " + hitEntityA +" B " + hitEntityB);
 
                 var collisionDetails = ev.CalculateDetails(ref physicsWorldSingleton.PhysicsWorld);
                 if (triggerGroup.HasComponent(hitEntityA) == false ||
@@ -106,35 +106,40 @@ namespace Collisions
                 var triggerComponentB = triggerGroup[hitEntityB];
 
 
-                var hitColliderKeyA = ev.ColliderKeyA;
-                var hitColliderKeyB = ev.ColliderKeyB;
 
-                if (colliderKeyEntityPairs.HasBuffer(hitEntityA))
+                if (colliderKeyEntityPairs.HasBuffer(hitEntityA)) 
                 {
+                    Debug.Log("LEN pairs A " + colliderKeyEntityPairs[hitEntityA].Length);
+                    var hitColliderKeyA = ev.ColliderKeyA;
                     for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
                     {
                         if (colliderKeyEntityPairs[hitEntityA][i].Key.Equals(hitColliderKeyA))
                         {
-                            // Return the corresponding entity from the pair
                             var e = colliderKeyEntityPairs[hitEntityA][i].Entity;
-                            //Debug.Log("Entity A " + e);
+                            Debug.Log("Enemy Child E " + e);
+                            //hitEntityA = e;
                         }
                     }
                 }
 
                 if (colliderKeyEntityPairs.HasBuffer(hitEntityB))
                 {
+                    Debug.Log("LEN pairs B " + colliderKeyEntityPairs[hitEntityB].Length);
+                    var hitColliderKeyB = ev.ColliderKeyB;
                     for (int i = 0; i < colliderKeyEntityPairs[hitEntityB].Length; i++)
                     {
                         if (colliderKeyEntityPairs[hitEntityB][i].Key.Equals(hitColliderKeyB))
                         {
-                            // Return the corresponding entity from the pair
                             var e = colliderKeyEntityPairs[hitEntityB][i].Entity;
-                            //Debug.Log("Entity B " + e);
+                            Debug.Log("Player Child E " + e);
+                            //hitEntityB = e;
                         }
                     }
                 }
 
+                Debug.Log("POST A " + hitEntityA +" B " + hitEntityB);
+
+                
                 var chA = triggerComponentA.ParentEntity;
                 var chB = triggerComponentB.ParentEntity;
                 var typeA = (TriggerType)triggerComponentA.Type;

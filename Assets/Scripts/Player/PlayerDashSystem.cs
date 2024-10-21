@@ -2,12 +2,14 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Physics;
 using Unity.Physics.Extensions;
+using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
 
 namespace Sandbox.Player
 {
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     [UpdateAfter(typeof(PlayerJumpSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial class PlayerDashSystem : SystemBase

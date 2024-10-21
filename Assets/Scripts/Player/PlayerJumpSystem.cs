@@ -1,6 +1,7 @@
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
+using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -49,7 +50,8 @@ namespace Sandbox.Player
     }
 
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     [UpdateAfter(typeof(InputControllerSystemUpdate))]
     [UpdateAfter(typeof(PlayerMoveSystem))]
     public partial class PlayerJumpSystem : SystemBase
@@ -233,7 +235,8 @@ namespace Sandbox.Player
         }
     }
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     [UpdateAfter(typeof(PlayerJumpSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerJumpAudioSystem : ISystem
@@ -266,8 +269,9 @@ namespace Sandbox.Player
         }
     }
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerJumpSystem))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     public partial struct PlayerJumpAnimationSystem : ISystem
     {
         private static readonly int JumpState = Animator.StringToHash("JumpState");

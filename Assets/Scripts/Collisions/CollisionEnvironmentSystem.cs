@@ -3,12 +3,14 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Physics;
+using Unity.Physics.Systems;
 using PlayerMoveSystem = Sandbox.Player.PlayerMoveSystem;
 
 
 namespace Collisions
 {
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     [UpdateBefore(typeof(PlayerMoveSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial class CollisionEnvironmentSystem : SystemBase

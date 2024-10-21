@@ -2,6 +2,7 @@ using Sandbox.Player;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Physics;
+using Unity.Physics.Systems;
 using UnityEngine;
 
 //using UnityEngine;
@@ -9,7 +10,8 @@ using UnityEngine;
 
 namespace Collisions
 {
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     [UpdateBefore(typeof(ToggleColliderSystem))]
     public partial class SetDefaultColliderSystem : SystemBase
     {
@@ -37,7 +39,8 @@ namespace Collisions
     }
 
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     [UpdateAfter(typeof(PlayerDashSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial class ToggleColliderSystem : SystemBase

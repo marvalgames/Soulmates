@@ -2,12 +2,14 @@ using Enemy;
 using Sandbox.Player;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Physics.Systems;
 using UnityEngine;
 
 namespace Collisions
 {
     [RequireMatchingQueriesForUpdate]
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     [UpdateAfter(typeof(CollisionSystem))]
     public partial class AttackerSystem : SystemBase
     {

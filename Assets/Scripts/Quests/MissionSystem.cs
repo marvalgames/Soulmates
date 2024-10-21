@@ -1,6 +1,7 @@
 //using Dialogue.Scripts;
 
 using Unity.Entities;
+using Unity.Physics.Systems;
 
 public struct MissionComponent : IComponentData
 {
@@ -12,7 +13,8 @@ public struct MissionComponent : IComponentData
     //public string enemiesDestroyed;
 }
 
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(HealthSystem))]
 //[UpdateBefore(typeof(DeadSystem))]
 [UpdateBefore(typeof(CleanupSystem))]

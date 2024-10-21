@@ -1,6 +1,7 @@
 using Sandbox.Player;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -27,7 +28,8 @@ public partial class LosingHealthSystem : SystemBase
 }
 
 
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(PhysicsSystemGroup))]
 [RequireMatchingQueriesForUpdate]
 public partial class HealthSystem : SystemBase
 {

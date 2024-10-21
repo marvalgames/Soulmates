@@ -6,6 +6,7 @@ using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
+using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -68,7 +69,8 @@ namespace Sandbox.Player
     }
 
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     //[UpdateAfter(typeof(PlayerCombatSystem))]
     [RequireMatchingQueriesForUpdate]
     public partial struct PlayerMoveSystem : ISystem
@@ -265,7 +267,8 @@ namespace Sandbox.Player
         }
     }
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     [UpdateAfter(typeof(PlayerMoveSystem))]
     public partial struct PlayerMoveAnimatorSystem : ISystem
     {
@@ -311,7 +314,8 @@ namespace Sandbox.Player
         }
     }
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
     [UpdateAfter(typeof(PlayerMoveAnimatorSystem))]
     public partial class PlayerMoveAudioVfxSystem : SystemBase
     {

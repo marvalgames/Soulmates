@@ -123,7 +123,7 @@ namespace Enemy
                     var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
                     go.SetActive(true);
                     commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
-                    Debug.Log("ENEMY INST " + melee.ValueRW.instantiated);
+                    //Debug.Log("ENEMY INST " + melee.ValueRW.instantiated);
                     melee.ValueRW.instantiated = true;
                 }
             }
@@ -138,7 +138,7 @@ namespace Enemy
                 foreach (var ace in aces)
                 {
                     if(ace.stateId != stateId) continue;
-                    Debug.Log(" aces en " + animEntity.ValueRO.enemyCombatStateID);
+                    //Debug.Log(" aces en " + animEntity.ValueRO.enemyCombatStateID);
                     if (ace.eventType == AnimatorControllerEventComponent.EventType.StateEnter)
                     {
                         checkedComponent.ValueRW.animationStage = AnimationStage.Enter;
@@ -195,7 +195,7 @@ namespace Enemy
                 if (enemyState.ValueRW is
                     { selectMove: true, isAnimatingMelee: false }) //check strike allowed always true for testing
                 {
-                    Debug.Log("MOVE START");
+                    //Debug.Log("MOVE START");
                     enemyState.ValueRW.selectMove = false;
                     //enemyState.ValueRW.startMove = false;
                     enemyState.ValueRW.enemyStrikeAllowed = false;

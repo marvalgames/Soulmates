@@ -7,6 +7,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
+using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.AI;
@@ -38,7 +39,8 @@ public struct PlayAndDestroyEffectComponent : IComponentData
     public float playTime;
 }
 
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateBefore(typeof(HealthSystem))]
 [UpdateAfter(typeof(PlayerMoveSystem))]
 public partial struct ActorEffectsManagedSystem : ISystem
@@ -68,7 +70,8 @@ public partial struct ActorEffectsManagedSystem : ISystem
 }
 
 
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateBefore(typeof(HealthSystem))]
 [UpdateAfter(typeof(PlayerMoveSystem))]
 public partial struct ActorImpulseEffectsSystem : ISystem
@@ -195,7 +198,8 @@ public partial struct ActorImpulseEffectsSystem : ISystem
     }
 }
 
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateBefore(typeof(HealthSystem))]
 [UpdateAfter(typeof(PlayerMoveSystem))]
 public partial struct SlashManagedSystem : ISystem
@@ -217,7 +221,8 @@ public partial struct SlashManagedSystem : ISystem
 
 [UpdateAfter(typeof(HealthSystem))]
 [UpdateAfter(typeof(AttackerSystem))]
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(PhysicsSystemGroup))]
 public partial struct ActorDamageEffectsSystem : ISystem
 {
     private bool isInitialized;

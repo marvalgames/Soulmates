@@ -2,8 +2,10 @@ using Sandbox.Player;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
+using Unity.Physics.Systems;
 
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(PlayerDashSystem))]
 [RequireMatchingQueriesForUpdate]
 public partial class VelocityControlSystem : SystemBase

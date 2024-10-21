@@ -1,11 +1,13 @@
 using Collisions;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Physics.Systems;
 
 
 //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup), OrderLast = true)]
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(PhysicsSystemGroup))]
 [UpdateAfter(typeof(CollisionSystem))]
 
 [RequireMatchingQueriesForUpdate]
