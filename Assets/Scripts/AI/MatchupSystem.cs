@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace AI
 {
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(MatchupSystem))]
     public partial struct MatchupTargetZonesSystem : ISystem
     {

@@ -11,7 +11,7 @@ namespace Collisions
 {
     public struct CheckedComponent : IComponentData
     {
-        public AttackStages AttackStages;//messy because redundant with animationStage
+        public AttackStages AttackStages; //messy because redundant with animationStage
         public AnimationStage animationStage;
         public bool anyDefenseStarted;
         public bool anyAttackStarted; //weapon or melee
@@ -48,36 +48,38 @@ namespace Collisions
         public int TriggerType;
     }
 
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+    [UpdateInGroup(typeof(PhysicsSystemGroup))]
+    [UpdateAfter(typeof(PhysicsSimulationGroup))]
     [UpdateBefore(typeof(PlayerMoveSystem))]
     [RequireMatchingQueriesForUpdate]
-    public partial class CollisionSystem : SystemBase
+    public partial struct CollisionSystem : ISystem
     {
-        EndFixedStepSimulationEntityCommandBufferSystem m_ecbSystem;
-
-        protected override void OnCreate()
+        public void OnCreate(ref SystemState state)
         {
-            m_ecbSystem = World.GetOrCreateSystemManaged<EndFixedStepSimulationEntityCommandBufferSystem>();
+            state.RequireForUpdate<SimulationSingleton>();
+            state.RequireForUpdate<PhysicsWorldSingleton>();
+            state.RequireForUpdate<EndSimulationEntityCommandBufferSystem.Singleton>();
         }
 
-        protected override void OnUpdate()
+        public void OnUpdate(ref SystemState state)
         {
+            var ecb = SystemAPI.GetSingleton<EndSimulationEntityCommandBufferSystem.Singleton>()
+                .CreateCommandBuffer(state.WorldUnmanaged);
+            var simulationSingleton = SystemAPI.GetSingleton<SimulationSingleton>();
+            var physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
             var colliderKeyEntityPairs = SystemAPI.GetBufferLookup<PhysicsColliderKeyEntityPair>();
-
 
             var collisionJob = new CollisionJob
             {
-                Ecb = m_ecbSystem.CreateCommandBuffer(),
-                triggerGroup = GetComponentLookup<TriggerComponent>(true),
-                healthGroup = GetComponentLookup<HealthComponent>(true),
-                ammoGroup = GetComponentLookup<AmmoComponent>(),
-                checkGroup = GetComponentLookup<CheckedComponent>(true),
-                bossGroup = GetComponentLookup<BossComponent>(true),
+                Ecb = ecb,
+                physicsWorldSingleton = physicsWorldSingleton,
+                triggerGroup = SystemAPI.GetComponentLookup<TriggerComponent>(true),
+                healthGroup = SystemAPI.GetComponentLookup<HealthComponent>(true),
+                ammoGroup = SystemAPI.GetComponentLookup<AmmoComponent>(),
+                checkGroup = SystemAPI.GetComponentLookup<CheckedComponent>(true),
                 colliderKeyEntityPairs = colliderKeyEntityPairs
-            };
-
-            Dependency = collisionJob.Schedule(SystemAPI.GetSingleton<SimulationSingleton>(), Dependency);
-            Dependency.Complete();
+            }.Schedule(simulationSingleton, state.Dependency);
+            collisionJob.Complete();
         }
 
         [BurstCompile]
@@ -86,51 +88,53 @@ namespace Collisions
             [ReadOnly] public ComponentLookup<TriggerComponent> triggerGroup;
             [ReadOnly] public ComponentLookup<HealthComponent> healthGroup;
             [ReadOnly] public ComponentLookup<CheckedComponent> checkGroup;
-            [ReadOnly] public ComponentLookup<BossComponent> bossGroup;
-
             public ComponentLookup<AmmoComponent> ammoGroup;
             [ReadOnly] public BufferLookup<PhysicsColliderKeyEntityPair> colliderKeyEntityPairs;
             public EntityCommandBuffer Ecb;
+            [ReadOnly] public PhysicsWorldSingleton physicsWorldSingleton;
 
             public void Execute(CollisionEvent ev) // this is never called
             {
-                var a = ev.EntityA;
-                var b = ev.EntityB;
+                var hitEntityA = ev.EntityA;
+                var hitEntityB = ev.EntityB;
                 //Debug.Log("A " + a +" B " + b);
 
-
-                if (triggerGroup.HasComponent(a) == false || triggerGroup.HasComponent(b) == false) return;
-                var triggerComponentA = triggerGroup[a];
-                var triggerComponentB = triggerGroup[b];
+                var collisionDetails = ev.CalculateDetails(ref physicsWorldSingleton.PhysicsWorld);
+                if (triggerGroup.HasComponent(hitEntityA) == false ||
+                    triggerGroup.HasComponent(hitEntityB) == false) return;
+                var triggerComponentA = triggerGroup[hitEntityA];
+                var triggerComponentB = triggerGroup[hitEntityB];
 
 
                 var hitColliderKeyA = ev.ColliderKeyA;
                 var hitColliderKeyB = ev.ColliderKeyB;
-                var hitEntityA = ev.EntityA;
-                var hitEntityB = ev.EntityB;
-                //Debug.Log("Count A " + colliderKeyEntityPairs[hitEntityA].Length);
-                for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
+
+                if (colliderKeyEntityPairs.HasBuffer(hitEntityA))
                 {
-                    if (colliderKeyEntityPairs[hitEntityA][i].Key.Equals(hitColliderKeyA))
+                    for (int i = 0; i < colliderKeyEntityPairs[hitEntityA].Length; i++)
                     {
-                        // Return the corresponding entity from the pair
-                        var e = colliderKeyEntityPairs[hitEntityA][i].Entity;
-                        //Debug.Log("Entity A " + e);
+                        if (colliderKeyEntityPairs[hitEntityA][i].Key.Equals(hitColliderKeyA))
+                        {
+                            // Return the corresponding entity from the pair
+                            var e = colliderKeyEntityPairs[hitEntityA][i].Entity;
+                            //Debug.Log("Entity A " + e);
+                        }
                     }
                 }
 
-                //Debug.Log("Count B " + colliderKeyEntityPairs[hitEntityB].Length);
-                for (int i = 0; i < colliderKeyEntityPairs[hitEntityB].Length; i++)
+                if (colliderKeyEntityPairs.HasBuffer(hitEntityB))
                 {
-                    if (colliderKeyEntityPairs[hitEntityB][i].Key.Equals(hitColliderKeyB))
+                    for (int i = 0; i < colliderKeyEntityPairs[hitEntityB].Length; i++)
                     {
-                        // Return the corresponding entity from the pair
-                        var e = colliderKeyEntityPairs[hitEntityB][i].Entity;
-                        //Debug.Log("Entity B " + e);
+                        if (colliderKeyEntityPairs[hitEntityB][i].Key.Equals(hitColliderKeyB))
+                        {
+                            // Return the corresponding entity from the pair
+                            var e = colliderKeyEntityPairs[hitEntityB][i].Entity;
+                            //Debug.Log("Entity B " + e);
+                        }
                     }
                 }
-                
-                
+
                 var chA = triggerComponentA.ParentEntity;
                 var chB = triggerComponentB.ParentEntity;
                 var typeA = (TriggerType)triggerComponentA.Type;
@@ -139,11 +143,7 @@ namespace Collisions
                 if (typeB == TriggerType.Tail) typeB = TriggerType.Melee;
 
                 if (chA == chB && typeA != TriggerType.Ammo && typeB != TriggerType.Ammo) return;
-                
 
-                
-                
-                
 
                 var alwaysDamageA = false;
                 if (healthGroup.HasComponent(chA))

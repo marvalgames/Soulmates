@@ -111,11 +111,12 @@ namespace Sandbox.Player
         }
     }
 
-
+    
     //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateAfter(typeof(PlayerCombatSystem))]
     [RequireMatchingQueriesForUpdate]
+    
     public partial struct PlayerCombatManagedSystem : ISystem
     {
         // private static readonly int Vertical = Animator.StringToHash("Vertical");
@@ -158,6 +159,7 @@ namespace Sandbox.Player
                          .WithEntityAccess().WithAny<PlayerComponent>())
             {
                 if (melee.ValueRW.instantiated) continue;
+                
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
                 var count = movesList[entity].Length;
                 //if (count < movesHolder.moveCount) return; //hack
