@@ -5,9 +5,10 @@ using Unity.Physics.Systems;
 using UnityEngine;
 
 
-//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateInGroup(typeof(PhysicsSystemGroup))]
-[UpdateBefore(typeof(PlayerMoveSystem))]
+[UpdateInGroup(typeof(SimulationSystemGroup))]
+//[UpdateInGroup(typeof(PhysicsSystemGroup))]
+//[UpdateBefore(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateBefore(typeof(PlayerMoveSystem))]
 [RequireMatchingQueriesForUpdate]
 public partial class InputControllerSystemUpdate : SystemBase
 {
