@@ -2,14 +2,17 @@
 using Enemy;
 using Unity.Entities;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Sandbox.Player
 {
+    
     public class PlayerCombatAuthoring : MonoBehaviour
     {
         [SerializeField] private bool active = true;
         [SerializeField] private float hitPower = 100;
 
+        public GameObject visualEffectPrefab;
         public List<Moves> moveList;
         public GameObject audioSourceMeleePrefab;
 
@@ -18,6 +21,11 @@ namespace Sandbox.Player
             public override void Bake(PlayerCombatAuthoring authoring)
             {
                 var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
+                
+                var vfxEntity = GetEntity(authoring.visualEffectPrefab, TransformUsageFlags.Dynamic);
+                Debug.Log("vfxEntity " + vfxEntity);
+                //AddComponent(vfxEntity, new VfxComponentTag());
+                
                 AddComponent(e, new MeleeComponent
                 {
                     Available = authoring.active,
@@ -54,14 +62,15 @@ namespace Sandbox.Player
 
                 var movesClassHolder = new MovesClassHolder
                 {
-                    //inconsistent adding AudioSource to holder AND to each element - That is only needed for the Clip and VFX 
+                    //inconsistent adding AudioSource to holder AND to each element - That is only needed for the Clip and VFX
                     movesClassList = movesClassList,
                     meleeAudioSourcePrefab = authoring.audioSourceMeleePrefab,
-                    moveCount = authoring.moveList.Count
+                    moveCount = authoring.moveList.Count,
+                    moveParticleSystem = vfxEntity
                 };
-
-
+                
                 AddComponentObject(e, movesClassHolder);
+                //AddComponentObject(e, authoring.visualEffectPrefab);
             }
         }
     }

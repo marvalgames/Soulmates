@@ -160,6 +160,10 @@ namespace Sandbox.Player
             {
                 if (melee.ValueRW.instantiated) continue;
 
+                var spawn = commandBuffer.Instantiate(movesHolder.moveParticleSystem);
+                commandBuffer.AddComponent<VfxComponentTag>(spawn);
+
+                
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
                 var count = movesList[entity].Length;
                 //if (count < movesHolder.moveCount) return; //hack
@@ -200,6 +204,7 @@ namespace Sandbox.Player
 
                     var prefab = movesClass.moveParticleSystem;
                     var vfxGo = GameObject.Instantiate(prefab);
+
                     //Debug.Log("PREFAB " + vfxGo);
                     movesClass.moveParticleSystemInstance = vfxGo;
                     //movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;

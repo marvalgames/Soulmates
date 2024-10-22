@@ -55,6 +55,7 @@ namespace Enemy
 
     public class MovesClassHolder : IComponentData
     {
+        public Entity moveParticleSystem;
         public List<MovesClass> movesClassList = new();
         public GameObject meleeAudioSourcePrefab;
         public int moveCount;
