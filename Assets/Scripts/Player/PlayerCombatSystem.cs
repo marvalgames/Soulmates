@@ -154,8 +154,8 @@ namespace Sandbox.Player
 
             //if (instantiated == false)
             //{
-            foreach (var (actor, movesHolder, melee, entity)
-                     in SystemAPI.Query<ActorInstance, MovesClassHolder, RefRW<MeleeComponent>>()
+            foreach (var (actor, movesHolder, melee, transform, entity)
+                     in SystemAPI.Query<ActorInstance, MovesClassHolder, RefRW<MeleeComponent>, RefRW<LocalTransform>>()
                          .WithEntityAccess().WithAny<PlayerComponent>())
             {
                 if (melee.ValueRW.instantiated) continue;
@@ -167,8 +167,11 @@ namespace Sandbox.Player
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
                 var count = movesList[entity].Length;
                 //if (count < movesHolder.moveCount) return; //hack
+                
+                
                 var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
                 go.SetActive(true);
+                
                 commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
                 var zone = actor.actorPrefabInstance.GetComponent<TargetZone>().headZone.transform;
                 var rhZone = actor.actorPrefabInstance.GetComponent<TargetZone>().rightHandZone.transform;
@@ -178,6 +181,14 @@ namespace Sandbox.Player
                 for (var i = 0; i < count; i++)
                 {
                     var movesClass = movesHolder.movesClassList[i];
+                    var spawn = commandBuffer.Instantiate(movesClass.moveVfxPrefabEntity);
+                    movesClass.moveVfxPrefabEntitySpawned = spawn;
+                    var e = movesClass.moveVfxPrefabEntity;
+                    var vfxTransform = SystemAPI.GetComponent<LocalTransform>(e);
+                    vfxTransform.Position = transform.ValueRW.Position;
+                    //SystemAPI.SetComponent(e, vfxTransform);
+                    commandBuffer.SetComponent(e, vfxTransform);
+                    
                     var target = movesList[entity][i].triggerType;
                     switch (target)
                     {
@@ -202,18 +213,18 @@ namespace Sandbox.Player
                     actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().linkedEntity = entity;
                     actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().manager = state.EntityManager;
 
-                    var prefab = movesClass.moveParticleSystem;
-                    var vfxGo = GameObject.Instantiate(prefab);
-
-                    //Debug.Log("PREFAB " + vfxGo);
-                    movesClass.moveParticleSystemInstance = vfxGo;
-                    //movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;
-                    movesClass.moveParticleSystemInstance.transform.parent = zone;
-                    movesClass.moveParticleSystemInstance.transform.localPosition = Vector3.zero;
-                    if (movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>())
-                    {
-                        movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>().Stop();
-                    }
+                    // var prefab = movesClass.moveParticleSystem;
+                    // var vfxGo = GameObject.Instantiate(prefab);
+                    //
+                    // //Debug.Log("PREFAB " + vfxGo);
+                    // movesClass.moveParticleSystemInstance = vfxGo;
+                    // //movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;
+                    // movesClass.moveParticleSystemInstance.transform.parent = zone;
+                    // movesClass.moveParticleSystemInstance.transform.localPosition = Vector3.zero;
+                    // if (movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>())
+                    // {
+                    //     movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>().Stop();
+                    // }
                 }
 
                 melee.ValueRW.instantiated = true;
@@ -300,8 +311,11 @@ namespace Sandbox.Player
                         melee.ValueRW.cancelMovement = 0;
                     }
 
-                    var vfxGraph = movesHolder.movesClassList[melee.ValueRW.lastCombatAction]
-                        .moveParticleSystemInstance.GetComponent<VisualEffect>();
+                    //var vfxGraph = movesHolder.movesClassList[melee.ValueRW.lastCombatAction]
+                        //.moveParticleSystemInstance.GetComponent<VisualEffect>();
+                    
+                    var vfxGraph = SystemAPI.ManagedAPI.GetComponent<VisualEffect>(movesHolder.movesClassList[melee.ValueRW.lastCombatAction].moveVfxPrefabEntitySpawned);
+                    Debug.Log("VFX Graph " + vfxGraph);
 
 
                     //var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;

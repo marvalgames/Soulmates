@@ -48,6 +48,7 @@ namespace Enemy
     public class MovesClass : IComponentData
     {
         public Entity moveVfxPrefabEntity;
+        public Entity moveVfxPrefabEntitySpawned;
         public GameObject meleeAudioSource;
         public AudioClip moveAudioClip;
         public GameObject moveParticleSystem;
