@@ -12,7 +12,6 @@ namespace Sandbox.Player
         [SerializeField] private bool active = true;
         [SerializeField] private float hitPower = 100;
 
-        public GameObject visualEffectPrefab;
         public List<Moves> moveList;
         public GameObject audioSourceMeleePrefab;
 
@@ -22,8 +21,6 @@ namespace Sandbox.Player
             {
                 var e = GetEntity(authoring.gameObject, TransformUsageFlags.Dynamic);
                 
-                var vfxEntity = GetEntity(authoring.visualEffectPrefab, TransformUsageFlags.Dynamic);
-                Debug.Log("vfxEntity " + vfxEntity);
                 //AddComponent(vfxEntity, new VfxComponentTag());
                 
                 AddComponent(e, new MeleeComponent
@@ -52,10 +49,16 @@ namespace Sandbox.Player
                 for (var i = 0; i < authoring.moveList.Count; i++)
                 {
                     var move = authoring.moveList[i];
+                    
+                    var vfxEntity = GetEntity(authoring.moveList[i].moveParticleSystemPrefab, TransformUsageFlags.Dynamic);
+                    Debug.Log("vfxEntity " + vfxEntity);
+
+                    
                     var addMove = new MovesClass
                     {
                         meleeAudioSource = authoring.audioSourceMeleePrefab, moveAudioClip = move.moveAudioClip,
-                        moveParticleSystem = move.moveParticleSystemPrefab
+                        moveParticleSystem = move.moveParticleSystemPrefab,
+                        moveVfxPrefabEntity = vfxEntity
                     };
                     movesClassList.Add(addMove);
                 }
@@ -65,8 +68,7 @@ namespace Sandbox.Player
                     //inconsistent adding AudioSource to holder AND to each element - That is only needed for the Clip and VFX
                     movesClassList = movesClassList,
                     meleeAudioSourcePrefab = authoring.audioSourceMeleePrefab,
-                    moveCount = authoring.moveList.Count,
-                    moveParticleSystem = vfxEntity
+                    moveCount = authoring.moveList.Count
                 };
                 
                 AddComponentObject(e, movesClassHolder);

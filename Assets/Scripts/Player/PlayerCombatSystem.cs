@@ -160,8 +160,8 @@ namespace Sandbox.Player
             {
                 if (melee.ValueRW.instantiated) continue;
 
-                var spawn = commandBuffer.Instantiate(movesHolder.moveParticleSystem);
-                commandBuffer.AddComponent<VfxComponentTag>(spawn);
+                //var spawn = commandBuffer.Instantiate(movesHolder.moveParticleSystem);
+                //commandBuffer.AddComponent<VfxComponentTag>(spawn);
 
                 
                 var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
