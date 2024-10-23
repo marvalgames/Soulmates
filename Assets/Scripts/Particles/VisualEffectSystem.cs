@@ -15,6 +15,11 @@ public struct VisualEffectEntitySpawnerComponent : IComponentData
 public struct VisualEffectSceneComponent : IComponentData
 {
 }
+public struct VfxGraphSubSceneComponent : IComponentData
+{
+}
+
+
 
 public struct VisualEffectEntityComponent : IComponentData
 {
@@ -128,6 +133,12 @@ public partial class VisualEffectSceneSystem : SystemBase
         ((VisualEffect visualEffect, Entity e
             ) =>
             {
+                // if (SystemAPI.HasComponent<Parent>(e))
+                // {
+                //     Debug.Log("VisualEffect ENTITY " + visualEffect);
+                //     Debug.Log("VisualEffect Parent " + SystemAPI.GetComponent<Parent>(e).Value);
+                // }
+
                 if (SystemAPI.HasComponent<VisualEffectSceneComponent>(e))
                 {
                     var parent = SystemAPI.GetComponent<Parent>(e).Value;

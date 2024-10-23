@@ -333,6 +333,7 @@ namespace Sandbox.Player
                     // Debug.Log("AS " + goAudioPlayer.AudioSource);
                     // Debug.Log("AC " + goAudioPlayer.AudioClip);
                     var stickSpeed = applyImpulseComponent.animatorStickSpeed;
+                    //Debug.Log("VFX GO " + goVisualEffect.VisualEffect);
 
 
                     if (math.abs(stickSpeed) >= .0001f && applyImpulseComponent.Grounded)

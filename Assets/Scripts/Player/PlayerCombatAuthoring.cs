@@ -14,7 +14,7 @@ namespace Sandbox.Player
 
         public List<Moves> moveList;
         public GameObject audioSourceMeleePrefab;
-
+        public VisualEffect vfxGraph;
         class PlayerCombatBaker : Baker<PlayerCombatAuthoring>
         {
             public override void Bake(PlayerCombatAuthoring authoring)
@@ -61,11 +61,15 @@ namespace Sandbox.Player
                         moveVfxPrefabEntity = vfxEntity
                     };
                     movesClassList.Add(addMove);
+
+                    AddComponent(vfxEntity, new VfxGraphSubSceneComponent());
+
                 }
 
                 var movesClassHolder = new MovesClassHolder
                 {
                     //inconsistent adding AudioSource to holder AND to each element - That is only needed for the Clip and VFX
+                    vfxGraph = authoring.vfxGraph,
                     movesClassList = movesClassList,
                     meleeAudioSourcePrefab = authoring.audioSourceMeleePrefab,
                     moveCount = authoring.moveList.Count

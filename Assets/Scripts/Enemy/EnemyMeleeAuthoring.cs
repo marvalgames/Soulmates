@@ -5,6 +5,7 @@ using Collisions;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Enemy
 {
@@ -57,6 +58,7 @@ namespace Enemy
 
     public class MovesClassHolder : IComponentData
     {
+        public VisualEffect vfxGraph;
         public List<MovesClass> movesClassList = new();
         public GameObject meleeAudioSourcePrefab;
         public int moveCount;

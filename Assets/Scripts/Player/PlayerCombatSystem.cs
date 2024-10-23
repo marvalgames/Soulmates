@@ -111,6 +111,81 @@ namespace Sandbox.Player
             }
         }
     }
+    
+    [UpdateInGroup(typeof(SimulationSystemGroup))]
+    [UpdateAfter(typeof(PlayerCombatSystem))]
+    [UpdateBefore(typeof(PlayerCombatManagedSystem))]
+    [RequireMatchingQueriesForUpdate]
+    public partial struct PlayerCombatSpawnSystem : ISystem
+    {
+
+        public void OnUpdate(ref SystemState state)
+        {
+            
+            var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
+                .CreateCommandBuffer(state.WorldUnmanaged);
+            foreach (var (actor, movesHolder, melee, transform, entity)
+                     in SystemAPI.Query<ActorInstance, MovesClassHolder, RefRW<MeleeComponent>, RefRW<LocalTransform>>()
+                         .WithEntityAccess().WithAny<PlayerComponent>())
+            {
+                if (melee.ValueRW.instantiated) continue;
+
+                //var spawn = commandBuffer.Instantiate(movesHolder.moveParticleSystem);
+                //commandBuffer.AddComponent<VfxComponentTag>(spawn);
+
+                
+                var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
+                var count = movesList[entity].Length;
+                var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
+                go.SetActive(true);
+                
+                commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
+                var zone = actor.actorPrefabInstance.GetComponent<TargetZone>().headZone.transform;
+                var rhZone = actor.actorPrefabInstance.GetComponent<TargetZone>().rightHandZone.transform;
+                var rfZone = actor.actorPrefabInstance.GetComponent<TargetZone>().rightFootZone.transform;
+                var lhZone = actor.actorPrefabInstance.GetComponent<TargetZone>().leftHandZone.transform;
+                var lfZone = actor.actorPrefabInstance.GetComponent<TargetZone>().leftFootZone.transform;
+                for (var i = 0; i < count; i++)
+                {
+                    var movesClass = movesHolder.movesClassList[i];
+                    var spawn = commandBuffer.Instantiate(movesClass.moveVfxPrefabEntity);
+                    //movesClass.moveVfxPrefabEntitySpawned = spawn;
+                    var e = movesClass.moveVfxPrefabEntity;
+                    var vfxTransform = SystemAPI.GetComponent<LocalTransform>(e);
+                    vfxTransform.Position = transform.ValueRW.Position;
+                    SystemAPI.SetComponent(e, vfxTransform);
+                    //commandBuffer.SetComponent(e, vfxTransform);
+                    
+                    var target = movesList[entity][i].triggerType;
+                    switch (target)
+                    {
+                        case TriggerType.RightHand:
+                            zone = rhZone;
+                            //Debug.Log("ZONE RH");
+                            break;
+                        case TriggerType.LeftHand:
+                            zone = lhZone;
+                            //Debug.Log("ZONE LH");
+                            break;
+                        case TriggerType.RightFoot:
+                            zone = rfZone;
+                            //Debug.Log("ZONE RF");
+                            break;
+                        case TriggerType.LeftFoot:
+                            zone = lfZone;
+                            //Debug.Log("ZONE LF");
+                            break;
+                    }
+
+                    actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().linkedEntity = entity;
+                    actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().manager = state.EntityManager;
+                }
+
+                melee.ValueRW.instantiated = true;
+            }
+        }
+        
+    }
 
 
     //[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
@@ -137,8 +212,6 @@ namespace Sandbox.Player
 
         public void OnUpdate(ref SystemState state)
         {
-            var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
-                .CreateCommandBuffer(state.WorldUnmanaged);
 
             //private static readonly int Vertical = Animator.StringToHash("Vertical");
             //private static readonly int CombatAction = Animator.StringToHash("CombatAction");
@@ -152,87 +225,7 @@ namespace Sandbox.Player
             var CombatAction = new FastAnimatorParameter("CombatAction");
             var CombatMode = new FastAnimatorParameter("CombatMode");
 
-            //if (instantiated == false)
-            //{
-            foreach (var (actor, movesHolder, melee, transform, entity)
-                     in SystemAPI.Query<ActorInstance, MovesClassHolder, RefRW<MeleeComponent>, RefRW<LocalTransform>>()
-                         .WithEntityAccess().WithAny<PlayerComponent>())
-            {
-                if (melee.ValueRW.instantiated) continue;
-
-                //var spawn = commandBuffer.Instantiate(movesHolder.moveParticleSystem);
-                //commandBuffer.AddComponent<VfxComponentTag>(spawn);
-
-                
-                var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
-                var count = movesList[entity].Length;
-                //if (count < movesHolder.moveCount) return; //hack
-                
-                
-                var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
-                go.SetActive(true);
-                
-                commandBuffer.AddComponent(entity, new MovesInstance { meleeAudioSourceInstance = go });
-                var zone = actor.actorPrefabInstance.GetComponent<TargetZone>().headZone.transform;
-                var rhZone = actor.actorPrefabInstance.GetComponent<TargetZone>().rightHandZone.transform;
-                var rfZone = actor.actorPrefabInstance.GetComponent<TargetZone>().rightFootZone.transform;
-                var lhZone = actor.actorPrefabInstance.GetComponent<TargetZone>().leftHandZone.transform;
-                var lfZone = actor.actorPrefabInstance.GetComponent<TargetZone>().leftFootZone.transform;
-                for (var i = 0; i < count; i++)
-                {
-                    var movesClass = movesHolder.movesClassList[i];
-                    var spawn = commandBuffer.Instantiate(movesClass.moveVfxPrefabEntity);
-                    movesClass.moveVfxPrefabEntitySpawned = spawn;
-                    var e = movesClass.moveVfxPrefabEntity;
-                    var vfxTransform = SystemAPI.GetComponent<LocalTransform>(e);
-                    vfxTransform.Position = transform.ValueRW.Position;
-                    //SystemAPI.SetComponent(e, vfxTransform);
-                    commandBuffer.SetComponent(e, vfxTransform);
-                    
-                    var target = movesList[entity][i].triggerType;
-                    switch (target)
-                    {
-                        case TriggerType.RightHand:
-                            zone = rhZone;
-                            //Debug.Log("ZONE RH");
-                            break;
-                        case TriggerType.LeftHand:
-                            zone = lhZone;
-                            //Debug.Log("ZONE LH");
-                            break;
-                        case TriggerType.RightFoot:
-                            zone = rfZone;
-                            //Debug.Log("ZONE RF");
-                            break;
-                        case TriggerType.LeftFoot:
-                            zone = lfZone;
-                            //Debug.Log("ZONE LF");
-                            break;
-                    }
-
-                    actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().linkedEntity = entity;
-                    actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().manager = state.EntityManager;
-
-                    // var prefab = movesClass.moveParticleSystem;
-                    // var vfxGo = GameObject.Instantiate(prefab);
-                    //
-                    // //Debug.Log("PREFAB " + vfxGo);
-                    // movesClass.moveParticleSystemInstance = vfxGo;
-                    // //movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;
-                    // movesClass.moveParticleSystemInstance.transform.parent = zone;
-                    // movesClass.moveParticleSystemInstance.transform.localPosition = Vector3.zero;
-                    // if (movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>())
-                    // {
-                    //     movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>().Stop();
-                    // }
-                }
-
-                melee.ValueRW.instantiated = true;
-                //instantiated = true;
-            }
-            //}
-
-
+      
             foreach (var (animEntity, anim, aces, checkedComponent, entity)
                      in SystemAPI
                          .Query<RefRO<AnimatorEntityComponent>, AnimatorParametersAspect,
@@ -264,6 +257,12 @@ namespace Sandbox.Player
                 }
             }
 
+
+            foreach (var (vfxGraph, e) in SystemAPI.Query<RefRW<VfxGraphSubSceneComponent>>().WithEntityAccess() )
+            {
+                var graph = SystemAPI.ManagedAPI.GetComponent<VisualEffect>(e);
+                Debug.Log("vfx graph subScene" + graph);
+            }
 
             foreach (var (anim, actor, movesHolder, audioClass, melee, checkedComponent, applyImpulse, e) in
                      SystemAPI
@@ -311,13 +310,12 @@ namespace Sandbox.Player
                         melee.ValueRW.cancelMovement = 0;
                     }
 
-                    //var vfxGraph = movesHolder.movesClassList[melee.ValueRW.lastCombatAction]
-                        //.moveParticleSystemInstance.GetComponent<VisualEffect>();
+                    //var vfxGraph = movesHolder.movesClassList[melee.ValueRW.lastCombatAction].moveParticleSystem.GetComponent<VisualEffect>();
+                    var vfxGraph = movesHolder.vfxGraph;
+                    vfxGraph.Stop();
                     
-                    var vfxGraph = SystemAPI.ManagedAPI.GetComponent<VisualEffect>(movesHolder.movesClassList[melee.ValueRW.lastCombatAction].moveVfxPrefabEntitySpawned);
-                    Debug.Log("VFX Graph " + vfxGraph);
-
-
+                    //var vfxGraph = SystemAPI.ManagedAPI.GetComponent<VisualEffect>(movesHolder.movesClassList[melee.ValueRW.lastCombatAction].moveVfxPrefabEntity);
+                    Debug.Log("VFX Graph COMBAT " + vfxGraph);
                     //var stage = actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().animationStageTracker;
                     var stage = checkedComponent.ValueRW.animationStage;
                     if (stage == AnimationStage.Enter)
@@ -341,7 +339,6 @@ namespace Sandbox.Player
                     {
                         checkedComponent.ValueRW.AttackStages = AttackStages.Action;
                         //play vfx code here but may change to pass to VfxManager similar to AudioManagerSystem
-                        vfxGraph.Stop();
                         Debug.Log("Update Attack SYSTEM");
                     }
                     else if (stage == AnimationStage.Exit)
@@ -357,7 +354,7 @@ namespace Sandbox.Player
                                 SystemAPI.SetComponent(e, score);
                             }
 
-
+                            //vfxGraph.Stop();
                             Debug.Log("End Attack SYSTEM");
                             melee.ValueRW.cancelMovement = 0;
                             checkedComponent.ValueRW.hitLanded = false; //set at end of attack only
