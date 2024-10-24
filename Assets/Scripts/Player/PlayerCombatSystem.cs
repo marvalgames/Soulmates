@@ -124,17 +124,17 @@ namespace Sandbox.Player
             
             var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>()
                 .CreateCommandBuffer(state.WorldUnmanaged);
-            foreach (var (actor, movesHolder, melee, transform, entity)
-                     in SystemAPI.Query<ActorInstance, MovesClassHolder, RefRW<MeleeComponent>, RefRW<LocalTransform>>()
+            foreach (var (actor, targetZone, movesHolder, melee, transform, entity)
+                     in SystemAPI.Query<ActorInstance, RefRW<TargetZoneComponent>, MovesClassHolder, RefRW<MeleeComponent>, RefRW<LocalTransform>>()
                          .WithEntityAccess().WithAny<PlayerComponent>())
             {
                 if (melee.ValueRW.instantiated) continue;
 
-                //var spawn = commandBuffer.Instantiate(movesHolder.moveParticleSystem);
+                //var spawn = commandBuffer.Instantiate(movesHolder.);
                 //commandBuffer.AddComponent<VfxComponentTag>(spawn);
 
                 
-                var movesList = SystemAPI.GetBufferLookup<MovesComponentElement>(true);
+                var movesList = SystemAPI.GetBufferLookup<MovesComponentElement> (true);
                 var count = movesList[entity].Length;
                 var go = GameObject.Instantiate(movesHolder.meleeAudioSourcePrefab);
                 go.SetActive(true);
@@ -148,7 +148,8 @@ namespace Sandbox.Player
                 for (var i = 0; i < count; i++)
                 {
                     var movesClass = movesHolder.movesClassList[i];
-                    //var spawn = commandBuffer.Instantiate(movesClass.moveVfxPrefabEntity);
+                    
+                    //Debug.Log("SPAWN " + spawn);
                     //movesClass.moveVfxPrefabEntitySpawned = spawn;
                     var e = movesClass.moveVfxPrefabEntity;
                     var vfxTransform = SystemAPI.GetComponent<LocalTransform>(e);
@@ -179,6 +180,25 @@ namespace Sandbox.Player
 
                     actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().linkedEntity = entity;
                     actor.actorPrefabInstance.GetComponent<ActorEntityTracker>().manager = state.EntityManager;
+                    var vfxEntity = movesList[entity][i].moveVfxPrefabEntity;
+                    var spawn = commandBuffer.Instantiate(vfxEntity);
+                    var zoneEntity = SystemAPI.GetComponent<TargetZoneComponent>(entity).rightHandZoneEntity;
+                    commandBuffer.AddComponent(spawn, new Parent {Value = zoneEntity});
+                    commandBuffer.AddComponent(spawn, new VfxComponentTag());
+                    
+                    // var prefab = movesClass.moveParticleSystem;
+                    // var vfxGo = GameObject.Instantiate(prefab);
+                    //
+                    // Debug.Log("PREFAB " + vfxGo);
+                    //movesClass.moveParticleSystemInstance = spawn;
+                    // //movesClass.moveParticleSystemInstance.transform.parent = actor.actorPrefabInstance.transform;
+                    // movesClass.moveParticleSystemInstance.transform.parent = zone;
+                    // movesClass.moveParticleSystemInstance.transform.localPosition = Vector3.zero;
+                    // if (movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>())
+                    // {
+                    //     movesClass.moveParticleSystemInstance.GetComponent<VisualEffect>().Stop();
+                    // }
+                    
                 }
 
                 melee.ValueRW.instantiated = true;
@@ -258,11 +278,11 @@ namespace Sandbox.Player
             }
 
 
-            foreach (var (vfxGraph, e) in SystemAPI.Query<RefRW<VfxGraphSubSceneComponent>>().WithEntityAccess() )
+            foreach (var (vfxGraph, e) in SystemAPI.Query<RefRO<VfxComponentTag>>().WithEntityAccess() )
             {
                 var graph = SystemAPI.ManagedAPI.GetComponent<VisualEffect>(e);
                 graph.Stop();
-                Debug.Log("vfx graph subScene" + graph);
+                Debug.Log("vfx graph subScene " + graph + " e " + e);
             }
 
             foreach (var (anim, actor, movesHolder, audioClass, melee, checkedComponent, applyImpulse, e) in
@@ -279,7 +299,7 @@ namespace Sandbox.Player
                 if (SystemAPI.HasComponent<ActorWeaponAimComponent>(e))
                 {
                     var aimComponent = SystemAPI.GetComponent<ActorWeaponAimComponent>(e);
-                    //Debug.Log("COMBAT MODE " + aimComponent.combatMode);
+                    //Debug.Log("COMBAT MODE " + aimComponent.combatMode); 
                     //animator.SetInteger(Zone, aimComponent.combatMode ? 1 : 0);
                     anim.SetIntParameter(Zone, aimComponent.combatMode ? 1 : 0);
                     anim.SetBoolParameter(CombatMode, aimComponent.combatMode);
@@ -357,7 +377,7 @@ namespace Sandbox.Player
                                 SystemAPI.SetComponent(e, score);
                             }
 
-                            //vfxGraph.Stop();
+                            vfxGraph.Stop();
                             Debug.Log("End Attack SYSTEM");
                             melee.ValueRW.cancelMovement = 0;
                             checkedComponent.ValueRW.hitLanded = false; //set at end of attack only

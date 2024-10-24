@@ -24,6 +24,8 @@ namespace Collisions
         public bool rightHandZoneEnabled;
         public LocalTransform rightHandZone;
         public float3 rightHandZonePosition;
+        public float3 rightHandZoneEntityPosition;
+        public Entity rightHandZoneEntity;
 
         public bool leftFootZoneEnabled;
         public LocalTransform leftFootZone;
@@ -54,6 +56,8 @@ namespace Collisions
         public bool rightFootZoneEnabled = true;
         public bool weapon1ZoneEnabled = true;
         public bool weapon2ZoneEnabled = true;
+        
+        public GameObject rightHandZoneEntityGameObject;
 
         private class TargetZoneAuthoringBaker : Baker<TargetZoneAuthoring>
         {
@@ -62,6 +66,9 @@ namespace Collisions
                 var e = GetEntity(TransformUsageFlags.Dynamic);
                 AddComponent(e, new TargetZoneComponent
                 {
+                    
+                    rightHandZoneEntityPosition = authoring.rightHandZoneEntityGameObject.transform.position,
+                    rightHandZoneEntity = GetEntity(authoring.rightHandZoneEntityGameObject, TransformUsageFlags.Dynamic),
                     headZoneEnabled = authoring.enabled,
                     bodyZoneEnabled = authoring.bodyZoneEnabled,
                     leftHandZoneEnabled = authoring.leftHandZoneEnabled,

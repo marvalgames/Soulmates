@@ -80,6 +80,7 @@ namespace Enemy
         public float weight;
         public Entity targetEntity;
         public float timeAfterMove;
+        public Entity moveVfxPrefabEntity;
     }
 
 

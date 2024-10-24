@@ -15,7 +15,7 @@ namespace Sandbox.Player
 
         public List<Moves> moveList;
         public GameObject audioSourceMeleePrefab;
-        public VisualEffect vfxGraph;
+        public GameObject vfxGraph;
         class PlayerCombatBaker : Baker<PlayerCombatAuthoring>
         {
             public override void Bake(PlayerCombatAuthoring authoring)
@@ -41,7 +41,8 @@ namespace Sandbox.Player
                         triggerType = move.triggerType,
                         animationType = move.animationType,
                         target = move.target,
-                        weight = move.weight
+                        weight = move.weight,
+                        moveVfxPrefabEntity = GetEntity(authoring.vfxGraph, TransformUsageFlags.Dynamic)
                     };
                     buffer.Add(movesComponentElement);
                 }
@@ -50,14 +51,14 @@ namespace Sandbox.Player
                 for (var i = 0; i < authoring.moveList.Count; i++)
                 {
                     var move = authoring.moveList[i];
-                    
+                    var vfxEntity = GetEntity(authoring.vfxGraph, TransformUsageFlags.Dynamic);
                     //var vfxEntity = GetEntity(authoring.moveList[i].moveParticleSystemPrefab, TransformUsageFlags.Dynamic);
                     //Debug.Log("vfxEntity " + vfxEntity);
 
 
-                    var vfxEntity = CreateAdditionalEntity(TransformUsageFlags.Dynamic);
-                    AddComponent(vfxEntity, new VfxGraphSubSceneComponent());
-                    AddComponent(vfxEntity, new Parent{Value = e});
+                    //var vfxEntity = CreateAdditionalEntity(TransformUsageFlags.Dynamic);
+                    //AddComponent(vfxEntity, new VfxGraphSubSceneComponent());
+                    //AddComponent(vfxEntity, new Parent{Value = e});
                     
                     var addMove = new MovesClass
                     {
@@ -66,16 +67,19 @@ namespace Sandbox.Player
                         moveVfxPrefabEntity = vfxEntity
                     };
                     movesClassList.Add(addMove);
-                    AddComponentObject(vfxEntity, move.moveParticleSystemPrefab.GetComponent<VisualEffect>());
+                    
 
                     //new VfxGraphSubSceneComponent());
 
                 }
 
+                AddComponentObject(e, authoring.vfxGraph.GetComponent<VisualEffect>());
+
+                
                 var movesClassHolder = new MovesClassHolder
                 {
                     //inconsistent adding AudioSource to holder AND to each element - That is only needed for the Clip and VFX
-                    vfxGraph = authoring.vfxGraph,
+                    vfxGraph = authoring.vfxGraph.GetComponent<VisualEffect>(),
                     movesClassList = movesClassList,
                     meleeAudioSourcePrefab = authoring.audioSourceMeleePrefab,
                     moveCount = authoring.moveList.Count
