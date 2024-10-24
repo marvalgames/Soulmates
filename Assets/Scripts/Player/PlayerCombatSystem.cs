@@ -148,7 +148,7 @@ namespace Sandbox.Player
                 for (var i = 0; i < count; i++)
                 {
                     var movesClass = movesHolder.movesClassList[i];
-                    var spawn = commandBuffer.Instantiate(movesClass.moveVfxPrefabEntity);
+                    //var spawn = commandBuffer.Instantiate(movesClass.moveVfxPrefabEntity);
                     //movesClass.moveVfxPrefabEntitySpawned = spawn;
                     var e = movesClass.moveVfxPrefabEntity;
                     var vfxTransform = SystemAPI.GetComponent<LocalTransform>(e);
@@ -261,6 +261,7 @@ namespace Sandbox.Player
             foreach (var (vfxGraph, e) in SystemAPI.Query<RefRW<VfxGraphSubSceneComponent>>().WithEntityAccess() )
             {
                 var graph = SystemAPI.ManagedAPI.GetComponent<VisualEffect>(e);
+                graph.Stop();
                 Debug.Log("vfx graph subScene" + graph);
             }
 
@@ -311,8 +312,10 @@ namespace Sandbox.Player
                     }
 
                     //var vfxGraph = movesHolder.movesClassList[melee.ValueRW.lastCombatAction].moveParticleSystem.GetComponent<VisualEffect>();
-                    var vfxGraph = movesHolder.vfxGraph;
-                    vfxGraph.Stop();
+                    var vfxEntity = movesHolder.movesClassList[melee.ValueRW.lastCombatAction].moveVfxPrefabEntity;
+                    //var vfxGraph = movesHolder.vfxGraph;
+                    var vfxGraph = SystemAPI.ManagedAPI.GetComponent<VisualEffect>(vfxEntity);
+                    //vfxGraph.Stop();
                     
                     //var vfxGraph = SystemAPI.ManagedAPI.GetComponent<VisualEffect>(movesHolder.movesClassList[melee.ValueRW.lastCombatAction].moveVfxPrefabEntity);
                     Debug.Log("VFX Graph COMBAT " + vfxGraph);

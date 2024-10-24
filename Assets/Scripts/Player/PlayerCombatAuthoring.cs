@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Enemy;
 using Unity.Entities;
+using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -50,9 +51,13 @@ namespace Sandbox.Player
                 {
                     var move = authoring.moveList[i];
                     
-                    var vfxEntity = GetEntity(authoring.moveList[i].moveParticleSystemPrefab, TransformUsageFlags.Dynamic);
-                    Debug.Log("vfxEntity " + vfxEntity);
+                    //var vfxEntity = GetEntity(authoring.moveList[i].moveParticleSystemPrefab, TransformUsageFlags.Dynamic);
+                    //Debug.Log("vfxEntity " + vfxEntity);
 
+
+                    var vfxEntity = CreateAdditionalEntity(TransformUsageFlags.Dynamic);
+                    AddComponent(vfxEntity, new VfxGraphSubSceneComponent());
+                    AddComponent(vfxEntity, new Parent{Value = e});
                     
                     var addMove = new MovesClass
                     {
@@ -61,8 +66,9 @@ namespace Sandbox.Player
                         moveVfxPrefabEntity = vfxEntity
                     };
                     movesClassList.Add(addMove);
+                    AddComponentObject(vfxEntity, move.moveParticleSystemPrefab.GetComponent<VisualEffect>());
 
-                    AddComponent(vfxEntity, new VfxGraphSubSceneComponent());
+                    //new VfxGraphSubSceneComponent());
 
                 }
 
